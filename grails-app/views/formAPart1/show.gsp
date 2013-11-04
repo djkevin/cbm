@@ -72,7 +72,7 @@
 				<li class="fieldcontain">
 					<span id="scope-label" class="property-label"><g:message code="formAPart1.scope.label" default="Scope" /></span>
 					
-						<span class="property-value" aria-labelledby="scope-label">${formAPart1Instance.scope.encodeAsHTML()}</span>
+						<span class="property-value" aria-labelledby="scope-label"><%= formAPart1Instance.scope %></span>
 					
 				</li>
 				</g:if>
