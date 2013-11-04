@@ -1,21 +1,27 @@
 package cbm
 
+import cbm.FormAPart1;
+
 class FormAPart1ContainmentUnit {
 
+	static belongsTo = [FormAPart1]
 	String bioSafetyLevel
 	String unitType
-	Double unitSize
+	Integer unitSize
 	String comment
 	FormAPart1 facility
 	
-//	static belongsTo = [formAPart1:FormAPart1]
-	static belongsTo = FormAPart1
+	String toString() {
+		return "${id} ${bioSafetyLevel}"
+	 }
+	
+	
 	
     static constraints = {
 		bioSafetyLevel inList: ["BSL4", "Enhanced BSL3"]
 		unitType inList: ["laboratory", "treatment module"]
-		unitSize range: 0..2000000
-		comment size: 0..100
-		
+		unitSize blank:false
+		comment maxSize:200
+		facility nullable:false
     }
 }

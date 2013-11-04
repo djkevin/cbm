@@ -1,7 +1,7 @@
 package cbm
 
 class FormAPart1 {
-
+	static hasMany = [formAContainmentUnitList : FormAPart1ContainmentUnit]
 	String facilityName
 	String responsibleOrganisation
 	String location
@@ -9,10 +9,11 @@ class FormAPart1 {
 	String financingSources
 	String scope
 	
-//	static hasMany = [FormAPart1ContainmentUnit]
+	String toString() {
+		return "${id} ${facilityName}"
+	}
 	
-	
-	
+
     static constraints = {
 		facilityName maxSize:250, blank:false
 		responsibleOrganisation maxSize:500, blank:false

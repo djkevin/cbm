@@ -71,9 +71,18 @@
 				<g:if test="${formAPart1Instance?.scope}">
 				<li class="fieldcontain">
 					<span id="scope-label" class="property-label"><g:message code="formAPart1.scope.label" default="Scope" /></span>
+					<span class="property-value" aria-labelledby="scope-label"><g:fieldValue bean="${formAPart1Instance}" field="scope"/></span>
+				</li>
+				</g:if>
+			
+				<g:if test="${formAPart1Instance?.formAContainmentUnitList}">
+				<li class="fieldcontain">
+					<span id="formAContainmentUnitList-label" class="property-label"><g:message code="formAPart1.formAContainmentUnitList.label" default="Form AC ontainment Unit List" /></span>
 					
-						<span class="property-value" aria-labelledby="scope-label"><%= formAPart1Instance.scope %></span>
-					
+						<g:each in="${formAPart1Instance.formAContainmentUnitList}" var="f">
+						<span class="property-value" aria-labelledby="formAContainmentUnitList-label"><g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
+						</g:each>
+
 				</li>
 				</g:if>
 			

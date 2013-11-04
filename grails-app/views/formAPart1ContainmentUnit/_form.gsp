@@ -24,7 +24,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:select name="unitSize" from="${0..2000000}" class="range" required="" value="${fieldValue(bean: formAPart1ContainmentUnitInstance, field: 'unitSize')}"/></div>
+<div><g:field name="unitSize" type="number" value="${formAPart1ContainmentUnitInstance.unitSize}" required=""/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'comment', 'error')} ">
 	<label for="comment">
@@ -32,7 +32,7 @@
 		
 	</label>
 </div>
-<div><g:textField name="comment" maxlength="100" value="${formAPart1ContainmentUnitInstance?.comment}"/></div>
+<div><g:textField name="comment" maxlength="200" value="${formAPart1ContainmentUnitInstance?.comment}"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'facility', 'error')} required">
 	<label for="facility">
