@@ -1,5 +1,6 @@
 
-<%@ page import="cbm.FormAPart1" %>
+<%@ page import="cbm.FormAPart1"  %>
+<%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -71,7 +72,7 @@
 				<g:if test="${formAPart1Instance?.scope}">
 				<li class="fieldcontain">
 					<span id="scope-label" class="property-label"><g:message code="formAPart1.scope.label" default="Scope" /></span>
-					<span class="property-value" aria-labelledby="scope-label"><g:fieldValue bean="${formAPart1Instance}" field="scope"/></span>
+					<span class="property-value" aria-labelledby="scope-label"><%= formAPart1Instance.scope %></span>
 				</li>
 				</g:if>
 			
