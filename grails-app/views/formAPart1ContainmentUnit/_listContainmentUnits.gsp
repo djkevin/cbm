@@ -37,7 +37,7 @@
 			<td>${fieldValue(bean: formAPart1ContainmentUnitInstance, field: "comment")}</td>
 			
 			<g:if test="${formAPart1Instance}">
-                <td>[&nbsp;<g:link controller="formAPart1ContainmentUnit" action="edit" id="${formAPart1ContainmentUnitInstance?.id}"
+                <td>[&nbsp;<g:link controller="formAPart1ContainmentUnit" action="edit" id="${formAPart1ContainmentUnitInstance?.id}" params="['formAPart1.id': formAPart1ContainmentUnitInstance?.facility?.id]"
                                    title="${message(code: 'default.button.edit.label')}"><g:message
                                 code="default.button.edit.label"/>/<g:message
                                 code="default.button.delete.label"/></g:link>&nbsp;]
