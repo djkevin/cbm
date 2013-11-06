@@ -76,15 +76,23 @@
 				</li>
 				</g:if>
 			
+				<h4>
+				
+				<g:message code="formAPart1.containmentUnit" default="Containment Unit"/>
+				[<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1Instance?.id]"><g:message code="default.button.create.label"/></g:link>]</h4>
 				<g:if test="${formAPart1Instance?.formAContainmentUnitList}">
-				<li class="fieldcontain">
-					<span id="formAContainmentUnitList-label" class="property-label"><g:message code="formAPart1.formAContainmentUnitList.label" default="Form AC ontainment Unit List" /></span>
-					
-						<g:each in="${formAPart1Instance.formAContainmentUnitList}" var="f">
-						<span class="property-value" aria-labelledby="formAContainmentUnitList-label"><g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
-						</g:each>
-
-				</li>
+<%--				<li class="fieldcontain">--%>
+<%--					<span id="formAContainmentUnitList-label" class="property-label"><g:message code="formAPart1.formAContainmentUnitList.label" default="Form AC ontainment Unit List" /></span>--%>
+<%--					--%>
+<%--						<g:each in="${formAPart1Instance.formAContainmentUnitList}" var="f">--%>
+<%--						<span class="property-value" aria-labelledby="formAContainmentUnitList-label"><g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>--%>
+<%--						</g:each>--%>
+<%----%>
+<%--				</li>--%>
+				
+				<g:set var="formAPart1ContainmentUnitInstanceList" value="${formAPart1Instance?.formAContainmentUnitList}"></g:set>
+ 			 	<g:render template="listContainmentUnits" contextPath="../formAPart1ContainmentUnit" ></g:render>
+			
 				</g:if>
 			
 			</ol>
