@@ -18,5 +18,13 @@ fixture {
 		unitSize = "250"
 		comment = "Sample comment"
 	}
+	
+	containmentUnit2(FormAPart1ContainmentUnit) {
+		facility = [facility1]
+				bioSafetyLevel = "Enhanced BSL3"
+				unitType = "treatment module"
+				unitSize = "250"
+				comment = "nothing special"
+	}
 
 }
