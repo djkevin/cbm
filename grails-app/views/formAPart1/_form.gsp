@@ -56,7 +56,7 @@
 </div>
 <div><g:textArea class="small" name="financingSources" cols="40" rows="5" maxlength="500" required="" value="${formAPart1Instance?.financingSources}"/></div>
 
-<div class="fieldcontain ${hasErrors(bean: formAPart1Instance, field: 'scope', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: formAPart1Instance, field: 'scope', 'error')} required long">
 	<label for="scope">
 		<g:message code="formAPart1.scope.label" default="Scope" />
 		<span class="required-indicator">*</span>
