@@ -19,7 +19,7 @@ class FormAPart1 {
 		responsibleOrganisation maxSize:500, blank:false
 		location maxSize:500, blank:false
 		postalAddress maxSize:500, blank:false
-		financingSources maxSize:500, blank:false
-		scope maxSize:1000, blank:false
+		financingSources maxSize:1000, blank:false
+		scope maxSize:5000, blank:false
     }
 }
