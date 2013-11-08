@@ -1,7 +1,7 @@
 <%@ page import="cbm.FormAPart1ContainmentUnit" %>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'facility', 'error')} required">
-	<label for="facility">
+	<label for="facility" class="property-label">
 		<g:message code="formAPart1ContainmentUnit.facility.label" default="Facility" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -9,14 +9,14 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'bioSafetyLevel', 'error')} ">
-	<label for="bioSafetyLevel">
+	<label for="bioSafetyLevel" class="property-label">
 		<g:message code="formAPart1ContainmentUnit.bioSafetyLevel.label" default="Bio Safety Level" />
 	</label>
 <g:select name="bioSafetyLevel" from="${formAPart1ContainmentUnitInstance.constraints.bioSafetyLevel.inList}" value="${formAPart1ContainmentUnitInstance?.bioSafetyLevel}" valueMessagePrefix="formAPart1ContainmentUnit.bioSafetyLevel" noSelection="['': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'unitType', 'error')} ">
-	<label for="unitType">
+	<label for="unitType" class="property-label">
 		<g:message code="formAPart1ContainmentUnit.unitType.label" default="Unit Type" />
 		
 	</label>
@@ -24,7 +24,7 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'unitSize', 'error')} required">
-	<label for="unitSize">
+	<label for="unitSize" class="property-label">
 		<g:message code="formAPart1ContainmentUnit.unitSize.label" default="Unit Size" />
 		<span class="required-indicator">*</span>
 	</label>
@@ -32,7 +32,7 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'comment', 'error')} ">
-	<label for="comment">
+	<label for="comment" class="property-label">
 		<g:message code="formAPart1ContainmentUnit.comment.label" default="Comment" />
 		
 	</label>
