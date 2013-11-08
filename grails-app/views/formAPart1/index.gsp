@@ -16,7 +16,7 @@
 			</ul>
 		</div>
 		<div id="list-formAPart1" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+			<h1><g:message code="default.list.label" args="[entityName]" />:<g:message code="formAPart1.long.label" /></h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -32,9 +32,9 @@
 					
 						<g:sortableColumn property="postalAddress" title="${message(code: 'formAPart1.postalAddress.label', default: 'Postal Address')}" />
 					
-						<g:sortableColumn property="financingSources" title="${message(code: 'formAPart1.financingSources.label', default: 'Financing Sources')}" />
+<%--						<g:sortableColumn property="financingSources" title="${message(code: 'formAPart1.financingSources.label', default: 'Financing Sources')}" />--%>
 					
-						<g:sortableColumn property="scope" title="${message(code: 'formAPart1.scope.label', default: 'Scope')}" />
+<%--						<g:sortableColumn property="scope" title="${message(code: 'formAPart1.scope.label', default: 'Scope')}" />--%>
 					
 					</tr>
 				</thead>
@@ -50,9 +50,9 @@
 					
 						<td>${fieldValue(bean: formAPart1Instance, field: "postalAddress")}</td>
 					
-						<td>${fieldValue(bean: formAPart1Instance, field: "financingSources")}</td>
+<%--						<td>${fieldValue(bean: formAPart1Instance, field: "financingSources")}</td>--%>
 					
-						<td>${fieldValue(bean: formAPart1Instance, field: "scope")}</td>
+<%--						<td>${fieldValue(bean: formAPart1Instance, field: "scope")}</td>--%>
 					
 					</tr>
 				</g:each>
