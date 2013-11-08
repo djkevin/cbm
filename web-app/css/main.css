@@ -224,15 +224,25 @@ fieldset,
 	margin-top: 1em;
 }
 
+.long label {
+	color: #FFCCFF;
+	
+}
 .fieldcontain label,
 .fieldcontain .property-label {
 	color: #666666;
 	text-align: left;
-	width: 25%;
+	/*DJ commented to show label for full line*/
+/* 	width: 25%; */
 }
-
+.fieldcontain .property-label .long {
+	color: #FFCCFF;
+	text-align: left;
+	width: 100%;
+}
 .fieldcontain .property-label {
 	float: left;
+	width: 25%; 
 }
 
 .fieldcontain .property-value {
