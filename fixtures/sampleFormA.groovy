@@ -16,7 +16,7 @@ fixture {
 		bioSafetyLevel = "BSL4"
 		unitType = "laboratory"
 		unitSize = "250"
-		comment = "Sample comment"
+		comment = "Forensic Laboratory"
 	}
 	
 	containmentUnit2(FormAPart1ContainmentUnit) {
@@ -24,7 +24,25 @@ fixture {
 				bioSafetyLevel = "Enhanced BSL3"
 				unitType = "treatment module"
 				unitSize = "250"
-				comment = "nothing special"
+				comment = "Chemical diseases lab"
+	}
+	
+	facility2(FormAPart1) {
+		facilityName = "National High Security Quarantine Laboratory (NHSQL)"
+		responsibleOrganisation = "Department of Health and Ageing (Commonwealth Government), Victorian Department of Human Services (State Government)"
+		location = "Victorian Infectious Diseases, Reference Laboratory, 10 Wreckyn Street, North Melbourne VIC, AUSTRALIA"
+		postalAddress = "National High Security, Quarantine Laboratory, c/o VIDRL, Locked Bag 815, Carlton South VIC 3053, AUSTRALIA"
+		financingSources = "This facility receives no funding from the Australian Government Department of Defence. It receives funding from the Commonwealth and State Departments of Health"
+		scope = "<p>The diagnosis of possible imported cases of viral haemorrhagic fever or other quarantinable viral diseases that present a significant danger to the Australian community. Development of laboratory tests and protocols for exotic respiratory viral diseases, including influenza virus A/H5N1 (bird flu) and SARS. In addition, VIDRL has established and maintained the capability to perform diagnostic testing for the variola virus. See, also, background information"
+	}
+	
+	facility3(FormAPart1) {
+		facilityName = "Queensland Health Forensic Scientific Services (QHFSS)"
+		responsibleOrganisation = "Queensland Department of Health (State Government)"
+		location = "39 Kessels Road, Coopers Plains, QLD, AUSTRALIA"
+		postalAddress = "PO Box 594, Archefield QLD 4108, AUSTRALIA"
+		financingSources = "This facility receives no funding from the Australian Government Department of Defence. It receives funding from Queensland Department of Health"
+		scope = "<p>The maximum containment facility at QHFSS, a state government public health virology laboratory, has both a diagnostic and a research function. The maximum containment facilities are used for the development and performance of diagnostic tests on patients with suspected exotic or endemic viral illness. This includes Henipah viruses or exotic haemorrhagic fever viruses. The only PC4 level pathogens that the laboratory has are Hendra virus and SARS coronavirus (AQIS QC4), which are used for diagnostic purposes. The laboratory intends to introduce reagents useful for the diagnosis of a number of exotic viral diseases including Ebola, Marburg, Lassa, Junin, Rift Valley fevers and Hantavirus among others. These reagents will consist of either inactivated diagnostic reagents, cloned viral subunits or live virus.</p>"
 	}
 
 }
