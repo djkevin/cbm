@@ -25,9 +25,25 @@
 		
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		
+		<div class="banner table" role="banner">
+            <div>
+                <div>
+                    <img src="${resource(dir: 'images', file: 'unlogo.png')}" alt="home"/>
+                </div>                    
+                <div>                        
+                    <h2><g:message code="global.label.organisation"/> <g:message code="global.label.division"/></h2>
+                    <h3><g:message code="global.label.appname"/></a></h3>
+                </div>                
+            </div>
+        </div>
+                
 		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
+		
+		<div class="footer" role="contentinfo">
+			${grails.util.Environment.getCurrent()} Version <g:meta name="app.version"/>
+		</div>
+		
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
 		<r:layoutResources />

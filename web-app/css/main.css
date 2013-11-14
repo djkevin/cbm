@@ -638,3 +638,27 @@ textarea.twoCol {
 	width:750px;
 }
 
+/* immitate tables with DIVs -- MAY NOT be supported by old browsers. 
+If compatibility with old browsers is needed, then don't bother with CSS and just do a <table> */
+	
+	div.table {
+	    display: table
+	}
+	
+	div.table div {
+	    display: table-row
+	}
+	
+	div.table div div {
+	    padding: 5px;
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+	
+	.center {
+	    text-align: center;
+	}
+	
+	.right {
+	    text-align: right;
+	}
