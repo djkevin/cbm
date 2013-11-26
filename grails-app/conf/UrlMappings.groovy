@@ -8,6 +8,8 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
+		"/"(controller: 'index') //for i18n the index page
         "500"(view:'/error')
+		
 	}
 }

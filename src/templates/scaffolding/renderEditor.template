@@ -181,7 +181,7 @@
 					sb << ' type="number"'
 					if (cp.min != null) sb << ' min="' << cp.min << '"'
 					if (cp.max != null) sb << ' max="' << cp.max << '"'
-					sb << ' value="${' << domainInstance << '.' << property.name << '}"'
+					sb << ' value="${' << domainInstance << '?.' << property.name << '}"'
 				}
 				if (isRequired()) sb << ' required=""'
 				sb << '/>'

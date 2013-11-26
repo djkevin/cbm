@@ -46,7 +46,7 @@ class FormAPart1ContainmentUnitController {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart1ContainmentUnitInstance.label', default: 'FormAPart1ContainmentUnit'), formAPart1ContainmentUnitInstance.id])
 //                redirect formAPart1ContainmentUnitInstance
 				// DJ redirect to class FormAPart1 upon create
-				redirect (controller: "formAPart1", action:"show", id:formAPart1ContainmentUnitInstance.facility.id, formAPart1:formAPart1ContainmentUnitInstance.facility)
+				redirect (controller: "formAPart1a", action:"show", id:formAPart1ContainmentUnitInstance.facility.id, formAPart1:formAPart1ContainmentUnitInstance.facility)
             }
             '*' { respond formAPart1ContainmentUnitInstance, [status: CREATED] }
         }
@@ -75,7 +75,7 @@ class FormAPart1ContainmentUnitController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FormAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit'), formAPart1ContainmentUnitInstance.id])
 //                 redirect formAPart1ContainmentUnitInstance
 			    // DJ redirect to class FormAPart1 upon save
-				redirect (controller: "formAPart1", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)
+				redirect (controller: "formAPart1a", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)
             }
             '*'{ respond formAPart1ContainmentUnitInstance, [status: OK] }
         }
@@ -96,7 +96,7 @@ class FormAPart1ContainmentUnitController {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit'), formAPart1ContainmentUnitInstance.id])
 //                redirect action:"index", method:"GET"
 				// DJ redirect to class FormAPart1 upon delete
-				redirect (controller: "formAPart1", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)
+				redirect (controller: "formAPart1a", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -114,6 +114,6 @@ class FormAPart1ContainmentUnitController {
 	
 	def cancelEdit(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {
 		flash.message=message code: 'formAPart1.containmentUnit.edit.cancel'
-		redirect (controller: "formAPart1", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)
+		redirect (controller: "formAPart1a", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)
 	}
 }

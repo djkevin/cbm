@@ -5,8 +5,8 @@ package cbm
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(FormAPart1Controller)
-@Mock(FormAPart1)
+@TestFor(FormAPart1aController)
+@Mock(FormAPart1a)
 class FormAPart1ControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -36,7 +36,7 @@ class FormAPart1ControllerSpec extends Specification {
     void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"
-            def formAPart1 = new FormAPart1()
+            def formAPart1 = new FormAPart1a()
             formAPart1.validate()
             controller.save(formAPart1)
 
@@ -47,14 +47,14 @@ class FormAPart1ControllerSpec extends Specification {
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            formAPart1 = new FormAPart1(params)
+            formAPart1 = new FormAPart1a(params)
 
             controller.save(formAPart1)
 
         then:"A redirect is issued to the show action"
             response.redirectedUrl == '/formAPart1/show/1'
             controller.flash.message != null
-            FormAPart1.count() == 1
+            FormAPart1a.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -66,7 +66,7 @@ class FormAPart1ControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def formAPart1 = new FormAPart1(params)
+            def formAPart1 = new FormAPart1a(params)
             controller.show(formAPart1)
 
         then:"A model is populated containing the domain instance"
@@ -82,7 +82,7 @@ class FormAPart1ControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def formAPart1 = new FormAPart1(params)
+            def formAPart1 = new FormAPart1a(params)
             controller.edit(formAPart1)
 
         then:"A model is populated containing the domain instance"
@@ -100,7 +100,7 @@ class FormAPart1ControllerSpec extends Specification {
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def formAPart1 = new FormAPart1()
+            def formAPart1 = new FormAPart1a()
             formAPart1.validate()
             controller.update(formAPart1)
 
@@ -111,7 +111,7 @@ class FormAPart1ControllerSpec extends Specification {
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            formAPart1 = new FormAPart1(params).save(flush: true)
+            formAPart1 = new FormAPart1a(params).save(flush: true)
             controller.update(formAPart1)
 
         then:"A redirect is issues to the show action"
@@ -130,16 +130,16 @@ class FormAPart1ControllerSpec extends Specification {
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def formAPart1 = new FormAPart1(params).save(flush: true)
+            def formAPart1 = new FormAPart1a(params).save(flush: true)
 
         then:"It exists"
-            FormAPart1.count() == 1
+            FormAPart1a.count() == 1
 
         when:"The domain instance is passed to the delete action"
             controller.delete(formAPart1)
 
         then:"The instance is deleted"
-            FormAPart1.count() == 0
+            FormAPart1a.count() == 0
             response.redirectedUrl == '/formAPart1/index'
             flash.message != null
     }

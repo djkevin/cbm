@@ -1,15 +1,16 @@
 package cbm
 
-import cbm.FormAPart1;
+import cbm.FormAPart1a;
 
 class FormAPart1ContainmentUnit {
 
-	static belongsTo = [FormAPart1]
+	static belongsTo = [FormAPart1a]
 	String bioSafetyLevel
 	String unitType
 	Integer unitSize
 	String comment
-	FormAPart1 facility
+	FormAPart1a facility
+	
 	
 	String toString() {
 		return "${id} ${bioSafetyLevel}"

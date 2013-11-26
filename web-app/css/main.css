@@ -235,6 +235,12 @@ fieldset,
 	/*DJ commented to show label for full line*/
 /* 	width: 25%; */
 }
+.fieldcontain .property-label25 {
+	color: #666666;
+	text-align: left;
+	width: 25%;
+	text-align:right;
+}
 .fieldcontain .property-label .long {
 	color: #FFCCFF;
 	text-align: left;

@@ -81,12 +81,12 @@
 		</style>
 	</head>
 	<body>
-	
+	old one
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
         <g:if test="Environment.getCurrent()==Environment.DEVELOPMENT">
             <div id="status" role="complementary">
-                <h1>DEVELOPMENT ENVIRONMENT</h1>
+                <h1>${grails.util.Environment.getCurrent()}</h1>
                 <ul>
                     <li><a href="index.default.gsp">default index page</a></li>
                     <li><a href="dbconsole">H2 db console</a></li>
@@ -97,8 +97,15 @@
 		<div id="page-body" role="main">
 			<div id="controller-list" role="navigation">				
                 <ul>
-                    <li> <g:link controller="FormAPart1" action="index">Form A, part i</g:link> </li>                    
-                    <li> Form A, part ii </li>
+                	<li> <g:link controller="StateParty" action="index">State Party</g:link> </li>     
+                    <li> <g:link controller="Report" action="index">Report</g:link> </li>                    
+                    <li> <g:link controller="FormAPart1a" action="index"><g:message code="formAPart1a.label" default="Form A, part 1(i)"/> </g:link> </li>                    
+                    <li> <g:link controller="FormAPart1b" action="index"><g:message code="formAPart1b.label" default="Form A, part 1(ii)"/> </g:link> </li>                    
+                    <li> <g:link controller="FormAPart2a" action="index"><g:message code="formAPart2a.label" default="Form A, part 2(i)"/> </g:link> </li>                    
+                    <li> <g:link controller="FormAPart2b" action="index"><g:message code="formAPart2b.label" default="Form A, part 2(ii)"/> </g:link> </li>                    
+                    <li> <g:link controller="FormAPart2c" action="index"><g:message code="formAPart2c.label" default="Form A, part 2(iii)"/> </g:link> </li>      
+                    <li><a class="home" href="${createLink(uri: '/?lang=en')}">English</a></li>              
+                    <li><a class="home" href="${createLink(uri: '/?lang=fr')}">French</a></li>              
                     <li> ... </li>                    
                 </ul>                            
 			</div>                        

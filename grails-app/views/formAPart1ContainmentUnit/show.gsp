@@ -63,7 +63,7 @@
 				<li class="fieldcontain">
 					<span id="facility-label" class="property-label"><g:message code="formAPart1ContainmentUnit.facility.label" default="Facility" /></span>
 					
-						<span class="property-value" aria-labelledby="facility-label"><g:link controller="formAPart1" action="show" id="${formAPart1ContainmentUnitInstance?.facility?.id}">${formAPart1ContainmentUnitInstance?.facility?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="facility-label"><g:link controller="formAPart1a" action="show" id="${formAPart1ContainmentUnitInstance?.facility?.id}">${formAPart1ContainmentUnitInstance?.facility?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
