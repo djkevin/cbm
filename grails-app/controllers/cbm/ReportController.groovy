@@ -10,6 +10,10 @@ class ReportController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+	def summary(Integer max){
+		params.max = Math.min(max ?: 10, 100)
+		respond Report.list(params), model:[reportInstanceCount: Report.count()]
+	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Report.list(params), model:[reportInstanceCount: Report.count()]
