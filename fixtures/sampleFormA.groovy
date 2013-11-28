@@ -21,8 +21,8 @@ fixture {
 	spSWI(StateParty){
 		country = "SWITZERLAND"
 	}
-        spSWI(StateParty){
-		country = "GREECE"
+        spGRE(StateParty){
+            country = "GREECE"
 	}
 	
 	
