@@ -5,6 +5,8 @@ import cbm.FormAPart1b
 import cbm.FormAPart2a
 import cbm.StateParty
 
+// TODO: rename this class because it's creating data not only for FormA, but in general.
+
 fixture {
 	spAUS(StateParty){
 		country = "AUSTRALIA"
@@ -18,6 +20,9 @@ fixture {
 	}
 	spSWI(StateParty){
 		country = "SWITZERLAND"
+	}
+        spSWI(StateParty){
+		country = "GREECE"
 	}
 	
 	
