@@ -83,6 +83,62 @@
 </div>
 <div><g:select name="formAPart2b" from="${cbm.FormAPart2b.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formAPart2b*.id}" class="many-to-many"/></div>
 
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formAPart2c', 'error')} ">
+	<label for="formAPart2c">
+		<g:message code="report.formAPart2c.label" default="Form AP art2c" />
+		
+	</label>
+</div>
+<div><g:select name="formAPart2c" from="${cbm.FormAPart2c.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formAPart2c*.id}" class="many-to-many"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formB', 'error')} ">
+	<label for="formB">
+		<g:message code="report.formB.label" default="Form B" />
+		
+	</label>
+</div>
+<div><g:select name="formB" from="${cbm.FormB.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formB*.id}" class="many-to-many"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formC', 'error')} ">
+	<label for="formC">
+		<g:message code="report.formC.label" default="Form C" />
+		
+	</label>
+</div>
+<div><g:select name="formC" from="${cbm.FormC.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formC*.id}" class="many-to-many"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formE', 'error')} ">
+	<label for="formE">
+		<g:message code="report.formE.label" default="Form E" />
+		
+	</label>
+</div>
+<div><g:select name="formE" from="${cbm.FormE.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formE*.id}" class="many-to-many"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formF', 'error')} ">
+	<label for="formF">
+		<g:message code="report.formF.label" default="Form F" />
+		
+	</label>
+</div>
+<div><g:select name="formF" from="${cbm.FormF.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formF*.id}" class="many-to-many"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formG', 'error')} ">
+	<label for="formG">
+		<g:message code="report.formG.label" default="Form G" />
+		
+	</label>
+</div>
+<div><g:select name="formG" from="${cbm.FormG.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formG*.id}" class="many-to-many"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formZero', 'error')} required">
+	<label for="formZero">
+		<g:message code="report.formZero.label" default="Form Zero" />
+		<span class="required-indicator">*</span>
+	</label>
+</div>
+<div><g:select id="formZero" name="formZero.id" from="${cbm.FormZero.list()}" optionKey="id" required="" value="${reportInstance?.formZero?.id}" class="many-to-one"/></div>
+
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'stateParty', 'error')} required">
 	<label for="stateParty">
 		<g:message code="report.stateParty.label" default="State Party" />

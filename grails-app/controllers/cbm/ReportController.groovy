@@ -11,8 +11,7 @@ class ReportController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
 	def summary(Integer max){
-		params.max = Math.min(max ?: 10, 100)
-		respond Report.list(params), model:[reportInstanceCount: Report.count()]
+		redirect :index(max)
 	}
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

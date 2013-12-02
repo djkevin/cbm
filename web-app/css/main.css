@@ -1,7 +1,7 @@
 /* FONT STACK */
 body,
 input, select, textarea {
-	font-family: "Trebuchet Ms","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: 13px;
 }
 
@@ -231,7 +231,7 @@ fieldset,
 .fieldcontain label,
 .fieldcontain .property-label {
 	color: #666666;
-	text-align: left;
+	text-align: right;
 	/*DJ commented to show label for full line*/
 /* 	width: 25%; */
 }
@@ -241,6 +241,8 @@ fieldset,
 	width: 25%;
 	text-align:right;
 }
+
+
 .fieldcontain .property-label .long {
 	color: #FFCCFF;
 	text-align: left;
@@ -649,6 +651,9 @@ If compatibility with old browsers is needed, then don't bother with CSS and jus
 	
 	div.table {
 	    display: table
+	        margin: 0.6em 1.25em 0;
+    padding: 0.3em 1.8em 1.25em;
+	   
 	}
 	
 	div.table div {
@@ -659,6 +664,7 @@ If compatibility with old browsers is needed, then don't bother with CSS and jus
 	    padding: 5px;
 	    display: table-cell;
 	    vertical-align: middle;
+/* 	     border:1px solid #DCDCDC; */
 	}
 	
 	.center {
@@ -667,4 +673,58 @@ If compatibility with old browsers is needed, then don't bother with CSS and jus
 	
 	.right {
 	    text-align: right;
+	}
+
+	
+	.box {
+    color: #777777;
+    text-shadow: 0 1px 0 #FFFFFF;
+    padding:0px;
+   
+	}
+	.box ul {
+		list-style: none outside none;
+	    float: left;
+	    margin: 0 0 0 23px;
+	    padding: 0;
+	    width: 106px;
+	}
+	.box ul:first-child, .box ul.first {
+	    margin-left: 0;
+	}
+	.box li {
+	    background-color: #F6F6F6;
+	 
+	    border:1px solid #DCDCDC;
+	    margin-bottom: 2px;
+	    width: 125px;
+	}
+	
+	.box a{
+		text-align: center;
+		text-decoration:none;
+	}
+	
+	.box center{
+		align:center;
+	}
+	
+	.box div{
+		 margin: 0px auto;
+		 width: 42%;
+	}
+	
+	.box-row{
+		margin: 0px auto; 
+		width: 42%;
+	}
+	
+	.box-icon{
+		opacity:0.8;
+		filter:alpha(opacity=90); /* For IE8 and earlier */
+		
+	}
+	
+	ol, ul {
+	    list-style: none outside none;
 	}
