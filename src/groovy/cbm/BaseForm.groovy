@@ -13,11 +13,12 @@ abstract class BaseForm {
 	Date dateCreated
 	Date lastUpdated
 	
-	
+
 		
 	
 	
 	static constraints = {
+
 		formStatus inList: ['Draft','Completed']
 		visibility inList: ['Public', 'Private']
 	}

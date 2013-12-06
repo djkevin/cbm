@@ -16,15 +16,16 @@
 			</ul>
 		</div>
 		<div id="list-formAPart2a" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.list.label" args="[entityName]" />:<g:message code="formAPart2a.long.label" /></h1>
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<table>
 			<thead>
 					<tr>
-					
-						<g:sortableColumn property="existingNationalProgrammes" title="${message(code: 'formAPart2a.existingNationalProgrammes.label.short', default: 'Existing National Programmes')}" />
+                        <g:sortableColumn property="id" title="#" />
+
+                        <g:sortableColumn property="existingNationalProgrammes" title="${message(code: 'formAPart2a.existingNationalProgrammes.label.short', default: 'Existing National Programmes')}" />
 					
 						<th><g:message code="formAPart2a.report.label" default="Report" /></th>
 					
@@ -33,11 +34,10 @@
 				<tbody>
 				<g:each in="${formAPart2aInstanceList}" status="i" var="formAPart2aInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${formAPart2aInstance.id}">
-						<g:formatBoolean boolean="${formAPart2aInstance.existingNationalProgrammes}"/>
-						
-						</g:link></td>
+
+                        <td><g:link action="show" id="${formAPart2aInstance.id}">${formAPart2aInstance.id}</g:link></td>
+
+						<td>${fieldValue(bean: formAPart2aInstance, field: "existingNationalProgrammes")}</td>
 					
 						<td>${fieldValue(bean: formAPart2aInstance, field: "report")}</td>
 					

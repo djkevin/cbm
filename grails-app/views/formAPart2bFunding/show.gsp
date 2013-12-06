@@ -23,11 +23,9 @@
 			</g:if>
 			<ol class="property-list formAPart2bFunding">
 			
-				<g:if test="${formAPart2bFundingInstance?.amount}">
+				<g:if test="${formAPart2bFundingInstance?.organisationalStructureDiagram}">
 				<li class="fieldcontain">
-					<span id="amount-label" class="property-label"><g:message code="formAPart2bFunding.amount.label" default="Amount" /></span>
-					
-						<span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bFundingInstance}" field="amount"/></span>
+					<span id="organisationalStructureDiagram-label" class="property-label"><g:message code="formAPart2bFunding.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></span>
 					
 				</li>
 				</g:if>

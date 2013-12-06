@@ -67,6 +67,9 @@ fixture {
 	}
 	
 	facility1(FormAPart1a) {
+        title ="formAPart1a"
+        formStatus = "Draft"
+        visibility = "Public"
 		report = [reportAUSTRALIA2010EN]
 		facilityName = "Australian Animal Health Laboratory (AAHL)"
 		responsibleOrganisation = "Commonwealth Scientific and Industrial Research Organisation (CSIRO) (Federal Government) and the Department of Agriculture, Fisheries and Forestry (Federal Government). Note: Australia has a two-tiered system of Government, with the Federal Government and, to a lesser extent, the six respective State Governments and two Territories all involved in the formulation and implementation of Government policy."
@@ -93,6 +96,9 @@ fixture {
 	}
 	
 	facility2(FormAPart1a) {
+        title ="formAPart1a"
+        formStatus = "Draft"
+        visibility = "Public"
 		report = [reportAUSTRALIA2010EN]
 		facilityName = "National High Security Quarantine Laboratory (NHSQL)"
 		responsibleOrganisation = "Department of Health and Ageing (Commonwealth Government), Victorian Department of Human Services (State Government)"
@@ -103,6 +109,9 @@ fixture {
 	}
 	
 	facility3(FormAPart1a) {
+        title ="formAPart1a"
+        formStatus = "Draft"
+        visibility = "Public"
 		report = [reportCANADA2010FR]
 		facilityName = "Queensland Health Forensic Scientific Services (QHFSS)"
 		responsibleOrganisation = "Queensland Department of Health (State Government)"
@@ -113,6 +122,9 @@ fixture {
 	}
 	
 	formAPart1b1(FormAPart1b) {
+        title ="formAPart1b1"
+        formStatus = "Draft"
+        visibility = "Public"
 		report = [reportAUSTRALIA2010EN]
 		bioSafetyLevel3 = true
 		bioSafetyLevel2 = false
@@ -120,6 +132,9 @@ fixture {
 	}
 	
 	formAPart1b2(FormAPart1b) {
+        title ="formAPart1b2"
+        formStatus = "Draft"
+        visibility = "Public"
 		report = [reportCANADA2010FR]
 		bioSafetyLevel3 = true
 		bioSafetyLevel2 = false

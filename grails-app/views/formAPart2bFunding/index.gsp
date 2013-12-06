@@ -24,7 +24,7 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="amount" title="${message(code: 'formAPart2bFunding.amount.label', default: 'Amount')}" />
+						<g:sortableColumn property="organisationalStructureDiagram" title="${message(code: 'formAPart2bFunding.organisationalStructureDiagram.label', default: 'Organisational Structure Diagram')}" />
 					
 						<g:sortableColumn property="source" title="${message(code: 'formAPart2bFunding.source.label', default: 'Source')}" />
 					
@@ -34,7 +34,7 @@
 				<g:each in="${formAPart2bFundingInstanceList}" status="i" var="formAPart2bFundingInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${formAPart2bFundingInstance.id}">${fieldValue(bean: formAPart2bFundingInstance, field: "amount")}</g:link></td>
+						<td><g:link action="show" id="${formAPart2bFundingInstance.id}">${fieldValue(bean: formAPart2bFundingInstance, field: "organisationalStructureDiagram")}</g:link></td>
 					
 						<td>${fieldValue(bean: formAPart2bFundingInstance, field: "source")}</td>
 					

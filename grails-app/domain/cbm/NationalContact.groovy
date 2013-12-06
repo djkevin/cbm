@@ -19,12 +19,12 @@ class NationalContact {
 		title inList: ["Mr", "Ms", "Dr"], blank:false
 		firstName maxSize:100, blank:false
 		lastName maxSize:100, blank:false
-		position maxSize:100
+		position maxSize:100, nullable:true
 		address nullable:true
-		telephone maxSize:20
-		fax maxSize:20
-		email email:true
-		url maxSize:100
+		telephone maxSize:20, nullable:true
+		fax maxSize:20, nullable:true
+		email email:true, nullable:true
+		url maxSize:100, nullable:true
     }
 	
 	String toString() {

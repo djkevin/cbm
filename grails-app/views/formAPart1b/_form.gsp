@@ -1,7 +1,6 @@
 <%@ page import="cbm.FormAPart1b" %>
 
 
-
 <div class="fieldcontain ${hasErrors(bean: formAPart1bInstance, field: 'bioSafetyLevel3', 'error')} ">
 	<label for="bioSafetyLevel3" class="property-label25">
 		<g:message code="formAPart1b.bioSafetyLevel3.label" default="Bio Safety Level3" />
@@ -33,4 +32,7 @@
 	</label>
 	<g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required="" value="${formAPart1bInstance?.report?.id}" class="many-to-one"/>
 </div>
+
+<g:set var="formInstance" value="${formAPart1bInstance}"></g:set>
+<g:render template="../formStatus"/>
 

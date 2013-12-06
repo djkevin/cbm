@@ -13,6 +13,6 @@ class DeclarationForm {
 	static constraints = {
 		nothingToDeclare()
 		nothingNewToDeclare()
-		yearOfLastDeclaration range: 2000..2050
+		yearOfLastDeclaration range: 2000..2050, nullable:true
 	}
 }

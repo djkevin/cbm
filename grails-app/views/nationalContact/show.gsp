@@ -63,7 +63,7 @@
 				<li class="fieldcontain">
 					<span id="address-label" class="property-label"><g:message code="nationalContact.address.label" default="Address" /></span>
 					
-						<span class="property-value" aria-labelledby="address-label">${nationalContactInstance.address}" /></span>
+						<span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${nationalContactInstance}" field="address"/></span>
 					
 				</li>
 				</g:if>

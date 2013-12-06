@@ -1,6 +1,6 @@
 package cbm
 
-class FormAPart1b {
+class FormAPart1b extends BaseForm{
 
 // 	static belongsTo = [Report]
 	Boolean bioSafetyLevel3
@@ -9,7 +9,7 @@ class FormAPart1b {
 	Report report
 	
 	String toString() {
-		return "${id}"
+	//	return "${id}"
 	}
 	
 

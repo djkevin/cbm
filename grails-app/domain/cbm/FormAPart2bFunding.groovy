@@ -2,9 +2,10 @@ package cbm
 
 class FormAPart2bFunding {
 
-  	static belongsTo = [FormAPart2b]
+  	//static belongsTo = [FormAPart2b]
 //	BigDecimal amount
 	String source
+    byte[] organisationalStructureDiagram
 	
 //	FormAPart2b formAPart2b
 	

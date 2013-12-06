@@ -22,42 +22,27 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formC">
-			
-				<g:if test="${formCInstance?.formStatus}">
+
+                <g:if test="${formCInstance?.comments}">
+                    <li class="fieldcontain">
+                        <span id="comments-label" class="property-label"><g:message code="formC.comments.label" default="Comments" /></span>
+
+                        <span class="property-value" aria-labelledby="comments-label"><g:fieldValue bean="${formCInstance}" field="comments"/></span>
+
+                    </li>
+                </g:if>
+
+				<g:if test="${formCInstance?.report}">
 				<li class="fieldcontain">
-					<span id="formStatus-label" class="property-label"><g:message code="formC.formStatus.label" default="Form Status" /></span>
+					<span id="report-label" class="property-label"><g:message code="formC.report.label" default="Report" /></span>
 					
-						<span class="property-value" aria-labelledby="formStatus-label"><g:fieldValue bean="${formCInstance}" field="formStatus"/></span>
+						<span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formCInstance?.report?.id}">${formCInstance?.report?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${formCInstance?.comments}">
-				<li class="fieldcontain">
-					<span id="comments-label" class="property-label"><g:message code="formC.comments.label" default="Comments" /></span>
-					
-						<span class="property-value" aria-labelledby="comments-label"><g:fieldValue bean="${formCInstance}" field="comments"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formCInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="formC.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${formCInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formCInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="formC.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${formCInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
+
+                <g:set var="formInstance" value="${formCInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formCInstance, action:'delete']" method="DELETE">

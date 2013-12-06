@@ -34,7 +34,6 @@ class NationalContactController {
             respond nationalContactInstance.errors, view:'create'
             return
         }
-		println "address is: "+nationalContactInstance?.address
 
         nationalContactInstance.save flush:true
 

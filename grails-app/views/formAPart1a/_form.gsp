@@ -16,7 +16,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textArea class="small" name="responsibleOrganisation" cols="40" rows="5" maxlength="500" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
+<div><g:textArea class="longTextSml" name="responsibleOrganisation" cols="40" rows="5" maxlength="500" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
 
 <div class="wrapper">
 	<div class="left1">
@@ -54,7 +54,24 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textArea class="small" name="financingSources" cols="40" rows="5" maxlength="500" required="" value="${formAPart1aInstance?.financingSources}"/></div>
+<div><g:textArea class="longTextSml" name="financingSources" cols="40" rows="5" maxlength="500" required="" value="${formAPart1aInstance?.financingSources}"/></div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'formAContainmentUnitList', 'error')} ">
+    <label for="formAContainmentUnitList">
+        <g:message code="formAPart1.formAContainmentUnitList.label" default="Form A Containment Unit List" />
+
+    </label>
+</div>
+<div>
+    <ul class="one-to-many">
+        <g:each in="${formAPart1aInstance?.formAContainmentUnitList?}" var="f">
+            <g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link>&nbsp;
+        </g:each>
+        <!--li class="add">
+            <g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1Instance?.id]">${message(code: 'default.add.label', args: [message(code: 'formAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit')])}</g:link>
+        </li-->
+    </ul>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'scope', 'error')} required long">
 	<label for="scope">
@@ -64,20 +81,8 @@
 </div>
 <div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="1000" required="" value="${formAPart1aInstance?.scope}"/></div>
 
-<div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'formAContainmentUnitList', 'error')} ">
-	<label for="formAContainmentUnitList">
-		<g:message code="formAPart1.formAContainmentUnitList.label" default="Form AC ontainment Unit List" />
-		
-	</label>
-</div>
-<div>
-<ul class="one-to-many">
-<g:each in="${formAPart1aInstance?.formAContainmentUnitList?}" var="f">
-    <li><g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1Instance?.id]">${message(code: 'default.add.label', args: [message(code: 'formAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit')])}</g:link>
-</li>
-</ul>
-</div>
+<g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
+<g:render template="../formStatus"/>
+
+
 

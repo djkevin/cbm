@@ -224,24 +224,35 @@ fieldset,
 	margin-top: 1em;
 }
 
-.long label {
-	color: #FFCCFF;
-	
+
+.fieldcontain label{
+    font-weight:bolder;
 }
-.fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
+	/*color: #666666;*/
 	text-align: right;
+    font-weight:bolder;
 	/*DJ commented to show label for full line*/
 /* 	width: 25%; */
 }
 .fieldcontain .property-label25 {
-	color: #666666;
-	text-align: left;
+
+	text-align: left;    /*???*/
 	width: 25%;
 	text-align:right;
+    font-weight:bolder;
+}
+.fieldcontain .property-inline{
+    text-align:right;
+    margin-left:20px;
+    color:#666666;
 }
 
+#form-status-box{
+    border:1px dashed #cccccc;
+    padding-bottom: 16px;
+    margin-top:10px;
+}
 
 .fieldcontain .property-label .long {
 	color: #FFCCFF;
@@ -279,8 +290,9 @@ select[multiple] {
 	vertical-align: top;
 }
 
+
+
 textarea {
-	width: 750px;/*dj for cbm*/
 	height: 150px;
 	overflow: auto; /* IE always renders vertical scrollbar without this */
 	vertical-align: top;
@@ -620,13 +632,14 @@ textarea.small {
 }
 
 textarea.twoCol {
-	width: 368px;
+	width: 100%;
 	height:100px;
 }
 
 .wrapper{
    position: relative;
    float: left;
+    width:100%;
 }
 .left1{
    position: relative;
@@ -643,7 +656,11 @@ textarea.twoCol {
    height: 150px;
 }
 .longText{
-	width:750px;
+	width:100%;
+}
+textarea.longTextSml{
+    width:100%;
+    height:50px;
 }
 
 /* immitate tables with DIVs -- MAY NOT be supported by old browsers. 
@@ -728,3 +745,6 @@ If compatibility with old browsers is needed, then don't bother with CSS and jus
 	ol, ul {
 	    list-style: none outside none;
 	}
+
+div.inline { float:left; }
+.clearBoth { clear:both; }

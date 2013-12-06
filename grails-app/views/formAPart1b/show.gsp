@@ -5,7 +5,6 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'formAPart1b.label', default: 'FormAPart1b')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
 		<a href="#show-formAPart1b" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -17,7 +16,7 @@
 			</ul>
 		</div>
 		<div id="show-formAPart1b" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.show.label" args="[entityName]" />:<g:message code="formAPart1b.long.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -58,6 +57,9 @@
 					
 				</li>
 				</g:if>
+			
+                <g:set var="formInstance" value="${formAPart1bInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formAPart1bInstance, action:'delete']" method="DELETE">

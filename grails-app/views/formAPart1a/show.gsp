@@ -68,6 +68,18 @@
 					
 				</li>
 				</g:if>
+
+                <br/>
+                <h4>
+                    <g:message code="formAPart1.formAContainmentUnitList.label" default="Containment Unit"/>
+                </h4>
+                <g:if test="${formAPart1aInstance?.formAContainmentUnitList}">
+
+                    <g:set var="formAPart1ContainmentUnitInstanceList" value="${formAPart1aInstance?.formAContainmentUnitList}"></g:set>
+                    <g:render template="listContainmentUnits" contextPath="../formAPart1ContainmentUnit" ></g:render>
+
+                </g:if>
+                [<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
 			
 				<g:if test="${formAPart1aInstance?.scope}">
 				<li class="fieldcontain">
@@ -75,26 +87,11 @@
 					<span class="property-value" aria-labelledby="scope-label"><%= formAPart1aInstance.scope %></span>
 				</li>
 				</g:if>
-			
-				<h4>
-				
-				<g:message code="formAPart1.containmentUnit" default="Containment Unit"/>
-				[<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]"><g:message code="default.button.create.label"/></g:link>]</h4>
-				<g:if test="${formAPart1aInstance?.formAContainmentUnitList}">
-<%--				<li class="fieldcontain">--%>
-<%--					<span id="formAContainmentUnitList-label" class="property-label"><g:message code="formAPart1.formAContainmentUnitList.label" default="Form AC ontainment Unit List" /></span>--%>
-<%--					--%>
-<%--						<g:each in="${formAPart1aInstance.formAContainmentUnitList}" var="f">--%>
-<%--						<span class="property-value" aria-labelledby="formAContainmentUnitList-label"><g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>--%>
-<%--						</g:each>--%>
-<%----%>
-<%--				</li>--%>
-				
-				<g:set var="formAPart1ContainmentUnitInstanceList" value="${formAPart1aInstance?.formAContainmentUnitList}"></g:set>
- 			 	<g:render template="listContainmentUnits" contextPath="../formAPart1ContainmentUnit" ></g:render>
-			
-				</g:if>
-			
+
+                <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
+                <g:render template="../showStatus"/>
+
+
 			</ol>
 			<g:form url="[resource:formAPart1aInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

@@ -17,30 +17,12 @@
 			</ul>
 		</div>
 		<div id="show-formZero" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.show.label" args="[entityName]" />:<g:message code="formZero.long.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formZero">
-			
-				<g:if test="${formZeroInstance?.formStatus}">
-				<li class="fieldcontain">
-					<span id="formStatus-label" class="property-label"><g:message code="formZero.formStatus.label" default="Form Status" /></span>
-					
-						<span class="property-value" aria-labelledby="formStatus-label"><g:fieldValue bean="${formZeroInstance}" field="formStatus"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="formZero.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${formZeroInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${formZeroInstance?.formAPart1}">
 				<li class="fieldcontain">
 					<span id="formAPart1-label" class="property-label"><g:message code="formZero.formAPart1.label" default="Form AP art1" /></span>
@@ -121,15 +103,10 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${formZeroInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="formZero.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${formZeroInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
+
+                <g:set var="formInstance" value="${formZeroInstance}"></g:set>
+                <g:render template="../showStatus"/>
+
 			
 			</ol>
 			<g:form url="[resource:formZeroInstance, action:'delete']" method="DELETE">

@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 		<div id="show-formAPart2b" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.show.label" args="[entityName]" />:<g:message code="formAPart2b.long.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -40,6 +40,24 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${formAPart2bInstance?.amount}">
+                    <li class="fieldcontain">
+                        <span id="amount-label" class="property-label"><g:message code="formAPart2b.amount.label" default="Amount" /></span>
+
+                        <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/></span>
+
+                    </li>
+                </g:if>
+
+                <g:if test="${formAPart2bInstance?.source}">
+                    <li class="fieldcontain">
+                        <span id="source-label" class="property-label"><g:message code="formAPart2b.source.label" default="Source" /></span>
+
+                        <span class="property-value" aria-labelledby="source-label"><g:fieldValue bean="${formAPart2bInstance}" field="source"/></span>
+
+                    </li>
+                </g:if>
 			
 				<g:if test="${formAPart2bInstance?.conductedUnderContract}">
 				<li class="fieldcontain">
@@ -74,10 +92,19 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${formAPart2bInstance?.declaration}">
+                    <li class="fieldcontain">
+                        <span id="declaration-label" class="property-label"><g:message code="formAPart2b.declaration.label" default="Declaration" /></span>
+
+                        <span class="property-value" aria-labelledby="summaryObjectivesContractor-label"><g:fieldValue bean="${formAPart2bInstance}" field="declaration"/></span>
+
+                    </li>
+                </g:if>
 			
 				<g:if test="${formAPart2bInstance?.formAPart2bFunding}">
 				<li class="fieldcontain">
-					<span id="formAPart2bFunding-label" class="property-label"><g:message code="formAPart2b.formAPart2bFunding.label" default="Form AP art2b Funding" /></span>
+					<span id="formAPart2bFunding-label" class="property-label"><g:message code="formAPart2b.formAPart2bFunding.label" default="Form A Part 2b Funding" /></span>
 					
 						<g:each in="${formAPart2bInstance.formAPart2bFunding}" var="f">
 						<span class="property-value" aria-labelledby="formAPart2bFunding-label"><g:link controller="formAPart2bFunding" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
@@ -85,10 +112,10 @@
 					
 				</li>
 				</g:if>
-			
+
 				<g:if test="${formAPart2bInstance?.formAPart2c}">
 				<li class="fieldcontain">
-					<span id="formAPart2c-label" class="property-label"><g:message code="formAPart2b.formAPart2c.label" default="Form AP art2c" /></span>
+					<span id="formAPart2c-label" class="property-label"><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" /></span>
 					
 						<g:each in="${formAPart2bInstance.formAPart2c}" var="f">
 						<span class="property-value" aria-labelledby="formAPart2c-label"><g:link controller="formAPart2c" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
@@ -96,6 +123,18 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${formAPart2bInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="report-label" class="property-label"><g:message code="formAPart2a.report.label" default="Report" /></span>
+
+                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formAPart2bInstance?.report?.id}">${formAPart2bInstance?.report?.encodeAsHTML()}</g:link></span>
+
+                    </li>
+                </g:if>
+			
+                <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formAPart2bInstance, action:'delete']" method="DELETE">

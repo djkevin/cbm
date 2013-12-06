@@ -1,8 +1,5 @@
 package cbm
 
-import cbm.Country;
-import cbm.Language;
-
 class Report {
 
 
@@ -20,6 +17,8 @@ class Report {
 	String publicationStatus
 	Boolean officialVersion
 	String getReportName() {"${stateParty.country}_${year}_${language}"}
+
+    StateParty stateParty
 	
 	static transients = ['reportName']
 	

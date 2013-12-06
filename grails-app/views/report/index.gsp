@@ -24,17 +24,20 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="language" title="${message(code: 'report.language.label', default: 'Language')}" />
-					
+						<g:sortableColumn property="name" title="Report" />
 						<g:sortableColumn property="year" title="${message(code: 'report.year.label', default: 'Year')}" />
+						
+						<g:sortableColumn property="language" title="${message(code: 'report.language.label', default: 'Language')}" />
 					
 						<g:sortableColumn property="reportStatus" title="${message(code: 'report.reportStatus.label', default: 'Report Status')}" />
 					
 						<g:sortableColumn property="publicationStatus" title="${message(code: 'report.publicationStatus.label', default: 'Publication Status')}" />
 					
 						<g:sortableColumn property="officialVersion" title="${message(code: 'report.officialVersion.label', default: 'Official Version')}" />
+						
+						<g:sortableColumn property="lastUpdated" title="${message(code: 'report.lastUpdated.label', default: 'Last Updated')}" />
 					
-						<th><g:message code="report.formAPart1b.label" default="Form AP art1b" /></th>
+<%--						<th><g:message code="report.formAPart1b.label" default="Form AP art1b" /></th>--%>
 					
 					</tr>
 				</thead>
@@ -42,17 +45,22 @@
 				<g:each in="${reportInstanceList}" status="i" var="reportInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${reportInstance.id}">${fieldValue(bean: reportInstance, field: "language")}</g:link></td>
-					
-						<td>${fieldValue(bean: reportInstance, field: "year")}</td>
+						<td><g:link action="show" id="${reportInstance.id}">${reportInstance}</g:link></td>
+						
+						<td>${reportInstance.year}</td>
+						
+						<td>${fieldValue(bean: reportInstance, field: "language")}</td>
 					
 						<td>${fieldValue(bean: reportInstance, field: "reportStatus")}</td>
 					
 						<td>${fieldValue(bean: reportInstance, field: "publicationStatus")}</td>
+						
 					
 						<td><g:formatBoolean boolean="${reportInstance.officialVersion}" /></td>
 					
-						<td>${fieldValue(bean: reportInstance, field: "formAPart1b")}</td>
+					<td><g:formatDate format="yyyy-MM-dd" date="${reportInstance.lastUpdated}"/></td>
+<%--						<td>${fieldValue(bean: reportInstance, field: "lastUpdated")}</td>--%>
+<%--						<td>${fieldValue(bean: reportInstance, field: "formAPart1b")}</td>--%>
 					
 					</tr>
 				</g:each>

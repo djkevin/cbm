@@ -33,15 +33,13 @@
 	</label>
 	<g:textField name="position" maxlength="100" value="${nationalContactInstance?.position}"/>
 </div>
-
-
 <fieldset class="embedded"><legend><g:message code="nationalContact.address.label" default="Address" /></legend>
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.country', 'error')} required">
 	<label for="address.country" class="property-label25">
 		<g:message code="nationalContact.address.country.label" default="Country" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="address.country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${nationalContactInstance?.address?.country?.name()}"/>
+	<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${addressInstance?.country?.name()}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.postCode', 'error')} ">
@@ -49,7 +47,7 @@
 		<g:message code="nationalContact.address.postCode.label" default="Post Code" />
 		
 	</label>
-	<g:textField name="address.postCode" maxlength="10" value="${nationalContactInstance?.address?.postCode}"/>
+	<g:textField name="postCode" maxlength="10" value="${addressInstance?.postCode}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.street', 'error')} ">
@@ -57,7 +55,7 @@
 		<g:message code="nationalContact.address.street.label" default="Street" />
 		
 	</label>
-	<g:textField name="address.street" maxlength="200" value="${nationalContactInstance?.address?.street}"/>
+	<g:textField name="street" maxlength="200" value="${addressInstance?.street}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.town', 'error')} ">
@@ -65,7 +63,7 @@
 		<g:message code="nationalContact.address.town.label" default="Town" />
 		
 	</label>
-	<g:textField name="address.town" maxlength="100" value="${nationalContactInstance?.address?.town}"/>
+	<g:textField name="town" maxlength="100" value="${addressInstance?.town}"/>
 </div>
 </fieldset>
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">

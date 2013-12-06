@@ -17,7 +17,7 @@
 			</ul>
 		</div>
 		<div id="show-formAPart2a" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.show.label" args="[entityName]" />:<g:message code="formAPart2a.long.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -25,11 +25,12 @@
 			
 				<g:if test="${formAPart2aInstance?.existingNationalProgrammes}">
 				<li class="fieldcontain">
-					<span id="existingNationalProgrammes-label" class="property-label"><g:message code="formAPart2a.existingNationalProgrammes.label.short" default="Existing National Programmes" /></span>
+					<span id="existingNationalProgrammes-label" class="property-label25"><g:message code="formAPart2a.existingNationalProgrammes.label" default="Existing National Programmes" /></span>
 					
-						<span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
+
 					
 				</li>
+                    <span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
 				</g:if>
 			
 				<g:if test="${formAPart2aInstance?.report}">

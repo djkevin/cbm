@@ -6,8 +6,17 @@ class FormC extends BaseForm{
 	
 	String comments
 
+    Report report
+
     static constraints = {
-		comments maxSize:5000
+        comments maxSize:5000
 		
     }
+
+
+        /*
+    String getTitle(){
+        //return  report.reportName+ " form c"
+        return "formC instance ${id}"
+    } */
 }

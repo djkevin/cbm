@@ -218,7 +218,7 @@
 							
 						</td>
 						<td>
-							<g:link controller="formZero" action="create"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formZero" action="create" params="[report: reportInstance]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					

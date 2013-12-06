@@ -1,9 +1,9 @@
 package cbm
 
-class FormAPart2b {
+class FormAPart2b extends BaseForm{
 
 	static belongsTo = [Report]
-	static hasMany = [formAPart2bFunding : FormAPart2bFunding, formAPart2c: FormAPart2c]
+	static hasMany = [formAPart2c: FormAPart2c]
 	
 	String programName
 	String objectives
@@ -11,12 +11,14 @@ class FormAPart2b {
 	Boolean conductedUnderContract// or String?
 	String proportionContracted
 	String summaryObjectivesContractor
-	Byte[] organisationalStructureDiagram
+	byte[] organisationalStructureDiagram     //Uploaded files bind automatically to byte[] field
+    String declaration
+    BigDecimal amount
+    String source
 	
 	
-//	Report report
-	static transients = ['totalFunding']
-	
+    Report report
+
 	String toString() {
 		return "${id} ${programName}"
 	}
@@ -28,7 +30,11 @@ class FormAPart2b {
 		conductedUnderContract()
 		proportionContracted blank:false, maxSize:5000 
 		summaryObjectivesContractor blank:false, maxSize:5000 
-		organisationalStructureDiagram size:0..1024*1024*5 //5MB
+		organisationalStructureDiagram nullable:true, size:0..1024*1024*5 //5MB
+        declaration nullable:true, maxSize: 5000
+        amount min: 0.01, max: 1000000000.00, scale: 2, blank:false
+        source maxSize: 500
+        formAPart2c nullable: true
 		
     }
 }

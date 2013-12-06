@@ -1,6 +1,6 @@
 package cbm
 
-class FormAPart1a {
+class FormAPart1a extends BaseForm {
 	
 	static belongsTo = [Report]
 	static hasMany = [formAContainmentUnitList : FormAPart1ContainmentUnit]

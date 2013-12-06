@@ -58,6 +58,14 @@
 	<g:select id="formAPart2a" name="formAPart2a.id" from="${cbm.FormAPart2a.list()}" optionKey="id" value="${reportInstance?.formAPart2a?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formZero', 'error')} ">
+	<label for="formZero" class="property-label25">
+		<g:message code="report.formZero.label" default="Form Zero" />
+		
+	</label>
+	<g:select id="formZero" name="formZero.id" from="${cbm.FormZero.list()}" optionKey="id" value="${reportInstance?.formZero?.id}" class="many-to-one" noSelection="['null': '']"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formAPart1', 'error')} ">
 	<label for="formAPart1" class="property-label25">
 		<g:message code="report.formAPart1.label" default="Form AP art1" />
@@ -104,7 +112,16 @@
 		<g:message code="report.formC.label" default="Form C" />
 		
 	</label>
-	<g:select name="formC" from="${cbm.FormC.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formC*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${reportInstance?.formC?}" var="f">
+    <li><g:link controller="formC" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="formC" action="create" params="['report.id': reportInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'formC.label', default: 'FormC')])}</g:link>
+</li>
+</ul>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formE', 'error')} ">
@@ -129,14 +146,6 @@
 		
 	</label>
 	<g:select name="formG" from="${cbm.FormG.list()}" multiple="multiple" optionKey="id" size="5" value="${reportInstance?.formG*.id}" class="many-to-many"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'formZero', 'error')} required">
-	<label for="formZero" class="property-label25">
-		<g:message code="report.formZero.label" default="Form Zero" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="formZero" name="formZero.id" from="${cbm.FormZero.list()}" optionKey="id" required="" value="${reportInstance?.formZero?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'stateParty', 'error')} required">
