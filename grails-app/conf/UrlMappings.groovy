@@ -10,6 +10,10 @@ class UrlMappings {
         "/"(view:"/index")
 		"/"(controller: 'index') //for i18n the index page
         "500"(view:'/error')
+
+        //added to allow access login and logout controllers
+        "/login/$action?"(controller: "login")
+        "/logout/$action?"(controller: "logout")
 		
 	}
 }
