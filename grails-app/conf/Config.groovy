@@ -129,3 +129,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':                ['permitAll']
 ]
 
+//added to allow GET logout
+grails.plugin.springsecurity.logout.postOnly = false
+

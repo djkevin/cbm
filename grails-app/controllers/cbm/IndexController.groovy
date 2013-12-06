@@ -2,8 +2,8 @@ package cbm
 
 import grails.plugin.springsecurity.annotation.Secured
 
+@Secured(['ROLE_USER'])
 class IndexController {
 
-    @Secured(['ROLE_ADMIN'])
     def index() { }
 }

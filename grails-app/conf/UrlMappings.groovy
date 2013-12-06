@@ -12,8 +12,8 @@ class UrlMappings {
         "500"(view:'/error')
 
         //added to allow access login and logout controllers
-        "/login/$action?"(controller: "login")
-        "/logout/$action?"(controller: "logout")
+        //"/login/$action?"(controller: "login")
+        //"/logout/$action?"(controller: "logout")
 		
 	}
 }
