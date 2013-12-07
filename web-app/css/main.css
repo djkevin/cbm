@@ -748,3 +748,22 @@ If compatibility with old browsers is needed, then don't bother with CSS and jus
 
 div.inline { float:left; }
 .clearBoth { clear:both; }
+
+/*Used to align navigation buttons to the right */
+.nav-right{
+    float: right;
+    width: 180px;
+    padding: 0px;
+}
+
+.nav-left {
+    float: left;
+    width: 400px;
+    padding: 0px;
+}
+
+.nav-clear {
+    clear: both;
+    height: 1%;
+    padding: 0px;
+}
