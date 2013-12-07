@@ -1,4 +1,4 @@
-class UrlMappings {
+    class UrlMappings {
 
 	static mappings = {
         "/$controller/$action?/$id?(.${format})?"{
@@ -8,7 +8,7 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
-		"/"(controller: 'index') //for i18n the index page
+		"/"(controller: 'report') //for i18n the index page - report list as start page
         "500"(view:'/error')
 
         //added to allow access login and logout controllers

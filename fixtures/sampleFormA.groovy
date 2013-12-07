@@ -18,13 +18,16 @@ fixture {
 	spCAN(StateParty){
 		country = "CANADA"
 	}
+
 	spMUS(StateParty){
 		country = "MAURITIUS"
 	}
+
 	spSWI(StateParty){
 		country = "SWITZERLAND"
 	}
-        spGRE(StateParty){
+
+    spGRE(StateParty){
             country = "GREECE"
 	}
 
@@ -33,6 +36,7 @@ fixture {
         password= "canada"
         stateParty=[spCAN]
     }
+
     userAustralia(SecUser){
         username= "australia"
         password= "australia"
@@ -57,7 +61,6 @@ fixture {
         secRole= roleUser
     }
 
-	
 	reportAUSTRALIA2010EN(Report){
 		stateParty=[spAUS]
 //		country = "AUSTRALIA"
