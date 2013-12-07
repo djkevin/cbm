@@ -752,8 +752,12 @@ div.inline { float:left; }
 /*Used to align navigation buttons to the right */
 .nav-right{
     float: right;
-    width: 180px;
+    width: 25%;
     padding: 0px;
+}
+
+.nav-right a{
+    display: inline;
 }
 
 .nav-left {
