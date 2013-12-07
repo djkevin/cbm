@@ -11,10 +11,14 @@ import grails.plugin.springsecurity.annotation.Secured
 class ReportController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    def springSecurityService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Report.list(params), model:[reportInstanceCount: Report.count()]
+        def user = SecUser.get(springSecurityService.principal.id)
+        print user.stateParty
+       // respond Report.list(params), model:[reportInstanceCount: Report.count()]
+        respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count()]
     }
 
     def show(Report reportInstance) {

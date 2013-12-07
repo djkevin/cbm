@@ -2,6 +2,7 @@ package cbm
 
 class SecUser {
 
+   // static belongsTo = [stateParty: StateParty]
     transient springSecurityService
 
     String username
@@ -10,6 +11,9 @@ class SecUser {
     boolean accountExpired
     boolean accountLocked
     boolean passwordExpired
+
+    //To allow retrieval of country_id afer login
+    StateParty stateParty
 
     static transients = ['springSecurityService']
 
