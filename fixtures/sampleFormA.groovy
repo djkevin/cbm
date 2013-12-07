@@ -4,6 +4,9 @@ import cbm.Report
 import cbm.FormAPart1b
 import cbm.FormAPart2a
 import cbm.StateParty
+import cbm.SecUser
+import cbm.SecRole
+import cbm.SecUserSecRole
 
 // TODO: rename this class because it's creating data not only for FormA, but in general.
 
@@ -24,7 +27,36 @@ fixture {
         spGRE(StateParty){
             country = "GREECE"
 	}
-	
+
+    userCanada(SecUser){
+        username= "canada"
+        password= "canada"
+        stateParty=[spCAN]
+    }
+    userAustralia(SecUser){
+        username= "australia"
+        password= "australia"
+        stateParty=[spAUS]
+    }
+
+    roleAdmin(SecRole){
+        authority= 'ROLE_ADMIN'
+    }
+
+    roleUser(SecRole){
+        authority= 'ROLE_USER'
+    }
+
+    userRoleCAN(SecUserSecRole){
+        secUser= userCanada
+        secRole= roleUser
+    }
+
+    userRoleAUS(SecUserSecRole){
+        secUser= userAustralia
+        secRole= roleUser
+    }
+
 	
 	reportAUSTRALIA2010EN(Report){
 		stateParty=[spAUS]
