@@ -14,6 +14,7 @@ class BootStrap {
 			development {
 
                 //Initialise users and roles
+                /**   Code moved to sampleFormA
                 def adminRole = new SecRole(authority: 'ROLE_ADMIN').save(flush: true)
                 def userRole = new SecRole(authority: 'ROLE_USER').save(flush: true)
 
@@ -29,7 +30,7 @@ class BootStrap {
                 assert SecUser.count() == 2
                 assert SecRole.count() == 2
                 assert SecUserSecRole.count() == 2
-				
+				 */
 				fixtureLoader.load("sampleFormA")
 	
 			}
