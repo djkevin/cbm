@@ -1,10 +1,11 @@
+
 <div id="form-status-box">
 <div class="inline fieldcontain ${hasErrors(bean: formInstance, field: 'title', 'error')} ">
     <label for="title" class="property-inline">
         <g:message code="formC.title.label" default="Title" />
 
     </label>
-    <g:textField name="title" value="${formInstance?.title}" />
+    <g:field type="text" name="title" value="${entityName}" readonly="true" />
 </div>
 
 <div class="inline fieldcontain ${hasErrors(bean: formInstance, field: 'formStatus', 'error')} ">
