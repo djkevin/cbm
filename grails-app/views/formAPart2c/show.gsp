@@ -23,24 +23,6 @@
 			</g:if>
 			<ol class="property-list formAPart2c">
 			
-				<g:if test="${formAPart2cInstance?.addressLine2}">
-				<li class="fieldcontain">
-					<span id="addressLine2-label" class="property-label"><g:message code="formAPart2c.addressLine2.label" default="Address Line2" /></span>
-					
-						<span class="property-value" aria-labelledby="addressLine2-label"><g:fieldValue bean="${formAPart2cInstance}" field="addressLine2"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formAPart2cInstance?.city}">
-				<li class="fieldcontain">
-					<span id="city-label" class="property-label"><g:message code="formAPart2c.city.label" default="City" /></span>
-					
-						<span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${formAPart2cInstance}" field="city"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${formAPart2cInstance?.facilityName}">
 				<li class="fieldcontain">
 					<span id="facilityName-label" class="property-label"><g:message code="formAPart2c.facilityName.label" default="Facility Name" /></span>
@@ -49,25 +31,62 @@
 					
 				</li>
 				</g:if>
-			
+				
+				<br>
+				<h4>
+					<g:message code="formAPart2c.facilityLocation.label" default="Facility Location" />				
+				</h4>
+				
 				<g:if test="${formAPart2cInstance?.location}">
 				<li class="fieldcontain">
-					<span id="location-label" class="property-label"><g:message code="formAPart2c.location.label" default="Location" /></span>
+					<span id="location-label" class="property-label"><g:message code="formAPart2c.geoLocation.label" default="Location" /></span>
 					
 						<span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${formAPart2cInstance}" field="location"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${formAPart2cInstance?.mailingAddress}">
+				<g:if test="${formAPart2cInstance?.postalAddress}">
 				<li class="fieldcontain">
-					<span id="mailingAddress-label" class="property-label"><g:message code="formAPart2c.mailingAddress.label" default="Mailing Address" /></span>
-					
-						<span class="property-value" aria-labelledby="mailingAddress-label"><g:fieldValue bean="${formAPart2cInstance}" field="mailingAddress"/></span>
-					
+					<span id="postalAddress-label" class="property-label"><g:message code="formAPart2c.postalAddress.label" default="Address" /></span>					
+					<span class="property-value" aria-labelledby="postalAddress-label"><g:fieldValue bean="${formAPart2cInstance}" field="postalAddress"/></span>					
 				</li>
 				</g:if>
-			
+				
+				<g:if test="${formAPart2cInstance?.floorAreaBL2}">
+				<li class="fieldcontain">
+					<span id="postalAddress-label" class="property-label"><g:message code="formAPart2c.floorAreaBL2.label" default="floorAreaBL2" /></span>					
+					<span class="property-value" aria-labelledby="floorAreaBL2-label"><g:fieldValue bean="${formAPart2cInstance}" field="floorAreaBL2"/>
+					(<g:message code="formAPart2c.sqm.label" default="m^2" />)
+					</span>					
+				</li>
+				</g:if>
+				
+				<g:if test="${formAPart2cInstance?.floorAreaBL3}">
+				<li class="fieldcontain">
+					<span id="postalAddress-label" class="property-label"><g:message code="formAPart2c.floorAreaBL3.label" default="floorAreaBL3" /></span>					
+					<span class="property-value" aria-labelledby="floorAreaBL3-label"><g:fieldValue bean="${formAPart2cInstance}" field="floorAreaBL3"/>
+					(<g:message code="formAPart2c.sqm.label" default="m^2" />)
+					</span>					
+				</li>
+				</g:if>
+				
+				<g:if test="${formAPart2cInstance?.floorAreaBL4}">
+				<li class="fieldcontain">
+					<span id="postalAddress-label" class="property-label"><g:message code="formAPart2c.floorAreaBL4.label" default="floorAreaBL4" /></span>					
+					<span class="property-value" aria-labelledby="floorAreaBL4-label"><g:fieldValue bean="${formAPart2cInstance}" field="floorAreaBL4"/>
+					(<g:message code="formAPart2c.sqm.label" default="m^2" />)
+					</span>					
+				</li>
+				</g:if>
+				
+				<li class="fieldcontain">
+					<span id="postalAddress-label" class="property-label"><g:message code="formAPart2c.totalFloorArea.label" default="totalFloorArea" /></span>					
+					<span class="property-value" aria-labelledby="totalFloorArea-label"><g:fieldValue bean="${formAPart2cInstance}" field="totalFloorArea"/>
+					(<g:message code="formAPart2c.sqm.label" default="m^2" />)
+					</span>					
+				</li>
+						
 			</ol>
 			<g:form url="[resource:formAPart2cInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

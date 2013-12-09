@@ -101,7 +101,10 @@
 				</g:if>
 	
 			</ol>
-					<table>
+			
+			<!-- *-*-*-*-*-*-*-*-*-*-*-* list of forms *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
+			
+			<table>
 				<thead>
 					<tr>
 						<th>Form</th>
@@ -161,14 +164,16 @@
 					</tr>
 					<tr class="odd">
 						<td><g:message code="report.formAPart2c.label" default="Form A Part 2c" /></td>
-						<td>${reportInstance?.formAPart2c?.size()}</td>
+						<td>${reportInstance?.formAPart2b?.formAPart2c?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formAPart2c}" var="f">
-                                <g:link controller="formAPart2c" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            <g:each in="${reportInstance.formAPart2b}" var="f">
+                            	<g:each in="${f.formAPart2c}" var="Ap2c">
+                                	<g:link controller="formAPart2c" action="show" id="${Ap2c.id}">${Ap2c ? Ap2c.encodeAsHTML():''}</g:link>,
+                                </g:each>
                             </g:each>
 						</td>
 						<td>
-							<g:link controller="formAPart2c" action="create"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart2c" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>							
 						</td>
 					</tr>
 					<tr class="even">
@@ -248,7 +253,8 @@
 				</tbody>
 			</table>
 			
-	
+			<!-- *-*-*-*-*-*-*-*-*-*-*-* action buttons *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
+				
 			<g:form url="[resource:reportInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
