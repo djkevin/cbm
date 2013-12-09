@@ -16,10 +16,7 @@
                     <li><g:link class="create" action="create" params="['stateParty.id':statePartyId]"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 </ul>
             </div>
-            <div class="nav-right">
-                <g:message code="user.login.as" default="You are logged in as: "/> <sec:loggedInUserInfo field="username"/>  <g:link controller='logout' action='index'>[logout]</g:link>
-            </div>
-            <div class="nav-clear"></div>
+            <g:render template="/navMenu" ></g:render>
 		</div>
 
 		<div id="list-report" class="content scaffold-list" role="main">
