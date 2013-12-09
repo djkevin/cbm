@@ -18,8 +18,7 @@ class FormAPart1aController {
         println("report id is: "+reportId)
         Report r = Report.findById(reportId)
         println("report language is "+r.language)
-        respond FormAPart1a.findAllByReport(r) , model:[formAPart1InstanceCount: FormAPart1a.count(), reportId: reportId]
-                //,reportId: r.id]
+        respond FormAPart1a.findAllByReport(r) , model:[formAPart1InstanceCount: FormAPart1a.count(),reportId: r.id]
         //respond FormAPart1a.list(params), model:[formAPart1InstanceCount: FormAPart1a.count()]
     }
 
