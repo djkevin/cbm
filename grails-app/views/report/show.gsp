@@ -119,23 +119,23 @@
 								<g:link controller="formAPart1a" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link>,
 							</g:each>
 						</td>
-							<td>
+							<td>  <!--TODO change reportId to report.id-->
 							<g:link controller="formAPart1a" params="[reportId: reportInstance.id]" ><g:message code="default.button.list.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
 						<td><g:message code="report.formAPart1b.label" default="Form A Part 1b" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formAPart1b ? 1:0}</td>
 						<td>
 							<g:link controller="formAPart1b" action="show" id="${reportInstance?.formAPart1b?.id}">${reportInstance?.formAPart1b?.encodeAsHTML()}</g:link>
 						</td>
-							<td>
-							<g:link controller="formAPart1b" action="create"><g:message code="default.button.create.label"/></g:link>
+						<td>
+							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">
 						<td><g:message code="report.formAPart2a.label" default="Form A Part 2a" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formAPart2a ? 1:0}</td>
 						<td>
 							<g:link controller="formAPart2a" action="show" id="${reportInstance?.formAPart2a?.id}">${reportInstance?.formAPart2a?.encodeAsHTML()}</g:link>
 						</td>
@@ -215,7 +215,7 @@
 					</tr>
 					<tr class="odd">
 						<td><g:message code="report.formZero.label" default="Form 0" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formZero ? 1:0}</td>
 						<td>
 							<g:link controller="formZero" action="show" id="${reportInstance?.formZero?.id}">${reportInstance?.formZero?.encodeAsHTML()}</g:link>
 							
