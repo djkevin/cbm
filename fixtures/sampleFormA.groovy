@@ -149,15 +149,32 @@ fixture {
         formStatus = "Draft"
         visibility = "Public"
 		report = [reportCANADA2010FR]
-		facilityName = "Queensland Health Forensic Scientific Services (QHFSS)"
+		facilityName = "Ottawa Health Forensic Scientific Services (OHFSS)"
 		responsibleOrganisation = "Queensland Department of Health (State Government)"
-		location = "39 Kessels Road, Coopers Plains, QLD, AUSTRALIA"
-		postalAddress = "PO Box 594, Archefield QLD 4108, AUSTRALIA"
-		financingSources = "This facility receives no funding from the Australian Government Department of Defence. It receives funding from Queensland Department of Health"
-		scope = "<p>The maximum containment facility at QHFSS, a state government public health virology laboratory, has both a diagnostic and a research function. The maximum containment facilities are used for the development and performance of diagnostic tests on patients with suspected exotic or endemic viral illness. This includes Henipah viruses or exotic haemorrhagic fever viruses. The only PC4 level pathogens that the laboratory has are Hendra virus and SARS coronavirus (AQIS QC4), which are used for diagnostic purposes. The laboratory intends to introduce reagents useful for the diagnosis of a number of exotic viral diseases including Ebola, Marburg, Lassa, Junin, Rift Valley fevers and Hantavirus among others. These reagents will consist of either inactivated diagnostic reagents, cloned viral subunits or live virus.</p>"
+		location = "39 Kessels Road, Coopers Plains, QLD, OTTAWA"
+		postalAddress = "PO Box 594, Archefield QLD 4108, OTTAWA"
+		financingSources = "This facility receives no funding from the Canadian Government Department of Defence. It receives funding from Ottawa Department of Health"
+		scope = "<p>The maximum containment facility at OHFSS, a state government public health virology laboratory, has both a diagnostic and a research function. The maximum containment facilities are used for the development and performance of diagnostic tests on patients with suspected exotic or endemic viral illness. This includes Henipah viruses or exotic haemorrhagic fever viruses. The only PC4 level pathogens that the laboratory has are Hendra virus and SARS coronavirus (AQIS QC4), which are used for diagnostic purposes. The laboratory intends to introduce reagents useful for the diagnosis of a number of exotic viral diseases including Ebola, Marburg, Lassa, Junin, Rift Valley fevers and Hantavirus among others. These reagents will consist of either inactivated diagnostic reagents, cloned viral subunits or live virus.</p>"
 	}
-	
-	formAPart1b1(FormAPart1b) {
+
+    containmentUnit3(FormAPart1ContainmentUnit) {
+        facility = [facility3]
+        bioSafetyLevel = "BSL4"
+        unitType = "laboratory"
+        unitSize = "250"
+        comment = "Forensic Laboratory"
+    }
+
+    containmentUnit4(FormAPart1ContainmentUnit) {
+        facility = [facility3]
+        bioSafetyLevel = "Enhanced BSL3"
+        unitType = "treatment module"
+        unitSize = "250"
+        comment = "Chemical diseases lab"
+    }
+
+
+    formAPart1b1(FormAPart1b) {
         title ="formAPart1b1"
         formStatus = "Draft"
         visibility = "Public"
