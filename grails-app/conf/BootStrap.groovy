@@ -34,6 +34,10 @@ class BootStrap {
 				fixtureLoader.load("sampleFormA")
 	
 			}
+			
+			test {
+				fixtureLoader.load("sampleFormA")
+			}
 		}
 		
 		
