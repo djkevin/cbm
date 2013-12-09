@@ -1,5 +1,14 @@
 <%@ page import="cbm.FormAPart2b" %>
 
+<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'report', 'error')} required">
+    <label for="report">
+        <g:message code="formAPart2a.report.label" default="Report"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required=""
+               value="${formAPart2bInstance?.report?.id}" class="many-to-one"/>
+</div>
+               
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'programName', 'error')} ">
     <label for="programName">
         <g:message code="formAPart2b.programName.label" default="Program Name"/>
@@ -17,8 +26,14 @@
 <div><g:textArea class="wysiwyg" name="objectives" cols="40" rows="5" maxlength="5000" required=""
                  value="${formAPart2bInstance?.objectives}"/></div>
 
+<div class="fieldcontain ">
+<label >
+		<g:message code="formAPart2b.funding.label" default="Source" />
+	</label>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'source', 'error')} ">
-    <label for="source">
+    <label for="source" class="property-label25">
         <g:message code="formAPart2b.source.label" default="Source" />
 
     </label>
@@ -86,15 +101,6 @@
         </g:each>
     </ul>
 </div>
-<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'report', 'error')} required">
-    <label for="report">
-        <g:message code="formAPart2a.report.label" default="Report"/>
-        <span class="required-indicator">*</span>
-    </label>
-</div>
-
-<div><g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required=""
-               value="${formAPart2bInstance?.report?.id}" class="many-to-one"/></div>
 
 <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>
 <g:render template="../formStatus"/>
