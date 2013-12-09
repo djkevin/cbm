@@ -28,7 +28,7 @@ class FormAPart2c {
     }
 	
 	BigDecimal getTotalFloorArea() {
-		if (!floorAreaBL2 || !floorAreaBL3 || !floorAreaBL2)
+		if (!floorAreaBL2 || !floorAreaBL3 || !floorAreaBL4)
 			return null
 		else 
 			floorAreaBL2 + floorAreaBL3 + floorAreaBL4
