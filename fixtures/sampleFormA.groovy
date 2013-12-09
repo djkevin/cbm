@@ -7,6 +7,7 @@ import cbm.StateParty
 import cbm.SecUser
 import cbm.SecRole
 import cbm.SecUserSecRole
+import cbm.FormB
 
 // TODO: rename this class because it's creating data not only for FormA, but in general.
 
@@ -184,4 +185,31 @@ fixture {
 		report = [reportAUSTRALIA2010EN]
 		existingNationalProgrammes = true
 	}
+
+    formBCAN(FormB){
+        title ="formBCAN"
+        formStatus = "Draft"
+        visibility = "Private"
+        report = [reportCANADA2010FR]
+        eventName = "Foot and mouth disease"
+        eventCategory = "Animal"
+        eventDate = "08/01/2007"
+        locationAffected = "Surrey county, England"
+        typeOfDisease = "Foot and mouth disease"
+        sourceOfDisease = "Laboratory escape"
+        possibleCause = "Foot and mouth disease virus"
+        detailedSymptoms = "Vesicular condition of the feet, bucal mucosa and, in females, the mammary glands"
+        deviationFromNormalPattern = "FMDV  is Exotic to the UK"
+        numOfTotalCases = "238 animals at 8 premises"
+        numDeaths = "0"
+        developmentOfOutbreak = "In late July there was laboratory escape of pathogen with subsequent local spread. Spread contained by measures taken below and last case was reported on 29 August 2007."
+        measuresTaken = "Stamping out, quarantine, movement control inside the country, zoning, disinfection of infected premises/ establishment(s), no vaccination and no treatment of affected animals."
+        additionalInfo = "Further information is available at: http://www.defra.gov.uk/animalh/diseases/fmd/investigations/index.html"
+
+
+
+
+
+
+    }
 }

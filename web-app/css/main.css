@@ -662,6 +662,10 @@ textarea.longTextSml{
     width:100%;
     height:50px;
 }
+textarea.longTextMed{
+    width:100%;
+    height:100px;
+}
 
 /* immitate tables with DIVs -- MAY NOT be supported by old browsers. 
 If compatibility with old browsers is needed, then don't bother with CSS and just do a <table> */

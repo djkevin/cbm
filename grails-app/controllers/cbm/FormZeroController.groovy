@@ -43,7 +43,8 @@ class FormZeroController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formZeroInstance.label', default: 'FormZero'), formZeroInstance.id])
-                redirect formZeroInstance
+                //redirect formZeroInstance
+                redirect (controller: "report", action:"show", id:formZeroInstance.report.id, report:formZeroInstance.report)
             }
             '*' { respond formZeroInstance, [status: CREATED] }
         }

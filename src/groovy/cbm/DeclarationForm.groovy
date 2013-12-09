@@ -15,4 +15,8 @@ class DeclarationForm {
 		nothingNewToDeclare()
 		yearOfLastDeclaration range: 2000..2050, nullable:true
 	}
+
+    String toString(){
+        nothingToDeclare? "nothing to declare" : nothingNewToDeclare? "nothing new to declare since ${yearOfLastDeclaration}" : ""
+    }
 }

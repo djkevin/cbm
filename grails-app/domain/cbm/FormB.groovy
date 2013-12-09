@@ -11,6 +11,7 @@ class FormB extends BaseForm {
 	String timeOfOutbreak
 	String locationAffected
 	String typeOfDisease
+    String sourceOfDisease
 	String possibleCause
 	String mainCharacteristics
 	String detailedSymptoms
@@ -21,28 +22,30 @@ class FormB extends BaseForm {
 	String developmentOfOutbreak
 	String measuresTaken
 	String additionalInfo
-	
-	
-	
-	
+
+    Report report
+
     static constraints = {
 		eventName blank:false
 		eventCategory inList:["Human", "Plant", "Animal"]
 		eventDate()
-		timeOfOutbreak maxSize:500
-		locationAffected maxSize:500
-		typeOfDisease maxSize:500
-		possibleCause maxSize:500
-		mainCharacteristics maxSize:500
-		detailedSymptoms maxSize:500
-		deviationFromNormalPattern maxSize:500
-		numOfPrimaryCases maxSize:500
-		numOfTotalCases maxSize:500
-		numDeaths maxSize:500
-		developmentOfOutbreak maxSize:500
-		measuresTaken maxSize:500
-		additionalInfo maxSize:5000
-		
-		
+		timeOfOutbreak maxSize:500, nullable:true
+		locationAffected maxSize:500, nullable:true
+		typeOfDisease maxSize:500, nullable:true
+        sourceOfDisease maxSize: 500, nullable:true
+		possibleCause maxSize:500, nullable:true
+		mainCharacteristics maxSize:500, nullable:true
+		detailedSymptoms maxSize:500, nullable:true
+		deviationFromNormalPattern maxSize:500, nullable:true
+		numOfPrimaryCases maxSize:500, nullable:true
+		numOfTotalCases maxSize:500, nullable:true
+		numDeaths maxSize:500, nullable:true
+		developmentOfOutbreak maxSize:500, nullable:true
+		measuresTaken maxSize:500, nullable:true
+		additionalInfo maxSize:5000, nullable:true
+    }
+
+    String toString(){
+        eventName
     }
 }

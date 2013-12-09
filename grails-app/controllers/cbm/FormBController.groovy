@@ -42,7 +42,8 @@ class FormBController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formBInstance.label', default: 'FormB'), formBInstance.id])
-                redirect formBInstance
+                /*redirect formBInstance*/
+                redirect (controller: "report", action:"show", id:formBInstance.report.id, report:formBInstance.report)
             }
             '*' { respond formBInstance, [status: CREATED] }
         }

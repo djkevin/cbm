@@ -77,12 +77,21 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${formBInstance?.possibleCause}">
+				<g:if test="${formBInstance?.sourceOfDisease}">
+				<li class="fieldcontain">
+					<span id="sourceOfDisease-label" class="property-label"><g:message code="formB.sourceOfDisease.label" default="Source Of Disease" /></span>
+					
+						<span class="property-value" aria-labelledby="sourceOfDisease-label"><g:fieldValue bean="${formBInstance}" field="sourceOfDisease"/></span>
+					
+				</li>
+				</g:if>
+
+                <g:if test="${formBInstance?.possibleCause}">
 				<li class="fieldcontain">
 					<span id="possibleCause-label" class="property-label"><g:message code="formB.possibleCause.label" default="Possible Cause" /></span>
-					
+
 						<span class="property-value" aria-labelledby="possibleCause-label"><g:fieldValue bean="${formBInstance}" field="possibleCause"/></span>
-					
+
 				</li>
 				</g:if>
 			
@@ -193,6 +202,15 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${formBInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="report-label" class="property-label"><g:message code="formB.report.label" default="Report" /></span>
+
+                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formBInstance?.report?.id}">${formBInstance?.report?.encodeAsHTML()}</g:link></span>
+
+                    </li>
+                </g:if>
 
                 <g:set var="formInstance" value="${formBInstance}"></g:set>
                 <g:render template="../showStatus"/>

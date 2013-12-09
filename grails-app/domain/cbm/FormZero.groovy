@@ -20,4 +20,8 @@ class FormZero extends BaseForm{
 
     static constraints = {
     }
+
+    String toString() {
+        return "${title}_${id}"
+    }
 }
