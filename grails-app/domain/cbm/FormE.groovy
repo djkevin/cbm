@@ -12,6 +12,8 @@ class FormE extends BaseForm {
 	
 	String additionalComments
 
+    Report report
+
     static constraints = {
 
     }

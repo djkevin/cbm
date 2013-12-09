@@ -25,7 +25,7 @@
 
 				<g:if test="${formZeroInstance?.formAPart1}">
 				<li class="fieldcontain">
-					<span id="formAPart1-label" class="property-label"><g:message code="formZero.formAPart1.label" default="Form AP art1" /></span>
+					<span id="formAPart1-label" class="property-label"><g:message code="formZero.formAPart1.label" default="Form A Part 1a" /></span>
 					
 						<span class="property-value" aria-labelledby="formAPart1-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart1"/></span>
 					
@@ -34,7 +34,7 @@
 			
 				<g:if test="${formZeroInstance?.formAPart2a}">
 				<li class="fieldcontain">
-					<span id="formAPart2a-label" class="property-label"><g:message code="formZero.formAPart2a.label" default="Form AP art2a" /></span>
+					<span id="formAPart2a-label" class="property-label"><g:message code="formZero.formAPart2a.label" default="Form A Part 2a" /></span>
 					
 						<span class="property-value" aria-labelledby="formAPart2a-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart2a"/></span>
 					
@@ -43,7 +43,7 @@
 			
 				<g:if test="${formZeroInstance?.formAPart2b}">
 				<li class="fieldcontain">
-					<span id="formAPart2b-label" class="property-label"><g:message code="formZero.formAPart2b.label" default="Form AP art2b" /></span>
+					<span id="formAPart2b-label" class="property-label"><g:message code="formZero.formAPart2b.label" default="Form A Part 2b" /></span>
 					
 						<span class="property-value" aria-labelledby="formAPart2b-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart2b"/></span>
 					
@@ -52,7 +52,7 @@
 			
 				<g:if test="${formZeroInstance?.formAPart2c}">
 				<li class="fieldcontain">
-					<span id="formAPart2c-label" class="property-label"><g:message code="formZero.formAPart2c.label" default="Form AP art2c" /></span>
+					<span id="formAPart2c-label" class="property-label"><g:message code="formZero.formAPart2c.label" default="Form A Part 2c" /></span>
 					
 						<span class="property-value" aria-labelledby="formAPart2c-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart2c"/></span>
 					

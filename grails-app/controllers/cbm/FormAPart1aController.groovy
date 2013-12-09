@@ -14,7 +14,14 @@ class FormAPart1aController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond FormAPart1a.list(params), model:[formAPart1InstanceCount: FormAPart1a.count()]
+        def reportId=params.long('reportId')
+        println("report id is: "+reportId)
+        // params.max = Math.min(max ?: 10, 100)
+        Report r = Report.findById(reportId)
+        println("report language is "+r.language)
+        respond FormAPart1a.findAllByReport(r) , model:[formAPart1InstanceCount: FormAPart1a.count()]
+                //,reportId: r.id]
+        //respond FormAPart1a.list(params), model:[formAPart1InstanceCount: FormAPart1a.count()]
     }
 
     def show(FormAPart1a formAPart1Instance) {
@@ -22,11 +29,13 @@ class FormAPart1aController {
     }
 
     def create() {
+        println(params)
         respond new FormAPart1a(params)
     }
 
     @Transactional
     def save(FormAPart1a formAPart1Instance) {
+        println "saving.."
         if (formAPart1Instance == null) {
             notFound()
             return

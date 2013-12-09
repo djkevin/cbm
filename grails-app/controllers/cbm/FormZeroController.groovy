@@ -22,6 +22,7 @@ class FormZeroController {
     }
 
     def create() {
+        println(params)
         respond new FormZero(params)
     }
 

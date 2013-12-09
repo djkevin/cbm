@@ -11,6 +11,8 @@ class FormG extends BaseForm {
 	Address location
 	String typesOfDiseaseCovered
 
+    Report report
+
     static constraints = {
 		facilityName()
 		location()

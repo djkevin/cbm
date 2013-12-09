@@ -9,6 +9,8 @@ class FormF extends BaseForm{
 	
 	PastBiologicalRnDActivity offensiveActivity
 	PastBiologicalRnDActivity defensiveActivity
+
+    Report report
 	
 
     static constraints = {

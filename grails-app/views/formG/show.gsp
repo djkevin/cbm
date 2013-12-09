@@ -23,15 +23,6 @@
 			</g:if>
 			<ol class="property-list formG">
 			
-				<g:if test="${formGInstance?.formStatus}">
-				<li class="fieldcontain">
-					<span id="formStatus-label" class="property-label"><g:message code="formG.formStatus.label" default="Form Status" /></span>
-					
-						<span class="property-value" aria-labelledby="formStatus-label"><g:fieldValue bean="${formGInstance}" field="formStatus"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${formGInstance?.facilityName}">
 				<li class="fieldcontain">
 					<span id="facilityName-label" class="property-label"><g:message code="formG.facilityName.label" default="Facility Name" /></span>
@@ -59,23 +50,17 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${formGInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="formG.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${formGInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formGInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="formG.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${formGInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
+                <g:if test="${formGInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="report-label" class="property-label"><g:message code="formG.report.label" default="Report" /></span>
+
+                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formGInstance?.report?.id}">${formGInstance?.report?.encodeAsHTML()}</g:link></span>
+
+                    </li>
+                </g:if>
+
+                <g:set var="formInstance" value="${formGInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formGInstance, action:'delete']" method="DELETE">

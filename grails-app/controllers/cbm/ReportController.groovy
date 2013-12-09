@@ -16,9 +16,8 @@ class ReportController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def user = SecUser.get(springSecurityService.principal.id)
-        print user.stateParty
-       // respond Report.list(params), model:[reportInstanceCount: Report.count()]
-        respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count()]
+        // respond Report.list(params), model:[reportInstanceCount: Report.count()]
+        respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
     }
 
     def show(Report reportInstance) {

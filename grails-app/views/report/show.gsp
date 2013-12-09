@@ -117,7 +117,7 @@
 							</g:each>
 						</td>
 							<td>
-							<g:link controller="formAPart1a" ><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart1a" params="[reportId: reportInstance.id]" ><g:message code="default.button.list.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -218,7 +218,7 @@
 							
 						</td>
 						<td>
-							<g:link controller="formZero" action="create" params="[report: reportInstance]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					

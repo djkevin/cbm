@@ -1,15 +1,5 @@
 <%@ page import="cbm.FormG" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'formStatus', 'error')} ">
-	<label for="formStatus" class="property-label25">
-		<g:message code="formG.formStatus.label" default="Form Status" />
-		
-	</label>
-	<g:select name="formStatus" from="${formGInstance.constraints.formStatus.inList}" value="${formGInstance?.formStatus}" valueMessagePrefix="formG.formStatus" noSelection="['': '']"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'facilityName', 'error')} ">
 	<label for="facilityName" class="property-label25">
 		<g:message code="formG.facilityName.label" default="Facility Name" />
@@ -57,4 +47,15 @@
 	</label>
 	<g:textArea name="typesOfDiseaseCovered" cols="40" rows="5" maxlength="5000" value="${formGInstance?.typesOfDiseaseCovered}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'report', 'error')} required">
+    <label for="report" class="property-label25">
+        <g:message code="formG.report.label" default="Report" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required="" value="${formGInstance?.report?.id}" class="many-to-one"/>
+</div>
+
+<g:set var="formInstance" value="${formGInstance}"></g:set>
+<g:render template="../formStatus"/>
 

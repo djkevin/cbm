@@ -81,6 +81,16 @@
 </div>
 <div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="1000" required="" value="${formAPart1aInstance?.scope}"/></div>
 
+<div class="fieldcontain ${hasErrors(bean: formAPart2aInstance, field: 'report', 'error')} required">
+    <label for="report">
+        <g:message code="formAPart2a.report.label" default="Report"/>
+        <span class="required-indicator">*</span>
+    </label>
+
+    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required=""
+               value="${formAPart2aInstance?.report?.id}" class="many-to-one"/>
+</div>
+
 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
 <g:render template="../formStatus"/>
 

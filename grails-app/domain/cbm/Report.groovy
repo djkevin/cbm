@@ -26,10 +26,10 @@ class Report {
 		reportName()
 		language unique:['year', 'stateParty']
 		year range: 2000..2050
-		reportStatus inList: ["Draft","Submitted"]
-		publicationStatus inList: ["Published", "Not published"]
+		reportStatus inList: ["Draft", "Submitted"]
+		publicationStatus inList: ["Not published", "Published"]
 		officialVersion()
-		//Set below hasOne relationships to nullable to avoid validation errors
+		//Set below hasOne relationships to nullable to avoid validation errors upon bootstrap
 		formAPart1b nullable:true
 		formAPart2a nullable:true
 		formZero nullable:true

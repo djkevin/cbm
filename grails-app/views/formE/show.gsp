@@ -22,25 +22,7 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formE">
-			
-				<g:if test="${formEInstance?.formStatus}">
-				<li class="fieldcontain">
-					<span id="formStatus-label" class="property-label"><g:message code="formE.formStatus.label" default="Form Status" /></span>
-					
-						<span class="property-value" aria-labelledby="formStatus-label"><g:fieldValue bean="${formEInstance}" field="formStatus"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formEInstance?.visibility}">
-				<li class="fieldcontain">
-					<span id="visibility-label" class="property-label"><g:message code="formE.visibility.label" default="Visibility" /></span>
-					
-						<span class="property-value" aria-labelledby="visibility-label"><g:fieldValue bean="${formEInstance}" field="visibility"/></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${formEInstance?.additionalComments}">
 				<li class="fieldcontain">
 					<span id="additionalComments-label" class="property-label"><g:message code="formE.additionalComments.label" default="Additional Comments" /></span>
@@ -58,16 +40,7 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${formEInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="formE.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${formEInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${formEInstance?.developmentAndMeansOfDelivery}">
 				<li class="fieldcontain">
 					<span id="developmentAndMeansOfDelivery-label" class="property-label"><g:message code="formE.developmentAndMeansOfDelivery.label" default="Development And Means Of Delivery" /></span>
@@ -94,24 +67,9 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${formEInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="formE.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${formEInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formEInstance?.title}">
-				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="formE.title.label" default="Title" /></span>
-					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${formEInstance}" field="title"/></span>
-					
-				</li>
-				</g:if>
+
+                <g:set var="formInstance" value="${formEInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formEInstance, action:'delete']" method="DELETE">
