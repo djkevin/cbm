@@ -193,6 +193,9 @@
 					
 				</li>
 				</g:if>
+
+                <g:set var="formInstance" value="${formBInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formBInstance, action:'delete']" method="DELETE">

@@ -14,7 +14,12 @@ class FormAPart2bController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond FormAPart2b.list(params), model:[formAPart2bInstanceCount: FormAPart2b.count()]
+       // respond FormAPart2b.list(params), model:[formAPart2bInstanceCount: FormAPart2b.count()]
+
+        def reportId =params.long('reportId')
+        println("report id is: "+reportId)
+        Report r = Report.findById(reportId)
+        respond FormAPart2b.findAllByReport(r) , model:[formAPart2bInstanceCount: FormAPart2b.count(), reportId:reportId]
     }
 
     def show(FormAPart2b formAPart2bInstance) {
@@ -22,6 +27,7 @@ class FormAPart2bController {
     }
 
     def create() {
+        println "in create"
         respond new FormAPart2b(params)
     }
 
@@ -31,18 +37,17 @@ class FormAPart2bController {
             notFound()
             return
         }
-
         if (formAPart2bInstance.hasErrors()) {
             respond formAPart2bInstance.errors, view:'create'
             return
         }
-
         formAPart2bInstance.save flush:true
-
+        println "after save,id: "+formAPart2bInstance.id
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart2bInstance.label', default: 'FormAPart2b'), formAPart2bInstance.id])
-                redirect formAPart2bInstance
+                //redirect formAPart2bInstance
+                redirect (controller: "report", action:"show", id:formAPart2bInstance.report.id, report:formAPart2bInstance.report)
             }
             '*' { respond formAPart2bInstance, [status: CREATED] }
         }

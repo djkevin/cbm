@@ -1,15 +1,5 @@
 <%@ page import="cbm.FormB" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'formStatus', 'error')} ">
-	<label for="formStatus" class="property-label25">
-		<g:message code="formB.formStatus.label" default="Form Status" />
-		
-	</label>
-	<g:select name="formStatus" from="${formBInstance.constraints.formStatus.inList}" value="${formBInstance?.formStatus}" valueMessagePrefix="formB.formStatus" noSelection="['': '']"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'eventName', 'error')} required">
 	<label for="eventName" class="property-label25">
 		<g:message code="formB.eventName.label" default="Event Name" />
@@ -137,4 +127,8 @@
 	</label>
 	<g:datePicker name="eventDate" precision="day"  value="${formBInstance?.eventDate}"  />
 </div>
+
+<g:set var="formInstance" value="${formBInstance}"></g:set>
+<g:render template="../formStatus"/>
+
 

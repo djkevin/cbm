@@ -8,7 +8,7 @@ class StateParty {
 	Date accessionRatification
 	
 	String toString() {
-		return "${id} ${country}"
+		return "${country}"
 	}
 
     static constraints = {

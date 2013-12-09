@@ -21,13 +21,14 @@
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
+
 			<ol class="property-list formAPart2b">
 			
 				<g:if test="${formAPart2bInstance?.programName}">
 				<li class="fieldcontain">
 					<span id="programName-label" class="property-label"><g:message code="formAPart2b.programName.label" default="Program Name" /></span>
 					
-						<span class="property-value" aria-labelledby="programName-label"><g:fieldValue bean="${formAPart2bInstance}" field="programName"/></span>
+					<span class="property-value" aria-labelledby="programName-label"><g:fieldValue bean="${formAPart2bInstance}" field="programName"/></span>
 					
 				</li>
 				</g:if>
@@ -102,7 +103,7 @@
                     </li>
                 </g:if>
 			
-				<g:if test="${formAPart2bInstance?.formAPart2bFunding}">
+			%{--	<g:if test="${formAPart2bInstance?.formAPart2bFunding}">
 				<li class="fieldcontain">
 					<span id="formAPart2bFunding-label" class="property-label"><g:message code="formAPart2b.formAPart2bFunding.label" default="Form A Part 2b Funding" /></span>
 					
@@ -111,7 +112,7 @@
 						</g:each>
 					
 				</li>
-				</g:if>
+				</g:if>--}%
 
 				<g:if test="${formAPart2bInstance?.formAPart2c}">
 				<li class="fieldcontain">

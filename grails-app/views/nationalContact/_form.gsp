@@ -33,7 +33,8 @@
 	</label>
 	<g:textField name="position" maxlength="100" value="${nationalContactInstance?.position}"/>
 </div>
-<fieldset class="embedded"><legend><g:message code="nationalContact.address.label" default="Address" /></legend>
+<h1><g:message code="nationalContact.address.label" default="Address" /></h1>
+%{--<fieldset class="embedded"><legend><g:message code="nationalContact.address.label" default="Address" /></legend>--}%
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.country', 'error')} required">
 	<label for="address.country" class="property-label25">
 		<g:message code="nationalContact.address.country.label" default="Country" />
@@ -65,7 +66,7 @@
 	</label>
 	<g:textField name="town" maxlength="100" value="${addressInstance?.town}"/>
 </div>
-</fieldset>
+%{--</fieldset>--}%
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
 	<label for="telephone" class="property-label25">
 		<g:message code="nationalContact.telephone.label" default="Telephone" />

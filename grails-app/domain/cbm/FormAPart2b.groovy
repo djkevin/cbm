@@ -20,7 +20,7 @@ class FormAPart2b extends BaseForm{
     Report report
 
 	String toString() {
-		return "${id} ${programName}"
+		return "${programName}"
 	}
 	
 
@@ -34,7 +34,7 @@ class FormAPart2b extends BaseForm{
         declaration nullable:true, maxSize: 5000
         amount min: 0.01, max: 1000000000.00, scale: 2, blank:false
         source maxSize: 500
-        formAPart2c nullable: true
+        //formAPart2c nullable: true
 		
     }
 }

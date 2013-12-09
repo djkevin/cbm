@@ -116,7 +116,7 @@
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
 							<g:each in="${reportInstance.formAPart1}" var="f">
-								<g:link controller="formAPart1a" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link>,
+								<g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
 							</g:each>
 						</td>
 							<td>  <!--TODO change reportId to report.id-->
@@ -130,7 +130,9 @@
 							<g:link controller="formAPart1b" action="show" id="${reportInstance?.formAPart1b?.id}">${reportInstance?.formAPart1b?.encodeAsHTML()}</g:link>
 						</td>
 						<td>
-							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            <g:if test="${reportInstance?.formAPart1b == null}">
+							<g:link controller="formAPart1b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            </g:if>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -140,24 +142,30 @@
 							<g:link controller="formAPart2a" action="show" id="${reportInstance?.formAPart2a?.id}">${reportInstance?.formAPart2a?.encodeAsHTML()}</g:link>
 						</td>
 							<td>
+                            <g:if test="${reportInstance?.formAPart2a == null}">
 							<g:link controller="formAPart2a" action="create"><g:message code="default.button.create.label"/></g:link>
+                            </g:if>
 						</td>
 					</tr>
 					<tr class="even">
 						<td><g:message code="report.formAPart2b.label" default="Form A Part 2b" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formAPart2b?.size()}</td>
 						<td>
-							<g:link controller="formAPart2b" action="show" id="${reportInstance?.formAPart2b?.id}">${reportInstance?.formAPart2b?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formAPart2b}" var="f">
+                                <g:link controller="formAPart2b" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
-							<g:link controller="formAPart2b" action="create"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart2b" params="['reportId': reportInstance.id]"><g:message code="default.button.list.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">
 						<td><g:message code="report.formAPart2c.label" default="Form A Part 2c" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formAPart2c?.size()}</td>
 						<td>
-							<g:link controller="formAPart2c" action="show" id="${reportInstance?.formAPart2c?.id}">${reportInstance?.formAPart2c?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formAPart2c}" var="f">
+                                <g:link controller="formAPart2c" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
 							<g:link controller="formAPart2c" action="create"><g:message code="default.button.create.label"/></g:link>
@@ -165,9 +173,11 @@
 					</tr>
 					<tr class="even">
 						<td><g:message code="report.formB.label" default="Form B" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formB?.size()}</td>
 						<td>
-							<g:link controller="formB" action="show" id="${reportInstance?.formB?.id}">${reportInstance?.formB?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formB}" var="f">
+                                <g:link controller="formB" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
 							<g:link controller="formB" action="create"><g:message code="default.button.create.label"/></g:link>
@@ -175,9 +185,11 @@
 					</tr>
 					<tr class="odd">
 						<td><g:message code="report.formC.label" default="Form C" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formC?.size()}</td>
 						<td>
-							<g:link controller="formC" action="show" id="${reportInstance?.formC?.id}">${reportInstance?.formC?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formC}" var="f">
+                                <g:link controller="formC" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
 							<g:link controller="formC" action="create"><g:message code="default.button.create.label"/></g:link>
@@ -185,9 +197,11 @@
 					</tr>
 					<tr class="even">
 						<td><g:message code="report.formE.label" default="Form E" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formE?.size()}</td>
 						<td>
-							<g:link controller="formE" action="show" id="${reportInstance?.formE?.id}">${reportInstance?.formE?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formE}" var="f">
+                                <g:link controller="formE" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
 							<g:link controller="formE" action="create"><g:message code="default.button.create.label"/></g:link>
@@ -195,9 +209,11 @@
 					</tr>
 					<tr class="odd">
 						<td><g:message code="report.formF.label" default="Form F" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formF?.size()}</td>
 						<td>
-							<g:link controller="formF" action="show" id="${reportInstance?.formF?.id}">${reportInstance?.formF?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formF}" var="f">
+                                <g:link controller="formF" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
 							<g:link controller="formF" action="create"><g:message code="default.button.create.label"/></g:link>
@@ -205,9 +221,11 @@
 					</tr>
 					<tr class="even">
 						<td><g:message code="report.formG.label" default="Form G" /></td>
-						<td>0</td>
+						<td>${reportInstance?.formG?.size()}</td>
 						<td>
-							<g:link controller="formG" action="show" id="${reportInstance?.formG?.id}">${reportInstance?.formG?.encodeAsHTML()}</g:link>
+                            <g:each in="${reportInstance.formG}" var="f">
+                                <g:link controller="formG" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
 						</td>
 						<td>
 							<g:link controller="formG" action="create"><g:message code="default.button.create.label"/></g:link>
@@ -221,7 +239,9 @@
 							
 						</td>
 						<td>
+                            <g:if test="${reportInstance?.formZero == null}">
 							<g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            </g:if>
 						</td>
 					</tr>
 					
