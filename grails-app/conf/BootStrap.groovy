@@ -8,7 +8,7 @@ class BootStrap {
 	
     def init = { servletContext ->
 		
-		println "inside init"
+		println "running bootstrap init..."
 			
 		environments{
 			development {
@@ -40,7 +40,8 @@ class BootStrap {
 			}
 		}
 		
-		
+		println "DONE bootstrap init."
+				
     }
     def destroy = {
 		println "inside destroy+"
