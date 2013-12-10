@@ -2,14 +2,13 @@ package cbm
 
 class FormAPart1b extends BaseForm{
 
-// 	static belongsTo = [Report]
 	Boolean bioSafetyLevel3
 	Boolean bioSafetyLevel2
 	String additionalInformation
 	Report report
 	
 	String toString() {
-		return "${id}"
+		return  bioSafetyLevel3 ? "BSL3" : (bioSafetyLevel2 ? "BSL2" : "no data" )
 	}
 	
 
