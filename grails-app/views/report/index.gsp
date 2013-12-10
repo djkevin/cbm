@@ -10,13 +10,10 @@
 	<body>
 		<a href="#list-report" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
-            <div class="nav-left">
-                <ul>
-                    <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                    <li><g:link class="create" action="create" params="['stateParty.id':statePartyId]"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </ul>
-            </div>
-            <g:render template="/navMenu" ></g:render>
+            <ul>
+                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <li><g:link class="create" action="create" params="['stateParty.id':statePartyId]"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+            </ul>
 		</div>
 
 		<div id="list-report" class="content scaffold-list" role="main">
