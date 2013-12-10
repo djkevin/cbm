@@ -21,12 +21,18 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formAPart1b">
-			
+
+                <g:if test="${formAPart1bInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="formAPart1b.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart1bInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formAPart1bInstance?.bioSafetyLevel3}">
 				<li class="fieldcontain">
 					<span id="bioSafetyLevel3-label" class="property-label"><g:message code="formAPart1b.bioSafetyLevel3.label" default="Bio Safety Level3" /></span>
-					
-						<span class="property-value" aria-labelledby="bioSafetyLevel3-label"><g:formatBoolean boolean="${formAPart1bInstance?.bioSafetyLevel3}" /></span>
+					<span class="property-value" aria-labelledby="bioSafetyLevel3-label"><g:formatBoolean boolean="${formAPart1bInstance?.bioSafetyLevel3}" /></span>
 					
 				</li>
 				</g:if>

@@ -23,12 +23,17 @@
 			</g:if>
 			<ol class="property-list formZero">
 
+                <g:if test="${formZeroInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formZeroInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formZeroInstance?.formAPart1}">
 				<li class="fieldcontain">
 					<span id="formAPart1-label" class="property-label"><g:message code="formZero.formAPart1.label" default="Form A Part 1a" /></span>
-					
-						<span class="property-value" aria-labelledby="formAPart1-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart1"/></span>
-					
+					<span class="property-value" aria-labelledby="formAPart1-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart1"/></span>
 				</li>
 				</g:if>
 			

@@ -22,13 +22,17 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formAPart2a">
-			
+
+                <g:if test="${formAPart2aInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart2aInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formAPart2aInstance?.existingNationalProgrammes}">
 				<li class="fieldcontain">
 					<span id="existingNationalProgrammes-label" class="property-label25"><g:message code="formAPart2a.existingNationalProgrammes.label" default="Existing National Programmes" /></span>
-					
-
-					
 				</li>
                     <span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
 				</g:if>

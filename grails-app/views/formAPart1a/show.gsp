@@ -26,7 +26,14 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formAPart1">
-			
+
+                <g:if test="${formAPart1aInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="formAPart1.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart1aInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formAPart1aInstance?.facilityName}">
 				<li class="fieldcontain">
 					<span id="facilityName-label" class="property-label"><g:message code="formAPart1.facilityName.label" default="Facility Name" /></span>

@@ -23,7 +23,14 @@
 			</g:if>
 
 			<ol class="property-list formAPart2b">
-			
+
+                <g:if test="${formAPart2bInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart2bInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formAPart2bInstance?.programName}">
 				<li class="fieldcontain">
 					<span id="programName-label" class="property-label"><g:message code="formAPart2b.programName.label" default="Program Name" /></span>

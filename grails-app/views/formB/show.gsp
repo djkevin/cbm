@@ -22,7 +22,14 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list formB">
-			
+
+                <g:if test="${formBInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formBInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formBInstance?.formStatus}">
 				<li class="fieldcontain">
 					<span id="formStatus-label" class="property-label"><g:message code="formB.formStatus.label" default="Form Status" /></span>

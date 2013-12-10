@@ -23,6 +23,13 @@
 			</g:if>
 			<ol class="property-list formC">
 
+                <g:if test="${formCInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formCInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
                 <g:if test="${formCInstance?.comments}">
                     <li class="fieldcontain">
                         <span id="comments-label" class="property-label"><g:message code="formC.comments.label" default="Comments" /></span>

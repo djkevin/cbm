@@ -23,12 +23,17 @@
 			</g:if>
 			<ol class="property-list formF">
 
+                <g:if test="${formFInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formFInstance}" field="report"/></span>
+                    </li>
+                </g:if>
+
 				<g:if test="${formFInstance?.entryIntoForceOfConvention}">
 				<li class="fieldcontain">
 					<span id="entryIntoForceOfConvention-label" class="property-label"><g:message code="formF.entryIntoForceOfConvention.label" default="Entry Into Force Of Convention" /></span>
-					
-						<span class="property-value" aria-labelledby="entryIntoForceOfConvention-label"><g:formatDate date="${formFInstance?.entryIntoForceOfConvention}" /></span>
-					
+					<span class="property-value" aria-labelledby="entryIntoForceOfConvention-label"><g:formatDate date="${formFInstance?.entryIntoForceOfConvention}" /></span>
 				</li>
 				</g:if>
 			
