@@ -1,6 +1,6 @@
 <%@ page import="cbm.Report" %>
 
-
+<!--  TODO: introduce labels in message.properties -->
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'language', 'error')} required">
 	<label for="language" class="property-label25">
