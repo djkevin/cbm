@@ -33,7 +33,7 @@
                 </div>                    
                 <div>                        
                     <h2><g:message code="global.label.organisation"/> <g:message code="global.label.division"/></h2>
-                    <h3><g:message code="global.label.appname"/></a></h3>
+                    <h3><g:message code="global.label.appname"/></h3>
                 </div>                
             </div>
         </div>
