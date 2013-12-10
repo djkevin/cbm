@@ -16,7 +16,10 @@ class Report {
 	String reportStatus
 	String publicationStatus
 	Boolean officialVersion
-	String getReportName() {"${stateParty.country}_${year}_${language}"}
+
+    String getReportName() {
+        "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) }+"_${language.abbreviation}"
+    }
 
     StateParty stateParty
 	
@@ -38,6 +41,8 @@ class Report {
 	String toString() {
 		return "${stateParty.country}_${year}_${language}"
 	}
+
+    def capitalize(s) { s[0].toUpperCase() + s[1..-1].toLowerCase() }
 	
 
 }
