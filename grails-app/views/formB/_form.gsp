@@ -1,5 +1,14 @@
 <%@ page import="cbm.FormB" %>
 
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'report', 'error')} required">
+    <label for="report" class="property-label25">
+        <g:message code="formB.report.label" default="Report"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:hiddenField name="report.id" id="report" value="${formBInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formBInstance?.report}" readonly="true" />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'eventName', 'error')} required">
 	<label for="eventName" class="property-label25">
 		<g:message code="formB.eventName.label" default="Event Name" />
@@ -136,17 +145,6 @@
 		
 	</label>
 	<g:textArea class="wysiwyg" name="additionalInfo" cols="40" rows="5" maxlength="5000" value="${formBInstance?.additionalInfo}"/>
-</div>
-
-
-<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'report', 'error')} required">
-    <label for="report">
-        <g:message code="formB.report.label" default="Report"/>
-        <span class="required-indicator">*</span>
-    </label>
-
-    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required=""
-              value="${formBInstance?.report?.id}" class="many-to-one"/>
 </div>
 
 <g:set var="formInstance" value="${formBInstance}"></g:set>

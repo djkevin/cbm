@@ -4,9 +4,12 @@
         <g:message code="formC.report.label" default="Report" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required="" value="${formZeroInstance?.report?.id}" class="many-to-one"/>
+    <g:hiddenField name="report.id" id="report" value="${formZeroInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formZeroInstance?.report}" readonly="true" />
 </div>
+
 <br/>
+
 <div id="list-formZero" class="content scaffold-list" role="main">
 <table>
     <thead>

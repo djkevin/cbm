@@ -1,12 +1,12 @@
 <%@ page import="cbm.FormE" %>
 
-
 <div class="fieldcontain ${hasErrors(bean: formEInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">
         <g:message code="formE.report.label" default="Report" />
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required="" value="${formEInstance?.report?.id}" class="many-to-one"/>
+    <g:hiddenField name="report.id" id="report" value="${formEInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formEInstance?.report}" readonly="true" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formEInstance, field: 'additionalComments', 'error')} ">

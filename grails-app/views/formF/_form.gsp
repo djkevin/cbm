@@ -1,5 +1,13 @@
 <%@ page import="cbm.FormF" %>
 
+<div class="fieldcontain ${hasErrors(bean: formFInstance, field: 'report', 'error')} required">
+    <label for="report" class="property-label25">
+        <g:message code="formF.report.label" default="Report" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:hiddenField name="report.id" id="report" value="${formFInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formFInstance?.report}" readonly="true" />
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: formFInstance, field: 'entryIntoForceOfConvention', 'error')} required">
 	<label for="entryIntoForceOfConvention" class="property-label25">
@@ -57,14 +65,6 @@
 	<g:textArea name="summaryOfRnDActivities" cols="40" rows="5" maxlength="5000" value="${pastBiologicalRnDActivityInstance?.summaryOfRnDActivities}"/>
 </div>
 </fieldset>
-
-<div class="fieldcontain ${hasErrors(bean: formFInstance, field: 'report', 'error')} required">
-    <label for="report" class="property-label25">
-        <g:message code="formF.report.label" default="Report" />
-        <span class="required-indicator">*</span>
-    </label>
-    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required="" value="${formFInstance?.report?.id}" class="many-to-one"/>
-</div>
 
 <g:set var="formInstance" value="${formFInstance}"></g:set>
 <g:render template="../formStatus"/>

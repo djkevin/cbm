@@ -5,10 +5,10 @@
         <g:message code="formAPart2a.report.label" default="Report"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required=""
-               value="${formAPart2bInstance?.report?.id}" class="many-to-one"/>
+    <g:hiddenField name="report.id" id="report" value="${formAPart2bInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formAPart2bInstance?.report}" readonly="true" />
 </div>
-               
+
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'programName', 'error')} ">
     <label for="programName">
         <g:message code="formAPart2b.programName.label" default="Program Name"/>

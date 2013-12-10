@@ -1,5 +1,13 @@
 <%@ page import="cbm.FormAPart1b" %>
 
+<div class="fieldcontain ${hasErrors(bean: formAPart1bInstance, field: 'report', 'error')} required">
+    <label for="report" class="property-label25">
+        <g:message code="formAPart1b.report.label" default="Report" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:hiddenField name="report.id" id="report" value="${formAPart1bInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formAPart1bInstance?.report}" readonly="true" />
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1bInstance, field: 'bioSafetyLevel3', 'error')} ">
 	<label for="bioSafetyLevel3" class="property-label25">
@@ -23,14 +31,6 @@
 		
 	</label>
 	<g:textArea name="additionalInformation" cols="40" rows="5" maxlength="5000" value="${formAPart1bInstance?.additionalInformation}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: formAPart1bInstance, field: 'report', 'error')} required">
-	<label for="report" class="property-label25">
-		<g:message code="formAPart1b.report.label" default="Report" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required="" value="${formAPart1bInstance?.report?.id}" class="many-to-one"/>
 </div>
 
 <g:set var="formInstance" value="${formAPart1bInstance}"></g:set>

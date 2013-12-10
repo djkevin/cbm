@@ -1,6 +1,13 @@
 <%@ page import="cbm.FormAPart1a" %>
 
-
+<div class="fieldcontain ${hasErrors(bean: formAPart2aInstance, field: 'report', 'error')} required">
+    <label for="report" class="property-label">
+        <g:message code="formAPart2a.report.label" default="Report"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:hiddenField name="report.id" id="report" value="${formAPart1aInstance?.report?.id}" />
+    <g:field type="text" name="report.name" value="${formAPart1aInstance?.report}" readonly="true" />
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'facilityName', 'error')} required">
 	<label for="facilityName">
@@ -80,16 +87,6 @@
 	</label>
 </div>
 <div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="1000" required="" value="${formAPart1aInstance?.scope}"/></div>
-
-<div class="fieldcontain ${hasErrors(bean: formAPart2aInstance, field: 'report', 'error')} required">
-    <label for="report">
-        <g:message code="formAPart2a.report.label" default="Report"/>
-        <span class="required-indicator">*</span>
-    </label>
-
-    <g:select id="report" name="report.id" from="${cbm.Report.list()}" optionKey="id" required=""
-               value="${formAPart2aInstance?.report?.id}" class="many-to-one"/>
-</div>
 
 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
 <g:render template="../formStatus"/>
