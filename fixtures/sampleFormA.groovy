@@ -8,6 +8,7 @@ import cbm.SecUser
 import cbm.SecRole
 import cbm.SecUserSecRole
 import cbm.FormB
+import cbm.FormAPart2b
 
 // TODO: rename this class because it's creating data not only for FormA, but in general.
 
@@ -202,6 +203,21 @@ fixture {
 		report = [reportAUSTRALIA2010EN]
 		existingNationalProgrammes = true
 	}
+	
+	formAPart2b1(FormAPart2b) {
+		title ="formAPart2b"
+		formStatus = "Draft"
+		visibility = "Public"
+		programName="sample programme at Canada"
+		objectives="sample objectives"
+		conductedUnderContract=true
+		proportionContracted="sample proportion"
+		summaryObjectivesContractor="sample summary of the objectives"
+		declaration="sample declaration"
+		amount=1200000
+		source="sample source"
+		report = [reportCANADA2010FR]
+	}
 
     formBCAN(FormB){
         title ="formBCAN"
@@ -222,11 +238,7 @@ fixture {
         developmentOfOutbreak = "In late July there was laboratory escape of pathogen with subsequent local spread. Spread contained by measures taken below and last case was reported on 29 August 2007."
         measuresTaken = "Stamping out, quarantine, movement control inside the country, zoning, disinfection of infected premises/ establishment(s), no vaccination and no treatment of affected animals."
         additionalInfo = "Further information is available at: http://www.defra.gov.uk/animalh/diseases/fmd/investigations/index.html"
-
-
-
-
-
-
     }
+	
+	
 }
