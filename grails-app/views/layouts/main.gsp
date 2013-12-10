@@ -25,7 +25,37 @@
 		
 	</head>
 	<body>
-		
+
+    <div id="topmenu">
+        <div id="topmenucontent">
+            <div id="languages">
+                <ul>
+                    <li><a class="home" href="${createLink(uri: '/?lang=en')}">EN</a></li>
+                    <li><a class="home" href="${createLink(uri: '/?lang=fr')}">FR</a></li>
+                </ul>
+
+            </div>
+            <div id="links">
+                <ul>
+                 %{--   <li>
+                        <a id="lnkUNODA" tabindex="7" href="http://www.un.org/disarmament/" target="_blank">UNODA</a></li>
+                    <li>--}%
+                        %{--<a id="lnkUN" tabindex="8" href="http://www.un.org/" target="_blank">UN</a></li>  --}%
+                    <li>
+                        <g:message code="user.login.as" default="You are logged in as: "/> <sec:loggedInUserInfo field="username"/>  <g:link controller='logout' action='index'>[logout]</g:link>
+                    </li>
+                    %{--<li>
+                        <a id="lnkContactUs" tabindex="10" href="mailto:conventionalarms-UNODA@un.org" target="_blank">Contact us</a>
+                    </li>--}%
+                </ul>
+            </div>
+            %{--           <div id="sessioninfo">
+                           <ul>
+
+                           </ul>
+                       </div>--}%
+        </div>
+    </div>
 		<div class="banner table" role="banner">
             <div>
                 <div>
