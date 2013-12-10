@@ -101,9 +101,19 @@
 				</g:if>
 	
 			</ol>
-			
+
+            <!-- *-*-*-*-*-*-*-*-*-*-*-* action buttons *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
+
+            <g:form url="[resource:reportInstance, action:'delete']" method="DELETE">
+                <fieldset class="buttons">
+                    <g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                </fieldset>
+            </g:form>
 			<!-- *-*-*-*-*-*-*-*-*-*-*-* list of forms *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
-			
+            <br/>
+            <h1 id="clean"><g:message code="default.forms.list"/> - ${reportInstance.reportName}</h1>
+            <br/>
 			<table>
 				<thead>
 					<tr>
@@ -252,15 +262,6 @@
 					
 				</tbody>
 			</table>
-			
-			<!-- *-*-*-*-*-*-*-*-*-*-*-* action buttons *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
-				
-			<g:form url="[resource:reportInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
 		</div>
 	</body>
 </html>

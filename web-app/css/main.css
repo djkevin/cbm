@@ -104,6 +104,10 @@ img {
 	padding: 0 0.25em;
 }
 
+#clean{
+    border-bottom: 0px;
+}
+
 .scaffold-list h1 {
 	border: none;
 }
