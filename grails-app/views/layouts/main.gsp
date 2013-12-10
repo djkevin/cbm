@@ -32,8 +32,8 @@
                     <img src="${resource(dir: 'images', file: 'unlogo.png')}" alt="home"/>
                 </div>                    
                 <div>                        
-                    <h2><g:message code="global.label.organisation"/> <g:message code="global.label.division"/></h2>
-                    <h3><g:message code="global.label.appname"/></h3>
+                    <h2><g:message code="global.label.organisation"/> %{--<g:message code="global.label.division"/>--}%</h2>
+                   %{-- <h3><g:message code="global.label.appname"/></h3>--}%
                 </div>                
             </div>
         </div>
