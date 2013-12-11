@@ -14,8 +14,8 @@ abstract class BaseForm {
 	Date lastUpdated
 	
 
-		
-	
+
+
 	
 	static constraints = {
 

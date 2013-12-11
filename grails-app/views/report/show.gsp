@@ -126,6 +126,46 @@
 						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
+                            <g:if test="${reportInstance?.formAPart1 != null}">
+                            <table id="inner-table">
+                                <g:each in="${reportInstance.formAPart1}" var="f">
+                                <tr>
+                                    <td><g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
+
+                                    <!-- Draft or completed-->
+                                    <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
+                                        <td class="draft"></td>
+                                    </g:if>
+                                    <g:else>
+                                        <td class="completed">&nbsp;</td>
+                                    </g:else>
+
+                                    <!-- Private or public -->
+                                    <g:if test="${f.visibility.equalsIgnoreCase("private")}">
+                                        <td class="private"></td>
+                                    </g:if>
+                                    <g:else>
+                                        <td>&nbsp;</td>
+                                    </g:else>
+
+                                </tr>
+                                </g:each>
+                            </table>
+
+                            </g:if>
+
+				%{--			<g:each in="${reportInstance.formAPart1}" var="f">
+								<g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+							</g:each>--}%
+						</td>
+						<td>
+                            <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+						</td>
+					</tr>
+                    <tr class="odd">
+						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
+						<td>${reportInstance?.formAPart1.size()}</td>
+						<td>
 							<g:each in="${reportInstance.formAPart1}" var="f">
 								<g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
 							</g:each>

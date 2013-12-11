@@ -863,3 +863,31 @@ div.inline { float:left; }
     text-decoration: none;
 }
 
+#inner-table{
+    border-top: 0px;
+    padding:0px;
+    margin:0px;
+}
+
+.draft{
+    /*background-image: url(../images/skin/tick.png);*/
+    background-image: url(../images/skin/pen_alt_fill_12x12.png);
+    background-repeat: no-repeat;
+}
+
+.completed{
+    background-image: url(../images/skin/check_12x10.png);
+    background-repeat: no-repeat;
+}
+
+.private{
+    background-image: url(../images/skin/lock_fill_9x12.png);
+    background-repeat: no-repeat;
+}
+
+.public{
+    /*background-image: url(../images/skin/padlock_open_icon&16.png);*/
+    background-image: url(../images/skin/unlock_fill_9x12.png);
+    background-repeat: no-repeat;
+}
+
