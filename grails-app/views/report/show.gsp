@@ -33,7 +33,7 @@
 			
 				<g:if test="${reportInstance?.language}">
 				<li class="fieldcontain">
-					<span id="language-label" class="property-label"><g:message code="report.language.label" default="Language" /></span>
+					<span id="language-label" class="property-label"><g:message code="language.label" default="Language" /></span>
 					
 						<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="language"/></span>
 					
@@ -42,7 +42,7 @@
 			
 				<g:if test="${reportInstance?.year}">
 				<li class="fieldcontain">
-					<span id="year-label" class="property-label"><g:message code="report.year.label" default="Year" /></span>
+					<span id="year-label" class="property-label"><g:message code="year.label" default="Year" /></span>
 					
 						<span class="property-value" aria-labelledby="year-label">${reportInstance.year}</span>
 					
@@ -79,7 +79,7 @@
 			
 				<g:if test="${reportInstance?.dateCreated}">
 				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="report.dateCreated.label" default="Date Created" /></span>
+					<span id="dateCreated-label" class="property-label"><g:message code="dateCreated.label" default="Date Created" /></span>
 					
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.dateCreated}" /></span>
 					
@@ -89,7 +89,7 @@
 			
 				<g:if test="${reportInstance?.lastUpdated}">
 				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="report.lastUpdated.label" default="Last Updated" /></span>
+					<span id="lastUpdated-label" class="property-label"><g:message code="lastUpdated.label" default="Last Updated" /></span>
 					
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.lastUpdated}" /></span>
 					
@@ -115,10 +115,10 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Form</th>
+                        <th><g:message code="form.label" default="Form" /></th>
 						<th>#</th>
-						<th>Description</th>
-						<th>Action</th>
+                        <th><g:message code="description.label" default="Description" /></th>
+						<th><g:message code="action.label" default="Action" /></th>
 					</tr>
 				</thead>
 				<tbody>

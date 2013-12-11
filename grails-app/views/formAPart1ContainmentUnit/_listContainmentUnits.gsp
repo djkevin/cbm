@@ -25,7 +25,7 @@
 				${fieldValue(bean: formAPart1ContainmentUnitInstance, field: "bioSafetyLevel")}
 		 	</g:if>
 		 	<g:else>
-		 		<g:link action="show" id="${formAPart1ContainmentUnitInstance.id}">${fieldValue(bean: formAPart1ContainmentUnitInstance, field: "bioSafetyLevel")}</g:link>
+		 		<g:link action="show" controller="formAPart1ContainmentUnit" id="${formAPart1ContainmentUnitInstance.id}">${fieldValue(bean: formAPart1ContainmentUnitInstance, field: "bioSafetyLevel")}</g:link>
 		 	</g:else>
 		 	
 		 	</td>

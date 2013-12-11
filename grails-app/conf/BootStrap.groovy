@@ -31,7 +31,7 @@ class BootStrap {
                 assert SecRole.count() == 2
                 assert SecUserSecRole.count() == 2
 				 */
-				fixtureLoader.load("sampleFormA")
+				fixtureLoader.load("sampleData")
 	
 			}
 			

@@ -792,6 +792,7 @@ div.inline { float:left; }
 
 /*Top menu selectors*/
 #topmenu {
+    /*background-color: #abbf78;     */
     background-color: #abbf78;
     display: block;
     height: 2em;

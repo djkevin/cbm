@@ -74,13 +74,13 @@ fixture {
 		officialVersion = true
 	}
 	
-	reportCANADA2010FR(Report){
+	reportCANADA2010EN(Report){
 		stateParty=[spCAN]
 //		country = "CANADA"
-		language = "FRENCH"
+		language = "ENGLISH"
 		year = "2010"
-		reportStatus = "Submitted"
-		publicationStatus =  "Published"
+		reportStatus = "Draft"
+		publicationStatus =  "Not published"
 		officialVersion = true
 	}
 	
@@ -150,7 +150,7 @@ fixture {
         title ="formAPart1a"
         formStatus = "Draft"
         visibility = "Public"
-		report = [reportCANADA2010FR]
+		report = [reportCANADA2010EN]
 		facilityName = "Ottawa Health Forensic Scientific Services (OHFSS)"
 		responsibleOrganisation = "Queensland Department of Health (State Government)"
 		location = "39 Kessels Road, Coopers Plains, QLD, OTTAWA"
@@ -190,14 +190,14 @@ fixture {
         title ="formAPart1b2"
         formStatus = "Draft"
         visibility = "Public"
-		report = [reportCANADA2010FR]
+		report = [reportCANADA2010EN]
 		bioSafetyLevel3 = true
 		bioSafetyLevel2 = false
-		additionalInformation="formAPart1B for reportCANADA2010FR"
+		additionalInformation="formAPart1B for reportCANADA2010EN"
 	}
 	
 	formAPart2a1(FormAPart2a){
-		report = [reportCANADA2010FR]
+		report = [reportCANADA2010EN]
 		existingNationalProgrammes = true
 	}
 	formAPart2a2(FormAPart2a){
@@ -217,7 +217,7 @@ fixture {
 		declaration="sample declaration"
 		amount=1200000
 		source="sample source"
-		report = [reportCANADA2010FR]
+		report = [reportCANADA2010EN]
 	}
 	
 	formAPart2c1(FormAPart2c) {
@@ -258,7 +258,7 @@ fixture {
         title ="formBCAN"
         formStatus = "Draft"
         visibility = "Private"
-        report = [reportCANADA2010FR]
+        report = [reportCANADA2010EN]
         eventName = "Foot and mouth disease"
         eventCategory = "Animal"
         eventDate = "08/01/2007"
