@@ -15,11 +15,8 @@ class FormAPart1aController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def reportId=params.long('reportId')
-        println("report id is: "+reportId)
         Report r = Report.findById(reportId)
-        println("report language is "+r.language)
-        respond FormAPart1a.findAllByReport(r) , model:[formAPart1InstanceCount: FormAPart1a.count(),reportId: r.id]
-        //respond FormAPart1a.list(params), model:[formAPart1InstanceCount: FormAPart1a.count()]
+        respond FormAPart1a.findAllByReport(r,[sort: "facilityName"]), model:[formAPart1InstanceCount: FormAPart1a.count(),reportId: r.id]
     }
 
     def show(FormAPart1a formAPart1Instance) {
