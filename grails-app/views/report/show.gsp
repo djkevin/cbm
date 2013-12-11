@@ -104,8 +104,8 @@
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                    <g:link class="submit"  action="submit" resource="${reportInstance}"><g:message code="default.button.submit.label" default="Submit" /></g:link>
-                    <g:link class="print" action="edit" resource="${reportInstance}"><g:message code="default.button.print.label" default="Print" /></g:link>
+                    <g:actionSubmit class="submit" action="" value="${message(code: 'default.button.submit.label', default: 'Submit')}" onclick="alert('${message(code: 'default.under.implementation.message', default: 'Feature under implementation')}');return false;" />
+                    <g:actionSubmit class="print" action="" value="${message(code: 'default.button.print.label', default: 'Print')}" onclick="alert('${message(code: 'default.under.implementation.message', default: 'Feature under implementation')}');return false;" />
                 </fieldset>
             </g:form>
 			<!-- *-*-*-*-*-*-*-*-*-*-*-* list of forms *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
