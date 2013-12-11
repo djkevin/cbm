@@ -130,19 +130,19 @@
                             <table id="inner-table">
                                 <g:each in="${reportInstance.formAPart1}" var="f">
                                 <tr>
-                                    <td><g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
+                                    <td width="90%"><g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
 
                                     <!-- Draft or completed-->
                                     <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
-                                        <td class="draft"></td>
+                                        <td><img src="${resource(dir: 'images/skin', file: 'pen_alt_fill_12x12.png')}" alt="draft"/></td>
                                     </g:if>
                                     <g:else>
-                                        <td class="completed">&nbsp;</td>
+                                        <td><img src="${resource(dir: 'images/skin', file: 'check_12x10.png')}" alt="draft"/></td>
                                     </g:else>
 
                                     <!-- Private or public -->
                                     <g:if test="${f.visibility.equalsIgnoreCase("private")}">
-                                        <td class="private"></td>
+                                        <td><img src="${resource(dir: 'images/skin', file: 'lock_fill_9x12.png')}" alt="draft"/></td>
                                     </g:if>
                                     <g:else>
                                         <td>&nbsp;</td>
@@ -151,18 +151,13 @@
                                 </tr>
                                 </g:each>
                             </table>
-
                             </g:if>
-
-				%{--			<g:each in="${reportInstance.formAPart1}" var="f">
-								<g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-							</g:each>--}%
 						</td>
 						<td>
                             <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
-                    <tr class="odd">
+       %{--             <tr class="odd">
 						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
@@ -173,7 +168,7 @@
 						<td>
                             <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
-					</tr>
+					</tr>--}%
 					<tr class="even">
 						<td><g:message code="report.formAPart1b.label" default="Form A Part 1b" /></td>
 						<td>${reportInstance?.formAPart1b ? 1:0}</td>
@@ -202,9 +197,37 @@
 						<td><g:message code="report.formAPart2b.label" default="Form A Part 2b" /></td>
 						<td>${reportInstance?.formAPart2b?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formAPart2b}" var="f">
-                                <g:link controller="formAPart2b" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
+                 %{--           <g:each in="${reportInstance.formAPart2b}" var="f">
+                                <g:link controller="formAPart2b" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>
+
+                            </g:each>--}%
+                            <g:if test="${reportInstance?.formAPart2b != null}">
+                                <table id="inner-table">
+                                    <g:each in="${reportInstance.formAPart2b}" var="f">
+                                        <tr>
+                                            <td style="width:90%"><g:link controller="formAPart2b" action="edit" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
+
+                                        <!-- Draft or completed-->
+                                            <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
+                                                <td><img src="${resource(dir: 'images/skin', file: 'pen_alt_fill_12x12.png')}" alt="draft"/></td>
+                                            </g:if>
+                                            <g:else>
+                                                <td><img src="${resource(dir: 'images/skin', file: 'check_12x10.png')}" alt="completed"/></td>
+                                            </g:else>
+
+                                        <!-- Private or public -->
+                                            <g:if test="${f.visibility.equalsIgnoreCase("private")}">
+                                                <td><img src="${resource(dir: 'images/skin', file: 'lock_fill_9x12.png')}" alt="private"/></td>
+                                            </g:if>
+                                            <g:else>
+                                                <td>&nbsp;</td>
+                                            </g:else>
+
+                                        </tr>
+                                    </g:each>
+                                </table>
+                            </g:if>
+
 						</td>
 						<td>
                             <g:link controller="formAPart2b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
