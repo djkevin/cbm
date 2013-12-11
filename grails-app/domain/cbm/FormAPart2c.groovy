@@ -1,6 +1,6 @@
 package cbm
 
-class FormAPart2c {
+class FormAPart2c extends BaseForm {
 	//Detailed info on facilities. Each program (FormAPart2b) can have many facilities assigned/contributing to it
 	static belongsTo = [FormAPart2b]
 	
