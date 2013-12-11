@@ -37,16 +37,12 @@
             </div>
             <div id="links">
                 <ul>
-                 %{--   <li>
-                        <a id="lnkUNODA" tabindex="7" href="http://www.un.org/disarmament/" target="_blank">UNODA</a></li>
-                    <li>--}%
-                        %{--<a id="lnkUN" tabindex="8" href="http://www.un.org/" target="_blank">UN</a></li>  --}%
                     <li>
-                        <g:message code="user.login.as" default="You are logged in as: "/> <b><sec:loggedInUserInfo field="username"/></b><g:link controller='logout' action='index'>[<g:message code="user.logout" default="logout"/>]</g:link>
+                    <sec:ifLoggedIn>
+                        <g:message code="user.login.as" default="You are logged in as: "/> <b><sec:loggedInUserInfo field="username"/></b>
+                        <g:link controller='logout' action='index'>[<g:message code="user.logout" default="logout"/>]</g:link>
+                    </sec:ifLoggedIn>
                     </li>
-                    %{--<li>
-                        <a id="lnkContactUs" tabindex="10" href="mailto:conventionalarms-UNODA@un.org" target="_blank">Contact us</a>
-                    </li>--}%
                 </ul>
             </div>
             %{--           <div id="sessioninfo">

@@ -870,7 +870,6 @@ div.inline { float:left; }
 }
 
 .draft{
-    /*background-image: url(../images/skin/tick.png);*/
     background-image: url(../images/skin/pen_alt_fill_12x12.png);
     background-repeat: no-repeat;
 }
@@ -886,7 +885,6 @@ div.inline { float:left; }
 }
 
 .public{
-    /*background-image: url(../images/skin/padlock_open_icon&16.png);*/
     background-image: url(../images/skin/unlock_fill_9x12.png);
     background-repeat: no-repeat;
 }
