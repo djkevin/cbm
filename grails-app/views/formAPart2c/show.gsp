@@ -99,13 +99,21 @@
 					<span id="totalPersonnel-label" class="property-label"><g:message code="formAPart2c.totalPersonnel.label" default="totalPersonnel" /></span>					
 					<span class="property-value" aria-labelledby="totalPersonnel-label"><g:fieldValue bean="${formAPart2cInstance}" field="totalPersonnel"/>
 					</span>					
+				</li>					
+								
+				<li class="fieldcontain">
+					<span id="divisionPersonnel-label" class="property-label"><g:message code="formAPart2c.divisionPersonnel.label" default="div personnel" /></span>
+					<span class="property-value" >
+					<g:fieldValue bean="${formAPart2cInstance}" field="militaryPersonnel"/> 
+					<g:message code="formAPart2c.militaryPersonnel.label" default="militaryPersonnel" />
+					,
+					<g:fieldValue bean="${formAPart2cInstance}" field="civilianPersonnel"/> 
+					<g:message code="formAPart2c.civilianPersonnel.label" default="civilianPersonnel" />
+					</span>			
 				</li>				
-	
-				<li class="fieldcontain">
-					<span id="divisionPersonnel-label" class="property-label"><g:message code="formAPart2c.divisionPersonnel.label" default="div personnel" /></span>		
-				</li>
 				
-				<li class="fieldcontain">
+				<!--  2 fields below merged as CSV above -->
+				<%-- li class="fieldcontain">
 					<span id="militaryPersonnel-label" class="property-label"><g:message code="formAPart2c.militaryPersonnel.label" default="militaryPersonnel" /></span>					
 					<span class="property-value" aria-labelledby="militaryPersonnel-label"><g:fieldValue bean="${formAPart2cInstance}" field="militaryPersonnel"/>
 					</span>					
@@ -115,13 +123,27 @@
 					<span id="civilianPersonnel-label" class="property-label"><g:message code="formAPart2c.civilianPersonnel.label" default="civilianPersonnel" /></span>					
 					<span class="property-value" aria-labelledby="civilianPersonnel-label"><g:fieldValue bean="${formAPart2cInstance}" field="civilianPersonnel"/>
 					</span>					
-				</li>
+				</li--%>
 				
 				<li class="fieldcontain">
-					<span id="divisionPersonnel-label" class="property-label"><g:message code="formAPart2c.divisionPersonnelCategory.label" default="div personnel cat" /></span>		
+					<span id="divisionPersonnelCategory-label" class="property-label"><g:message code="formAPart2c.divisionPersonnelCategory.label" default="div personnel cat" /></span>
+					<span class="property-value" >
+					<g:fieldValue bean="${formAPart2cInstance}" field="scientists"/>		
+					<g:message code="formAPart2c.scientists.label" default="scientists" />
+					,								
+					<g:fieldValue bean="${formAPart2cInstance}" field="engineers"/>
+					<g:message code="formAPart2c.engineers.label" default="engineers" />
+					,
+					<g:fieldValue bean="${formAPart2cInstance}" field="technicians"/>
+					<g:message code="formAPart2c.technicians.label" default="technicians" />
+					,
+					<g:fieldValue bean="${formAPart2cInstance}" field="administrators"/>
+					<g:message code="formAPart2c.administrators.label" default="administrators" />	
+					</span>
 				</li>
 				
-				<li class="fieldcontain">
+				<!--  4 fields below merged into CSV above -->
+				<%-- li class="fieldcontain">
 					<span id="scientists-label" class="property-label"><g:message code="formAPart2c.scientists.label" default="scientists" /></span>					
 					<span class="property-value" aria-labelledby="scientists-label"><g:fieldValue bean="${formAPart2cInstance}" field="scientists"/>
 					</span>					
@@ -143,18 +165,93 @@
 					<span id="administratorss-label" class="property-label"><g:message code="formAPart2c.administrators.label" default="administrators" /></span>					
 					<span class="property-value" aria-labelledby="administrators-label"><g:fieldValue bean="${formAPart2cInstance}" field="administrators"/>
 					</span>					
-				</li>				
+				</li --%>				
 	
-	
-		scientificDisciplines
-		contractors 
-		fundingSources
-		fundResearch 
-		fundDevelopment
-		fundTest 
-		publicationPolicy
-		publicPapers
-		bioDefenseWork
+				<br>
+				<h4>
+					<g:message code="formAPart2c.scientificDisciplines.label" default="scientific Disciplines" />		
+				</h4>
+				<li class="fieldcontain">					
+					<span class="property-value" aria-labelledby="scientificDisciplines-label">
+						<g:fieldValue bean="${formAPart2cInstance}" field="scientificDisciplines"/>
+					</span>					
+				</li>
+				
+				<br>
+				<h4>
+					<g:message code="formAPart2c.contractors.label" default="contractors" />		
+				</h4>
+				<li class="fieldcontain">					
+					<span class="property-value" aria-labelledby="contractors-label">
+						<g:fieldValue bean="${formAPart2cInstance}" field="contractors"/>
+					</span>					
+				</li>
+
+				<br>
+				<h4>
+					<g:message code="formAPart2c.fundingSources.label" default="funding Sources" />		
+				</h4>
+				<li class="fieldcontain">					
+					<span class="property-value" aria-labelledby="fundingSources-label">
+						<g:fieldValue bean="${formAPart2cInstance}" field="fundingSources"/>
+					</span>					
+				</li>
+				
+				<br>
+				<h4>		
+					<g:message code="formAPart2c.fundLevels.label" default="fund levels" />
+				</h4>
+				
+				<li class="fieldcontain">
+					<span id="fundResearch-label" class="property-label"><g:message code="formAPart2c.fundResearch.label" default="Research" /></span>					
+					<span class="property-value" aria-labelledby="fundResearch-label"><g:fieldValue bean="${formAPart2cInstance}" field="fundResearch"/>
+					</span>					
+				</li>	
+				
+		 		<li class="fieldcontain">
+					<span id="fundDevelopment-label" class="property-label"><g:message code="formAPart2c.fundDevelopment.label" default="Development" /></span>					
+					<span class="property-value" aria-labelledby="fundDevelopment-label"><g:fieldValue bean="${formAPart2cInstance}" field="fundDevelopment"/>
+					</span>					
+				</li>	
+				
+				<li class="fieldcontain">
+					<span id="fundTest-label" class="property-label"><g:message code="formAPart2c.fundTest.label" default="Test" /></span>					
+					<span class="property-value" aria-labelledby="fundTest-label"><g:fieldValue bean="${formAPart2cInstance}" field="fundTest"/>
+					</span>					
+				</li>	
+				
+				<br>
+				<h4>
+					<g:message code="formAPart2c.publicationPolicy.label" default="publication Policy" />		
+				</h4>
+				<li class="fieldcontain">					
+					<span class="property-value" aria-labelledby="publicationPolicy-label">
+						<g:fieldValue bean="${formAPart2cInstance}" field="publicationPolicy"/>
+					</span>					
+				</li>
+		
+		 		<br>
+				<h4>
+					<g:message code="formAPart2c.publicPapers.label" default="public Papers" />		
+				</h4>
+				<li class="fieldcontain">					
+					<span class="property-value" aria-labelledby="publicPapers-label">
+						<g:fieldValue bean="${formAPart2cInstance}" field="publicPapers"/>
+					</span>					
+				</li>
+		
+				<br>
+				<h4>
+					<g:message code="formAPart2c.bioDefenseWork.label" default="bio Defense Work" />		
+				</h4>
+				<li class="fieldcontain">					
+					<span class="property-value" aria-labelledby="bioDefenseWork-label">
+						<g:fieldValue bean="${formAPart2cInstance}" field="bioDefenseWork"/>
+					</span>					
+				</li>
+		
+				<g:set var="formInstance" value="${formAPart2cInstance}"></g:set>
+                <g:render template="../showStatus" />
 	
 			</ol>
 			<g:form url="[resource:formAPart2cInstance, action:'delete']" method="DELETE">
