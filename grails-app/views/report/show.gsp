@@ -128,8 +128,8 @@
 								<g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
 							</g:each>
 						</td>
-							<td>  <!--TODO change reportId to report.id-->
-							<g:link controller="formAPart1a" params="[reportId: reportInstance.id]" ><g:message code="default.button.list.label"/></g:link>
+						<td>
+                            <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -165,7 +165,7 @@
                             </g:each>
 						</td>
 						<td>
-							<g:link controller="formAPart2b" params="['reportId': reportInstance.id]"><g:message code="default.button.list.label"/></g:link>
+                            <g:link controller="formAPart2b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">

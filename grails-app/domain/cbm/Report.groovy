@@ -18,6 +18,7 @@ class Report {
 	Boolean officialVersion
 
     String getReportName() {
+        //TODO change to stateParty.country.toString()+"_"+
         "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) }+"_${language.abbreviation}"
     }
 

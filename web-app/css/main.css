@@ -819,7 +819,7 @@ div.inline { float:left; }
     text-decoration: none;
 }
 #languages ul li a:hover {
-    color: #A7CCFE;
+    /*color: #A7CCFE;*/
     font-weight: bold;
     text-decoration: none;
 }

@@ -42,7 +42,7 @@
                     <li>--}%
                         %{--<a id="lnkUN" tabindex="8" href="http://www.un.org/" target="_blank">UN</a></li>  --}%
                     <li>
-                        <g:message code="user.login.as" default="You are logged in as: "/> <sec:loggedInUserInfo field="username"/>  <g:link controller='logout' action='index'>[logout]</g:link>
+                        <g:message code="user.login.as" default="You are logged in as: "/> <b><sec:loggedInUserInfo field="username"/></b><g:link controller='logout' action='index'>[<g:message code="user.logout" default="logout"/>]</g:link>
                     </li>
                     %{--<li>
                         <a id="lnkContactUs" tabindex="10" href="mailto:conventionalarms-UNODA@un.org" target="_blank">Contact us</a>
