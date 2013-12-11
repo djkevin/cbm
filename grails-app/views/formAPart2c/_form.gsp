@@ -8,7 +8,7 @@
     <label>
         <g:message code="report.label" default="report"/>                                 
     </label>
-	${Report.get(params.reportId)}
+	${Report.get(params.reportId).reportName}
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'formAPart2b', 'error')} required">

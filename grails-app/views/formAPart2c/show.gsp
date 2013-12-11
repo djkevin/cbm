@@ -1,5 +1,8 @@
-
 <%@ page import="cbm.FormAPart2c" %>
+<%@ page import="cbm.Report" %>
+
+<g:set var="report" value="${formAPart2cInstance?.formAPart2b?.report}" />
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,8 +15,9 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li>
+                    <g:link class="list" controller="report" action="show" id="${report.id}">${report.reportName}</g:link>
+                </li>
 			</ul>
 		</div>
 		<div id="show-formAPart2c" class="content scaffold-show" role="main">
@@ -23,12 +27,19 @@
 			</g:if>
 			<ol class="property-list formAPart2c">
 			
+				<li class="fieldcontain">
+                    <span id="language-label" class="property-label">
+                    	<g:message code="report.reportName.label" default="Report Name" /></span>
+                    <span class="property-value" aria-labelledby="language-label">                    	                    
+						${report.reportName}                    	                   	
+                    </span>
+                </li>
+                    
 				<g:if test="${formAPart2cInstance?.facilityName}">
 				<li class="fieldcontain">
 					<span id="facilityName-label" class="property-label"><g:message code="formAPart2c.facilityName.label" default="Facility Name" /></span>
 					
-						<span class="property-value" aria-labelledby="facilityName-label"><g:fieldValue bean="${formAPart2cInstance}" field="facilityName"/></span>
-					
+						<span class="property-value" aria-labelledby="facilityName-label"><g:fieldValue bean="${formAPart2cInstance}" field="facilityName"/></span>					
 				</li>
 				</g:if>
 				
@@ -256,7 +267,7 @@
 			</ol>
 			<g:form url="[resource:formAPart2cInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${formAPart2cInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit" action="edit" resource="${formAPart2cInstance}" params="['reportId':report.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
