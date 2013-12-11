@@ -96,7 +96,7 @@
 	</label>
 	<span class="property-value" >
 		<g:textField name="floorAreaBL2" required="" value="${formAPart2cInstance?.floorAreaBL2}"/>
-		(<g:message code="formAPart2c.sqm" default="m^2" />)
+		(<g:message code="formAPart2c.sqm.label" default="m^2" />)
 	 </span>
 </div>
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'floorAreaBL3', 'error')} required">
@@ -122,7 +122,8 @@
 </div>
 
 
-<%-- div class="fieldcontain">
+<%-- this field is calculated, should only show it in show.gsp, not in create.gsp and edit.gsp 
+	div class="fieldcontain">
 	<label class="property-label"> 
 		<g:message code="formAPart2c.totalFloorArea.label" default="total floor area" />
 	</label>
@@ -131,17 +132,6 @@
 		(<g:message code="formAPart2c.sqm.label" default="m^2" />)
 	</span>
 </div --%>
-
-<!-- 
-	Integer militaryPersonnel
-	Integer civilianPersonnel
-	
-	Integer scientists
-	Integer engineers
-	Integer technicians
-	Integer administrators
-	
- -->
  
 <div class="fieldcontain property-label">
 	<label>
@@ -227,13 +217,89 @@
 	</span>
 </div>
 
-		scientificDisciplines
-		contractors 
-		fundingSources
-		fundResearch 
-		fundDevelopment
-		fundTest 
-		publicationPolicy
-		publicPapers
-		bioDefenseWork
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.scientificDisciplines.label" default="scientific disciplines" />
+	</label>
+	<g:textArea class="longTextMed" name="scientificDisciplines" required="" >${formAPart2cInstance?.scientificDisciplines}</g:textArea>		
+</div>
+
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.contractors.label" default="contractors" />
+	</label>
+	<span class="property-value" >
+		<g:textField name="contractors" required="" value="${formAPart2cInstance?.contractors}"/>		
+	</span>
+</div>
+
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.fundingSources.label" default="funding sources" />
+	</label>
+	<g:textArea class="longTextMed" name="fundingSources" required="" >${formAPart2cInstance?.fundingSources}</g:textArea>		
+</div>
+	
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.fundLevels.label" default="fund levels" />
+	</label>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'fundResearch', 'error')} required">
+	<label class="property-label" for="fundResearch">
+		<g:message code="formAPart2c.fundResearch.label" default="fund research" />
+		<span class="required-indicator">*</span>
+	</label>
+	<span class="property-value" >
+		<g:textField name="fundResearch" required="" value="${formAPart2cInstance?.fundResearch}"/>		
+	</span>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'fundDevelopment', 'error')} required">
+	<label class="property-label" for="fundDevelopment">
+		<g:message code="formAPart2c.fundDevelopment.label" default="fund development" />
+		<span class="required-indicator">*</span>
+	</label>
+	<span class="property-value" >
+		<g:textField name="fundDevelopment" required="" value="${formAPart2cInstance?.fundDevelopment}"/>		
+	</span>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'fundTest', 'error')} required">
+	<label class="property-label" for="fundTest">
+		<g:message code="formAPart2c.fundTest.label" default="fund test" />
+		<span class="required-indicator">*</span>
+	</label>
+	<span class="property-value" >
+		<g:textField name="fundTest" required="" value="${formAPart2cInstance?.fundTest}"/>		
+	</span>
+</div>		 
+		
+		 
+		
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.publicationPolicy.label" default="publication policy" />
+	</label>
+	<g:textArea class="longTextMed" name="publicationPolicy" required="" >${formAPart2cInstance?.publicationPolicy}</g:textArea>		
+</div>	
+
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.publicPapers.label" default="public papers" />
+	</label>
+	<g:textArea class="longTextMed" name="publicPapers" required="" >${formAPart2cInstance?.publicPapers}</g:textArea>		
+</div>	
+
+<div class="fieldcontain property-label">
+	<label>
+		<g:message code="formAPart2c.bioDefenseWork.label" default="bio defense work" />
+	</label>
+	<g:textArea class="longTextMed" name="bioDefenseWork" required="" >${formAPart2cInstance?.bioDefenseWork}</g:textArea>		
+</div>			
+		
+<g:set var="formInstance" value="${formAPart2cInstance}"></g:set>
+<g:render template="../formStatus"/>		
+		
 		
