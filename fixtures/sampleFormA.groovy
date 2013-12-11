@@ -9,6 +9,7 @@ import cbm.SecRole
 import cbm.SecUserSecRole
 import cbm.FormB
 import cbm.FormAPart2b
+import cbm.FormAPart2c
 
 // TODO: rename this class because it's creating data not only for FormA, but in general.
 
@@ -208,7 +209,7 @@ fixture {
 		title ="formAPart2b"
 		formStatus = "Draft"
 		visibility = "Public"
-		programName="sample programme at Canada"
+		programName="sample programme in Canada"
 		objectives="sample objectives"
 		conductedUnderContract=true
 		proportionContracted="sample proportion"
@@ -217,6 +218,40 @@ fixture {
 		amount=1200000
 		source="sample source"
 		report = [reportCANADA2010FR]
+	}
+	
+	formAPart2c1(FormAPart2c) {
+		title ="formAPart2c"
+		formStatus = "Draft"
+		visibility = "Private"
+		
+		formAPart2b = formAPart2b1
+		
+		facilityName = "sample facility name"
+		location = "sample location"
+		postalAddress = "22, impasse de null part, Ville-Loin, 12543 XX"
+		
+		floorAreaBL2=14
+		floorAreaBL3=36
+		floorAreaBL4=8
+			
+		militaryPersonnel=12
+		civilianPersonnel=73		
+		scientists=12
+		engineers=5
+		technicians=3
+		administrators=9
+		
+		scientificDisciplines="some disciplines"
+		contractors=1
+		fundingSources="some information about funding sources"
+		fundResearch=120000
+		fundDevelopment=30000
+		fundTest=56000
+		
+		publicationPolicy="some policy"
+		publicPapers="some papers"
+		bioDefenseWork="some biological defense work"
 	}
 
     formBCAN(FormB){
