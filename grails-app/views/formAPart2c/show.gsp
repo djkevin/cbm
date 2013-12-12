@@ -1,6 +1,7 @@
 <%@ page import="cbm.FormAPart2c" %>
 <%@ page import="cbm.Report" %>
 
+<!--  retrieve the Report object associated with this FormAPart2c object, because we need to use the report id and name. -->
 <g:set var="report" value="${formAPart2cInstance?.formAPart2b?.report}" />
 
 <!DOCTYPE html>

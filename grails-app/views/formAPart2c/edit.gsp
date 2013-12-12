@@ -1,4 +1,8 @@
-<%@ page import="cbm.FormAPart2c" %>
+<!-- 
+	Requires a URL parameter "reportId". The value of this parameter is the id of the Report linked to the FormAPart2c.
+ -->
+ 
+ <%@ page import="cbm.FormAPart2c" %>
 <%@ page import="cbm.Report" %>
 
 <!DOCTYPE html>

@@ -1,4 +1,8 @@
-<%@page import="cbm.FormAPart2b"%>
+<!-- 
+	Requires the caller to pass a parameter "reportId". The value of this parameter is the id of the Report linked to the FormAPart2c.
+ -->
+ 
+ <%@page import="cbm.FormAPart2b"%>
 <%@page import="cbm.FormAPart2c" %>
 <%@page import="cbm.Report" %>
 
