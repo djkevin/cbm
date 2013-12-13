@@ -12,10 +12,15 @@ class ReportController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def springSecurityService
+ //   def user =SecUser.get(springSecurityService.principal.id)
+
+    SecUser getUser(){
+        return SecUser.get(springSecurityService.principal.id)
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def user = SecUser.get(springSecurityService.principal.id)
+        def user = getUser()
         // respond Report.list(params), model:[reportInstanceCount: Report.count()]
         respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
     }

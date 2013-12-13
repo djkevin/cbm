@@ -1,13 +1,17 @@
 package cbm
 
-
-
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.*
+import grails.test.mixin.domain.DomainClassUnitTestMixin
+import grails.test.mixin.web.ControllerUnitTestMixin
 import spock.lang.*
 
 @TestFor(ReportController)
 @Mock(Report)
+@TestMixin([ControllerUnitTestMixin,DomainClassUnitTestMixin])
 class ReportControllerSpec extends Specification {
+
+
 
     def populateValidParams(params) {
         assert params != null
@@ -15,7 +19,52 @@ class ReportControllerSpec extends Specification {
         //params["name"] = 'someValidName'
     }
 
+
+    void "Test mock secure user"(){
+        defineBeans {
+            springSecurityService(SpringSecurityService)
+        }
+
+        given:
+        def user = new SecUser(id: 123)
+        mockDomain SecUser, [user]
+        mockDomain SecUserSecRole, [new SecUserSecRole(secUser: user)]
+//        def security = Mock(SpringSecurityService)
+//        controller.springSecurityService = springSecurityService
+//        security.currentUser >> new SecUser(id:9999)
+//        springSecurityService.
+
+        when:
+        controller.params.id = 123
+
+        then:
+        println 'success '+controller.params
+
+    }
+
     void "Test the index action returns the correct model"() {
+
+        setup:
+        def user = new SecUser(id: 123)
+        mockDomain SecUser, [user]
+        mockDomain SecUserSecRole, [new SecUserSecRole(secUser: user)]
+        def security = Mock(SpringSecurityService)
+        controller.springSecurityService = security
+        security.currentUser >> new SecUser(id:9999)
+
+        mockDomain SpringSecurityService
+        println(controller.springSecurityService)
+
+
+        def stateParty =  new StateParty(country: Country.MAURITIUS)
+//        def user = new SecUser(username: "canada", password: "ss", stateParty: stateParty)
+//        mockDomain(SecUser, [user])
+//        mockDomain(StateParty, [stateParty])
+//        mockDomain(SecUserSecRole,[new SecUserSecRole(secUser: user)])
+//
+//        def security = Mock(SpringSecurityService)
+//        controller.springSecurityService = security
+
 
         when:"The index action is executed"
             controller.index()
@@ -25,7 +74,43 @@ class ReportControllerSpec extends Specification {
             model.reportInstanceCount == 0
     }
 
-    void "Test the create action returns the correct model"() {
+/*    void "Test the index action returns the correct model"() {
+
+
+        given:
+
+        def user = new SecUser(id: 123)
+        mockDomain SecUser, [user]
+        mockDomain SecUserSecRole, [new SecUserSecRole(secUser: user)]
+        def security = Mock(SpringSecurityService)
+        controller.springSecurityService = security
+        security.currentUser >> new SecUser(id:9999)
+
+        def stateParty =  new StateParty(country: Country.MAURITIUS)
+
+        user.stateParty=stateParty
+                                         *//*
+        def security = Mock(SpringSecurityService)
+        controller.springSecurityService = security
+
+//        controller.springSecurityService.metaClass.getCurrentUser = {user}
+
+       // controller.springSecurityService.currentUser=user
+        controller.springSecurityService = [encodePassword: { String p -> "encrypted" },
+                reauthenticate: { String u -> },
+                isLoggedIn: { -> true },
+                getPrincipal: { -> [username: "Bob"]},
+                stateParty: stateParty]*//*
+
+        when:"The index action is executed"
+            controller.index()
+
+        then:"The model is correct"
+            !model.reportInstanceList
+            model.reportInstanceCount == 0
+    }*/
+
+   /* void "Test the create action returns the correct model"() {
         when:"The create action is executed"
             controller.create()
 
@@ -142,5 +227,5 @@ class ReportControllerSpec extends Specification {
             Report.count() == 0
             response.redirectedUrl == '/report/index'
             flash.message != null
-    }
+    }*/
 }
