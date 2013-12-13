@@ -15,6 +15,17 @@ class StatePartySpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test create a State Party"() {
+        setup:
+        mockDomain(StateParty)
+
+        when:
+        new StateParty(country: country).save()
+
+        then:
+        StateParty.findAllByCountry(country).size() > 0
+
+        where:
+        country = Country.MAURITIUS
     }
 }
