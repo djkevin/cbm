@@ -21,7 +21,7 @@ class ReportController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         def user = getUser()
-        // respond Report.list(params), model:[reportInstanceCount: Report.count()]
+        // respond Report.list(params), model:[reportInstanceCount: Report.count()]   test
         respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
     }
 
