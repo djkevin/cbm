@@ -53,6 +53,7 @@
         <g:textField name="postCode" maxlength="10" value="${addressInstance?.postCode}"/>
     </div>
 
+
     <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'location.town', 'error')} ">
         <label for="location.town" class="property-label25">
             <g:message code="formG.location.town.label" default="Town" />
