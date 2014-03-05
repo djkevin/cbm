@@ -304,7 +304,7 @@
                             </g:each>
 						</td>
 						<td>
-							<g:link controller="formG" action="create"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formG" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">

@@ -1,8 +1,8 @@
 <%@ page import="cbm.FormAPart1a" %>
 
-<div class="fieldcontain ${hasErrors(bean: formAPart2aInstance, field: 'report', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label">
-        <g:message code="formAPart2a.report.label" default="Report"/>
+        <g:message code="formAPart1a.report.label" default="Report"/>
         <span class="required-indicator">*</span>
     </label>
     <g:hiddenField name="report.id" id="report" value="${formAPart1aInstance?.report?.id}" />

@@ -26,6 +26,8 @@
 					
 						<g:sortableColumn property="formStatus" title="${message(code: 'formG.formStatus.label', default: 'Form Status')}" />
 					
+						<g:sortableColumn property="visibility" title="${message(code: 'formG.visibility.label', default: 'Visibility')}" />
+					
 						<g:sortableColumn property="facilityName" title="${message(code: 'formG.facilityName.label', default: 'Facility Name')}" />
 					
 						<th><g:message code="formG.location.label" default="Location" /></th>
@@ -33,8 +35,6 @@
 						<g:sortableColumn property="typesOfDiseaseCovered" title="${message(code: 'formG.typesOfDiseaseCovered.label', default: 'Types Of Disease Covered')}" />
 					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'formG.dateCreated.label', default: 'Date Created')}" />
-					
-						<g:sortableColumn property="lastUpdated" title="${message(code: 'formG.lastUpdated.label', default: 'Last Updated')}" />
 					
 					</tr>
 				</thead>
@@ -44,6 +44,8 @@
 					
 						<td><g:link action="show" id="${formGInstance.id}">${fieldValue(bean: formGInstance, field: "formStatus")}</g:link></td>
 					
+						<td>${fieldValue(bean: formGInstance, field: "visibility")}</td>
+					
 						<td>${fieldValue(bean: formGInstance, field: "facilityName")}</td>
 					
 						<td>${fieldValue(bean: formGInstance, field: "location")}</td>
@@ -51,8 +53,6 @@
 						<td>${fieldValue(bean: formGInstance, field: "typesOfDiseaseCovered")}</td>
 					
 						<td><g:formatDate date="${formGInstance.dateCreated}" /></td>
-					
-						<td><g:formatDate date="${formGInstance.lastUpdated}" /></td>
 					
 					</tr>
 				</g:each>
