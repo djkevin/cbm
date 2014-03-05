@@ -23,9 +23,13 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
-    def create() {
+    def create() {      //TODO check for null or empty params
         println(params)
-        respond new FormAPart1a(params)
+        def reportId = params.long('reportId')
+        Report r =  Report.findById(reportId)
+        FormAPart1a formAPart1a = new FormAPart1a();
+        formAPart1a.setReport(r)
+        respond formAPart1a
     }
 
     @Transactional
