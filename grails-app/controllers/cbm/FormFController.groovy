@@ -36,8 +36,6 @@ class FormFController {
             return
         }
 
-        println "saving... "+formFInstance
-
         if (formFInstance.hasErrors()) {
             respond formFInstance.errors, view:'create'
             return
