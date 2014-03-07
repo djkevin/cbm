@@ -22,7 +22,11 @@ class FormFController {
     }
 
     def create() {
-        respond new FormF(params)
+        def reportId = params.long('reportId')
+        Report r =  Report.findById(reportId)
+        FormF f = new FormF()
+        f.setReport(r)
+        respond f
     }
 
     @Transactional
@@ -31,6 +35,8 @@ class FormFController {
             notFound()
             return
         }
+
+        println "saving... "+formFInstance
 
         if (formFInstance.hasErrors()) {
             respond formFInstance.errors, view:'create'

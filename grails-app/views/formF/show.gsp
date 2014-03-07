@@ -20,7 +20,7 @@
 			</ul>
 		</div>
 		<div id="show-formF" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            <h1><g:message code="default.show.label" args="[entityName]" />:<g:message code="formF.long.label" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -60,7 +60,7 @@
 
                 <g:if test="${formFInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="report-label" class="property-label"><g:message code="formF.report.label" default="Report" /></span>
+                        <span id="report-label" class="property-label"><g:message code="report.label" default="Report" /></span>
 
                         <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formFInstance?.report?.id}">${formFInstance?.report?.encodeAsHTML()}</g:link></span>
 

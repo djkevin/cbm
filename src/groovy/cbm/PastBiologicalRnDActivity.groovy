@@ -8,9 +8,13 @@ class PastBiologicalRnDActivity {
 	
 	static constraints = {
 		pastBiologicalActivity()
-		periodOfActivity maxSize:100
+		periodOfActivity maxSize:250
 		summaryOfRnDActivities maxSize:5000
 	}
+
+    String toString() {
+        return "${pastBiologicalActivity}_${periodOfActivity}"
+    }
 	
 
 }
