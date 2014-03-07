@@ -3,7 +3,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'formC.label', default: 'FormC')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
+		<title><g:message code="default.create.label" args="[entityName]" />:<g:message code="formC.long.label" /></title>
 	</head>
 	<body>
 		<a href="#create-formC" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
