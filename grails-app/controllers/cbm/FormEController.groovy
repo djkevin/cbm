@@ -22,7 +22,11 @@ class FormEController {
     }
 
     def create() {
-        respond new FormE(params)
+        def reportId = params.long('reportId')
+        Report r =  Report.findById(reportId)
+        FormE f = new FormE()
+        f.setReport(r)
+        respond f
     }
 
     @Transactional
