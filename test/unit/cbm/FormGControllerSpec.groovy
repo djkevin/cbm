@@ -1,7 +1,6 @@
 package cbm
 
-
-
+import grails.test.MockUtils
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -9,10 +8,13 @@ import spock.lang.*
 @Mock(FormG)
 class FormGControllerSpec extends Specification {
 
+
+
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+        params["reportId"]=1
     }
 
     void "Test the index action returns the correct model"() {
@@ -25,12 +27,37 @@ class FormGControllerSpec extends Specification {
             model.formGInstanceCount == 0
     }
 
+    @IgnoreRest
     void "Test the create action returns the correct model"() {
+
         when:"The create action is executed"
+        controller.create()
+
+        then:"The model is correctly created"
+        model.formGInstance!= null
+
+/*        def r1  = new Report(id: 1, stateParty: new StateParty(country: "CANADA"), year: "2010",language: "ENGLISH")
+        MockUtils.mockDomain(Report, [r1])
+
+        given:
+            controller.params.reportId = '1'
+        when:
+            def model  = controller.create()
+        then:
+            response== null*/
+
+        
+
+
+
+ /*       when:"The create action is executed"
+        
             controller.create()
 
         then:"The model is correctly created"
             model.formGInstance!= null
+         //   assert model.formGInstance.report == r1
+            Report.findById(1) != null*/
     }
 
     void "Test the save action correctly persists an instance"() {

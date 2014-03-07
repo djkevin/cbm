@@ -8,21 +8,22 @@
 	</label>
 	<g:textField name="facilityName" value="${formGInstance?.facilityName}"/>
 </div>
+
 <g:set var="addressInstance" value="${formGInstance}"></g:set>
 <g:render template="../address"/>
 
 
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'typesOfDiseaseCovered', 'error')} ">
-	<label for="typesOfDiseaseCovered" class="property-label25">
+	<label for="typesOfDiseaseCovered">
 		<g:message code="formG.typesOfDiseaseCovered.label" default="Types Of Disease Covered" />
 		
 	</label>
-	<g:textArea name="typesOfDiseaseCovered" cols="40" rows="5" maxlength="5000" value="${formGInstance?.typesOfDiseaseCovered}"/>
+	<g:textArea class="wysiwyg"  name="typesOfDiseaseCovered" cols="40" rows="5" maxlength="5000" value="${formGInstance?.typesOfDiseaseCovered}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'report', 'error')} required">
 	<label for="report" class="property-label25">
-		<g:message code="formG.report.label" default="Report" />
+		<g:message code="report.label" default="Report" />
 		<span class="required-indicator">*</span>
 	</label>
     <g:hiddenField name="report.id" id="report" value="${formGInstance?.report?.id}" />
