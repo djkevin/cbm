@@ -1,8 +1,8 @@
 <%@ page import="cbm.FormAPart2b" %>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'report', 'error')} required">
-    <label for="report">
-        <g:message code="formAPart2a.report.label" default="Report"/>
+    <label for="report" class="property-label25">
+        <g:message code="report.label" default="Report"/>
         <span class="required-indicator">*</span>
     </label>
     <g:hiddenField name="report.id" id="report" value="${formAPart2bInstance?.report?.id}" />
@@ -33,7 +33,7 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'source', 'error')} ">
-    <label for="source" class="property-label25">
+    <label for="source">
         <g:message code="formAPart2b.source.label" default="Source" />
 
     </label>
