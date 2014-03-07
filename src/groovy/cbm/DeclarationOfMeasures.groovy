@@ -14,4 +14,10 @@ class DeclarationOfMeasures {
 		amendedSinceLastYear inList: ["Yes", "No", "Unknown"]
 	}
 
+    String toString(){
+        "${legislation} ${regulation} ${otherMeasures} ${amendedSinceLastYear}"
+    }
+
+
+
 }

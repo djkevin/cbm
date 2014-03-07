@@ -26,15 +26,25 @@ class FormEController {
         Report r =  Report.findById(reportId)
         FormE f = new FormE()
         f.setReport(r)
+        // Need to initialise embedded domain classes if they contain inList Constraints
+        f.setDevelopmentAndMeansOfDelivery(new DeclarationOfMeasures())
+        f.setExportsOfMicroOrganisms(new DeclarationOfMeasures())
+        f.setBiosafetyAndBioSecurity(new DeclarationOfMeasures())
+        f.setImportsOfMicroOrganisms(new DeclarationOfMeasures())
+
         respond f
     }
 
     @Transactional
     def save(FormE formEInstance) {
         if (formEInstance == null) {
+            println "formE is null!!!"
             notFound()
             return
         }
+        println formEInstance.report
+        println formEInstance.additionalComments
+        println ("dev and means of delivery"+formEInstance.developmentAndMeansOfDelivery)
 
         if (formEInstance.hasErrors()) {
             respond formEInstance.errors, view:'create'
