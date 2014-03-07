@@ -9,10 +9,11 @@
  
 
 <div class="fieldcontain">
-    <label>
+    <label class="property-label25">
         <g:message code="report.label" default="report"/>                                 
     </label>
-	${Report.get(params.reportId).reportName}
+
+    <g:field type="text" name="report.name" value="${Report.get(params.reportId).reportName}" readonly="true" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'formAPart2b', 'error')} required">
@@ -99,7 +100,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="floorAreaBL2" required="" value="${formAPart2cInstance?.floorAreaBL2}"/>
+		<g:textField name="floorAreaBL2" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'floorAreaBL2')}"/>
 		(<g:message code="formAPart2c.sqm.label" default="m^2" />)
 	 </span>
 </div>
@@ -109,7 +110,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="floorAreaBL3" required="" value="${formAPart2cInstance?.floorAreaBL3}"/>
+		<g:textField name="floorAreaBL3" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'floorAreaBL3')}"/>
 		(<g:message code="formAPart2c.sqm.label" default="m^2" />)
 	</span>
 </div>
@@ -120,7 +121,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="floorAreaBL4" required="" value="${formAPart2cInstance?.floorAreaBL4}"/>
+		<g:textField name="floorAreaBL4" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'floorAreaBL4')}"/>
 		(<g:message code="formAPart2c.sqm.label" default="m^2" />)
 	</span>
 </div>
@@ -161,7 +162,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="militaryPersonnel" required="" value="${formAPart2cInstance?.militaryPersonnel}"/>		
+		<g:textField name="militaryPersonnel" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'militaryPersonnel')}"/>
 	</span>
 </div>
 
@@ -171,7 +172,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="civilianPersonnel" required="" value="${formAPart2cInstance?.civilianPersonnel}"/>		
+		<g:textField name="civilianPersonnel" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'civilianPersonnel')}"/>
 	</span>
 </div>
 
@@ -187,7 +188,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="scientists" required="" value="${formAPart2cInstance?.scientists}"/>		
+		<g:textField name="scientists" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'scientists')}"/>
 	</span>
 </div>
 
@@ -197,7 +198,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="engineers" required="" value="${formAPart2cInstance?.engineers}"/>		
+		<g:textField name="engineers" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'engineers')}"/>
 	</span>
 </div>
 
@@ -207,7 +208,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="technicians" required="" value="${formAPart2cInstance?.technicians}"/>		
+		<g:textField name="technicians" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'technicians')}"/>
 	</span>
 </div>
 
@@ -217,7 +218,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="administrators" required="" value="${formAPart2cInstance?.administrators}"/>		
+		<g:textField name="administrators" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'administrators')}"/>
 	</span>
 </div>
 
@@ -233,7 +234,7 @@
 		<g:message code="formAPart2c.contractors.label" default="contractors" />
 	</label>
 	<span class="property-value" >
-		<g:textField name="contractors" required="" value="${formAPart2cInstance?.contractors}"/>		
+		<g:textField name="contractors" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'contractors')}"/>
 	</span>
 </div>
 
@@ -256,7 +257,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="fundResearch" required="" value="${formAPart2cInstance?.fundResearch}"/>		
+		<g:textField name="fundResearch" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'fundResearch') }"/>
 	</span>
 </div>
 
@@ -266,7 +267,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="fundDevelopment" required="" value="${formAPart2cInstance?.fundDevelopment}"/>		
+		<g:textField name="fundDevelopment" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'fundDevelopment')}"/>
 	</span>
 </div>
 
@@ -276,7 +277,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="fundTest" required="" value="${formAPart2cInstance?.fundTest}"/>		
+		<g:textField name="fundTest" required="" value="${fieldValue(bean:formAPart2cInstance, field: 'fundTest')}"/>
 	</span>
 </div>		 
 		
