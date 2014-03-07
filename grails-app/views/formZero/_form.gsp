@@ -1,7 +1,7 @@
 <%@ page import="cbm.FormZero" %>
 <div class="fieldcontain ${hasErrors(bean: formZeroInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">
-        <g:message code="formC.report.label" default="Report" />
+        <g:message code="report.label" default="Report" />
         <span class="required-indicator">*</span>
     </label>
     <g:hiddenField name="report.id" id="report" value="${formZeroInstance?.report?.id}" />

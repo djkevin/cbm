@@ -22,8 +22,12 @@ class FormZeroController {
     }
 
     def create() {
-        println(params)
-        respond new FormZero(params)
+        def reportId = params.long('reportId')
+        Report r =  Report.findById(reportId)
+        FormZero f = new FormZero()
+        println ("report is: "+r)
+        f.setReport(r)
+        respond f
     }
 
     @Transactional
