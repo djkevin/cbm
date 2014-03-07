@@ -40,7 +40,7 @@ class Report {
     }
 	
 	String toString() {
-		return "${stateParty.country}_${year}_${language}"
+		return "${stateParty.country}_${year}_${language.abbreviation}"
 	}
 
     def capitalize(s) { s[0].toUpperCase() + s[1..-1].toLowerCase() }
