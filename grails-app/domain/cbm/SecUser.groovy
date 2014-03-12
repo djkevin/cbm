@@ -2,7 +2,7 @@ package cbm
 
 class SecUser {
 
-   // static belongsTo = [stateParty: StateParty]
+    // static belongsTo = [stateParty: StateParty]
     transient springSecurityService
 
     String username

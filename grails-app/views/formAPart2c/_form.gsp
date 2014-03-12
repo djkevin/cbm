@@ -13,7 +13,7 @@
         <g:message code="report.label" default="report"/>                                 
     </label>
 
-    <g:field type="text" name="report.name" value="${Report.get(params.reportId).reportName}" readonly="true" />
+    <g:field type="text" name="report.name" value="${Report.get(params.reportId)}" readonly="true" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'formAPart2b', 'error')} required">
