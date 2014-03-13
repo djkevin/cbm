@@ -15,8 +15,6 @@
                 <li>
                     <g:link class="list" controller="report" action="show" id="${formAPart2aInstance?.report?.id}">${formAPart2aInstance?.report?.reportName}</g:link>
                 </li>
-			%{--	<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
 			</ul>
 		</div>
 		<div id="show-formAPart2a" class="content scaffold-show" role="main">
@@ -39,17 +37,17 @@
 				</li>
                     <span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
 				</g:if>
-			
-				<g:if test="${formAPart2aInstance?.report}">
-				<li class="fieldcontain">
-					<span id="report-label" class="property-label"><g:message code="formAPart2a.report.label" default="Report" /></span>
-					
-						<span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formAPart2aInstance?.report?.id}">${formAPart2aInstance?.report?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
+
+                <g:if test="${formAPart2aInstance?.report}">
+                    <li class="fieldcontain">
+                        <span id="report-label" class="property-label"><g:message code="report.label" default="Report"/></span>
+                        <span class="property-value" aria-labelledby="report-label">
+                            <g:link controller="report" action="show" id="${formAPart2aInstance?.report?.id}">${formAPart2aInstance?.report?.encodeAsHTML()}</g:link>
+                        </span>
+                    </li>
+                </g:if>
+
+            </ol>
 			<g:form url="[resource:formAPart2aInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${formAPart2aInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
