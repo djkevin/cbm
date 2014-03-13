@@ -1,5 +1,7 @@
 package cbm
 
+import org.joda.time.LocalDate
+
 class Report {
 
 
@@ -28,7 +30,7 @@ class Report {
     static constraints = {
 //        reportName()
         language unique: ['year', 'stateParty']
-        year range: 2000..2050
+        year range: 2000..new LocalDate().getYear()
         reportStatus inList: ["Draft", "Submitted"]
         publicationStatus inList: ["Not published", "Published"]
         officialVersion()
@@ -39,7 +41,7 @@ class Report {
     }
 
     String toString() {
-        return "${stateParty.country}_${year}_${language.abbreviation}"
+        return "${stateParty?.country}_${year}_${language?.abbreviation}"
     }
 
     def capitalize(s) { s[0].toUpperCase() + s[1..-1].toLowerCase() }
