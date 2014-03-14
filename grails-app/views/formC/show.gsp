@@ -34,22 +34,20 @@
                 </g:if>
 
                 <g:if test="${formCInstance?.comments}">
+                    <h4><g:message code="formC.comments.label" default="Comments" /></h4>
                     <li class="fieldcontain">
-                        <span id="comments-label" class="property-label"><g:message code="formC.comments.label" default="Comments" /></span>
-
                         <span class="property-value" aria-labelledby="comments-label"><g:fieldValue bean="${formCInstance}" field="comments"/></span>
-
                     </li>
                 </g:if>
 
-				<g:if test="${formCInstance?.report}">
+%{--				<g:if test="${formCInstance?.report}">
 				<li class="fieldcontain">
 					<span id="report-label" class="property-label"><g:message code="formC.report.label" default="Report" /></span>
 					
 						<span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formCInstance?.report?.id}">${formCInstance?.report?.encodeAsHTML()}</g:link></span>
 					
 				</li>
-				</g:if>
+				</g:if>--}%
 
                 <g:set var="formInstance" value="${formCInstance}"></g:set>
                 <g:render template="../showStatus"/>

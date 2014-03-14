@@ -1,4 +1,3 @@
-
 <%@ page import="cbm.FormG" %>
 <!DOCTYPE html>
 <html>
@@ -52,60 +51,17 @@
 					
 				</li>
 				</g:if>
+                <br>
+
+                <g:if test="${formGInstance?.typesOfDiseaseCovered}">
+                <h4><g:message code="formG.typesOfDiseaseCovered.label" default="Types Of Disease Covered" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="typesOfDiseaseCovered-label"><%=formGInstance.typesOfDiseaseCovered.decodeHTML()%></span>
+                    </li>
+                </g:if>
 			
-				<g:if test="${formGInstance?.typesOfDiseaseCovered}">
-				<li class="fieldcontain">
-					<span id="typesOfDiseaseCovered-label" class="property-label"><g:message code="formG.typesOfDiseaseCovered.label" default="Types Of Disease Covered" /></span>
-					
-						<span class="property-value" aria-labelledby="typesOfDiseaseCovered-label"><g:fieldValue bean="${formGInstance}" field="typesOfDiseaseCovered"/></span>
-					
-				</li>
-				</g:if>
-
-				<g:if test="${formGInstance?.title}">
-				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="formG.title.label" default="Title" /></span>
-					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${formGInstance}" field="title"/></span>
-					
-				</li>
-				</g:if>
-
-                <g:if test="${formGInstance?.formStatus}">
-                    <li class="fieldcontain">
-                        <span id="formStatus-label" class="property-label"><g:message code="formG.formStatus.label" default="Form Status" /></span>
-
-                        <span class="property-value" aria-labelledby="formStatus-label"><g:fieldValue bean="${formGInstance}" field="formStatus"/></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${formGInstance?.visibility}">
-                    <li class="fieldcontain">
-                        <span id="visibility-label" class="property-label"><g:message code="formG.visibility.label" default="Visibility" /></span>
-
-                        <span class="property-value" aria-labelledby="visibility-label"><g:fieldValue bean="${formGInstance}" field="visibility"/></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${formGInstance?.dateCreated}">
-                    <li class="fieldcontain">
-                        <span id="dateCreated-label" class="property-label"><g:message code="formG.dateCreated.label" default="Date Created" /></span>
-
-                        <span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${formGInstance?.dateCreated}" /></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${formGInstance?.lastUpdated}">
-                    <li class="fieldcontain">
-                        <span id="lastUpdated-label" class="property-label"><g:message code="formG.lastUpdated.label" default="Last Updated" /></span>
-
-                        <span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${formGInstance?.lastUpdated}" /></span>
-
-                    </li>
-                </g:if>
+                <g:set var="formInstance" value="${formGInstance}"></g:set>
+                <g:render template="../showStatus"/>
 			
 			</ol>
 			<g:form url="[resource:formGInstance, action:'delete']" method="DELETE">

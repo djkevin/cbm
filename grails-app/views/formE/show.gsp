@@ -33,15 +33,6 @@
                     </li>
                 </g:if>
 
-				<g:if test="${formEInstance?.additionalComments}">
-				<li class="fieldcontain">
-					<span id="additionalComments-label" class="property-label"><g:message code="formE.additionalComments.label" default="Additional Comments" /></span>
-					
-						<span class="property-value" aria-labelledby="additionalComments-label"><g:fieldValue bean="${formEInstance}" field="additionalComments"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${formEInstance?.biosafetyAndBioSecurity}">
 				<li class="fieldcontain">
 					<span id="biosafetyAndBioSecurity-label" class="property-label"><g:message code="formE.biosafetyAndBioSecurity.label" default="Biosafety And Bio Security" /></span>
@@ -77,6 +68,15 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${formEInstance?.additionalComments}">
+                    <li class="fieldcontain">
+                        <span id="additionalComments-label" class="property-label"><g:message code="formE.additionalComments.label" default="Additional Comments" /></span>
+
+                        <span class="property-value" aria-labelledby="additionalComments-label"><g:fieldValue bean="${formEInstance}" field="additionalComments"/></span>
+
+                    </li>
+                </g:if>
 
                 <g:set var="formInstance" value="${formEInstance}"></g:set>
                 <g:render template="../showStatus"/>

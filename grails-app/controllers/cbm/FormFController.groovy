@@ -26,8 +26,6 @@ class FormFController {
         Report r =  Report.findById(reportId)
         FormF f = new FormF()
         f.setReport(r)
-
-
         respond f
     }
 

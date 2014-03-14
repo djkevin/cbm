@@ -38,14 +38,14 @@
                     <span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
 				</g:if>
 
-                <g:if test="${formAPart2aInstance?.report}">
+ %{--               <g:if test="${formAPart2aInstance?.report}">
                     <li class="fieldcontain">
                         <span id="report-label" class="property-label"><g:message code="report.label" default="Report"/></span>
                         <span class="property-value" aria-labelledby="report-label">
                             <g:link controller="report" action="show" id="${formAPart2aInstance?.report?.id}">${formAPart2aInstance?.report?.encodeAsHTML()}</g:link>
                         </span>
                     </li>
-                </g:if>
+                </g:if>--}%
 
             </ol>
 			<g:form url="[resource:formAPart2aInstance, action:'delete']" method="DELETE">

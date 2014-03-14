@@ -28,7 +28,12 @@ class FormAPart2bController {
 
     def create() {
         println "in create"
-        respond new FormAPart2b(params)
+        def reportId = params.long('reportId')
+        Report r =  Report.findById(reportId)
+        FormAPart2b f = new FormAPart2b()
+        f.setReport(r)
+        respond f
+//        respond new FormAPart2b(params)
     }
 
     @Transactional
@@ -59,6 +64,7 @@ class FormAPart2bController {
 
     @Transactional
     def update(FormAPart2b formAPart2bInstance) {
+        println "in update "+formAPart2bInstance
         if (formAPart2bInstance == null) {
             notFound()
             return
@@ -70,10 +76,11 @@ class FormAPart2bController {
         }
 
         formAPart2bInstance.save flush:true
-
+        println("after save")
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FormAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
+               println "Save ok"
                 redirect formAPart2bInstance
             }
             '*'{ respond formAPart2bInstance, [status: OK] }

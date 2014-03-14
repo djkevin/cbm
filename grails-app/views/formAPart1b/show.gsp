@@ -27,7 +27,7 @@
 
                 <g:if test="${formAPart1bInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="formAPart1b.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report Name" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart1bInstance}" field="report"/></span>
                     </li>
                 </g:if>
@@ -58,14 +58,14 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${formAPart1bInstance?.report}">
+%{--				<g:if test="${formAPart1bInstance?.report}">
 				<li class="fieldcontain">
 					<span id="report-label" class="property-label"><g:message code="formAPart1b.report.label" default="Report" /></span>
 					
 						<span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formAPart1bInstance?.report?.id}">${formAPart1bInstance?.report?.encodeAsHTML()}</g:link></span>
 					
 				</li>
-				</g:if>
+				</g:if>--}%
 			
                 <g:set var="formInstance" value="${formAPart1bInstance}"></g:set>
                 <g:render template="../showStatus"/>
