@@ -13,7 +13,7 @@ class FormG extends BaseForm {
     Report report
 
     static constraints = {
-        facilityName()
+        facilityName maxSize: 250, blank: false
         location()
         typesOfDiseaseCovered maxSize: 5000
 

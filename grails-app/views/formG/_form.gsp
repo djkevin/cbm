@@ -6,7 +6,7 @@
 		<g:message code="formG.facilityName.label" default="Facility Name" />
 		
 	</label>
-	<g:textField name="facilityName" value="${formGInstance?.facilityName}"/>
+	<g:textField name="facilityName" maxlength="${formGInstance?.constraints?.facilityName?.maxSize}" value="${formGInstance?.facilityName}"/>
 </div>
 
 <g:set var="addressInstance" value="${formGInstance}"></g:set>
@@ -18,7 +18,7 @@
 		<g:message code="formG.typesOfDiseaseCovered.label" default="Types Of Disease Covered" />
 		
 	</label>
-	<g:textArea class="wysiwyg"  name="typesOfDiseaseCovered" cols="40" rows="5" maxlength="5000" value="${formGInstance?.typesOfDiseaseCovered}"/>
+	<g:textArea class="wysiwyg"  name="typesOfDiseaseCovered" cols="40" rows="5" maxlength="${formGInstance?.constraints?.typesOfDiseaseCovered?.maxSize}" value="${formGInstance?.typesOfDiseaseCovered}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'report', 'error')} required">

@@ -2,7 +2,7 @@
 	Requires the caller to pass a parameter "reportId". The value of this parameter is the id of the Report linked to the FormAPart2c.
  -->
  
- <%@page import="cbm.FormAPart2b"%>
+<%@page import="cbm.FormAPart2b"%>
 <%@page import="cbm.FormAPart2c" %>
 <%@page import="cbm.Report" %>
 
@@ -32,7 +32,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textField class="longText" name="facilityName" maxlength="250" required="" value="${formAPart2cInstance?.facilityName}"/></div>
+<div><g:textField class="longText" name="facilityName" maxlength="${formAPart2cInstance?.constraints?.facilityName?.maxSize}" required="" value="${formAPart2cInstance?.facilityName}"/></div>
 
 
 <%-- div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'location', 'error')} ">
@@ -69,7 +69,7 @@
 		</div>
 		<div>
 			<g:textArea class="twoCol" name="location" cols="40" rows="5"
-				maxlength="500" required="" value="${formAPart2cInstance?.location}" />
+				maxlength="${formAPart2cInstance?.constraints?.location?.maxSize}" required="" value="${formAPart2cInstance?.location}" />
 		</div>
 	</div>
 	<div class="left2">
@@ -82,7 +82,7 @@
 		</div>
 		<div>
 			<g:textArea class="twoCol" name="postalAddress" cols="40" rows="5"
-				maxlength="500" required=""
+				maxlength="${formAPart2cInstance?.constraints?.postalAddress?.maxSize}" required=""
 				value="${formAPart2cInstance?.postalAddress}" />
 		</div>
 	</div>
@@ -226,7 +226,7 @@
 	<label>
 		<g:message code="formAPart2c.scientificDisciplines.label" default="scientific disciplines" />
 	</label>
-	<g:textArea class="longTextMed" name="scientificDisciplines" required="" >${formAPart2cInstance?.scientificDisciplines}</g:textArea>		
+	<g:textArea class="longTextMed" name="scientificDisciplines" maxlength="${formAPart2cInstance?.constraints?.scientificDisciplines?.maxSize}" required="" >${formAPart2cInstance?.scientificDisciplines}</g:textArea>
 </div>
 
 <div class="fieldcontain property-label">
@@ -242,7 +242,7 @@
 	<label>
 		<g:message code="formAPart2c.fundingSources.label" default="funding sources" />
 	</label>
-	<g:textArea class="longTextMed" name="fundingSources" required="" >${formAPart2cInstance?.fundingSources}</g:textArea>		
+	<g:textArea class="longTextMed" name="fundingSources" maxlength="${formAPart2cInstance?.constraints?.fundingSources?.maxSize}" required="" >${formAPart2cInstance?.fundingSources}</g:textArea>
 </div>
 	
 <div class="fieldcontain property-label">
@@ -257,7 +257,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="fundResearch" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'fundResearch') }"/>
+		<g:textField name="fundResearch" maxlength="${formAPart2cInstance?.constraints?.fundResearch?.maxSize}" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'fundResearch') }"/>
 	</span>
 </div>
 
@@ -267,7 +267,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="fundDevelopment" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'fundDevelopment')}"/>
+		<g:textField name="fundDevelopment" required="" maxlength="${formAPart2cInstance?.constraints?.fundDevelopment?.maxSize}" value="${fieldValue(bean: formAPart2cInstance, field: 'fundDevelopment')}"/>
 	</span>
 </div>
 
@@ -277,7 +277,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
-		<g:textField name="fundTest" required="" value="${fieldValue(bean:formAPart2cInstance, field: 'fundTest')}"/>
+		<g:textField name="fundTest" maxlength="${formAPart2cInstance?.constraints?.fundTest?.maxSize}" required="" value="${fieldValue(bean:formAPart2cInstance, field: 'fundTest')}"/>
 	</span>
 </div>		 
 		
@@ -287,22 +287,22 @@
 	<label>
 		<g:message code="formAPart2c.publicationPolicy.label" default="publication policy" />
 	</label>
-	<g:textArea class="longTextMed" name="publicationPolicy" required="" >${formAPart2cInstance?.publicationPolicy}</g:textArea>		
+	<g:textArea class="longTextMed" name="publicationPolicy" maxlength="${formAPart2cInstance?.constraints?.publicationPolicy?.maxSize}" required="" >${formAPart2cInstance?.publicationPolicy}</g:textArea>
 </div>	
 
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.publicPapers.label" default="public papers" />
 	</label>
-	<g:textArea class="longTextMed" name="publicPapers" required="" >${formAPart2cInstance?.publicPapers}</g:textArea>		
+	<g:textArea class="longTextMed" name="publicPapers" maxlength="${formAPart2cInstance?.constraints?.publicPapers?.maxSize}" required="" >${formAPart2cInstance?.publicPapers}</g:textArea>
 </div>	
 
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.bioDefenseWork.label" default="bio defense work" />
 	</label>
-	<g:textArea class="longTextMed" name="bioDefenseWork" required="" >${formAPart2cInstance?.bioDefenseWork}</g:textArea>		
-</div>			
+	<g:textArea class="longTextMed" name="bioDefenseWork" maxlength="${formAPart2cInstance?.constraints?.bioDefenseWork?.maxSize}" required="" >${formAPart2cInstance?.bioDefenseWork}</g:textArea>
+</div>
 		
 <g:set var="formInstance" value="${formAPart2cInstance}"></g:set>
 <g:render template="../formStatus"/>		

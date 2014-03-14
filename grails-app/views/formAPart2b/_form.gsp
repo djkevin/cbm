@@ -23,7 +23,7 @@
         <span class="required-indicator">*</span>
     </label>
 </div>
-<div><g:textArea class="wysiwyg" name="objectives" cols="40" rows="5" maxlength="5000" required=""
+<div><g:textArea class="wysiwyg" name="objectives" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.objectives?.maxSize}" required=""
                  value="${formAPart2bInstance?.objectives}"/></div>
 
 <div class="fieldcontain ">
@@ -37,7 +37,7 @@
         <g:message code="formAPart2b.source.label" default="Source" />
 
     </label>
-    <g:textArea class="longTextSml" name="source" value="${formAPart2bInstance?.source}" maxlength="500"/>
+    <g:textArea class="longTextSml" name="source" value="${formAPart2bInstance?.source}" maxlength="${formAPart2bInstance?.constraints?.source?.maxSize}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'amount', 'error')} required">
@@ -63,7 +63,7 @@
         <span class="required-indicator">*</span>
     </label>
 </div>
-<div><g:textArea class="wysiwyg" name="proportionContracted" cols="40" rows="5" maxlength="5000" required=""
+<div><g:textArea class="wysiwyg" name="proportionContracted" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.proportionContracted?.maxSize}" required=""
                  value="${formAPart2bInstance?.proportionContracted}"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'summaryObjectivesContractor', 'error')} required">
@@ -72,7 +72,7 @@
         <span class="required-indicator">*</span>
     </label>
 </div>
-<div><g:textArea class="wysiwyg" name="summaryObjectivesContractor" cols="40" rows="5" maxlength="5000" required=""
+<div><g:textArea class="wysiwyg" name="summaryObjectivesContractor" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.summaryObjectivesContractor?.maxSize}" required=""
                  value="${formAPart2bInstance?.summaryObjectivesContractor}"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'organisationalStructureDiagram', 'error')} required">
@@ -89,7 +89,7 @@
         <span class="required-indicator">*</span>
     </label>
 </div>
-<div><g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="5000" required=""
+<div><g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.declaration?.maxSize}" required=""
                  value="${formAPart2bInstance?.declaration}"/></div>
 
 

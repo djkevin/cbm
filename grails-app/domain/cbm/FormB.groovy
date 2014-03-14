@@ -26,9 +26,9 @@ class FormB extends BaseForm {
     Report report
 
     static constraints = {
-        eventName blank: false
+        eventName blank: false, maxSize: 50
         eventCategory inList: ["Human", "Plant", "Animal"]
-        eventDate()
+        eventDate()  //TODO future date validator
         timeOfOutbreak maxSize: 500, nullable: true
         locationAffected maxSize: 500, nullable: true
         typeOfDisease maxSize: 500, nullable: true

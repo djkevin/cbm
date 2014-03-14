@@ -46,6 +46,9 @@ class FormGController {
         Report r =  Report.findById(reportId)
         FormG formG = new FormG();
         formG.setReport(r)
+
+        Address a = new Address() //Embedded object
+        formG.setLocation(a)
         respond formG
 
 

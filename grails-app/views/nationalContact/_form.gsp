@@ -15,7 +15,7 @@
 		<g:message code="nationalContact.firstName.label" default="First Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="firstName" maxlength="100" required="" value="${nationalContactInstance?.firstName}"/>
+	<g:textField name="firstName" maxlength="${nationalContactInstance?.constraints?.firstName?.maxSize}" required="" value="${nationalContactInstance?.firstName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'lastName', 'error')} required">
@@ -23,7 +23,7 @@
 		<g:message code="nationalContact.lastName.label" default="Last Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="lastName" maxlength="100" required="" value="${nationalContactInstance?.lastName}"/>
+	<g:textField name="lastName" maxlength="${nationalContactInstance?.constraints?.lastName?.maxSize}" required="" value="${nationalContactInstance?.lastName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'position', 'error')} ">
@@ -31,7 +31,7 @@
 		<g:message code="nationalContact.position.label" default="Position" />
 		
 	</label>
-	<g:textField name="position" maxlength="100" value="${nationalContactInstance?.position}"/>
+	<g:textField name="position" maxlength="${nationalContactInstance?.constraints?.position?.maxSize}" value="${nationalContactInstance?.position}"/>
 </div>
 <h1><g:message code="nationalContact.address.label" default="Address" /></h1>
 %{--<fieldset class="embedded"><legend><g:message code="nationalContact.address.label" default="Address" /></legend>--}%
@@ -48,7 +48,7 @@
 		<g:message code="nationalContact.address.postCode.label" default="Post Code" />
 		
 	</label>
-	<g:textField name="postCode" maxlength="10" value="${addressInstance?.postCode}"/>
+	<g:textField name="postCode" maxlength="${nationalContactInstance?.constraints?.postCode?.maxSize}" value="${addressInstance?.postCode}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.street', 'error')} ">
@@ -56,7 +56,7 @@
 		<g:message code="nationalContact.address.street.label" default="Street" />
 		
 	</label>
-	<g:textField name="street" maxlength="200" value="${addressInstance?.street}"/>
+	<g:textField name="street" maxlength="${nationalContactInstance?.constraints?.street?.maxSize}" value="${addressInstance?.street}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.town', 'error')} ">
@@ -64,7 +64,7 @@
 		<g:message code="nationalContact.address.town.label" default="Town" />
 		
 	</label>
-	<g:textField name="town" maxlength="100" value="${addressInstance?.town}"/>
+	<g:textField name="town" maxlength="${nationalContactInstance?.constraints?.town?.maxSize}" value="${addressInstance?.town}"/>
 </div>
 %{--</fieldset>--}%
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
@@ -72,7 +72,7 @@
 		<g:message code="nationalContact.telephone.label" default="Telephone" />
 		
 	</label>
-	<g:textField name="telephone" maxlength="20" value="${nationalContactInstance?.telephone}"/>
+	<g:textField name="telephone" maxlength="${nationalContactInstance?.constraints?.telephone?.maxSize}" value="${nationalContactInstance?.telephone}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'fax', 'error')} ">
@@ -80,7 +80,7 @@
 		<g:message code="nationalContact.fax.label" default="Fax" />
 		
 	</label>
-	<g:textField name="fax" maxlength="20" value="${nationalContactInstance?.fax}"/>
+	<g:textField name="fax" maxlength="${nationalContactInstance?.constraints?.fax?.maxSize}" value="${nationalContactInstance?.fax}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'email', 'error')} ">
@@ -96,7 +96,7 @@
 		<g:message code="nationalContact.url.label" default="Url" />
 		
 	</label>
-	<g:textField name="url" maxlength="100" value="${nationalContactInstance?.url}"/>
+	<g:textField name="url" maxlength="${nationalContactInstance?.constraints?.url?.maxSize}" value="${nationalContactInstance?.url}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'stateParty', 'error')} required">

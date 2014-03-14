@@ -15,7 +15,7 @@
 
     </label>
 </div>
-<div> <g:textArea class="wysiwyg" name="comments" cols="40" rows="5" maxlength="5000" value="${formCInstance?.comments}"/></div>
+<div> <g:textArea class="wysiwyg" name="comments" cols="40" rows="5" maxlength="${formCInstance?.constraints?.comments?.maxSize}" value="${formCInstance?.comments}"/></div>
 
 
 <g:set var="formInstance" value="${formCInstance}"></g:set>

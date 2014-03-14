@@ -30,7 +30,7 @@
 		<g:message code="formAPart1b.additionalInformation.label" default="Additional Information" />
 		
 	</label>
-	<g:textArea name="additionalInformation" cols="40" rows="5" maxlength="5000" value="${formAPart1bInstance?.additionalInformation}"/>
+	<g:textArea name="additionalInformation" cols="40" rows="5" maxlength="${formAPart1bInstance?.constraints?.additionalInformation?.maxSize}" value="${formAPart1bInstance?.additionalInformation}"/>
 </div>
 
 <g:set var="formInstance" value="${formAPart1bInstance}"></g:set>

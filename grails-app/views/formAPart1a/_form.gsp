@@ -15,7 +15,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textField class="longText" name="facilityName" maxlength="250" required="" value="${formAPart1aInstance?.facilityName}"/></div>
+<div><g:textField class="longText" name="facilityName" maxlength="${formAPart1aInstance?.constraints?.facilityName?.maxSize}" required="" value="${formAPart1aInstance?.facilityName}"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'responsibleOrganisation', 'error')} required">
 	<label for="responsibleOrganisation">
@@ -23,7 +23,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textArea class="longTextSml" name="responsibleOrganisation" cols="40" rows="5" maxlength="500" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
+<div><g:textArea class="longTextSml" name="responsibleOrganisation" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.responsibleOrganisation?.maxSize}" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
 
 <div class="wrapper">
 	<div class="left1">
@@ -36,7 +36,7 @@
 		</div>
 		<div>
 			<g:textArea class="twoCol" name="location" cols="40" rows="5"
-				maxlength="500" required="" value="${formAPart1aInstance?.location}" />
+				maxlength="${formAPart1aInstance?.constraints?.location?.maxSize}" required="" value="${formAPart1aInstance?.location}" />
 		</div>
 	</div>
 	<div class="left2">
@@ -49,7 +49,7 @@
 		</div>
 		<div>
 			<g:textArea class="twoCol" name="postalAddress" cols="40" rows="5"
-				maxlength="500" required=""
+				maxlength="${formAPart1aInstance?.constraints?.postalAddress?.maxSize}" required=""
 				value="${formAPart1aInstance?.postalAddress}" />
 		</div>
 	</div>
@@ -61,7 +61,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textArea class="longTextSml" name="financingSources" cols="40" rows="5" maxlength="500" required="" value="${formAPart1aInstance?.financingSources}"/></div>
+<div><g:textArea class="longTextSml" name="financingSources" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.financingSources?.maxSize}" required="" value="${formAPart1aInstance?.financingSources}"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'formAContainmentUnitList', 'error')} ">
     <label for="formAContainmentUnitList">
@@ -86,7 +86,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="1000" required="" value="${formAPart1aInstance?.scope}"/></div>
+<div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.scope?.maxSize}" required="" value="${formAPart1aInstance?.scope}"/></div>
 
 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
 <g:render template="../formStatus"/>

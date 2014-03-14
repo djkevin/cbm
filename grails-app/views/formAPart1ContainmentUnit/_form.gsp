@@ -36,7 +36,7 @@
 		<g:message code="formAPart1ContainmentUnit.comment.label" default="Comment" />
 		
 	</label>
-<g:textField name="comment" maxlength="200" value="${formAPart1ContainmentUnitInstance?.comment}"/>
+<g:textField name="comment" maxlength="${formAPart1ContainmentUnitInstance?.constraints?.comment?.maxSize}" value="${formAPart1ContainmentUnitInstance?.comment}"/>
 </div>
 
 
