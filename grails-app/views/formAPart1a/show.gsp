@@ -33,51 +33,53 @@
                 </g:if>
 
 				<g:if test="${formAPart1aInstance?.facilityName}">
-				<li class="fieldcontain">
-					<span id="facilityName-label" class="property-label"><g:message code="formAPart1.facilityName.label" default="Facility Name" /></span>
-					
-						<span class="property-value" aria-labelledby="facilityName-label"><g:fieldValue bean="${formAPart1aInstance}" field="facilityName"/></span>
-					
-				</li>
+                    <h4><g:message code="formAPart1.facilityName.label" default="Facility Name" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="facilityName-label"><g:fieldValue
+                                bean="${formAPart1aInstance}" field="facilityName"/></span>
+                    </li>
 				</g:if>
-			
-				<g:if test="${formAPart1aInstance?.responsibleOrganisation}">
-				<li class="fieldcontain">
-					<span id="responsibleOrganisation-label" class="property-label"><g:message code="formAPart1.responsibleOrganisation.label" default="Responsible Organisation" /></span>
-					
-						<span class="property-value" aria-labelledby="responsibleOrganisation-label"><g:fieldValue bean="${formAPart1aInstance}" field="responsibleOrganisation"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formAPart1aInstance?.location}">
-				<li class="fieldcontain">
-					<span id="location-label" class="property-label"><g:message code="formAPart1.location.label" default="Location" /></span>
-					
-						<span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${formAPart1aInstance}" field="location"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formAPart1aInstance?.postalAddress}">
-				<li class="fieldcontain">
-					<span id="postalAddress-label" class="property-label"><g:message code="formAPart1.postalAddress.label" default="Postal Address" /></span>
-					
-						<span class="property-value" aria-labelledby="postalAddress-label"><g:fieldValue bean="${formAPart1aInstance}" field="postalAddress"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formAPart1aInstance?.financingSources}">
-				<li class="fieldcontain">
-					<span id="financingSources-label" class="property-label"><g:message code="formAPart1.financingSources.label" default="Financing Sources" /></span>
-					
-						<span class="property-value" aria-labelledby="financingSources-label"><g:fieldValue bean="${formAPart1aInstance}" field="financingSources"/></span>
-					
-				</li>
-				</g:if>
+                <br>
 
-                <br/>
+                <g:if test="${formAPart1aInstance?.responsibleOrganisation}">
+                    <h4><g:message code="formAPart1.responsibleOrganisation.label"
+                                   default="Responsible Organisation"/></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="responsibleOrganisation-label"><g:fieldValue
+                                bean="${formAPart1aInstance}" field="responsibleOrganisation"/></span>
+                    </li>
+                </g:if>
+			    <br>
+
+                <g:if test="${formAPart1aInstance?.location}">
+                    <h4><g:message code="formAPart1.location.label" default="Location"/></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="location-label"><g:fieldValue
+                                bean="${formAPart1aInstance}" field="location"/></span>
+                    </li>
+                </g:if>
+                <br>
+
+                <g:if test="${formAPart1aInstance?.postalAddress}">
+                    <h4><g:message code="formAPart1.postalAddress.label" default="Postal Address"/></h4>
+                    <li>
+
+                        <span class="property-value" aria-labelledby="postalAddress-label"><g:fieldValue
+                                bean="${formAPart1aInstance}" field="postalAddress"/></span>
+                    </li>
+                </g:if>
+                <br>
+
+                <g:if test="${formAPart1aInstance?.financingSources}">
+                    <h4><g:message code="formAPart1.financingSources.label" default="Financing Sources"/></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="financingSources-label"><g:fieldValue
+                                bean="${formAPart1aInstance}" field="financingSources"/></span>
+
+                    </li>
+                </g:if>
+                <br>
+
                 <h4>
                     <g:message code="formAPart1.formAContainmentUnitList.label" default="Containment Unit"/>
                 </h4>
@@ -88,13 +90,13 @@
 
                 </g:if>
                 [<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
-			
-				<g:if test="${formAPart1aInstance?.scope}">
-				<li class="fieldcontain">
-					<span id="scope-label" class="property-label"><g:message code="formAPart1.scope.label" default="Scope" /></span>
-					<span class="property-value" aria-labelledby="scope-label"><%= formAPart1aInstance.scope %></span>
-				</li>
-				</g:if>
+
+                <g:if test="${formAPart1aInstance?.scope}">
+                    <h4><g:message code="formAPart1.scope.label" default="Scope"/></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="scope-label"><%=formAPart1aInstance.scope%></span>
+                    </li>
+                </g:if>
 
                 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
                 <g:render template="../showStatus"/>

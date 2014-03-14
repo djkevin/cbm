@@ -183,7 +183,7 @@
 				<h4>
 					<g:message code="formAPart2c.scientificDisciplines.label" default="scientific Disciplines" />		
 				</h4>
-				<li class="fieldcontain">					
+				<li>
 					<span class="property-value" aria-labelledby="scientificDisciplines-label">
 						<g:fieldValue bean="${formAPart2cInstance}" field="scientificDisciplines"/>
 					</span>					
@@ -203,7 +203,7 @@
 				<h4>
 					<g:message code="formAPart2c.fundingSources.label" default="funding Sources" />		
 				</h4>
-				<li class="fieldcontain">					
+				<li>
 					<span class="property-value" aria-labelledby="fundingSources-label">
 						<g:fieldValue bean="${formAPart2cInstance}" field="fundingSources"/>
 					</span>					
@@ -236,7 +236,7 @@
 				<h4>
 					<g:message code="formAPart2c.publicationPolicy.label" default="publication Policy" />		
 				</h4>
-				<li class="fieldcontain">					
+				<li>
 					<span class="property-value" aria-labelledby="publicationPolicy-label">
 						<g:fieldValue bean="${formAPart2cInstance}" field="publicationPolicy"/>
 					</span>					
@@ -246,7 +246,7 @@
 				<h4>
 					<g:message code="formAPart2c.publicPapers.label" default="public Papers" />		
 				</h4>
-				<li class="fieldcontain">					
+				<li>
 					<span class="property-value" aria-labelledby="publicPapers-label">
 						<g:fieldValue bean="${formAPart2cInstance}" field="publicPapers"/>
 					</span>					
@@ -256,7 +256,7 @@
 				<h4>
 					<g:message code="formAPart2c.bioDefenseWork.label" default="bio Defense Work" />		
 				</h4>
-				<li class="fieldcontain">					
+				<li>
 					<span class="property-value" aria-labelledby="bioDefenseWork-label">
 						<g:fieldValue bean="${formAPart2cInstance}" field="bioDefenseWork"/>
 					</span>					
