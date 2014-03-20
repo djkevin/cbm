@@ -8,22 +8,24 @@
 
  
 
-<div class="fieldcontain">
+%{--<div class="fieldcontain">
     <label class="property-label25">
         <g:message code="report.label" default="report"/>                                 
     </label>
 
-    <g:field type="text" name="report.name" value="${Report.get(params.reportId)}" readonly="true" />
-</div>
+    --}%%{--<g:field type="text" name="report.name" value="${Report.get(params.reportId)}" readonly="true" />--}%%{--
+    --}%%{--<g:field type="text" name="formAPart2b.program.name" value="${FormAPart2b.get(params.formAPart2b.id)}" readonly="true" />--}%%{--
+</div>--}%
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'formAPart2b', 'error')} required">
     <label for="formAPart2b">
-        <g:message code="formAPart2c.facility.label" default="facility"/>                         
+        <g:message code="formAPart2c.program.label" default="Program"/>
         <span class="required-indicator">*</span>
     </label>
-
-    <g:select id="formAPart2b" name="formAPart2b.id" from="${cbm.FormAPart2b.list()}" optionKey="id" required=""
-               value="${formAPart2cInstance?.formAPart2b?.id}" class="many-to-one"/>
+    <g:hiddenField name="formAPart2b.id" id="formAPart2b" value="${formAPart2cInstance?.formAPart2b?.id}" />
+    <g:field type="text" id="formAPart2b.name" name="formAPart2b.name" value="${formAPart2cInstance?.formAPart2b}" readonly="true" />
+%{--    <g:select id="formAPart2b" name="formAPart2b.id" from="${cbm.FormAPart2b.list()}" optionKey="id" required=""
+               value="${formAPart2cInstance?.formAPart2b?.id}" class="many-to-one" readonly="true"/>--}%
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'facilityName', 'error')} required">

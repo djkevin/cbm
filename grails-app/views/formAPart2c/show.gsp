@@ -17,7 +17,8 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li>
-                    <g:link class="list" controller="report" action="show" id="${report.id}">${report.reportName}</g:link>
+                    %{--<g:link class="list" controller="report" action="show" id="${report.id}">${report.reportName}</g:link>--}%
+                    <g:link class="list" controller="formAPart2b" action="show" id="${formAPart2cInstance?.formAPart2b?.id}">${formAPart2cInstance?.formAPart2b}</g:link>
                 </li>
 			</ul>
 		</div>

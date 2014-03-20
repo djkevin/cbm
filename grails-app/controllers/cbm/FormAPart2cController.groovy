@@ -22,6 +22,11 @@ class FormAPart2cController {
     }
 
     def create() {
+/*        def formAPart2bId = params.long('formAPart2b.id')
+        FormAPart2b formAPart2b = FormAPart2b.findById(formAPart2bId)
+
+        FormAPart2c f = new FormAPart2c(params)
+        f.setFormAPart2b(formAPart2b)*/
         respond new FormAPart2c(params)
     }
 
@@ -42,7 +47,8 @@ class FormAPart2cController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart2cInstance.label', default: 'FormAPart2c'), formAPart2cInstance.id])
-                redirect formAPart2cInstance
+                redirect (controller: "formAPart2b", action:"show", id:formAPart2cInstance.formAPart2b.id)
+              //  redirect formAPart2cInstance
             }
             '*' { respond formAPart2cInstance, [status: CREATED] }
         }
@@ -88,7 +94,8 @@ class FormAPart2cController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormAPart2c.label', default: 'FormAPart2c'), formAPart2cInstance.id])
-                redirect action:"index", method:"GET"
+              /*  redirect action:"index", method:"GET"*/
+                redirect (controller: "formAPart2b", action:"show", id:formAPart2cInstance.formAPart2b.id)
             }
             '*'{ render status: NO_CONTENT }
         }

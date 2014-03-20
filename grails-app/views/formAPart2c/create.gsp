@@ -1,8 +1,8 @@
 <!-- 
-	Requires a URL parameter "reportId". The value of this parameter is the id of the Report linked to the FormAPart2c.
+	Requires a URL parameter "formAPart2b.id". The value of this parameter is the id of the FormAPart2b linked to the FormAPart2c.
  -->
  
-<%@ page import="cbm.Report" %>
+<%@ page import="cbm.FormAPart2b; cbm.Report" %>
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li>
-                    <g:link class="list" controller="report" action="show" id="${params.reportId}">${Report.get(params.reportId)}</g:link>
+                    <g:link class="list" controller="formAPart2b" action="show" id="${params.formAPart2b.id}">${FormAPart2b.get(params.formAPart2b.id)}</g:link>
                 </li>
 			</ul>
 		</div>
