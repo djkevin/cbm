@@ -10,7 +10,6 @@ class ImageController {
 
     def show= {
         //loads the class with a name and assigns obj a new instance created of the same object
-        println "class name is: "+params.className
         def obj = Class.forName("${params.classname}", true, Thread.currentThread().contextClassLoader).newInstance();
         def object = obj.get(params.id)
         response.setContentType(params.mime)

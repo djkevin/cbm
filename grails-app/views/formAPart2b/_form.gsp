@@ -75,13 +75,13 @@
 <div><g:textArea class="wysiwyg" name="summaryObjectivesContractor" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.summaryObjectivesContractor?.maxSize}" required=""
                  value="${formAPart2bInstance?.summaryObjectivesContractor}"/></div>
 
-<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'organisationalStructureDiagram', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance?.formAPart2bOrganigram, field: 'organisationalStructureDiagram', 'error')} required">
     <label for="organisationalStructureDiagram">
         <g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram"/>
         <span class="required-indicator">*</span>
     </label>
 </div>
-<div><input type="file" id="organisationalStructureDiagram" name="organisationalStructureDiagram"/></div>
+<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'declaration', 'error')} required">
     <label for="declaration">
@@ -91,16 +91,6 @@
 </div>
 <div><g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.declaration?.maxSize}" required=""
                  value="${formAPart2bInstance?.declaration}"/></div>
-
-
-<g:message code="formAPart2b.formAPart2c.label" default="Form A Part2c"/>
-<div>
-    <ul class="one-to-many">
-        <g:each in="${formAPart2bInstance?.formAPart2c?}" var="f">
-            <g:link controller="formAPart2c" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link>&nbsp;
-        </g:each>
-    </ul>
-</div>
 
 <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>
 <g:render template="../formStatus"/>

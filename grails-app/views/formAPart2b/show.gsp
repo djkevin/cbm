@@ -12,8 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				%{--<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
+
                 <li>
                     <g:link class="list" controller="report" action="show" id="${formAPart2bInstance?.report?.id}">${formAPart2bInstance?.report?.reportName}</g:link>
                 </li>
@@ -90,22 +89,25 @@
 			
 				<g:if test="${formAPart2bInstance?.summaryObjectivesContractor}">
                     <h4><g:message code="formAPart2b.summaryObjectivesContractor.label" default="Summary Objectives Contractor" /></h4>
-				    <li class="fieldcontain">
+				    <li>
 						<span class="property-value" aria-labelledby="summaryObjectivesContractor-label"><g:fieldValue bean="${formAPart2bInstance}" field="summaryObjectivesContractor"/></span>
 				    </li>
                     <br>
 				</g:if>
 			
-				<g:if test="${formAPart2bInstance?.organisationalStructureDiagram}">
-                    <h4><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></h4>
-		%{--		<li class="fieldcontain">
-					<span id="organisationalStructureDiagram-label" class="property-label"></span>
+              <h4><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></h4>
+              <div style="width:100%">
+                    <g:if test="${formAPart2bInstance?.formAPart2bOrganigram}">
+                        [<g:link controller="formAPart2bOrganigram" action="edit" params="['id': formAPart2bInstance.formAPart2bOrganigram.id, 'formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.edit.label"/></g:link>]
+                      <img style="width:100%" src="${createLink(controller:'image', id:formAPart2bInstance?.formAPart2bOrganigram?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.FormAPart2bOrganigram',mime:'image/jpeg'])}"/>
+                      <br>
+                  </g:if>
+                  <g:else>
+                      %{--<g:link controller="formAPart2bOrganigram" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>--}%
+                      [<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
+                  </g:else>
+              </div>
 
-				</li>--}%
-                    %{--<g:fieldValue bean="${formAPart2bInstance}" field="organisationalStructureDiagram"/>--}%
-                    <img src="${createLink(controller:'image', id:formAPart2bInstance?.report?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.FormAPart2b',mime:'image/jpeg'])}"/>
-                    <br>
-				</g:if>
 
                 <g:if test="${formAPart2bInstance?.declaration}">
                     <h4><g:message code="formAPart2b.declaration.label" default="Declaration" /></h4>
@@ -115,37 +117,16 @@
                     <br>
                 </g:if>
 			
-			%{--	<g:if test="${formAPart2bInstance?.formAPart2bFunding}">
-				<li class="fieldcontain">
-					<span id="formAPart2bFunding-label" class="property-label"><g:message code="formAPart2b.formAPart2bFunding.label" default="Form A Part 2b Funding" /></span>
-					
-						<g:each in="${formAPart2bInstance.formAPart2bFunding}" var="f">
-						<span class="property-value" aria-labelledby="formAPart2bFunding-label"><g:link controller="formAPart2bFunding" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>--}%
-
+                <h4><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" /></h4>
 				<g:if test="${formAPart2bInstance?.formAPart2c}">
-				<li class="fieldcontain">
-					<span id="formAPart2c-label" class="property-label"><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" /></span>
-					
-						<g:each in="${formAPart2bInstance.formAPart2c}" var="f">
-						<span class="property-value" aria-labelledby="formAPart2c-label"><g:link controller="formAPart2c" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
+                    <ul class="one-to-many">
+                    <g:each in="${formAPart2bInstance.formAPart2c}" var="f">
+                        <g:link controller="formAPart2c" action="show"  params="['formAPart2b.id': formAPart2bInstance?.id]" id="${f.id}" >${f?.encodeAsHTML()}</g:link>
+                    </g:each>
+				</ul>
 				</g:if>
+                [<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
 
-%{--                <g:if test="${formAPart2bInstance?.report}">
-                    <li class="fieldcontain">
-                        <span id="report-label" class="property-label"><g:message code="formAPart2a.report.label" default="Report" /></span>
-
-                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formAPart2bInstance?.report?.id}">${formAPart2bInstance?.report?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>--}%
-			
                 <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>
                 <g:render template="../showStatus"/>
 			

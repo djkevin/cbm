@@ -18,7 +18,6 @@ class FormAPart2bController {
        // respond FormAPart2b.list(params), model:[formAPart2bInstanceCount: FormAPart2b.count()]
 
         def reportId =params.long('reportId')
-        println("report id is: "+reportId)
         Report r = Report.findById(reportId)
         respond FormAPart2b.findAllByReport(r) , model:[formAPart2bInstanceCount: FormAPart2b.count(), reportId:reportId]
     }
@@ -34,7 +33,6 @@ class FormAPart2bController {
         FormAPart2b f = new FormAPart2b()
         f.setReport(r)
         respond f
-//        respond new FormAPart2b(params)
     }
 
     @Transactional
