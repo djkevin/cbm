@@ -1,6 +1,7 @@
 package cbm
 
-
+import org.springframework.web.multipart.MultipartHttpServletRequest
+import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -10,7 +11,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class FormAPart2bController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -38,6 +39,12 @@ class FormAPart2bController {
 
     @Transactional
     def save(FormAPart2b formAPart2bInstance) {
+
+        println "in save..."
+        if (!(request instanceof MultipartHttpServletRequest)) {
+            println("no multipart")
+        }
+
         if (formAPart2bInstance == null) {
             notFound()
             return
@@ -64,7 +71,7 @@ class FormAPart2bController {
 
     @Transactional
     def update(FormAPart2b formAPart2bInstance) {
-        println "in update "+formAPart2bInstance
+        println "in update... "
         if (formAPart2bInstance == null) {
             notFound()
             return
@@ -78,7 +85,8 @@ class FormAPart2bController {
         formAPart2bInstance.save flush:true
         println("after save")
         request.withFormat {
-            form {
+
+            form multipartForm{
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FormAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
                println "Save ok"
                 redirect formAPart2bInstance

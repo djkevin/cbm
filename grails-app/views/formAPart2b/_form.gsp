@@ -27,9 +27,9 @@
                  value="${formAPart2bInstance?.objectives}"/></div>
 
 <div class="fieldcontain ">
-<label >
-		<g:message code="formAPart2b.funding.label" default="Source" />
-	</label>
+    <label>
+        <g:message code="formAPart2b.funding.label" default="Source"/>
+    </label>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'source', 'error')} ">

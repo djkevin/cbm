@@ -35,33 +35,26 @@
                 </g:if>
 
 				<g:if test="${formAPart2bInstance?.programName}">
-				<li class="fieldcontain">
-					<span id="programName-label" class="property-label"><g:message code="formAPart2b.programName.label" default="Program Name" /></span>
-					
-					<span class="property-value" aria-labelledby="programName-label"><g:fieldValue bean="${formAPart2bInstance}" field="programName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formAPart2bInstance?.objectives}">
-				<li class="fieldcontain">
-					<span id="objectives-label" class="property-label"><g:message code="formAPart2b.objectives.label" default="Objectives" /></span>
-					
-						<span class="property-value" aria-labelledby="objectives-label"><g:fieldValue bean="${formAPart2bInstance}" field="objectives"/></span>
-					
-				</li>
-				</g:if>
-
-                <g:if test="${formAPart2bInstance?.amount}">
                     <li class="fieldcontain">
-                        <span id="amount-label" class="property-label"><g:message code="formAPart2b.amount.label" default="Amount" /></span>
+                        <span id="programName-label" class="property-label"><g:message code="formAPart2b.programName.label" default="Program Name" /></span>
 
-                        <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/></span>
+                        <span class="property-value" aria-labelledby="programName-label"><g:fieldValue bean="${formAPart2bInstance}" field="programName"/></span>
 
                     </li>
-                </g:if>
+                    <br>
+				</g:if>
+
+			
+				<g:if test="${formAPart2bInstance?.objectives}">
+                    <h4><g:message code="formAPart2b.objectives.label" default="Objectives" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="objectives-label"><g:fieldValue bean="${formAPart2bInstance}" field="objectives"/></span>
+                    </li>
+                    <br>
+				</g:if>
 
                 <g:if test="${formAPart2bInstance?.source}">
+                    <h4><g:message code="formAPart2b.funding.label" default="Source" /></h4>
                     <li class="fieldcontain">
                         <span id="source-label" class="property-label"><g:message code="formAPart2b.source.label" default="Source" /></span>
 
@@ -69,48 +62,57 @@
 
                     </li>
                 </g:if>
-			
+
+                <g:if test="${formAPart2bInstance?.amount}">
+
+                    <li class="fieldcontain">
+                       <span class="property-label"><g:message code="formAPart2b.amount.label" default="Amount" /></span>
+                        <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/></span>
+                    </li>
+                    <br>
+                </g:if>
+
 				<g:if test="${formAPart2bInstance?.conductedUnderContract}">
-				<li class="fieldcontain">
-					<span id="conductedUnderContract-label" class="property-label"><g:message code="formAPart2b.conductedUnderContract.label" default="Conducted Under Contract" /></span>
-					
-						<span class="property-value" aria-labelledby="conductedUnderContract-label"><g:formatBoolean boolean="${formAPart2bInstance?.conductedUnderContract}" /></span>
-					
-				</li>
+                    <h4><g:message code="formAPart2b.conductedUnderContract.label" default="Conducted Under Contract" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="conductedUnderContract-label"><g:formatBoolean boolean="${formAPart2bInstance?.conductedUnderContract}" /></span>
+                    </li>
+                    <br>
 				</g:if>
 			
 				<g:if test="${formAPart2bInstance?.proportionContracted}">
-				<li class="fieldcontain">
-					<span id="proportionContracted-label" class="property-label"><g:message code="formAPart2b.proportionContracted.label" default="Proportion Contracted" /></span>
-					
+                    <h4><g:message code="formAPart2b.proportionContracted.label" default="Proportion Contracted" /></h4>
+				    <li>
 						<span class="property-value" aria-labelledby="proportionContracted-label"><g:fieldValue bean="${formAPart2bInstance}" field="proportionContracted"/></span>
-					
-				</li>
+				    </li>
+                    <br>
 				</g:if>
 			
 				<g:if test="${formAPart2bInstance?.summaryObjectivesContractor}">
-				<li class="fieldcontain">
-					<span id="summaryObjectivesContractor-label" class="property-label"><g:message code="formAPart2b.summaryObjectivesContractor.label" default="Summary Objectives Contractor" /></span>
-					
+                    <h4><g:message code="formAPart2b.summaryObjectivesContractor.label" default="Summary Objectives Contractor" /></h4>
+				    <li class="fieldcontain">
 						<span class="property-value" aria-labelledby="summaryObjectivesContractor-label"><g:fieldValue bean="${formAPart2bInstance}" field="summaryObjectivesContractor"/></span>
-					
-				</li>
+				    </li>
+                    <br>
 				</g:if>
 			
 				<g:if test="${formAPart2bInstance?.organisationalStructureDiagram}">
-				<li class="fieldcontain">
-					<span id="organisationalStructureDiagram-label" class="property-label"><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></span>
-					
-				</li>
+                    <h4><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></h4>
+		%{--		<li class="fieldcontain">
+					<span id="organisationalStructureDiagram-label" class="property-label"></span>
+
+				</li>--}%
+                    %{--<g:fieldValue bean="${formAPart2bInstance}" field="organisationalStructureDiagram"/>--}%
+                    <img src="${createLink(controller:'image', id:formAPart2bInstance?.report?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.FormAPart2b',mime:'image/jpeg'])}"/>
+                    <br>
 				</g:if>
 
                 <g:if test="${formAPart2bInstance?.declaration}">
-                    <li class="fieldcontain">
-                        <span id="declaration-label" class="property-label"><g:message code="formAPart2b.declaration.label" default="Declaration" /></span>
-
+                    <h4><g:message code="formAPart2b.declaration.label" default="Declaration" /></h4>
+                    <li>
                         <span class="property-value" aria-labelledby="summaryObjectivesContractor-label"><g:fieldValue bean="${formAPart2bInstance}" field="declaration"/></span>
-
                     </li>
+                    <br>
                 </g:if>
 			
 			%{--	<g:if test="${formAPart2bInstance?.formAPart2bFunding}">
@@ -135,14 +137,14 @@
 				</li>
 				</g:if>
 
-                <g:if test="${formAPart2bInstance?.report}">
+%{--                <g:if test="${formAPart2bInstance?.report}">
                     <li class="fieldcontain">
                         <span id="report-label" class="property-label"><g:message code="formAPart2a.report.label" default="Report" /></span>
 
                         <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formAPart2bInstance?.report?.id}">${formAPart2bInstance?.report?.encodeAsHTML()}</g:link></span>
 
                     </li>
-                </g:if>
+                </g:if>--}%
 			
                 <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>
                 <g:render template="../showStatus"/>
