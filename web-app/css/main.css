@@ -358,6 +358,7 @@ fieldset.embedded {
 
 fieldset.embedded legend {
     margin: 0 1em;
+    font-weight: bold;
 }
 
 /* MESSAGES AND ERRORS */
@@ -685,6 +686,9 @@ textarea.longTextMed {
     width: 100%;
     height: 100px;
 }
+.inlineText{
+    width:70%;
+}
 
 .medText {
     width: 50%;
@@ -914,4 +918,5 @@ div.inline {
     background-image: url(../images/skin/unlock_fill_9x12.png);
     background-repeat: no-repeat;
 }
+
 

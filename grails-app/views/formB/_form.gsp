@@ -2,7 +2,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">
-        <g:message code="formB.report.label" default="Report"/>
+        <g:message code="report.label" default="Report"/>
         <span class="required-indicator">*</span>
     </label>
     <g:hiddenField name="report.id" id="report" value="${formBInstance?.report?.id}" />
@@ -15,7 +15,7 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="eventName" required="" maxlength="${formBInstance?.constraints?.eventName?.maxSize}" value="${formBInstance?.eventName}"/>
-</div>                                                 .
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'eventCategory', 'error')} ">
 	<label for="eventCategory" class="property-label25" >
@@ -83,21 +83,138 @@
 	<g:textArea class="longTextMed" name="mainCharacteristics" cols="40" rows="5" maxlength="${formBInstance?.constraints?.mainCharacteristics?.maxSize}" value="${formBInstance?.mainCharacteristics}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'detailedSymptoms', 'error')} ">
-	<label for="detailedSymptoms" >
-		<g:message code="formB.detailedSymptoms.label" default="Detailed Symptoms" />
-		
-	</label>
-	<g:textArea class="longTextMed" name="detailedSymptoms" cols="40" rows="5" maxlength="${formBInstance?.constraints?.detailedSymptoms?.maxSize}" value="${formBInstance?.detailedSymptoms}"/>
+
+<fieldset class="embedded"><legend><g:message code="formB.detailedSymptoms.label" default="Detailed Symptoms" /></legend>
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomRespiratory', 'error')} ">
+    <label for="symptomRespiratory" class="property-label25">
+        <g:message code="formB.symptomRespiratory.label" default="Symptom Respiratory" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomRespiratory" maxlength="${formBInstance?.constraints?.symptomRespiratory?.maxSize}" value="${formBInstance?.symptomRespiratory}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationFromNormalPattern', 'error')} ">
-	<label for="deviationFromNormalPattern" >
-		<g:message code="formB.deviationFromNormalPattern.label" default="Deviation From Normal Pattern" />
-		
-	</label>
-	<g:textArea class="longTextMed" name="deviationFromNormalPattern" cols="40" rows="5" maxlength="${formBInstance?.constraints?.deviationFromNormalPattern?.maxSize}" value="${formBInstance?.deviationFromNormalPattern}"/>
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomCirculatory', 'error')} ">
+    <label for="symptomCirculatory" class="property-label25">
+        <g:message code="formB.symptomCirculatory.label" default="Symptom Circulatory" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomCirculatory" maxlength="${formBInstance?.constraints?.symptomCirculatory?.maxSize}" value="${formBInstance?.symptomCirculatory}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomNeurologicalBehavioral', 'error')} ">
+    <label for="symptomNeurologicalBehavioral" class="property-label25">
+        <g:message code="formB.symptomNeurologicalBehavioral.label" default="Symptom Neurological Behavioral" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomNeurologicalBehavioral" maxlength="${formBInstance?.constraints?.symptomNeurologicalBehavioral?.maxSize}" value="${formBInstance?.symptomNeurologicalBehavioral}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomIntestinal', 'error')} ">
+    <label for="symptomIntestinal" class="property-label25">
+        <g:message code="formB.symptomIntestinal.label" default="Symptom Intestinal" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomIntestinal" maxlength="${formBInstance?.constraints?.symptomIntestinal?.maxSize}" value="${formBInstance?.symptomIntestinal}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomDermatological', 'error')} ">
+    <label for="symptomDermatological" class="property-label25">
+        <g:message code="formB.symptomDermatological.label" default="Symptom Dermatological" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomDermatological" maxlength="${formBInstance?.constraints?.symptomDermatological?.maxSize}" value="${formBInstance?.symptomDermatological}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomNephrological', 'error')} ">
+    <label for="symptomNephrological" class="property-label25">
+        <g:message code="formB.symptomNephrological.label" default="Symptom Nephrological" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomNephrological" maxlength="${formBInstance?.constraints?.symptomNephrological?.maxSize}" value="${formBInstance?.symptomNephrological}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'symptomOther', 'error')} ">
+    <label for="symptomOther" class="property-label25">
+        <g:message code="formB.symptomOther.label" default="Symptom Other" />
+
+    </label>
+    <g:textField class="inlineText" name="symptomOther" maxlength="${formBInstance?.constraints?.symptomOther?.maxSize}" value="${formBInstance?.symptomOther}"/>
+</div>
+</fieldset>
+
+<fieldset class="embedded"><legend><g:message code="formB.deviationFromNormalPattern.label" default="Deviation From Normal Pattern" /></legend>
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationType', 'error')} ">
+    <label for="deviationType" class="property-label25">
+        <g:message code="formB.deviationType.label" default="Deviation Type" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationType" maxlength="${formBInstance?.constraints?.deviationType?.maxSize}" value="${formBInstance?.deviationType}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationPlace', 'error')} ">
+    <label for="deviationPlace" class="property-label25">
+        <g:message code="formB.deviationPlace.label" default="Deviation Place" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationPlace" maxlength="${formBInstance?.constraints?.deviationPlace?.maxSize}" value="${formBInstance?.deviationPlace}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationTime', 'error')} ">
+    <label for="deviationTime" class="property-label25">
+        <g:message code="formB.deviationTime.label" default="Deviation Time" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationTime" maxlength="${formBInstance?.constraints?.deviationTime?.maxSize}" value="${formBInstance?.deviationTime}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationSymptoms', 'error')} ">
+    <label for="deviationSymptoms" class="property-label25">
+        <g:message code="formB.deviationSymptoms.label" default="Deviation Symptoms" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationSymptoms" maxlength="${formBInstance?.constraints?.deviationSymptoms?.maxSize}" value="${formBInstance?.deviationSymptoms}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationVirulence', 'error')} ">
+    <label for="deviationVirulence" class="property-label25">
+        <g:message code="formB.deviationVirulence.label" default="Deviation Virulence" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationVirulence" maxlength="${formBInstance?.constraints?.deviationVirulence?.maxSize}" value="${formBInstance?.deviationVirulence}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationDrugResistance', 'error')} ">
+    <label for="deviationDrugResistance" class="property-label25">
+        <g:message code="formB.deviationDrugResistance.label" default="Deviation Drug Resistance" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationDrugResistance" maxlength="${formBInstance?.constraints?.deviationDrugResistance?.maxSize}" value="${formBInstance?.deviationDrugResistance}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationAgentDiffToDiagnose', 'error')} ">
+    <label for="deviationAgentDiffToDiagnose" class="property-label25">
+        <g:message code="formB.deviationAgentDiffToDiagnose.label" default="Deviation Agent Diff To Diagnose" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationAgentDiffToDiagnose" maxlength="${formBInstance?.constraints?.deviationAgentDiffToDiagnose?.maxSize}" value="${formBInstance?.deviationAgentDiffToDiagnose}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationPresenceOfUnusualVectors', 'error')} ">
+    <label for="deviationPresenceOfUnusualVectors" class="property-label25">
+        <g:message code="formB.deviationPresenceOfUnusualVectors.label" default="Deviation Presence Of Unusual Vectors" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationPresenceOfUnusualVectors" maxlength="${formBInstance?.constraints?.deviationPresenceOfUnusualVectors?.maxSize}" value="${formBInstance?.deviationPresenceOfUnusualVectors}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationOther', 'error')} ">
+    <label for="deviationOther" class="property-label25">
+        <g:message code="formB.deviationOther.label" default="Deviation Other" />
+
+    </label>
+    <g:textField class="inlineText" name="deviationOther" maxlength="${formBInstance?.constraints?.deviationOther?.maxSize}" value="${formBInstance?.deviationOther}"/>
+</div>
+</fieldset>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'numOfPrimaryCases', 'error')} ">
 	<label for="numOfPrimaryCases" >
