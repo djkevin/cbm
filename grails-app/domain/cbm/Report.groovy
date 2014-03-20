@@ -30,7 +30,7 @@ class Report {
     static constraints = {
 //        reportName()
         language unique: ['year', 'stateParty']
-        year range: 2000..new LocalDate().getYear()
+        year range: 2000..2014//new LocalDate().getYear().intValue()
         reportStatus inList: ["Draft", "Submitted"]
         publicationStatus inList: ["Not published", "Published"]
         officialVersion()
