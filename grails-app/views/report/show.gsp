@@ -205,7 +205,7 @@
                                 <table id="inner-table">
                                     <g:each in="${reportInstance.formAPart2b}" var="f">
                                         <tr>
-                                            <td style="width:90%"><g:link controller="formAPart2b" action="edit" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
+                                            <td style="width:90%"><g:link controller="formAPart2b" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
 
                                         <!-- Draft or completed-->
                                             <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
@@ -233,7 +233,7 @@
                             <g:link controller="formAPart2b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
-					<tr class="odd">
+%{--					<tr class="odd">
 						<td><g:message code="report.formAPart2c.label" default="Form A Part 2c" /></td>
 						<td>${reportInstance?.formAPart2b?.formAPart2c?.size()}</td>
 						<td>
@@ -244,9 +244,9 @@
                             </g:each>
 						</td>
 						<td>
-							<g:link controller="formAPart2c" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>							
+							<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': reportInstance.formAPart2b?.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
-					</tr>
+					</tr>--}%
 					<tr class="even">
 						<td><g:message code="report.formB.label" default="Form B" /></td>
 						<td>${reportInstance?.formB?.size()}</td>
