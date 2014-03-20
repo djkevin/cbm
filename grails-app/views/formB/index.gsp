@@ -24,7 +24,7 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="formStatus" title="${message(code: 'formB.formStatus.label', default: 'Form Status')}" />
+						<g:sortableColumn property="formStatus" title="${message(code: 'formStatus.label', default: 'Form Status')}" />
 					
 						<g:sortableColumn property="eventName" title="${message(code: 'formB.eventName.label', default: 'Event Name')}" />
 					
