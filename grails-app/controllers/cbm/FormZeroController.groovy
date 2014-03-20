@@ -25,7 +25,6 @@ class FormZeroController {
         def reportId = params.long('reportId')
         Report r =  Report.findById(reportId)
         FormZero f = new FormZero()
-        println ("report is: "+r)
         f.setReport(r)
         respond f
     }
