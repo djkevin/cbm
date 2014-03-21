@@ -22,7 +22,9 @@ class NationalContactController {
     }
 
     def create() {
-        respond new NationalContact(params)
+        NationalContact n = new NationalContact()
+        n.location = new Address()
+        respond n
     }
 
     @Transactional
@@ -33,6 +35,7 @@ class NationalContactController {
         }
         println (params)
         println "statePartyId: "+params.get('stateParty.id');
+        println "street: "+ nationalContactInstance.location.street1
         nationalContactInstance.stateParty.id = params.long('stateParty.id')
 
         if (nationalContactInstance.hasErrors()) {
@@ -61,7 +64,7 @@ class NationalContactController {
             notFound()
             return
         }
-
+        println (params)
         if (nationalContactInstance.hasErrors()) {
             respond nationalContactInstance.errors, view:'edit'
             return

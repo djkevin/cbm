@@ -59,11 +59,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${nationalContactInstance?.address}">
+				<g:if test="${nationalContactInstance?.location}">
 				<li class="fieldcontain">
 					<span id="address-label" class="property-label"><g:message code="nationalContact.address.label" default="Address" /></span>
 					
-						<span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${nationalContactInstance}" field="address"/></span>
+						<span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${nationalContactInstance}" field="location"/></span>
 					
 				</li>
 				</g:if>

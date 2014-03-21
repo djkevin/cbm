@@ -1,4 +1,4 @@
-<%@ page import="cbm.NationalContact" %>
+<%@ page import="cbm.StateParty; cbm.NationalContact" %>
 
 
 
@@ -34,8 +34,10 @@
 	<g:textField name="position" maxlength="${nationalContactInstance?.constraints?.position?.maxSize}" value="${nationalContactInstance?.position}"/>
 </div>
 <h1><g:message code="nationalContact.address.label" default="Address" /></h1>
+<g:set var="addressInstance" value="${nationalContactInstance}"></g:set>
+<g:render template="../address"/>
 %{--<fieldset class="embedded"><legend><g:message code="nationalContact.address.label" default="Address" /></legend>--}%
-<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.country', 'error')} required">
+%{--<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.country', 'error')} required">
 	<label for="address.country" class="property-label25">
 		<g:message code="nationalContact.address.country.label" default="Country" />
 		<span class="required-indicator">*</span>
@@ -65,7 +67,7 @@
 		
 	</label>
 	<g:textField name="town" maxlength="${nationalContactInstance?.constraints?.town?.maxSize}" value="${addressInstance?.town}"/>
-</div>
+</div>--}%
 %{--</fieldset>--}%
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
 	<label for="telephone" class="property-label25">
@@ -104,8 +106,15 @@
 		<g:message code="nationalContact.stateParty.label" default="State Party" />
 		<span class="required-indicator">*</span>
 	</label>
-    <g:hiddenField id="stateParty" name="stateParty.id" value="${nationalContactInstance?.stateParty.id}" />
-    <g:textField id="stateParty.country" name="stateParty.country" value="${nationalContactInstance?.stateParty.country}" readonly=""/>
+
 	%{--<g:select id="stateParty" name="stateParty.id" from="${cbm.StateParty.list()}" optionKey="id" required="" value="${nationalContactInstance?.stateParty?.id}" class="many-to-one"/>--}%
+    <g:if test="${nationalContactInstance?.stateParty}">
+        <g:hiddenField id="stateParty" name="stateParty.id" value="${nationalContactInstance?.stateParty?.id}" />
+        <g:textField id="stateParty.country" name="stateParty.country" value="${nationalContactInstance?.stateParty?.country}" readonly=""/>
+    </g:if>
+    <g:else>
+        <g:hiddenField id="stateParty" name="stateParty.id" value="${params?.stateParty?.id}" />
+        <g:textField id="stateParty.country" name="stateParty.country" value="${StateParty.get(params?.stateParty?.id)}" readonly=""/>
+    </g:else>
 </div>
 

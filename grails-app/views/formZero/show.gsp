@@ -112,9 +112,9 @@
 				</li>
 				</g:if>
 
-                <h4><g:message code="formZero.nationalContact.label" default="National Contact"/> </h4>
+                %{--<h4><g:message code="formZero.nationalContact.label" default="National Contact"/> </h4>--}%
 
-                <g:if test="${nationalContacts}">
+               %{-- <g:if test="${nationalContacts}">
                     <g:each in="${nationalContacts}" var="nationalContact">
                         <g:link controller="nationalContact" action="show" id="${nationalContact.id}">${nationalContact}</g:link>
                     </g:each>
@@ -122,7 +122,7 @@
 
                 </g:if>
                 [<g:link controller="nationalContact" action="create" params="['stateParty.id': formZeroInstance?.report?.stateParty.id]"><g:message code="default.button.create.label"/></g:link>]
-
+--}%
 
                 <g:set var="formInstance" value="${formZeroInstance}"></g:set>
                 <g:render template="../showStatus"/>
