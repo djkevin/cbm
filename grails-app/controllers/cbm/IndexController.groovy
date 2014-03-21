@@ -9,7 +9,7 @@ class   IndexController {
     def index() {
         if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')) {
             println "redirecting to admin"
-            redirect controller: "stateParty", action:"index"
+            redirect controller: "admin", action:"index"
         }
 
         if (SpringSecurityUtils.ifAllGranted('ROLE_USER')) {

@@ -1,12 +1,12 @@
 package cbm
 
-
+import grails.plugin.springsecurity.SpringSecurityUtils
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER'])
+@Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class ReportController {
 
@@ -20,9 +20,14 @@ class ReportController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def user = getUser()
-        // respond Report.list(params), model:[reportInstanceCount: Report.count()]   test
-        respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
+
+        if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')) {
+            respond Report.findAll()
+        }else{
+            def user = getUser()
+            respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
+        }
+
     }
 
     def show(Report reportInstance) {

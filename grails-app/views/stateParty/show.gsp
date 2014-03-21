@@ -36,7 +36,7 @@
 				<li class="fieldcontain">
 					<span id="accessionRatification-label" class="property-label"><g:message code="stateParty.accessionRatification.label" default="Accession Ratification" /></span>
 					
-						<span class="property-value" aria-labelledby="accessionRatification-label"><g:formatDate date="${statePartyInstance?.accessionRatification}" /></span>
+						<span class="property-value" aria-labelledby="accessionRatification-label"><g:formatDate format="dd-MMM-yyyy" date="${statePartyInstance?.accessionRatification}"/></span>
 					
 				</li>
 				</g:if>

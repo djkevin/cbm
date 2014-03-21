@@ -36,7 +36,7 @@
 					
 						<td><g:link action="show" id="${statePartyInstance.id}">${fieldValue(bean: statePartyInstance, field: "country")}</g:link></td>
 					
-						<td><g:formatDate date="${statePartyInstance.accessionRatification}" /></td>
+						<td><g:formatDate format="dd-MMM-yyyy" date="${statePartyInstance.accessionRatification}" /></td>
 					
 					</tr>
 				</g:each>

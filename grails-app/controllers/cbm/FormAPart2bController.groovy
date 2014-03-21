@@ -1,13 +1,12 @@
 package cbm
 
 import org.springframework.web.multipart.MultipartHttpServletRequest
-import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER'])
+@Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class FormAPart2bController {
 
