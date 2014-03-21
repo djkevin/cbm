@@ -4,6 +4,20 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
+        <style type="text/css" media="screen">
+            .draft {
+          /*      width: 20px;
+                height: 20px; */
+                background-image:url("${resource(dir: 'images/skin', file: 'pen_alt_fill_12x12.png')}");
+            }
+            .completed {
+                background-image:url("${resource(dir: 'images/skin', file: 'check_12x10.png')}");
+            }
+            .private {
+                background-image:url("${resource(dir: 'images/skin', file: 'lock_fill_9x12.png')}");
+            }
+
+        </style>
 		<g:set var="entityName" value="${message(code: 'report.label', default: 'Report')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -24,7 +38,7 @@
 			
 				<g:if test="${reportInstance?.reportName}">
 				<li class="fieldcontain">
-					<span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+					<span id="report-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
 					
 						<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="reportName"/></span>
 					
@@ -127,48 +141,15 @@
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
                             <g:if test="${reportInstance?.formAPart1 != null}">
-                            <table id="inner-table">
-                                <g:each in="${reportInstance.formAPart1}" var="f">
-                                <tr>
-                                    <td width="90%"><g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
-
-                                    <!-- Draft or completed-->
-                                    <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
-                                        <td><img src="${resource(dir: 'images/skin', file: 'pen_alt_fill_12x12.png')}" alt="draft"/></td>
-                                    </g:if>
-                                    <g:else>
-                                        <td><img src="${resource(dir: 'images/skin', file: 'check_12x10.png')}" alt="draft"/></td>
-                                    </g:else>
-
-                                    <!-- Private or public -->
-                                    <g:if test="${f.visibility.equalsIgnoreCase("private")}">
-                                        <td><img src="${resource(dir: 'images/skin', file: 'lock_fill_9x12.png')}" alt="draft"/></td>
-                                    </g:if>
-                                    <g:else>
-                                        <td>&nbsp;</td>
-                                    </g:else>
-
-                                </tr>
-                                </g:each>
-                            </table>
+                                <g:set var="forms" value="${reportInstance?.formAPart1}"></g:set>
+                                <g:set var="controller" value="formAPart1a"/>
+                                <g:render template="../formDetail"/>
                             </g:if>
 						</td>
 						<td>
                             <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
-       %{--             <tr class="odd">
-						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
-						<td>${reportInstance?.formAPart1.size()}</td>
-						<td>
-							<g:each in="${reportInstance.formAPart1}" var="f">
-								<g:link controller="formAPart1a" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-							</g:each>
-						</td>
-						<td>
-                            <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
-						</td>
-					</tr>--}%
 					<tr class="even">
 						<td><g:message code="report.formAPart1b.label" default="Form A Part 1b" /></td>
 						<td>${reportInstance?.formAPart1b ? 1:0}</td>
@@ -197,35 +178,10 @@
 						<td><g:message code="report.formAPart2b.label" default="Form A Part 2b" /></td>
 						<td>${reportInstance?.formAPart2b?.size()}</td>
 						<td>
-                 %{--           <g:each in="${reportInstance.formAPart2b}" var="f">
-                                <g:link controller="formAPart2b" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>
-
-                            </g:each>--}%
                             <g:if test="${reportInstance?.formAPart2b != null}">
-                                <table id="inner-table">
-                                    <g:each in="${reportInstance.formAPart2b}" var="f">
-                                        <tr>
-                                            <td style="width:90%"><g:link controller="formAPart2b" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
-
-                                        <!-- Draft or completed-->
-                                            <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
-                                                <td><img src="${resource(dir: 'images/skin', file: 'pen_alt_fill_12x12.png')}" alt="draft"/></td>
-                                            </g:if>
-                                            <g:else>
-                                                <td><img src="${resource(dir: 'images/skin', file: 'check_12x10.png')}" alt="completed"/></td>
-                                            </g:else>
-
-                                        <!-- Private or public -->
-                                            <g:if test="${f.visibility.equalsIgnoreCase("private")}">
-                                                <td><img src="${resource(dir: 'images/skin', file: 'lock_fill_9x12.png')}" alt="private"/></td>
-                                            </g:if>
-                                            <g:else>
-                                                <td>&nbsp;</td>
-                                            </g:else>
-
-                                        </tr>
-                                    </g:each>
-                                </table>
+                                <g:set var="forms" value="${reportInstance?.formAPart2b}"></g:set>
+                                <g:set var="controller" value="formAPart2b"/>
+                                <g:render template="../formDetail"/>
                             </g:if>
 
 						</td>
@@ -233,27 +189,15 @@
                             <g:link controller="formAPart2b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
-%{--					<tr class="odd">
-						<td><g:message code="report.formAPart2c.label" default="Form A Part 2c" /></td>
-						<td>${reportInstance?.formAPart2b?.formAPart2c?.size()}</td>
-						<td>
-                            <g:each in="${reportInstance.formAPart2b}" var="f">
-                            	<g:each in="${f.formAPart2c}" var="Ap2c">
-                                	<g:link controller="formAPart2c" action="show" id="${Ap2c.id}">${Ap2c ? Ap2c.encodeAsHTML():''}</g:link>,
-                                </g:each>
-                            </g:each>
-						</td>
-						<td>
-							<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': reportInstance.formAPart2b?.id]"><g:message code="default.button.create.label"/></g:link>
-						</td>
-					</tr>--}%
 					<tr class="odd">
 						<td><g:message code="report.formB.label" default="Form B" /></td>
 						<td>${reportInstance?.formB?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formB}" var="f">
-                                <g:link controller="formB" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
+                            <g:if test="${reportInstance?.formB != null}">
+                                <g:set var="forms" value="${reportInstance?.formB}"></g:set>
+                                <g:set var="controller" value="formB"/>
+                                <g:render template="../formDetail"/>
+                            </g:if>
 						</td>
 						<td>
 							<g:link controller="formB" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
@@ -263,9 +207,11 @@
 						<td><g:message code="report.formC.label" default="Form C" /></td>
 						<td>${reportInstance?.formC?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formC}" var="f">
-                                <g:link controller="formC" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
+                            <g:if test="${reportInstance?.formC != null}">
+                                <g:set var="forms" value="${reportInstance?.formC}"></g:set>
+                                <g:set var="controller" value="formC"/>
+                                <g:render template="../formDetail"/>
+                            </g:if>
 						</td>
 						<td>
 							<g:link controller="formC" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
@@ -275,9 +221,11 @@
 						<td><g:message code="report.formE.label" default="Form E" /></td>
 						<td>${reportInstance?.formE?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formE}" var="f">
-                                <g:link controller="formE" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
+                            <g:if test="${reportInstance?.formE != null}">
+                                <g:set var="forms" value="${reportInstance?.formE}"></g:set>
+                                <g:set var="controller" value="formE"/>
+                                <g:render template="../formDetail"/>
+                            </g:if>
 						</td>
 						<td>
 							<g:link controller="formE" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
@@ -287,9 +235,11 @@
 						<td><g:message code="report.formF.label" default="Form F" /></td>
 						<td>${reportInstance?.formF?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formF}" var="f">
-                                <g:link controller="formF" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
+                            <g:if test="${reportInstance?.formF != null}">
+                                <g:set var="forms" value="${reportInstance?.formF}"></g:set>
+                                <g:set var="controller" value="formF"/>
+                                <g:render template="../formDetail"/>
+                            </g:if>
 						</td>
 						<td>
 							<g:link controller="formF" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
@@ -299,9 +249,11 @@
 						<td><g:message code="report.formG.label" default="Form G" /></td>
 						<td>${reportInstance?.formG?.size()}</td>
 						<td>
-                            <g:each in="${reportInstance.formG}" var="f">
-                                <g:link controller="formG" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
+                            <g:if test="${reportInstance?.formG != null}">
+                                <g:set var="forms" value="${reportInstance?.formG}"></g:set>
+                                <g:set var="controller" value="formG"/>
+                                <g:render template="../formDetail"/>
+                            </g:if>
 						</td>
 						<td>
 							<g:link controller="formG" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
