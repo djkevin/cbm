@@ -103,7 +103,6 @@
                       <br>
                   </g:if>
                   <g:else>
-                      %{--<g:link controller="formAPart2bOrganigram" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>--}%
                       [<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
                   </g:else>
               </div>
