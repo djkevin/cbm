@@ -18,7 +18,9 @@ class FormZeroController {
     }
 
     def show(FormZero formZeroInstance) {
-        respond formZeroInstance
+        def nationalContacts = formZeroInstance.report.stateParty.nationalContact
+
+        respond formZeroInstance, model: [nationalContacts:nationalContacts]
     }
 
     def create() {
