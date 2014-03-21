@@ -28,16 +28,21 @@ fixture {
         accessionRatification = new Date()
     }
 
-    userCanada(SecUser) {
+    userCanada(User) {
         username = "canada"
         password = "canada"
         stateParty = [spCAN]
     }
 
-    userAustralia(SecUser) {
+    userAustralia(User) {
         username = "australia"
         password = "australia"
         stateParty = [spAUS]
+    }
+    
+    userAdmin(AdminUser) {
+        username = "admin"
+        password = "admin"       
     }
 
     roleAdmin(SecRole) {
@@ -56,6 +61,11 @@ fixture {
     userRoleAUS(SecUserSecRole) {
         secUser = userAustralia
         secRole = roleUser
+    }
+    
+    userRoleAdmin(SecUserSecRole) {
+        secUser = userAdmin
+        secRole = roleAdmin
     }
 
     reportAUSTRALIA2010EN(Report) {
@@ -260,8 +270,8 @@ fixture {
         typeOfDisease = "Foot and mouth disease"
         sourceOfDisease = "Laboratory escape"
         possibleCause = "Foot and mouth disease virus"
-        detailedSymptoms = "Vesicular condition of the feet, bucal mucosa and, in females, the mammary glands"
-        deviationFromNormalPattern = "FMDV  is Exotic to the UK"
+        /*detailedSymptoms = "Vesicular condition of the feet, bucal mucosa and, in females, the mammary glands"*/
+/*        deviationFromNormalPattern = "FMDV  is Exotic to the UK"*/
         numOfTotalCases = "238 animals at 8 premises"
         numDeaths = "0"
         developmentOfOutbreak = "In late July there was laboratory escape of pathogen with subsequent local spread. Spread contained by measures taken below and last case was reported on 29 August 2007."
