@@ -19,6 +19,6 @@ class Address {
     }
 	
 	String toString(){
-		"${street1} ${street2} ${town} ${state} ${postCode} ${country}"
+		"${street1}, ${street2}, ${town}, ${state}, ${postCode}, ${country}"
 	}
 }
