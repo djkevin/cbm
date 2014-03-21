@@ -18,4 +18,8 @@ class FormG extends BaseForm {
         typesOfDiseaseCovered maxSize: 5000
 
     }
+
+    String toString(){
+        facilityName
+    }
 }
