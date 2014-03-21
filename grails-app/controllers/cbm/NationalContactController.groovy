@@ -31,6 +31,9 @@ class NationalContactController {
             notFound()
             return
         }
+        println (params)
+        println "statePartyId: "+params.get('stateParty.id');
+        nationalContactInstance.stateParty.id = params.long('stateParty.id')
 
         if (nationalContactInstance.hasErrors()) {
             respond nationalContactInstance.errors, view:'create'

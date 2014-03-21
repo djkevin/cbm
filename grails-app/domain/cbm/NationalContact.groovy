@@ -28,6 +28,6 @@ class NationalContact {
     }
 
     String toString() {
-        "${id} ${title} ${firstName} ${lastName}"
+        "${title} ${firstName} ${lastName}"
     }
 }

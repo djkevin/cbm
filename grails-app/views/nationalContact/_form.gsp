@@ -104,6 +104,8 @@
 		<g:message code="nationalContact.stateParty.label" default="State Party" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="stateParty" name="stateParty.id" from="${cbm.StateParty.list()}" optionKey="id" required="" value="${nationalContactInstance?.stateParty?.id}" class="many-to-one"/>
+    <g:hiddenField id="stateParty" name="stateParty.id" value="${nationalContactInstance?.stateParty.id}" />
+    <g:textField id="stateParty.country" name="stateParty.country" value="${nationalContactInstance?.stateParty.country}" readonly=""/>
+	%{--<g:select id="stateParty" name="stateParty.id" from="${cbm.StateParty.list()}" optionKey="id" required="" value="${nationalContactInstance?.stateParty?.id}" class="many-to-one"/>--}%
 </div>
 
