@@ -12,9 +12,6 @@ class SecUser {
     boolean accountLocked
     boolean passwordExpired
 
-    //To allow retrieval of country_id afer login
-    StateParty stateParty
-
     static transients = ['springSecurityService']
 
     static constraints = {
