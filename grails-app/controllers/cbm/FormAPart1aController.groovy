@@ -24,7 +24,6 @@ class FormAPart1aController {
     }
 
     def create() {      //TODO check for null or empty params
-        println(params)
         def reportId = params.long('reportId')
         Report r =  Report.findById(reportId)
         FormAPart1a formAPart1a = new FormAPart1a();
