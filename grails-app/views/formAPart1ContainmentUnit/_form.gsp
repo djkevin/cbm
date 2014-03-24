@@ -1,11 +1,12 @@
-<%@ page import="cbm.FormAPart1ContainmentUnit" %>
+<%@ page import="cbm.FormAPart1a; cbm.FormAPart1ContainmentUnit" %>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'facility', 'error')} required">
 	<label for="facility" class="property-label">
 		<g:message code="formAPart1ContainmentUnit.facility.label" default="Facility" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField id="facility" name="facility.id"  value="${params.formAPart1.id}" readonly="readonly" />
+    <g:textField id="facility.name" class="medText" name="facility.name" value="${formAPart1ContainmentUnitInstance?.facility?.facilityName}" readonly="readonly"/>
+	<g:hiddenField id="facility" name="facility.id"  value="${formAPart1ContainmentUnitInstance?.facility?.id}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1ContainmentUnitInstance, field: 'bioSafetyLevel', 'error')} ">
@@ -36,7 +37,7 @@
 		<g:message code="formAPart1ContainmentUnit.comment.label" default="Comment" />
 		
 	</label>
-<g:textField name="comment" maxlength="${formAPart1ContainmentUnitInstance?.constraints?.comment?.maxSize}" value="${formAPart1ContainmentUnitInstance?.comment}"/>
+<g:textField name="comment" class="medText" maxlength="${formAPart1ContainmentUnitInstance?.constraints?.comment?.maxSize}" value="${formAPart1ContainmentUnitInstance?.comment}"/>
 </div>
 
 

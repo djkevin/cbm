@@ -10,8 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 @Transactional(readOnly = true)
 class FormAPart1ContainmentUnitController {
 
-//    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -23,9 +22,12 @@ class FormAPart1ContainmentUnitController {
     }
 
     def create() {
-//		def test = params.formAPart1.id
-//		println"fAP1 id: "+params[formAPart1.id]
-        respond new FormAPart1ContainmentUnit(params)
+
+        def formAPart1a = FormAPart1a.findById(params.long('formAPart1.id'))
+        def fAP1CU = new FormAPart1ContainmentUnit()
+        fAP1CU.setFacility(formAPart1a)
+
+        respond fAP1CU
 		
     }
 
