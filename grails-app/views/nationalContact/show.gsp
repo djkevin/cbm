@@ -107,9 +107,7 @@
 				<g:if test="${nationalContactInstance?.stateParty}">
 				<li class="fieldcontain">
 					<span id="stateParty-label" class="property-label"><g:message code="nationalContact.stateParty.label" default="State Party" /></span>
-					
-						<span class="property-value" aria-labelledby="stateParty-label"><g:link controller="stateParty" action="show" id="${nationalContactInstance?.stateParty?.id}">${nationalContactInstance?.stateParty?.encodeAsHTML()}</g:link></span>
-					
+					<span class="property-value" aria-labelledby="stateParty-label"><g:fieldValue bean="${nationalContactInstance}" field="stateParty"/></span>
 				</li>
 				</g:if>
 			
