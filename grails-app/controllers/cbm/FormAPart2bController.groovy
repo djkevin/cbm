@@ -83,7 +83,7 @@ class FormAPart2bController {
         println("after save")
         request.withFormat {
 
-            form multipartForm{
+            form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FormAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
                println "Save ok"
                 redirect formAPart2bInstance
