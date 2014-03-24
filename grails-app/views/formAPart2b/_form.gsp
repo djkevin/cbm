@@ -81,7 +81,7 @@
         <span class="required-indicator">*</span>
     </label>
 </div>
-<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram"/></div>
+%{--<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram"/></div>--}%
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'declaration', 'error')} required">
     <label for="declaration">
