@@ -6,7 +6,7 @@ class FormAPart2a {
     Report report
 
     String toString() {
-        return "${id} ${existingNationalProgrammes}"
+        "${existingNationalProgrammes}"
     }
 
     static constraints = {

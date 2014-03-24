@@ -12,8 +12,7 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="list" controller="formAPart1a" action="show" id="${formAPart1ContainmentUnitInstance?.facility?.id}"><g:message code="default.show.label" args="${formAPart1ContainmentUnitInstance?.facility}" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-formAPart1ContainmentUnit" class="content scaffold-show" role="main">
@@ -63,7 +62,7 @@
 				<li class="fieldcontain">
 					<span id="facility-label" class="property-label"><g:message code="formAPart1ContainmentUnit.facility.label" default="Facility" /></span>
 					
-						<span class="property-value" aria-labelledby="facility-label"><g:link controller="formAPart1a" action="show" id="${formAPart1ContainmentUnitInstance?.facility?.id}">${formAPart1ContainmentUnitInstance?.facility?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="facility-label">${formAPart1ContainmentUnitInstance?.facility?.encodeAsHTML()}</span>
 					
 				</li>
 				</g:if>
