@@ -26,7 +26,6 @@
 				<g:if test="${formAPart2bOrganigramInstance?.organisationalStructureDiagram}">
 				<li class="fieldcontain">
 					<span id="organisationalStructureDiagram-label" class="property-label"><g:message code="formAPart2bOrganigram.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></span>
-					
 				</li>
 				</g:if>
 			
