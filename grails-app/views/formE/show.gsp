@@ -31,47 +31,54 @@
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formEInstance}" field="report"/></span>
                     </li>
                 </g:if>
-
-				<g:if test="${formEInstance?.biosafetyAndBioSecurity}">
-				<li class="fieldcontain">
-					<span id="biosafetyAndBioSecurity-label" class="property-label"><g:message code="formE.biosafetyAndBioSecurity.label" default="Biosafety And Bio Security" /></span>
-					
-						<span class="property-value" aria-labelledby="biosafetyAndBioSecurity-label"><g:fieldValue bean="${formEInstance}" field="biosafetyAndBioSecurity"/></span>
-					
-				</li>
-				</g:if>
-
-				<g:if test="${formEInstance?.developmentAndMeansOfDelivery}">
-				<li class="fieldcontain">
-					<span id="developmentAndMeansOfDelivery-label" class="property-label"><g:message code="formE.developmentAndMeansOfDelivery.label" default="Development And Means Of Delivery" /></span>
-					
-						<span class="property-value" aria-labelledby="developmentAndMeansOfDelivery-label"><g:fieldValue bean="${formEInstance}" field="developmentAndMeansOfDelivery"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formEInstance?.exportsOfMicroOrganisms}">
-				<li class="fieldcontain">
-					<span id="exportsOfMicroOrganisms-label" class="property-label"><g:message code="formE.exportsOfMicroOrganisms.label" default="Exports Of Micro Organisms" /></span>
-					
-						<span class="property-value" aria-labelledby="exportsOfMicroOrganisms-label"><g:fieldValue bean="${formEInstance}" field="exportsOfMicroOrganisms"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formEInstance?.importsOfMicroOrganisms}">
-				<li class="fieldcontain">
-					<span id="importsOfMicroOrganisms-label" class="property-label"><g:message code="formE.importsOfMicroOrganisms.label" default="Imports Of Micro Organisms" /></span>
-					
-						<span class="property-value" aria-labelledby="importsOfMicroOrganisms-label"><g:fieldValue bean="${formEInstance}" field="importsOfMicroOrganisms"/></span>
-					
-				</li>
-				</g:if>
+                <br/>
+                <div id="list-formZero" class="content scaffold-list" role="main">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th><g:message code="formE.relatingTo.label" default="Relating to" /></th>
+                            <th><g:message code="formE.legislation.label" default="Legislation" /></th>
+                            <th><g:message code="formE.regulation.label" default="Regulations" /></th>
+                            <th><g:message code="formE.otherMeasures.label" default="Other Measures"/> </th>
+                            <th><g:message code="formE.amendedSinceLastYear.label" default="Amended since last year" /></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><g:message code="formE.development.production" default="Development, production stockpiling, acquisition or retention" /></td>
+                            <td>${formEInstance?.developmentAndMeansOfDelivery?.legislation}</td>
+                            <td>${formEInstance?.developmentAndMeansOfDelivery?.regulation}</td>
+                            <td>${formEInstance?.developmentAndMeansOfDelivery?.otherMeasures}</td>
+                            <td>${formEInstance?.developmentAndMeansOfDelivery?.amendedSinceLastYear}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formE.export.microorganism" default="Exports of micro-organisms and toxins" /></td>
+                            <td>${formEInstance?.exportsOfMicroOrganisms?.legislation}</td>
+                            <td>${formEInstance?.exportsOfMicroOrganisms?.regulation}</td>
+                            <td>${formEInstance?.exportsOfMicroOrganisms?.otherMeasures}</td>
+                            <td>${formEInstance?.exportsOfMicroOrganisms?.amendedSinceLastYear}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formE.import.microorganism" default="Imports of micro-organisms and toxins" /></td>
+                            <td>${formEInstance?.importsOfMicroOrganisms?.legislation}</td>
+                            <td>${formEInstance?.importsOfMicroOrganisms?.regulation}</td>
+                            <td>${formEInstance?.importsOfMicroOrganisms?.otherMeasures}</td>
+                            <td>${formEInstance?.importsOfMicroOrganisms?.amendedSinceLastYear}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formE.bioSafety" default="Biosafety and biosecurity" /></td>
+                            <td>${formEInstance?.biosafetyAndBioSecurity?.legislation}</td>
+                            <td>${formEInstance?.biosafetyAndBioSecurity?.regulation}</td>
+                            <td>${formEInstance?.biosafetyAndBioSecurity?.otherMeasures}</td>
+                            <td>${formEInstance?.biosafetyAndBioSecurity?.amendedSinceLastYear}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <g:if test="${formEInstance?.additionalComments}">
-                    <li class="fieldcontain">
-                        <span id="additionalComments-label" class="property-label"><g:message code="formE.additionalComments.label" default="Additional Comments" /></span>
-
+                    <li>
+                        <span id="additionalComments-label" class="property-label-b"><g:message code="formE.additionalComments.label" default="Additional Comments" /></span>
                         <span class="property-value" aria-labelledby="additionalComments-label">${formEInstance.additionalComments}</span>
 
                     </li>
@@ -81,6 +88,8 @@
                 <g:render template="../showStatus"/>
 			
 			</ol>
+
+
 			<g:form url="[resource:formEInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${formEInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
