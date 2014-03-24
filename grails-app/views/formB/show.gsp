@@ -55,12 +55,11 @@
                 <g:if test="${formBInstance?.eventDate}">
                     <li class="fieldcontain">
                         <span id="eventDate-label" class="property-label"><g:message code="formB.eventDate.label" default="Event Date" /></span>
-
                         <span class="property-value" aria-labelledby="eventDate-label"><g:formatDate format="dd-MMM-yyyy" date="${formBInstance?.eventDate}" /></span>
-
                     </li>
+                    <br>
                 </g:if>
-                <br>
+
 
                 <g:if test="${formBInstance?.timeOfOutbreak}">
                     <h4><g:message code="formB.timeOfOutbreak.label" default="Time Of Outbreak"/></h4>
@@ -77,8 +76,9 @@
                         <span class="property-value" aria-labelledby="locationAffected-label"><g:fieldValue
                                 bean="${formBInstance}" field="locationAffected"/></span>
                     </li>
+                    <br>
                 </g:if>
-                <br>
+
 
                 <g:if test="${formBInstance?.typeOfDisease}">
                     <h4><g:message code="formB.typeOfDisease.label" default="Type Of Disease"/></h4>
@@ -86,8 +86,9 @@
                         <span class="property-value" aria-labelledby="typeOfDisease-label"><g:fieldValue
                                 bean="${formBInstance}" field="typeOfDisease"/></span>
                     </li>
+                    <br>
                 </g:if>
-                <br>
+
 
                 <g:if test="${formBInstance?.sourceOfDisease}">
                     <h4><g:message code="formB.sourceOfDisease.label" default="Source Of Disease"/></h4>
@@ -95,8 +96,9 @@
                         <span class="property-value" aria-labelledby="sourceOfDisease-label"><g:fieldValue
                                 bean="${formBInstance}" field="sourceOfDisease"/></span>
                     </li>
+                    <br>
                 </g:if>
-                <br>
+
 
                 <g:if test="${formBInstance?.possibleCause}">
                     <h4><g:message code="formB.possibleCause.label" default="Possible Cause"/></h4>
@@ -104,8 +106,9 @@
                         <span class="property-value" aria-labelledby="possibleCause-label"><g:fieldValue
                                 bean="${formBInstance}" field="possibleCause"/></span>
                     </li>
+                    <br>
                 </g:if>
-                <br>
+
 
                 <g:if test="${formBInstance?.mainCharacteristics}">
                     <h4><g:message code="formB.mainCharacteristics.label" default="Main Characteristics"/></h4>
@@ -113,70 +116,57 @@
                         <span class="property-value" aria-labelledby="mainCharacteristics-label"><g:fieldValue
                                 bean="${formBInstance}" field="mainCharacteristics"/></span>
                     </li>
+                    <br>
                 </g:if>
-                <br>
+
 
                 <h4><g:message code="formB.detailedSymptoms.label" default="Detailed Symptoms" /></h4>
                 <g:if test="${formBInstance?.symptomRespiratory}">
                     <li class="fieldcontain">
                         <span id="symptomRespiratory-label" class="property-label"><g:message code="formB.symptomRespiratory.label" default="Symptom Respiratory" /></span>
-
                         <span class="property-value" aria-labelledby="symptomRespiratory-label"><g:fieldValue bean="${formBInstance}" field="symptomRespiratory"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.symptomCirculatory}">
                     <li class="fieldcontain">
                         <span id="symptomCirculatory-label" class="property-label"><g:message code="formB.symptomCirculatory.label" default="Symptom Circulatory" /></span>
-
                         <span class="property-value" aria-labelledby="symptomCirculatory-label"><g:fieldValue bean="${formBInstance}" field="symptomCirculatory"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.symptomNeurologicalBehavioral}">
                     <li class="fieldcontain">
                         <span id="symptomNeurologicalBehavioral-label" class="property-label"><g:message code="formB.symptomNeurologicalBehavioral.label" default="Symptom Neurological Behavioral" /></span>
-
                         <span class="property-value" aria-labelledby="symptomNeurologicalBehavioral-label"><g:fieldValue bean="${formBInstance}" field="symptomNeurologicalBehavioral"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.symptomIntestinal}">
                     <li class="fieldcontain">
                         <span id="symptomIntestinal-label" class="property-label"><g:message code="formB.symptomIntestinal.label" default="Symptom Intestinal" /></span>
-
                         <span class="property-value" aria-labelledby="symptomIntestinal-label"><g:fieldValue bean="${formBInstance}" field="symptomIntestinal"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.symptomDermatological}">
                     <li class="fieldcontain">
                         <span id="symptomDermatological-label" class="property-label"><g:message code="formB.symptomDermatological.label" default="Symptom Dermatological" /></span>
-
                         <span class="property-value" aria-labelledby="symptomDermatological-label"><g:fieldValue bean="${formBInstance}" field="symptomDermatological"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.symptomNephrological}">
                     <li class="fieldcontain">
                         <span id="symptomNephrological-label" class="property-label"><g:message code="formB.symptomNephrological.label" default="Symptom Nephrological" /></span>
-
                         <span class="property-value" aria-labelledby="symptomNephrological-label"><g:fieldValue bean="${formBInstance}" field="symptomNephrological"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.symptomOther}">
                     <li class="fieldcontain">
                         <span id="symptomOther-label" class="property-label"><g:message code="formB.symptomOther.label" default="Symptom Other" /></span>
-
                         <span class="property-value" aria-labelledby="symptomOther-label"><g:fieldValue bean="${formBInstance}" field="symptomOther"/></span>
-
                     </li>
                 </g:if>
                 <br>
@@ -186,27 +176,21 @@
                 <g:if test="${formBInstance?.deviationType}">
                     <li class="fieldcontain">
                         <span id="deviationType-label" class="property-label"><g:message code="formB.deviationType.label" default="Deviation Type" /></span>
-
                         <span class="property-value" aria-labelledby="deviationType-label"><g:fieldValue bean="${formBInstance}" field="deviationType"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.deviationPlace}">
                     <li class="fieldcontain">
                         <span id="deviationPlace-label" class="property-label"><g:message code="formB.deviationPlace.label" default="Deviation Place" /></span>
-
                         <span class="property-value" aria-labelledby="deviationPlace-label"><g:fieldValue bean="${formBInstance}" field="deviationPlace"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.deviationTime}">
                     <li class="fieldcontain">
                         <span id="deviationTime-label" class="property-label"><g:message code="formB.deviationTime.label" default="Deviation Time" /></span>
-
                         <span class="property-value" aria-labelledby="deviationTime-label"><g:fieldValue bean="${formBInstance}" field="deviationTime"/></span>
-
                     </li>
                 </g:if>
 
@@ -240,27 +224,21 @@
                 <g:if test="${formBInstance?.deviationAgentDiffToDiagnose}">
                     <li class="fieldcontain">
                         <span id="deviationAgentDiffToDiagnose-label" class="property-label"><g:message code="formB.deviationAgentDiffToDiagnose.label" default="Deviation Agent Diff To Diagnose" /></span>
-
                         <span class="property-value" aria-labelledby="deviationAgentDiffToDiagnose-label"><g:fieldValue bean="${formBInstance}" field="deviationAgentDiffToDiagnose"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.deviationPresenceOfUnusualVectors}">
                     <li class="fieldcontain">
                         <span id="deviationPresenceOfUnusualVectors-label" class="property-label"><g:message code="formB.deviationPresenceOfUnusualVectors.label" default="Deviation Presence Of Unusual Vectors" /></span>
-
                         <span class="property-value" aria-labelledby="deviationPresenceOfUnusualVectors-label"><g:fieldValue bean="${formBInstance}" field="deviationPresenceOfUnusualVectors"/></span>
-
                     </li>
                 </g:if>
 
                 <g:if test="${formBInstance?.deviationOther}">
                     <li class="fieldcontain">
                         <span id="deviationOther-label" class="property-label"><g:message code="formB.deviationOther.label" default="Deviation Other" /></span>
-
                         <span class="property-value" aria-labelledby="deviationOther-label"><g:fieldValue bean="${formBInstance}" field="deviationOther"/></span>
-
                     </li>
                 </g:if>
                 <br>
@@ -292,9 +270,7 @@
 				<g:if test="${formBInstance?.developmentOfOutbreak}">
                 <h4><g:message code="formB.developmentOfOutbreak.label" default="Development Of Outbreak" /></h4>
 				<li>
-
-						<span class="property-value" aria-labelledby="developmentOfOutbreak-label"><g:fieldValue bean="${formBInstance}" field="developmentOfOutbreak"/></span>
-					
+					<span class="property-value" aria-labelledby="developmentOfOutbreak-label"><g:fieldValue bean="${formBInstance}" field="developmentOfOutbreak"/></span>
 				</li>
 				</g:if>
                 <br>
