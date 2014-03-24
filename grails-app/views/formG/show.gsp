@@ -1,4 +1,5 @@
 <%@ page import="cbm.FormG" %>
+<%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,8 +12,6 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				%{--<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>--}%
-				%{--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
                 <li>
                     <g:link class="list" controller="report" action="show" id="${formGInstance?.report?.id}">${formGInstance?.report?.reportName}</g:link>
                 </li>
@@ -27,10 +26,8 @@
 
                 <g:if test="${formGInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="report-label" class="property-label"><g:message code="formG.report.label" default="Report" /></span>
-
-                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formGInstance?.report?.id}">${formGInstance?.report?.encodeAsHTML()}</g:link></span>
-
+                        <span id="report-label" class="property-label"><g:message code="report.label" default="Report" /></span>
+                        <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formGInstance}" field="report"/></span>
                     </li>
                 </g:if>
 
@@ -56,7 +53,7 @@
                 <g:if test="${formGInstance?.typesOfDiseaseCovered}">
                 <h4><g:message code="formG.typesOfDiseaseCovered.label" default="Types Of Disease Covered" /></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="typesOfDiseaseCovered-label"><%=formGInstance.typesOfDiseaseCovered.decodeHTML()%></span>
+                        <span class="property-value" aria-labelledby="typesOfDiseaseCovered-label">${formGInstance.typesOfDiseaseCovered}</span>
                     </li>
                 </g:if>
 			

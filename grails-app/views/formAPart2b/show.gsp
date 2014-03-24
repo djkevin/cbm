@@ -28,7 +28,7 @@
 
                 <g:if test="${formAPart2bInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart2bInstance}" field="report"/></span>
                     </li>
                 </g:if>

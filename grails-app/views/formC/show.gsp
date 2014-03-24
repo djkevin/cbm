@@ -1,5 +1,6 @@
 
 <%@ page import="cbm.FormC" %>
+<%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,8 +16,6 @@
                 <li>
                     <g:link class="list" controller="report" action="show" id="${formCInstance?.report?.id}">${formCInstance?.report?.reportName}</g:link>
                 </li>
-			%{--	<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
 			</ul>
 		</div>
 		<div id="show-formC" class="content scaffold-show" role="main">
@@ -28,26 +27,17 @@
 
                 <g:if test="${formCInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formCInstance}" field="report"/></span>
                     </li>
                 </g:if>
 
                 <g:if test="${formCInstance?.comments}">
                     <h4><g:message code="formC.comments.label" default="Comments" /></h4>
-                    <li class="fieldcontain">
-                        <span class="property-value" aria-labelledby="comments-label"><g:fieldValue bean="${formCInstance}" field="comments"/></span>
+                    <li>
+                        <span class="property-value" aria-labelledby="comments-label">${formCInstance.comments}</span>
                     </li>
                 </g:if>
-
-%{--				<g:if test="${formCInstance?.report}">
-				<li class="fieldcontain">
-					<span id="report-label" class="property-label"><g:message code="formC.report.label" default="Report" /></span>
-					
-						<span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formCInstance?.report?.id}">${formCInstance?.report?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>--}%
 
                 <g:set var="formInstance" value="${formCInstance}"></g:set>
                 <g:render template="../showStatus"/>

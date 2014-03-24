@@ -27,7 +27,7 @@
 
                 <g:if test="${formAPart1aInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="formAPart1.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report Name" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formAPart1aInstance}" field="report"/></span>
                     </li>
                 </g:if>
@@ -94,7 +94,8 @@
                 <g:if test="${formAPart1aInstance?.scope}">
                     <h4><g:message code="formAPart1.scope.label" default="Scope"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="scope-label"><%=formAPart1aInstance.scope%></span>
+                        ${formAPart1aInstance.scope}
+
                     </li>
                 </g:if>
 

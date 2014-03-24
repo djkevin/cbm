@@ -1,5 +1,5 @@
-
 <%@ page import="cbm.FormF" %>
+<%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,8 +15,6 @@
                 <li>
                     <g:link class="list" controller="report" action="show" id="${formFInstance?.report?.id}">${formFInstance?.report?.reportName}</g:link>
                 </li>
-			%{--	<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
 			</ul>
 		</div>
 		<div id="show-formF" class="content scaffold-show" role="main">
@@ -28,45 +26,79 @@
 
                 <g:if test="${formFInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formFInstance}" field="report"/></span>
                     </li>
+                    <br>
                 </g:if>
 
 				<g:if test="${formFInstance?.entryIntoForceOfConvention}">
-				<li class="fieldcontain">
-					<span id="entryIntoForceOfConvention-label" class="property-label"><g:message code="formF.entryIntoForceOfConvention.label" default="Entry Into Force Of Convention" /></span>
-					<span class="property-value" aria-labelledby="entryIntoForceOfConvention-label"><g:formatDate date="${formFInstance?.entryIntoForceOfConvention}" /></span>
+				<li>
+					<span id="entryIntoForceOfConvention-label" class="property-label-b"><label><g:message code="formF.entryIntoForceOfConvention.label" default="Entry Into Force Of Convention" /></label></span>
+					<span class="property-value" aria-labelledby="entryIntoForceOfConvention-label"><g:formatDate format="dd-MMM-yyyy" date="${formFInstance?.entryIntoForceOfConvention}" /></span>
 				</li>
+                <br>
 				</g:if>
+
+                <g:if test="${formFInstance?.offensiveActivity}">
+                    <g:set var="activity" value="${formFInstance.offensiveActivity}"></g:set>
+
+                    <g:if test="${activity?.pastBiologicalActivity}">
+                        <li>
+                            <span id="pastBiologicalActivity-label" class="property-label-b"><g:message code="formF.offensiveActivity.pastBiologicalActivity.label" default="Past biological activity" /></span>
+                            <span class="property-value" aria-labelledby="pastBiologicalActivity-label"><g:formatBoolean boolean="${activity.pastBiologicalActivity}"/></span>
+                        </li>
+                        <br>
+                    </g:if>
+
+                    <g:if test="${activity?.periodOfActivity}">
+                        <h4><span id="periodOfActivity-label" class="property-label"><g:message code="formF.offensiveActivity.periodOfActivity.label" default="Period of activity" /></span></h4>
+                        <li>
+                            <span class="property-value" aria-labelledby="periodOfActivity-label"><g:fieldValue bean="${activity}" field="periodOfActivity"/></span>
+                        </li>
+                        <br>
+                    </g:if>
+
+
+                    <g:if test="${activity?.summaryOfRnDActivities}">
+                        <h4><span id="summaryOfRnDActivities-label" class="property-label"><g:message code="formF.offensiveActivity.summaryOfRnDActivities.label" default="Summary of R&D activities" /></span></h4>
+                        <li>
+                            <span class="property-value" aria-labelledby="summaryOfRnDActivities-label">${activity.summaryOfRnDActivities}</span>
+                        </li>
+                        <br>
+                    </g:if>
+
+                </g:if>
 			
 				<g:if test="${formFInstance?.defensiveActivity}">
-				<li class="fieldcontain">
-					<span id="defensiveActivity-label" class="property-label"><g:message code="formF.defensiveActivity.label" default="Defensive Activity" /></span>
-					
-						<span class="property-value" aria-labelledby="defensiveActivity-label"><g:fieldValue bean="${formFInstance}" field="defensiveActivity"/></span>
-					
-				</li>
+                    <g:set var="activity" value="${formFInstance.defensiveActivity}"></g:set>
+
+                    <g:if test="${activity?.pastBiologicalActivity}">
+                        <li>
+                            <span id="pastBiologicalDActivity-label" class="property-label-b"><g:message code="formF.defensiveActivity.pastBiologicalActivity.label" default="Past biological activity" /></span>
+                            <span class="property-value" aria-labelledby="pastBiologicalDActivity-label"><g:formatBoolean boolean="${activity.pastBiologicalActivity}"/></span>
+                        </li>
+                        <br>
+                    </g:if>
+
+                    <g:if test="${activity?.periodOfActivity}">
+                        <h4> <span id="periodOfDActivity-label" class="property-label"><g:message code="formF.defensiveActivity.periodOfActivity.label" default="Period of activity" /></span></h4>
+                        <li>
+                            <span class="property-value" aria-labelledby="periodOfDActivity-label"><g:fieldValue bean="${activity}" field="periodOfActivity"/></span>
+                        </li>
+                        <br>
+                    </g:if>
+
+                    <g:if test="${activity?.summaryOfRnDActivities}">
+                        <h4><span id="summaryOfDRnDActivities-label" class="property-label"><g:message code="formF.defensiveActivity.summaryOfRnDActivities.label" default="Summary of R&D activities" /></span></h4>
+                        <li>
+                            <span class="property-value" aria-labelledby="summaryOfDRnDActivities-label">${activity.summaryOfRnDActivities}</span>
+                        </li>
+                        <br>
+                    </g:if>
+
 				</g:if>
 			
-				<g:if test="${formFInstance?.offensiveActivity}">
-				<li class="fieldcontain">
-					<span id="offensiveActivity-label" class="property-label"><g:message code="formF.offensiveActivity.label" default="Offensive Activity" /></span>
-					
-						<span class="property-value" aria-labelledby="offensiveActivity-label"><g:fieldValue bean="${formFInstance}" field="offensiveActivity"/></span>
-					
-				</li>
-				</g:if>
-
-                <g:if test="${formFInstance?.report}">
-                    <li class="fieldcontain">
-                        <span id="report-label" class="property-label"><g:message code="report.label" default="Report" /></span>
-
-                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formFInstance?.report?.id}">${formFInstance?.report?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>
-
                 <g:set var="formInstance" value="${formFInstance}"></g:set>
                 <g:render template="../showStatus"/>
 			

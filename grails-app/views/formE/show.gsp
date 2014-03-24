@@ -1,5 +1,6 @@
 
 <%@ page import="cbm.FormE" %>
+<%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -15,8 +16,6 @@
                 <li>
                     <g:link class="list" controller="report" action="show" id="${formEInstance?.report?.id}">${formEInstance?.report?.reportName}</g:link>
                 </li>
-				%{--<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
 			</ul>
 		</div>
 		<div id="show-formE" class="content scaffold-show" role="main">
@@ -28,7 +27,7 @@
 
                 <g:if test="${formEInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report Name" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formEInstance}" field="report"/></span>
                     </li>
                 </g:if>
@@ -73,7 +72,7 @@
                     <li class="fieldcontain">
                         <span id="additionalComments-label" class="property-label"><g:message code="formE.additionalComments.label" default="Additional Comments" /></span>
 
-                        <span class="property-value" aria-labelledby="additionalComments-label"><g:fieldValue bean="${formEInstance}" field="additionalComments"/></span>
+                        <span class="property-value" aria-labelledby="additionalComments-label">${formEInstance.additionalComments}</span>
 
                     </li>
                 </g:if>

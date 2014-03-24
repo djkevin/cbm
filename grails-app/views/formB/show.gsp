@@ -1,5 +1,6 @@
 
 <%@ page import="cbm.FormB" %>
+<%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,7 +29,7 @@
 
                 <g:if test="${formBInstance?.report}">
                     <li class="fieldcontain">
-                        <span id="language-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
+                        <span id="language-label" class="property-label"><g:message code="report.label" default="Report" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formBInstance}" field="report"/></span>
                     </li>
                 </g:if>
@@ -309,40 +310,11 @@
 				<g:if test="${formBInstance?.additionalInfo}">
                 <h4><g:message code="formB.additionalInfo.label" default="Additional Info" /></h4>
 				<li>
-					<span class="property-value" aria-labelledby="additionalInfo-label"><g:fieldValue bean="${formBInstance}" field="additionalInfo"/></span>
+					<span class="property-value" aria-labelledby="additionalInfo-label">${formBInstance.additionalInfo}</span>
 				</li>
 				</g:if>
                 <br>
 			
-%{--				<g:if test="${formBInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="formB.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${formBInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>--}%
-			
-
-			
-%{--				<g:if test="${formBInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="formB.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${formBInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>--}%
-
-         %{--       <g:if test="${formBInstance?.report}">
-                    <li class="fieldcontain">
-                        <span id="report-label" class="property-label"><g:message code="formB.report.label" default="Report" /></span>
-
-                        <span class="property-value" aria-labelledby="report-label"><g:link controller="report" action="show" id="${formBInstance?.report?.id}">${formBInstance?.report?.encodeAsHTML()}</g:link></span>
-
-                    </li>
-                </g:if>--}%
-
                 <g:set var="formInstance" value="${formBInstance}"></g:set>
                 <g:render template="../showStatus"/>
 			
