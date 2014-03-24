@@ -9,6 +9,10 @@ class SecRole {
     }
 
     static constraints = {
-        authority blank: false, unique: true
+        authority inList: ["ROLE_USER", "ROLE_ADMIN"], blank: false, unique: true
+    }
+
+    String toString() {
+        authority
     }
 }
