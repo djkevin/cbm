@@ -115,24 +115,24 @@ p {
 				<ul>
 					<li>
 						<div class="box-icon">
-							<g:link controller="StateParty" action="index">State Party</g:link>
+							<g:link controller="stateParty" action="index">State Party</g:link>
 						</div>
 					</li>
 				</ul>
 				<ul>
 					<li>
 						<div class="box-icon">
-							<g:link controller="Report" action="index">Report</g:link>
+							<g:link controller="report" action="index">Report</g:link>
 						</div>
 					</li>
 				</ul>
-				<ul>
+%{--				<ul>
 				<li>
 					<div class="box-icon">
-						<g:link controller="FormAPart1a" action="index"><g:message code="formAPart1a.label" default="Form A, part 1(i)"/> </g:link> 
+						<g:link controller="user" action="index"><g:message code="user.label" default="User"/> </g:link>
 					</div>
 				</li>
-				</ul>
+				</ul>--}%
 
 			</div>
 
@@ -142,28 +142,28 @@ p {
 			<ul>
 				<li>
 					<div class="box-icon">
-						<g:link controller="FormAPart1b" action="index"><g:message code="formAPart1b.label" default="Form A, part 1(ii)"/> </g:link> 
+                        <g:link controller="user" action="index"><g:message code="user.label" default="User"/> </g:link>
 					</div>
 				</li>
 			</ul>
 			<ul>
 				<li>
 					<div class="box-icon">
-						<g:link controller="FormAPart2a" action="index"><g:message code="formAPart2a.label" default="Form A, part 2(i)"/> </g:link>
+						<g:link controller="secUserSecRole" action="index"><g:message code="secuser.secrole.label" default="User Role"/> </g:link>
 					</div>
 
 				</li>
 			</ul>
-			<ul>
+		%{--	<ul>
 				<li>
 					<div class="box-icon">
 						<g:link controller="FormAPart2b" action="index"><g:message code="formAPart2b.label" default="Form A, part 2(ii)"/> </g:link>
 					</div>
 				</li>
-			</ul>
+			</ul>--}%
 
 		</div>
-		<div class="box table" style="margin: 0px auto; width: 42%;">
+%{--		<div class="box table" style="margin: 0px auto; width: 42%;">
 			<ul>
 				<li>
 					<div class="box-icon">
@@ -177,7 +177,7 @@ p {
 					</div>
 				</li>
 			</ul>
-		</div>
+		</div>--}%
 	</div>
 
 </body>
