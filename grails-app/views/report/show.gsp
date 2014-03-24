@@ -166,7 +166,11 @@
 						<td><g:message code="report.formAPart2a.label" default="Form A Part 2a" /></td>
 						<td>${reportInstance?.formAPart2a ? 1:0}</td>
 						<td>
-							<g:link controller="formAPart2a" action="show" id="${reportInstance?.formAPart2a?.id}">${reportInstance?.formAPart2a?.encodeAsHTML()}</g:link>
+                            <g:if test ="${reportInstance.formAPart2a}">
+                                <g:link controller="formAPart2a" action="show" id="${reportInstance?.formAPart2a?.id}">
+                                    <g:message code="formaAPar2a.existingProgrammes"/><g:formatBoolean boolean="${reportInstance?.formAPart2a?.existingNationalProgrammes}" />
+                                </g:link>
+                            </g:if>
 						</td>
 							<td>
                             <g:if test="${reportInstance?.formAPart2a == null}">
