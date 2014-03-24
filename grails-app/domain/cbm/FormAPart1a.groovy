@@ -13,7 +13,7 @@ class FormAPart1a extends BaseForm {
     Report report
 
     String toString() {
-        return "${id} ${facilityName}"
+        facilityName
     }
 
 
