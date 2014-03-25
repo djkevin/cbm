@@ -1,7 +1,5 @@
 import cbm.*
 
-// TODO: rename this class because it's creating data not only for FormA, but in general.
-
 fixture {
     spAUS(StateParty) {
         country = "AUSTRALIA"
