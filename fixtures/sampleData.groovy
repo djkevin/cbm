@@ -1,6 +1,30 @@
 import cbm.*
 
 fixture {
+    spSWE(StateParty) {
+        country = "SWEDEN"
+        accessionRatification = new Date()
+    }
+
+    spUS(StateParty) {
+        country = "UNITEDSTATES"
+        accessionRatification = new Date()
+    }
+
+    spUK(StateParty) {
+        country = "UNITEDKINGDOM"
+        accessionRatification = new Date()
+    }
+
+    spMAL(StateParty) {
+        country = "MALAYSIA"
+        accessionRatification = new Date()
+    }
+    spBEL(StateParty) {
+        country = "BELGIUM"
+        accessionRatification = new Date()
+    }
+
     spAUS(StateParty) {
         country = "AUSTRALIA"
         accessionRatification = new Date()
@@ -26,6 +50,36 @@ fixture {
         accessionRatification = new Date()
     }
 
+    userSweden(User) {
+        username = "sweden"
+        password = "sweden"
+        stateParty = [spSWE]
+    }
+
+    userUS(User) {
+        username = "unitedstates"
+        password = "unitedstates"
+        stateParty = [spUS]
+    }
+
+    userUK(User) {
+        username = "unitedkingdom"
+        password = "unitedkingdom"
+        stateParty = [spUK]
+    }
+
+    userMalaysia(User) {
+        username = "malaysia"
+        password = "malaysia"
+        stateParty = [spMAL]
+    }
+
+    userBelgium(User) {
+        username = "belgium"
+        password = "belgium"
+        stateParty = [spBEL]
+    }
+
     userCanada(User) {
         username = "canada"
         password = "canada"
@@ -37,10 +91,10 @@ fixture {
         password = "australia"
         stateParty = [spAUS]
     }
-    
+
     userAdmin(AdminUser) {
         username = "admin"
-        password = "admin"       
+        password = "admin"
     }
 
     roleAdmin(SecRole) {
@@ -60,7 +114,30 @@ fixture {
         secUser = userAustralia
         secRole = roleUser
     }
-    
+
+    userRoleSWE(SecUserSecRole) {
+        secUser = userSweden
+        secRole = roleUser
+    }
+    userRoleUS(SecUserSecRole) {
+        secUser = userUS
+        secRole = roleUser
+    }
+
+    userRoleUK(SecUserSecRole) {
+        secUser = userUK
+        secRole = roleUser
+    }
+
+    userRoleMAL(SecUserSecRole) {
+        secUser = userMalaysia
+        secRole = roleUser
+    }
+    userRoleBEL(SecUserSecRole) {
+        secUser = userBelgium
+        secRole = roleUser
+    }
+
     userRoleAdmin(SecUserSecRole) {
         secUser = userAdmin
         secRole = roleAdmin

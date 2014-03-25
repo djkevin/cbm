@@ -1,7 +1,7 @@
 package cbm
 
 enum Country implements org.springframework.context.MessageSourceResolvable {
-    CANADA, MAURITIUS, SWITZERLAND, AUSTRALIA, GREECE
+    CANADA, MAURITIUS, SWITZERLAND, AUSTRALIA, GREECE, SWEDEN, UNITEDSTATES,UNITEDKINGDOM, MALAYSIA, BELGIUM
 
     Object[] getArguments() { [] as Object[] }
 
