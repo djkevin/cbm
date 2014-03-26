@@ -13,8 +13,8 @@ class StatePartyController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond StateParty.list(params), model:[statePartyInstanceCount: StateParty.count()]
+        params.max = Math.min(max ?: 20, 100)
+        respond StateParty.listOrderByCountry(params), model:[statePartyInstanceCount: StateParty.count()]
     }
 
     def show(StateParty statePartyInstance) {
