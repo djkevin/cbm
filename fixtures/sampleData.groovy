@@ -91,7 +91,7 @@ fixture {
         password = "australia"
         stateParty = [spAUS]
     }
-
+    /*Create admin user*/
     userAdmin(AdminUser) {
         username = "admin"
         password = "admin"
@@ -99,6 +99,11 @@ fixture {
 
     roleAdmin(SecRole) {
         authority = 'ROLE_ADMIN'
+    }
+
+    userRoleAdmin(SecUserSecRole) {
+        secUser = userAdmin
+        secRole = roleAdmin
     }
 
     roleUser(SecRole) {
@@ -138,10 +143,7 @@ fixture {
         secRole = roleUser
     }
 
-    userRoleAdmin(SecUserSecRole) {
-        secUser = userAdmin
-        secRole = roleAdmin
-    }
+
 
     reportAUSTRALIA2010EN(Report) {
         stateParty = [spAUS]
