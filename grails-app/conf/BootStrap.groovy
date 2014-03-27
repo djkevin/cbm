@@ -38,7 +38,7 @@ class BootStrap {
 			}
 			
 			test {
-				fixtureLoader.load("sampleData")
+			//fixtureLoader.load("sampleData")
 			}
 		}
 		
