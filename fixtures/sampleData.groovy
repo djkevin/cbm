@@ -7,12 +7,12 @@ fixture {
     }
 
     spUS(StateParty) {
-        country = "UNITEDSTATES"
+        country = "UNITED_STATES_OF_AMERICA"
         accessionRatification = new Date()
     }
 
     spUK(StateParty) {
-        country = "UNITEDKINGDOM"
+        country = "cbm.Country.UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND"
         accessionRatification = new Date()
     }
 
