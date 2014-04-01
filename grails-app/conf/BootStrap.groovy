@@ -31,9 +31,13 @@ class BootStrap {
                 assert SecRole.count() == 2
                 assert SecUserSecRole.count() == 2
 				 */
+
+              /*  fixtureLoader.load("statePartyData")
+                fixtureLoader.load("adminData")*/
+
 				/*fixtureLoader.load("sampleData")
-                fixtureLoader.load("statePartyData")
-                fixtureLoader.load("adminData") */
+
+                */
 	
 			}
 			
