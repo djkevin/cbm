@@ -129,6 +129,7 @@ table {
     margin-bottom: 1em;
     border-collapse: collapse;
     -fs-table-paginate: paginate;
+
 }
 
 tr {
@@ -147,22 +148,35 @@ thead {
     font-size: 1.0em;
 }
 
-th:first-child {
-    padding-left: 1.0em;
-    text-align: right;
+thead a{
+    color:#fff;
+    text-decoration: none;
 }
+
+tbody a{
+    text-decoration: none;
+    color: #000;
+}
+
+th:first-child {
+    color: #ffffff;
+    padding-left: 1.0em;
+    text-align: left;
+}
+
 
 th.right, td.right {
     text-align: right;
 }
 
 th {
+
     font-weight: bold;
     padding: 3px;
 }
 
 td {
-    border: thin solid #000000;
+    border: thin solid #DDD;
     vertical-align: top;
     padding: 3px;
 }
