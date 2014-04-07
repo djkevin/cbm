@@ -2,6 +2,7 @@ package cbm
 
 class FormAPart1ContainmentUnit {
 
+    static auditable = true
     static belongsTo = [FormAPart1a]
     String bioSafetyLevel
     String unitType

@@ -2,6 +2,7 @@ package cbm
 
 class NationalContact {
 
+    static auditable = true
     static belongsTo = [stateParty: StateParty]
     static embedded = ['location']
 

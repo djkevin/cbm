@@ -2,6 +2,7 @@ package cbm
 
 class FormAPart2c extends BaseForm {
     //Detailed info on facilities. Each program (FormAPart2b) can have many facilities assigned/contributing to it
+    static auditable = true
     static belongsTo = [FormAPart2b]
 
     FormAPart2b formAPart2b

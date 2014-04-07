@@ -3,6 +3,7 @@ package cbm
 
 class FormG extends BaseForm {
 
+    static auditable = true
     static belongsTo = [Report]
     static embedded = ['location']
 

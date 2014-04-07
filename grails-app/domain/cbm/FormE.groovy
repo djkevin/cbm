@@ -2,6 +2,7 @@ package cbm
 
 class FormE extends BaseForm {
 
+    static auditable = true
     static belongsTo = [Report]
     static embedded = ['developmentAndMeansOfDelivery', 'exportsOfMicroOrganisms', 'importsOfMicroOrganisms', 'biosafetyAndBioSecurity']
 

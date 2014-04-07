@@ -2,6 +2,7 @@ package cbm
 
 class FormAPart2a {
 
+    static auditable = true
     Boolean existingNationalProgrammes
     Report report
 
