@@ -132,3 +132,9 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 //added to allow GET logout
 grails.plugin.springsecurity.logout.postOnly = false
 
+// reverse engineering plugin
+grails.plugin.reveng.packageName = 'cbm'
+grails.plugin.reveng.includeTables = ['audit_log']
+grails.plugin.reveng.destDir = 'temp_reverse_engineer'
+
+
