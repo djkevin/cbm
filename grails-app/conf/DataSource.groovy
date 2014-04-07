@@ -1,6 +1,6 @@
 dataSource {
     pooled = true
-/*    driverClassName = "org.h2.Driver"
+/*  driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""*/
 //    logSql = true
@@ -22,14 +22,14 @@ environments {
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-          //  url = "jdbc:mysql://icts-sdu-jdev:3306/testCBM"
+            url = "jdbc:mysql://icts-sdu-jdev:3306/devCBM"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://icts-sdu-jdev:3306/testCBM"
+
             properties {
                 maxActive = -1
                 minEvictableIdleTimeMillis=1800000
