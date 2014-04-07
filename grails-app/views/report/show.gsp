@@ -174,7 +174,7 @@
 						</td>
 							<td>
                             <g:if test="${reportInstance?.formAPart2a == null}">
-							<g:link controller="formAPart2a" action="create"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart2a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
 					</tr>
