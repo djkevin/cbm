@@ -21,7 +21,7 @@ grails.project.fork = [
     console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 ]
 
-grails.project.dependency.resolver = "maven" // or ivy
+grails.project.dependency.resolver = "maven" // or ivy or maven
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -41,15 +41,21 @@ grails.project.dependency.resolution = {
         grailsCentral()
         mavenCentral()
 		mavenRepo 'http://repo.spring.io/milestone' // fix issue with spring security core plugin download, applies to ggts 3.4.0 and Linux (at least).
+
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-         runtime 'mysql:mysql-connector-java:5.1.24'
+        runtime 'mysql:mysql-connector-java:5.1.24'
+
+        // This library is required by the rendering plugin when running on Tomcat.
+        // The version needs to correspond to the version included in Grails.
+        runtime 'org.springframework:spring-test:3.1.2.RELEASE'
     }
 
     plugins {
@@ -63,13 +69,17 @@ grails.project.dependency.resolution = {
 		compile ":audit-logging:0.5.5.2"
         compile ':spring-security-core:2.0-RC2'
         compile ":db-reverse-engineer:0.5"
+//        compile "org.springframework:spring-test:3.2.6.RELEASE"
+
+        compile ":rendering:0.4.4"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.7" // or ":hibernate4:4.1.11.2"
         runtime ":database-migration:1.3.5"
         runtime ":jquery:1.10.2"
-        runtime ":resources:1.2.1"
+        runtime ":resources:1.2.7"
         runtime ":joda-time:1.4"
+
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
         //runtime ":cached-resources:1.1"

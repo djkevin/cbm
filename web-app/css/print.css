@@ -1,0 +1,181 @@
+/* @bottom-center does not validate because it is flying-saucer-specific CSS3 code that is not yet standardized. */
+@page {
+
+@bottom-center {
+        content: counter(page)
+    }
+    }
+
+html * {
+    margin: 0;
+}
+
+body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+body {
+    background: #ffffff;
+    color: #000;
+    margin: 0 auto;
+    font-size: 0.8em;
+}
+
+h1, h2, h3 {
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 1cm;
+    margin-bottom: 15px;
+}
+
+div.header h1 {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+div.header h2 {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+div.header h3 {
+    font-size: 1.0em;
+    font-weight: normal;
+}
+
+img {
+    border: 0;
+}
+
+/* div header table */
+
+div.header {
+    border-bottom: thin solid #000;
+    margin-bottom: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+div.header div div {
+    vertical-align: top;
+    padding: 5px;
+}
+
+/* div details table */
+
+div.details div div.th {
+    padding: 0.5em 0.5em 0.5em 3.0em;
+}
+
+div.details div div.th:first-child {
+    padding-left: 0px;
+}
+
+/* div signature table */
+
+div.certification, div.instructions, tr.expense {
+    page-break-inside: avoid;
+}
+
+div.signature div div {
+    font-weight: bold;
+    padding-top: 30px;
+    padding-right: 10px;
+}
+
+div.signature div div:first-child {
+    padding-right: 100px;
+}
+
+div.supervisor {
+    page-break-before: always;
+}
+
+div.border {
+    border: thin solid #000;
+    width: 300px;
+}
+
+/* general div table properties */
+
+div.th {
+    font-weight: bold;
+    text-align: right;
+}
+
+div.table {
+    display: table;
+}
+
+div.table div {
+    display: table-row
+}
+
+div.table div div {
+    display: table-cell;
+}
+
+/* -fs-table-paginate: paginate;
+    flying-saucer-specific CSS extension ensures that table header is repeated on every page
+    in case table spans multiple pages */
+table {
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-collapse: collapse;
+    -fs-table-paginate: paginate;
+}
+
+tr {
+    border: 0;
+}
+
+tr {
+    line-height: 1.2em;
+    padding: 0.1em;
+}
+
+thead {
+    background: #000000;
+    color: #ffffff;
+    line-height: 1.5em;
+    font-size: 1.0em;
+}
+
+th:first-child {
+    padding-left: 1.0em;
+    text-align: right;
+}
+
+th.right, td.right {
+    text-align: right;
+}
+
+th {
+    font-weight: bold;
+    padding: 3px;
+}
+
+td {
+    border: thin solid #000000;
+    vertical-align: top;
+    padding: 3px;
+}
+
+td:last-child {
+    text-align: right;
+}
+
+
+.odd {
+    background: #f7f7f7;
+}
+
+.even {
+    background: #ffffff;
+}
