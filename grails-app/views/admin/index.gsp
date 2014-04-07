@@ -163,11 +163,11 @@ p {
 			</ul>--}%
 
 		</div>
-%{--		<div class="box table" style="margin: 0px auto; width: 42%;">
+		<div class="box table" style="margin: 0px auto; width: 42%;">
 			<ul>
 				<li>
 					<div class="box-icon">
-						<g:link controller="FormAPart2c" action="index"><g:message code="formAPart2c.label" default="Form A, part 2(iii)"/> </g:link>
+						<g:link controller="auditLog" action="index"><g:message code="auditLog.label" default="Audit Log"/> </g:link>
 					</div>
 				</li>
 			</ul>
@@ -177,7 +177,7 @@ p {
 					</div>
 				</li>
 			</ul>
-		</div>--}%
+		</div>
 	</div>
 
 </body>
