@@ -1,6 +1,6 @@
 package cbm
 
-class FormAPart2a {
+class FormAPart2a extends BaseForm {
 
     static auditable = true
     Boolean existingNationalProgrammes

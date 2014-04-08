@@ -43,6 +43,9 @@
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${formAPart2aInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:link class="print" action="print" resource="${formAPart2aInstance}" target="_blank"
+                            title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
+                    </g:link>
 				</fieldset>
 			</g:form>
 		</div>

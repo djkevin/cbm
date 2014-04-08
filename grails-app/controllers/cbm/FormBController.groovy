@@ -109,4 +109,8 @@ class FormBController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormB formBInstance) {
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formBInstance: formBInstance]
+    }
 }
