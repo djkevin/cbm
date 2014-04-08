@@ -193,3 +193,9 @@ td:last-child {
 .even {
     background: #ffffff;
 }
+
+.fieldcontain .property-label {
+    color: #666666;
+    text-align: right;
+    width: 25%;
+}
