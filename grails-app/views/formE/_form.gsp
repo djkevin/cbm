@@ -58,7 +58,7 @@
     <label for="additionalComments">
         <g:message code="formE.additionalComments.label" default="Additional Comments" />
     </label>
-    <g:textArea class="wysiwyg" name="additionalComments" value="${formEInstance?.additionalComments}"/>
+    <g:textArea class="wysiwyg" name="additionalComments" value="${formEInstance?.additionalComments}" maxlength="${formEInstance?.constraints?.additionalComments?.maxSize}"/>
 </div>
 <g:set var="formInstance" value="${formEInstance}"></g:set>
 <g:render template="../formStatus"/>

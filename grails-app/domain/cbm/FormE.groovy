@@ -16,6 +16,6 @@ class FormE extends BaseForm {
     Report report
 
     static constraints = {
-
+        additionalComments maxSize: 2000, blank: true
     }
 }

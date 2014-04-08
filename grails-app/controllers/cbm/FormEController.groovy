@@ -117,4 +117,8 @@ class FormEController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormE formEInstance) {
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formEInstance: formEInstance]
+    }
 }
