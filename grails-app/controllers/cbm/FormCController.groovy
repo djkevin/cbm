@@ -107,4 +107,8 @@ class FormCController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormC formCInstance) {
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formCInstance: formCInstance]
+    }
 }
