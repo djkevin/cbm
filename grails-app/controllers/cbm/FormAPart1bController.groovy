@@ -108,4 +108,8 @@ class FormAPart1bController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormAPart1b formAPart1bInstance) {
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart1bInstance: formAPart1bInstance]
+    }
 }
