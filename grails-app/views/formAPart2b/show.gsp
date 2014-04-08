@@ -40,7 +40,7 @@
                         <span class="property-value" aria-labelledby="programName-label"><g:fieldValue bean="${formAPart2bInstance}" field="programName"/></span>
 
                     </li>
-                    <br>
+                    <br/>
 				</g:if>
 
 			
@@ -49,7 +49,7 @@
                     <li>
                         <span class="property-value" aria-labelledby="objectives-label">${formAPart2bInstance.objectives}</span>
                     </li>
-                    <br>
+                    <br/>
 				</g:if>
 
                 <g:if test="${formAPart2bInstance?.source}">
@@ -68,7 +68,7 @@
                        <span class="property-label"><g:message code="formAPart2b.amount.label" default="Amount" /></span>
                         <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 				<g:if test="${formAPart2bInstance?.conductedUnderContract}">
@@ -76,7 +76,7 @@
                     <li>
                         <span class="property-value" aria-labelledby="conductedUnderContract-label"><g:formatBoolean boolean="${formAPart2bInstance?.conductedUnderContract}" /></span>
                     </li>
-                    <br>
+                    <br/>
 				</g:if>
 			
 				<g:if test="${formAPart2bInstance?.proportionContracted}">
@@ -84,7 +84,7 @@
 				    <li>
 						<span class="property-value" aria-labelledby="proportionContracted-label">${formAPart2bInstance.proportionContracted}</span>
 				    </li>
-                    <br>
+                    <br/>
 				</g:if>
 			
 				<g:if test="${formAPart2bInstance?.summaryObjectivesContractor}">
@@ -92,7 +92,7 @@
 				    <li>
 						<span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.summaryObjectivesContractor}</span>
 				    </li>
-                    <br>
+                    <br/>
 				</g:if>
 			
               <h4><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></h4>
@@ -100,7 +100,7 @@
                     <g:if test="${formAPart2bInstance?.formAPart2bOrganigram}">
                         [<g:link controller="formAPart2bOrganigram" action="edit" params="['id': formAPart2bInstance.formAPart2bOrganigram.id, 'formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.edit.label"/></g:link>]
                       <img style="width:100%" src="${createLink(controller:'image', id:formAPart2bInstance?.formAPart2bOrganigram?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.FormAPart2bOrganigram',mime:'image/jpeg'])}"/>
-                      <br>
+                      <br/>
                   </g:if>
                   <g:else>
                       [<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
@@ -113,14 +113,14 @@
                     <li>
                         <span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.declaration}</span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
                 <span class="property-label-b"><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" />
                 [<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
                 </span>
 
-                <br>
+                <br/>
 				<g:if test="${formAPart2bInstance?.formAPart2c}">
                     <ul class="one-to-many">
                     <g:each in="${formAPart2bInstance.formAPart2c}" var="f">
@@ -140,6 +140,9 @@
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${formAPart2bInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:link class="print" action="print" resource="${formAPart2bInstance}" target="_blank"
+                            title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
+                    </g:link>
 				</fieldset>
 			</g:form>
 		</div>

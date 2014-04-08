@@ -120,4 +120,9 @@ class FormAPart2bController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormAPart2b formAPart2bInstance) {
+        // to force browser to download PDF, add parameter  filename: '<name>.pdf'
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart2bInstance: formAPart2bInstance]
+    }
 }
