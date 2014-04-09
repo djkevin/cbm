@@ -108,4 +108,9 @@ class FormZeroController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormZero formZeroInstance) {
+        println "printing formZeroInstance"
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formZeroInstance: formZeroInstance]
+    }
 }

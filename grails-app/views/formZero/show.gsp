@@ -33,108 +33,98 @@
                     </li>
                 </g:if>
 
-				<g:if test="${formZeroInstance?.formAPart1}">
-				<li class="fieldcontain">
-					<span id="formAPart1-label" class="property-label"><g:message code="formZero.formAPart1.label" default="Form A Part 1a" /></span>
-					<span class="property-value" aria-labelledby="formAPart1-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart1"/></span>
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formAPart2a}">
-				<li class="fieldcontain">
-					<span id="formAPart2a-label" class="property-label"><g:message code="formZero.formAPart2a.label" default="Form A Part 2a" /></span>
-					
-						<span class="property-value" aria-labelledby="formAPart2a-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart2a"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formAPart2b}">
-				<li class="fieldcontain">
-					<span id="formAPart2b-label" class="property-label"><g:message code="formZero.formAPart2b.label" default="Form A Part 2b" /></span>
-					
-						<span class="property-value" aria-labelledby="formAPart2b-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart2b"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formAPart2c}">
-				<li class="fieldcontain">
-					<span id="formAPart2c-label" class="property-label"><g:message code="formZero.formAPart2c.label" default="Form A Part 2c" /></span>
-					
-						<span class="property-value" aria-labelledby="formAPart2c-label"><g:fieldValue bean="${formZeroInstance}" field="formAPart2c"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formB}">
-				<li class="fieldcontain">
-					<span id="formB-label" class="property-label"><g:message code="formZero.formB.label" default="Form B" /></span>
-					
-						<span class="property-value" aria-labelledby="formB-label"><g:fieldValue bean="${formZeroInstance}" field="formB"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formC}">
-				<li class="fieldcontain">
-					<span id="formC-label" class="property-label"><g:message code="formZero.formC.label" default="Form C" /></span>
-					
-						<span class="property-value" aria-labelledby="formC-label"><g:fieldValue bean="${formZeroInstance}" field="formC"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formE}">
-				<li class="fieldcontain">
-					<span id="formE-label" class="property-label"><g:message code="formZero.formE.label" default="Form E" /></span>
-					
-						<span class="property-value" aria-labelledby="formE-label"><g:fieldValue bean="${formZeroInstance}" field="formE"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formF}">
-				<li class="fieldcontain">
-					<span id="formF-label" class="property-label"><g:message code="formZero.formF.label" default="Form F" /></span>
-					
-						<span class="property-value" aria-labelledby="formF-label"><g:fieldValue bean="${formZeroInstance}" field="formF"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${formZeroInstance?.formG}">
-				<li class="fieldcontain">
-					<span id="formG-label" class="property-label"><g:message code="formZero.formG.label" default="Form G" /></span>
-					
-						<span class="property-value" aria-labelledby="formG-label"><g:fieldValue bean="${formZeroInstance}" field="formG"/></span>
-					
-				</li>
-				</g:if>
+                <br/>
 
-                %{--<h4><g:message code="formZero.nationalContact.label" default="National Contact"/> </h4>--}%
+                <g:render template="view"/>
 
-               %{-- <g:if test="${nationalContacts}">
-                    <g:each in="${nationalContacts}" var="nationalContact">
-                        <g:link controller="nationalContact" action="show" id="${nationalContact.id}">${nationalContact}</g:link>
-                    </g:each>
-                    <br/>
+      %{--          <br/>
 
-                </g:if>
-                [<g:link controller="nationalContact" action="create" params="['stateParty.id': formZeroInstance?.report?.stateParty.id]"><g:message code="default.button.create.label"/></g:link>]
---}%
+                <div id="list-formZero" class="content scaffold-list" role="main">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th><g:message code="formZero.form.label" default="Form" /></th>
+                            <th><g:message code="formZero.nothingToDeclare.label" default="Nothing to declare" /></th>
+                            <th><g:message code="formZero.nothingNewToDeclare.label" default="Nothing new to declare" /></th>
+                            <th><g:message code="formZero.yearOfLastDeclaration.label" default="Year of last declaration" /></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><g:message code="formAPart1.label" default="Form A Part 1" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart1?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart1?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formAPart1?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formAPart2a.label" default="Form A Part 2a" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart2a?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart2a?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formAPart2a?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formAPart2b.label" default="Form A Part 2b"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart2b?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart2b?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formAPart2b?.yearOfLastDeclaration}</td>
+                        </tr>
+
+                        <tr>
+                            <td><g:message code="formAPart2c.label" default="Form A Part 2c" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart2c?.nothingToDeclare}"/> </td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formAPart2c?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formAPart2c?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formB.label" default="Form B" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formB?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formB?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formB?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formC.label" default="Form C" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formC?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formC?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formC?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formE.label" default="Form E" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formE?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formE?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formE?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formF.label" default="Form F" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formF?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formF?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formF?.yearOfLastDeclaration}</td>
+                        </tr>
+                        <tr>
+                            <td><g:message code="formG.label" default="Form G" /></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formG?.nothingToDeclare}"/></td>
+                            <td><g:formatBoolean boolean="${formZeroInstance.formG?.nothingNewToDeclare}"/></td>
+                            <td>${formZeroInstance.formG?.yearOfLastDeclaration}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>--}%
 
                 <g:set var="formInstance" value="${formZeroInstance}"></g:set>
                 <g:render template="../showStatus"/>
 
-			
 			</ol>
 			<g:form url="[resource:formZeroInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${formZeroInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:link class="print" action="print" resource="${formZeroInstance}" target="_blank"
+                            title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
+                    </g:link>
 				</fieldset>
 			</g:form>
 		</div>
+
+
 	</body>
 </html>
