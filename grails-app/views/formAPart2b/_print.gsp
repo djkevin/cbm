@@ -97,19 +97,16 @@
     <br/>
 </g:if>
 
-%{--<span class="property-label-b"><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" />
-[<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
-</span>--}%
 
 <br/>
+
 <g:if test="${formAPart2bInstance?.formAPart2c}">
-    <ul class="one-to-many">
-        <g:each in="${formAPart2bInstance.formAPart2c}" var="f">
-            <li>
-                <g:link controller="formAPart2c" action="show"  params="['formAPart2b.id': formAPart2bInstance?.id]" id="${f.id}" >${f?.encodeAsHTML()}</g:link>
-            </li>
-        </g:each>
-    </ul>
+    <g:each in="${formAPart2bInstance.formAPart2c}" var="f">
+
+        <g:set var="formAPart2cInstance" value="${f}" />
+        <g:render template="../formAPart2c/print"/>
+
+    </g:each>
 </g:if>
 
 
