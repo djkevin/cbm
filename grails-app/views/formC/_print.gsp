@@ -14,14 +14,7 @@
 <g:set var="formInstance" value="${formCInstance}"/>
 <g:render template="../common/printHeader"/>
 
-<h4><g:message code="formC.long.label" default="Encouragement of publication of results"/></h4>
-<br/>
-
-<g:if test="${formCInstance?.comments}">
-    <li>
-        <span class="property-value" aria-labelledby="comments-label">${formCInstance.comments}</span>
-    </li>
-</g:if>
+<g:render template="view"/>
 
 </body>
 </html>

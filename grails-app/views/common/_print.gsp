@@ -1,0 +1,24 @@
+%{--TODO use this file to eliminate need to have a print.gsp for every form--}%
+%{--Considerations: All controllers will point to this file and hence need to instantiate a formInstance
+So all forms will have a variable called formInstance which might make it more complicated for
+a Report generation--}%
+<%@ defaultCodec="none" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+    <title>${formInstance.title}</title>
+    <%-- TODO Once rendering plugin can handle paths properly, use use resource plugin to provision stylesheet --%>
+    <link rel="stylesheet"
+          href="${resource(dir: 'css', file: 'print.css', absolute: true)}"
+          type="text/css"/>
+</head>
+
+<body>
+<g:set var="formInstance" value="${formInstance}" />
+<g:render template="../common/printHeader"  />
+
+%{--<g:render template="view"/>--}%
+
+</body>
+</html>

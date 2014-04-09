@@ -14,14 +14,7 @@
 <g:set var="formInstance" value="${formAPart2aInstance}"/>
 <g:render template="../common/printHeader"/>
 
-<h4><g:message code="formAPart2a.long.label" default="National biological defence Research and Development Programmes"/></h4>
-<br/>
-<h4><g:message code="formAPart2a.declaration" default="Declaration"/></h4>
-<li class="fieldcontain">
-    <span id="existingNationalProgrammes-label" class="property-label25"><g:message code="formAPart2a.existingNationalProgrammes.label" default="Existing National Programmes"/></span>
-</li>
-<span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean
-        boolean="${formAPart2aInstance?.existingNationalProgrammes}"/></span>
+<g:render template="view"/>
 
 </body>
 </html>
