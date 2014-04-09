@@ -1,6 +1,11 @@
 <%@ defaultCodec="none" %>
 %{--This template is referenced by the show view and the print view --}%
 
+<div class="box">
+    <h1><g:message code="formAPart2b.label" default="Form A Part 2b"/> </h1>
+</div>
+<br/><br/>
+
 <g:if test="${formAPart2bInstance?.programName}">
     <h4><g:message code="formAPart2b.programName.label" default="Program Name" /></h4>
     <li class="fieldcontain">
@@ -84,7 +89,7 @@
 </g:if>
 
 
-<br/>
+<br/><br/>
 
 <g:if test="${formAPart2bInstance?.formAPart2c}">
     <g:each in="${formAPart2bInstance.formAPart2c}" var="f">
@@ -94,3 +99,4 @@
 
     </g:each>
 </g:if>
+<br/><br/>%{--to allow gap when multi-page print--}%

@@ -1,5 +1,10 @@
 <%@ defaultCodec="none" %>
 %{--This template is referenced by the show view and the print view --}%
+<div class="box">
+    <h1><g:message code="formG.label" default="Form G"/> </h1>
+</div>
+<br/><br/>
+
 <h4><g:message code="formG.long.label" default="Declaration of vaccine production facilities" /></h4>
 <br/>
 
@@ -29,3 +34,4 @@
         <span class="property-value" aria-labelledby="typesOfDiseaseCovered-label">${formGInstance.typesOfDiseaseCovered}</span>
     </li>
 </g:if>
+<br/><br/>%{--to allow gap when multi-page print--}%

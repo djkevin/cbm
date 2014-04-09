@@ -1,5 +1,10 @@
 
 %{--This template is referenced by the show view and the print view --}%
+<div class="box">
+    <h1><g:message code="formZero.label" default="Form Zero"/> </h1>
+</div>
+<br/><br/>
+
 <h4><g:message code="formZero.declaration" default="Declaration form on Nothing to Declare" /></h4>
 <br/>
 <div id="list-formZero" class="content scaffold-list" role="main">
@@ -72,3 +77,4 @@
         </tbody>
     </table>
 </div>
+<br/><br/>%{--to allow gap when multi-page print--}%

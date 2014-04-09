@@ -1,5 +1,10 @@
 <%@ defaultCodec="none" %>
 %{--This template is referenced by the show view and the print view --}%
+<div class="box">
+    <h1><g:message code="formF.label" default="Form F"/> </h1>
+</div>
+<br/><br/>
+
 <h4><g:message code="formF.long.label" default="Declaration of past activities" /></h4>
 <br/>
 <g:if test="${formFInstance?.entryIntoForceOfConvention}">
@@ -68,3 +73,4 @@
     </g:if>
 
 </g:if>
+<br/><br/>%{--to allow gap when multi-page print--}%

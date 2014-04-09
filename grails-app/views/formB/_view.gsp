@@ -1,4 +1,9 @@
 <%@ defaultCodec="none" %>
+
+<div class="box">
+    <h1><g:message code="formB.label" default="Form B"/> </h1>
+</div>
+<br/><br/>
 %{--This template is referenced by the show view and the print view --}%
 
 %{--<g:if test="${formBInstance?.report}">
@@ -262,3 +267,4 @@
         <span class="property-value" aria-labelledby="additionalInfo-label">${formBInstance.additionalInfo}</span>
     </li>
 </g:if>
+<br/><br/>%{--to allow gap when multi-page print--}%

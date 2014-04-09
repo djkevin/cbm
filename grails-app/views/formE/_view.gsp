@@ -1,5 +1,11 @@
 <%@ defaultCodec="none" %>
 %{--This template is referenced by the show view and the print view --}%
+
+<div class="box">
+    <h1><g:message code="formE.label" default="Form E"/> </h1>
+</div>
+<br/><br/>
+
 <h4><g:message code="formE.long.label" default="Declaration of legislation"/></h4>
 <br/>
 
@@ -53,3 +59,4 @@
     <h4><g:message code="formE.additionalComments.label" default="Additional Comments" /></h4>
     <span class="property-value" aria-labelledby="additionalComments-label">${formEInstance.additionalComments}</span>
 </li>
+<br/><br/>%{--to allow gap when multi-page print--}%

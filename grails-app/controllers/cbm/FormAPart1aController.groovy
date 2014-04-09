@@ -112,6 +112,7 @@ class FormAPart1aController {
     }
 
     def print(FormAPart1a formAPart1aInstance) {
+        println "reached print method in controller..., facilityName: $formAPart1aInstance.facilityName"
         // to force browser to download PDF, add parameter  filename: '<name>.pdf'
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart1aInstance: formAPart1aInstance]
     }

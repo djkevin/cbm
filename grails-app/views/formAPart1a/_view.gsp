@@ -1,6 +1,12 @@
 <%@ defaultCodec="none" %>
 %{--This template is referenced by the show view and the print view --}%
 
+<div class="box">
+    <h1><g:message code="formAPart1.label" default="Form A Part 1a"/> </h1>
+</div>
+
+<br/><br/>
+
 <g:if test="${formAPart1aInstance?.facilityName}">
     <h4><g:message code="formAPart1.facilityName.label" default="Facility Name"/></h4>
     <li>

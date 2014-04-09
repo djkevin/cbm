@@ -116,4 +116,10 @@ class ReportController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(Report reportInstance) {
+
+        Set<FormAPart1a> formAPart1as= reportInstance.formAPart1
+        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances:formAPart1as]
+    }
 }

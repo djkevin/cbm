@@ -199,3 +199,11 @@ td:last-child {
     text-align: right;
     width: 25%;
 }
+
+.box{
+    /*background-color: #4891dc;*/
+    background-color: #8AB9E9;
+    width: 98%;
+    padding: 10px;
+    text-align: center;
+}

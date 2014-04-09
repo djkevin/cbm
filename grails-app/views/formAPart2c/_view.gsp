@@ -1,9 +1,9 @@
 <%@ defaultCodec="none" %>
 %{--FormAPart2c is a subform of FormAPart2B so it is printed from within the FormAPart2b print function--}%
 
-<h4><g:message code="formAPart2b.long.label" default="National biological defence Research and Development Programmes"/></h4>
+<h3><g:message code="formAPart2b.long.label" default="National biological defence Research and Development Programmes"/></h3>
 <br/>
-<h4><g:message code="formAPart2c.facilities" default="Facilities"/></h4>
+<h4><g:message code="formAPart2c.facilities" default="Facilities"/></h4><br/>
 
 <g:if test="${formAPart2cInstance?.facilityName}">
     <li class="fieldcontain">
@@ -192,5 +192,7 @@
         <g:fieldValue bean="${formAPart2cInstance}" field="bioDefenseWork"/>
     </span>
 </li>
+
+<br/><br/>%{--to allow gap when multi-page print--}%
 
 
