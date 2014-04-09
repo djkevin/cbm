@@ -110,7 +110,6 @@ class FormZeroController {
     }
 
     def print(FormZero formZeroInstance) {
-        println "printing formZeroInstance"
         renderPdf template: 'print', contentType: 'application/pdf', model: [formZeroInstance: formZeroInstance]
     }
 }
