@@ -39,7 +39,7 @@
                                 bean="${formAPart1aInstance}" field="facilityName"/></span>
                     </li>
 				</g:if>
-                <br>
+                <br/>
 
                 <g:if test="${formAPart1aInstance?.responsibleOrganisation}">
                     <h4><g:message code="formAPart1.responsibleOrganisation.label"
@@ -49,7 +49,7 @@
                                 bean="${formAPart1aInstance}" field="responsibleOrganisation"/></span>
                     </li>
                 </g:if>
-			    <br>
+			    <br/>
 
                 <g:if test="${formAPart1aInstance?.location}">
                     <h4><g:message code="formAPart1.location.label" default="Location"/></h4>
@@ -58,7 +58,7 @@
                                 bean="${formAPart1aInstance}" field="location"/></span>
                     </li>
                 </g:if>
-                <br>
+                <br/>
 
                 <g:if test="${formAPart1aInstance?.postalAddress}">
                     <h4><g:message code="formAPart1.postalAddress.label" default="Postal Address"/></h4>
@@ -68,7 +68,7 @@
                                 bean="${formAPart1aInstance}" field="postalAddress"/></span>
                     </li>
                 </g:if>
-                <br>
+                <br/>
 
                 <g:if test="${formAPart1aInstance?.financingSources}">
                     <h4><g:message code="formAPart1.financingSources.label" default="Financing Sources"/></h4>
@@ -78,7 +78,7 @@
 
                     </li>
                 </g:if>
-                <br>
+                <br/>
 
                 <h4>
                     <g:message code="formAPart1.formAContainmentUnitList.label" default="Containment Unit"/>

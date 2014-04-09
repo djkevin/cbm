@@ -57,7 +57,7 @@
                         <span id="eventDate-label" class="property-label"><g:message code="formB.eventDate.label" default="Event Date" /></span>
                         <span class="property-value" aria-labelledby="eventDate-label"><g:formatDate format="dd-MMM-yyyy" date="${formBInstance?.eventDate}" /></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 
@@ -68,7 +68,7 @@
                                 bean="${formBInstance}" field="timeOfOutbreak"/></span>
                     </li>
                 </g:if>
-                <br>
+                <br/>
 
                 <g:if test="${formBInstance?.locationAffected}">
                     <h4><g:message code="formB.locationAffected.label" default="Location Affected"/></h4>
@@ -76,7 +76,7 @@
                         <span class="property-value" aria-labelledby="locationAffected-label"><g:fieldValue
                                 bean="${formBInstance}" field="locationAffected"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 
@@ -86,7 +86,7 @@
                         <span class="property-value" aria-labelledby="typeOfDisease-label"><g:fieldValue
                                 bean="${formBInstance}" field="typeOfDisease"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 
@@ -96,7 +96,7 @@
                         <span class="property-value" aria-labelledby="sourceOfDisease-label"><g:fieldValue
                                 bean="${formBInstance}" field="sourceOfDisease"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 
@@ -106,7 +106,7 @@
                         <span class="property-value" aria-labelledby="possibleCause-label"><g:fieldValue
                                 bean="${formBInstance}" field="possibleCause"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 
@@ -116,7 +116,7 @@
                         <span class="property-value" aria-labelledby="mainCharacteristics-label"><g:fieldValue
                                 bean="${formBInstance}" field="mainCharacteristics"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 
@@ -169,7 +169,7 @@
                         <span class="property-value" aria-labelledby="symptomOther-label"><g:fieldValue bean="${formBInstance}" field="symptomOther"/></span>
                     </li>
                 </g:if>
-                <br>
+                <br/>
 			
 
                 <h4><g:message code="formB.deviationFromNormalPattern.label" default="Deviation From Normal Pattern" /></h4>
@@ -241,7 +241,7 @@
                         <span class="property-value" aria-labelledby="deviationOther-label"><g:fieldValue bean="${formBInstance}" field="deviationOther"/></span>
                     </li>
                 </g:if>
-                <br>
+                <br/>
 			
 				<g:if test="${formBInstance?.numOfPrimaryCases}">
                 <h4><g:message code="formB.numOfPrimaryCases.label" default="Num Of Primary Cases" /></h4>
@@ -249,7 +249,7 @@
 					<span class="property-value" aria-labelledby="numOfPrimaryCases-label"><g:fieldValue bean="${formBInstance}" field="numOfPrimaryCases"/></span>
 				</li>
 				</g:if>
-                <br>
+                <br/>
 			
 				<g:if test="${formBInstance?.numOfTotalCases}">
                 <h4><g:message code="formB.numOfTotalCases.label" default="Num Of Total Cases" /></h4>
@@ -257,7 +257,7 @@
 					<span class="property-value" aria-labelledby="numOfTotalCases-label"><g:fieldValue bean="${formBInstance}" field="numOfTotalCases"/></span>
 				</li>
 				</g:if>
-                <br>
+                <br/>
 			
 				<g:if test="${formBInstance?.numDeaths}">
                 <h4><g:message code="formB.numDeaths.label" default="Num Deaths" /></h4>
@@ -265,7 +265,7 @@
 				    <span class="property-value" aria-labelledby="numDeaths-label"><g:fieldValue bean="${formBInstance}" field="numDeaths"/></span>
 				</li>
 				</g:if>
-                <br>
+                <br/>
 			
 				<g:if test="${formBInstance?.developmentOfOutbreak}">
                 <h4><g:message code="formB.developmentOfOutbreak.label" default="Development Of Outbreak" /></h4>
@@ -273,7 +273,7 @@
 					<span class="property-value" aria-labelledby="developmentOfOutbreak-label"><g:fieldValue bean="${formBInstance}" field="developmentOfOutbreak"/></span>
 				</li>
 				</g:if>
-                <br>
+                <br/>
 			
 				<g:if test="${formBInstance?.measuresTaken}">
                 <h4><g:message code="formB.measuresTaken.label" default="Measures Taken" /></h4>
@@ -281,7 +281,7 @@
 				    <span class="property-value" aria-labelledby="measuresTaken-label"><g:fieldValue bean="${formBInstance}" field="measuresTaken"/></span>
 				</li>
 				</g:if>
-                <br>
+                <br/>
 			
 				<g:if test="${formBInstance?.additionalInfo}">
                 <h4><g:message code="formB.additionalInfo.label" default="Additional Info" /></h4>
@@ -289,7 +289,7 @@
 					<span class="property-value" aria-labelledby="additionalInfo-label">${formBInstance.additionalInfo}</span>
 				</li>
 				</g:if>
-                <br>
+                <br/>
 			
                 <g:set var="formInstance" value="${formBInstance}"></g:set>
                 <g:render template="../showStatus"/>

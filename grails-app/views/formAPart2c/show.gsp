@@ -45,7 +45,7 @@
 				</li>
 				</g:if>
 				
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.facilityLocation.label" default="Facility Location" />				
 				</h4>
@@ -64,7 +64,7 @@
 				</li>
 				</g:if>
 				
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.floorAreas" default="floor area" />				
 				</h4>			
@@ -103,7 +103,7 @@
 					</span>					
 				</li>
 			
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.orgStructure.label" default="org structure" />				
 				</h4>
@@ -180,7 +180,7 @@
 					</span>					
 				</li --%>				
 	
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.scientificDisciplines.label" default="scientific Disciplines" />		
 				</h4>
@@ -190,7 +190,7 @@
 					</span>					
 				</li>
 				
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.contractors.label" default="contractors" />		
 				</h4>
@@ -200,7 +200,7 @@
 					</span>					
 				</li>
 
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.fundingSources.label" default="funding Sources" />		
 				</h4>
@@ -210,7 +210,7 @@
 					</span>					
 				</li>
 				
-				<br>
+				<br/>
 				<h4>		
 					<g:message code="formAPart2c.fundLevels.label" default="fund levels" />
 				</h4>
@@ -233,7 +233,7 @@
 					</span>					
 				</li>	
 				
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.publicationPolicy.label" default="publication Policy" />		
 				</h4>
@@ -243,7 +243,7 @@
 					</span>					
 				</li>
 		
-		 		<br>
+		 		<br/>
 				<h4>
 					<g:message code="formAPart2c.publicPapers.label" default="public Papers" />		
 				</h4>
@@ -253,7 +253,7 @@
 					</span>					
 				</li>
 		
-				<br>
+				<br/>
 				<h4>
 					<g:message code="formAPart2c.bioDefenseWork.label" default="bio Defense Work" />		
 				</h4>

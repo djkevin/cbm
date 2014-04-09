@@ -29,7 +29,7 @@
                         <span id="language-label" class="property-label"><g:message code="report.label" default="Report" /></span>
                         <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${formFInstance}" field="report"/></span>
                     </li>
-                    <br>
+                    <br/>
                 </g:if>
 
 				<g:if test="${formFInstance?.entryIntoForceOfConvention}">
@@ -37,7 +37,7 @@
 					<span id="entryIntoForceOfConvention-label" class="property-label-b"><label><g:message code="formF.entryIntoForceOfConvention.label" default="Entry Into Force Of Convention" /></label></span>
 					<span class="property-value" aria-labelledby="entryIntoForceOfConvention-label"><g:formatDate format="dd-MMM-yyyy" date="${formFInstance?.entryIntoForceOfConvention}" /></span>
 				</li>
-                <br>
+                <br/>
 				</g:if>
 
                 <g:if test="${formFInstance?.offensiveActivity}">
@@ -48,7 +48,7 @@
                             <span id="pastBiologicalActivity-label" class="property-label-b"><g:message code="formF.offensiveActivity.pastBiologicalActivity.label" default="Past biological activity" /></span>
                             <span class="property-value" aria-labelledby="pastBiologicalActivity-label"><g:formatBoolean boolean="${activity.pastBiologicalActivity}"/></span>
                         </li>
-                        <br>
+                        <br/>
                     </g:if>
 
                     <g:if test="${activity?.periodOfActivity}">
@@ -56,7 +56,7 @@
                         <li>
                             <span class="property-value" aria-labelledby="periodOfActivity-label"><g:fieldValue bean="${activity}" field="periodOfActivity"/></span>
                         </li>
-                        <br>
+                        <br/>
                     </g:if>
 
 
@@ -65,7 +65,7 @@
                         <li>
                             <span class="property-value" aria-labelledby="summaryOfRnDActivities-label">${activity.summaryOfRnDActivities}</span>
                         </li>
-                        <br>
+                        <br/>
                     </g:if>
 
                 </g:if>
@@ -78,7 +78,7 @@
                             <span id="pastBiologicalDActivity-label" class="property-label-b"><g:message code="formF.defensiveActivity.pastBiologicalActivity.label" default="Past biological activity" /></span>
                             <span class="property-value" aria-labelledby="pastBiologicalDActivity-label"><g:formatBoolean boolean="${activity.pastBiologicalActivity}"/></span>
                         </li>
-                        <br>
+                        <br/>
                     </g:if>
 
                     <g:if test="${activity?.periodOfActivity}">
@@ -86,7 +86,7 @@
                         <li>
                             <span class="property-value" aria-labelledby="periodOfDActivity-label"><g:fieldValue bean="${activity}" field="periodOfActivity"/></span>
                         </li>
-                        <br>
+                        <br/>
                     </g:if>
 
                     <g:if test="${activity?.summaryOfRnDActivities}">
@@ -94,7 +94,7 @@
                         <li>
                             <span class="property-value" aria-labelledby="summaryOfDRnDActivities-label">${activity.summaryOfRnDActivities}</span>
                         </li>
-                        <br>
+                        <br/>
                     </g:if>
 
 				</g:if>

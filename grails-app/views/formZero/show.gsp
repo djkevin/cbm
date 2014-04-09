@@ -118,7 +118,7 @@
                     <g:each in="${nationalContacts}" var="nationalContact">
                         <g:link controller="nationalContact" action="show" id="${nationalContact.id}">${nationalContact}</g:link>
                     </g:each>
-                    <br>
+                    <br/>
 
                 </g:if>
                 [<g:link controller="nationalContact" action="create" params="['stateParty.id': formZeroInstance?.report?.stateParty.id]"><g:message code="default.button.create.label"/></g:link>]

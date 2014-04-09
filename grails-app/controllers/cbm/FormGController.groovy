@@ -137,4 +137,8 @@ class FormGController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(FormG formGInstance) {
+        renderPdf template: 'print', contentType: 'application/pdf', model: [formGInstance: formGInstance]
+    }
 }
