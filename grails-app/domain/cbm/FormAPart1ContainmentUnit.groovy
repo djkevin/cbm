@@ -12,7 +12,7 @@ class FormAPart1ContainmentUnit {
 
 
     String toString() {
-        return "${id} ${bioSafetyLevel}"
+        return "${id} ${bioSafetyLevel} ${unitType} ${unitSize} ${comment}"
     }
 
 

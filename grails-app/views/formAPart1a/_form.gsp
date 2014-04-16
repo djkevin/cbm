@@ -71,13 +71,44 @@
 </div>
 <div>
     <ul class="one-to-many">
-        <g:each in="${formAPart1aInstance?.formAContainmentUnitList?}" var="f">
+%{--        <g:each in="${formAPart1aInstance?.formAContainmentUnitList?}" var="f">
             <g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link>&nbsp;
-        </g:each>
+        </g:each>--}%
         <!--li class="add">
-            <g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1Instance?.id]">${message(code: 'default.add.label', args: [message(code: 'formAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit')])}</g:link>
+            <g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'formAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit')])}</g:link>
         </li-->
     </ul>
+</div>
+<script type="text/javascript">
+
+    function addRows(html) {
+        $('#formAContainmentUnitLisTbl > tbody:last').append(html);
+    }
+
+</script>
+
+<div>
+    <table id="formAContainmentUnitLisTbl">
+        <thead>
+        <tr>
+
+            <g:sortableColumn property="bioSafetyLevel" title="${message(code: 'formAPart1ContainmentUnit.bioSafetyLevel.label', default: 'Bio Safety Level')}" />
+
+            <g:sortableColumn property="unitType" title="${message(code: 'formAPart1ContainmentUnit.unitType.label', default: 'Unit Type')}" />
+
+            <g:sortableColumn property="unitSize" title="${message(code: 'formAPart1ContainmentUnit.unitSize.label', default: 'Unit Size')}" />
+
+            <g:sortableColumn property="comment" title="${message(code: 'formAPart1ContainmentUnit.comment.label', default: 'Comment')}" />
+
+        </tr>
+        </thead>
+        <tbody >
+            <g:set var="formAPart1ContainmentUnitInstanceList" value="${formAPart1aInstance?.formAContainmentUnitList}"></g:set>
+            <g:render template="../formAPart1ContainmentUnit/rowContainmentUnit" />
+        </tbody>
+    </table>
+    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="addRows(data)">Add More Rows</g:remoteLink>
+    %{--<g:remoteLink id="addRowsLink" action="addMoreRows" update="formAContainmentUnitLisTbl"  params="['formAPart1.id': formAPart1aInstance?.id, 'report.id':formAPart1aInstance?.report?.id]" onSuccess="">Add More Rows</g:remoteLink>--}%
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'scope', 'error')} required long">

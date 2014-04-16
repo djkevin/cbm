@@ -44,6 +44,11 @@ class FormAPart1aController {
             return
         }
 
+        if (params.containsKey('formAPart1ContainmentUnitId')){
+            List<FormAPart1ContainmentUnit> containmentUnits=  getContainmentUnitsFromParams(params)
+            formAPart1Instance.getFormAContainmentUnitList().addAll(containmentUnits)
+        }
+
         formAPart1Instance.save flush:true
 
         request.withFormat {
@@ -59,8 +64,38 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
+    private List<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params){
+
+        def  containmentUnitIds = params.list('formAPart1ContainmentUnitId')
+        def  containmentUnitBioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
+        def  containmentUnitUnitTypes = params.list('formAPart1ContainmentUnit.unitType')
+        def  containmentUnitUnitSize = params.list('formAPart1ContainmentUnit.unitSize')
+        def  containmentUnitComments = params.list('formAPart1ContainmentUnit.comment')
+        List<FormAPart1ContainmentUnit> results=null
+
+        for (int i = 0; i < containmentUnitIds.size(); i++){
+            FormAPart1ContainmentUnit formAPart1ContainmentUnit
+            if (containmentUnitIds[i]==''){  //new containment unit
+                formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
+            }else{
+                formAPart1ContainmentUnit = FormAPart1ContainmentUnit.findById(containmentUnitIds[i])
+
+            }
+            formAPart1ContainmentUnit.bioSafetyLevel =  containmentUnitBioSafetyLevels[i]
+            formAPart1ContainmentUnit.unitType =  containmentUnitUnitTypes[i]
+            formAPart1ContainmentUnit.unitSize =  Integer.parseInt(containmentUnitUnitSize[i])
+            formAPart1ContainmentUnit.comment =  containmentUnitComments[i]
+            formAPart1ContainmentUnit.facility  =formAPart1Instance
+
+            results.add(formAPart1ContainmentUnit)
+//            formAPart1Instance.getFormAContainmentUnitList().add(formAPart1ContainmentUnit)
+        }
+        return results
+
+    }
     @Transactional
     def update(FormAPart1a formAPart1Instance) {
+      //  println "in update, params: "+params
         if (formAPart1Instance == null) {
             notFound()
             return
@@ -69,6 +104,36 @@ class FormAPart1aController {
         if (formAPart1Instance.hasErrors()) {
             respond formAPart1Instance.errors, view:'edit'
             return
+        }
+
+        //Update Containment Units if any
+        println "b4 current size of containment units: "+formAPart1Instance.formAContainmentUnitList.size();
+        println "Saving containment units..."
+        if (params.containsKey('formAPart1ContainmentUnitId')){
+            List<FormAPart1ContainmentUnit> containmentUnits=  getContainmentUnitsFromParams(params)
+            formAPart1Instance.getFormAContainmentUnitList().addAll(containmentUnits)
+           /* def  containmentUnitIds = params.list('formAPart1ContainmentUnitId')
+            def  containmentUnitBioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
+            def  containmentUnitUnitTypes = params.list('formAPart1ContainmentUnit.unitType')
+            def  containmentUnitUnitSize = params.list('formAPart1ContainmentUnit.unitSize')
+            def  containmentUnitComments = params.list('formAPart1ContainmentUnit.comment')
+
+            for (int i = 0; i < containmentUnitIds.size(); i++){
+                FormAPart1ContainmentUnit formAPart1ContainmentUnit
+                if (containmentUnitIds[i]==''){  //new containment unit
+                    formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
+                }else{
+                    formAPart1ContainmentUnit = FormAPart1ContainmentUnit.findById(containmentUnitIds[i])
+
+                }
+                formAPart1ContainmentUnit.bioSafetyLevel =  containmentUnitBioSafetyLevels[i]
+                formAPart1ContainmentUnit.unitType =  containmentUnitUnitTypes[i]
+                formAPart1ContainmentUnit.unitSize =  Integer.parseInt(containmentUnitUnitSize[i])
+                formAPart1ContainmentUnit.comment =  containmentUnitComments[i]
+                formAPart1ContainmentUnit.facility  =formAPart1Instance
+
+                formAPart1Instance.getFormAContainmentUnitList().add(formAPart1ContainmentUnit)
+            }*/
         }
 
         formAPart1Instance.save flush:true
@@ -115,5 +180,23 @@ class FormAPart1aController {
         println "reached print method in controller..., facilityName: $formAPart1aInstance.facilityName"
         // to force browser to download PDF, add parameter  filename: '<name>.pdf'
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart1aInstance: formAPart1aInstance]
+    }
+
+    def addMoreRows() {
+        println "in addMoreRows..."+params
+
+
+        def reportId=params.long('report.id')
+        Report r = Report.findById(reportId)
+
+        println "report is:"+r
+
+        FormAPart1a formAPart1a = new FormAPart1a(report: r);
+        FormAPart1ContainmentUnit formAPart1ContainmentUnit  = new FormAPart1ContainmentUnit()
+        formAPart1a.addToFormAContainmentUnitList(formAPart1ContainmentUnit)
+        println "num formAPart1: "+formAPart1a.formAContainmentUnitList.size()
+
+        render template: "../formAPart1ContainmentUnit/rowContainmentUnit", model: [formAPart1ContainmentUnitInstanceList: formAPart1a?.formAContainmentUnitList ]
+
     }
 }
