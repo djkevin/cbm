@@ -89,8 +89,9 @@ environments {
         grails.serverURL = "http://localhost:8080/${appName}"
     }
     test{
+//        def appVersion = grails.util.Metadata.current.'app.name'
         grails.logging.jul.usebridge = true
-        grails.serverURL = "http://icts-sdu-jdev:8080/${appName}"
+        grails.serverURL = "http://icts-sdu-jdev:8080/${appName}-${appVersion}"
     }
     production {
         grails.logging.jul.usebridge = false
