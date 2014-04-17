@@ -16,6 +16,6 @@ class FormAPart1b extends BaseForm {
     static constraints = {
         bioSafetyLevel3()
         bioSafetyLevel2()
-        additionalInformation maxSize: 5000
+        additionalInformation nullable: true, maxSize: 5000
     }
 }
