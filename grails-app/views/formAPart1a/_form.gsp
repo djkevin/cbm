@@ -83,19 +83,20 @@
             tr.css("background-color","#FF3700");
 
             var id = tr.find('.cuId').val();
-            if (!id){ //non-persisted row,remove from DOM
-                removeRow(tr);
+
+            if (id){
+                <g:remoteFunction  action="deleteContainmentUnit" onSuccess="removeRow(tr);displayMsg(data)" params="'id='+id"/>
             }else{
-                <g:remoteFunction  action="deleteContainmentUnit" onSuccess="removeRow(tr, data)" params="'id='+id"/>
+                //non-persisted row,remove from DOM only
+                removeRow(tr);
             }
         });
     });
 
-    function removeRow(tr, data){
-
-        if (data){
-            $("#ajax-message").html(data.message).show().delay(2500).fadeOut();
-        }
+    function displayMsg(data){
+        $("#ajax-message").html(data.message).show().delay(2500).fadeOut();
+    }
+    function removeRow(tr){
         tr.fadeOut(400, function(){
             tr.remove();
         });
