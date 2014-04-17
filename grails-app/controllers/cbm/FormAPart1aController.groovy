@@ -1,6 +1,6 @@
 package cbm
 
-
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -164,5 +164,21 @@ class FormAPart1aController {
 
         render template: "../formAPart1ContainmentUnit/rowContainmentUnit", model: [formAPart1ContainmentUnitInstanceList: formAPart1a?.formAContainmentUnitList ]
 
+    }
+
+    @Transactional
+    def deleteContainmentUnit(){
+        def formAP1CUId = params.long('id')
+        FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance = FormAPart1ContainmentUnit.findById(formAP1CUId)
+
+        formAPart1ContainmentUnitInstance.delete flush:true
+        request.withFormat {
+            form {
+                //Ajax Call - flash message cannot be used since rendered every RESPONSE
+                def msg = message(code: 'default.deleted.message', args: [message(code: 'formAPart1.containmentUnit', default: 'FormAPart1ContainmentUnit'), formAPart1ContainmentUnitInstance.id])
+                render ([message: msg] as JSON)
+            }
+            '*'{ render status: OK }
+        }
     }
 }

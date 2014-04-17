@@ -69,20 +69,36 @@
 
     </label>
 </div>
-<div>
-    <ul class="one-to-many">
-%{--        <g:each in="${formAPart1aInstance?.formAContainmentUnitList?}" var="f">
-            <g:link controller="formAPart1ContainmentUnit" action="show" id="${f.id}">${f?.encodeAsHTML()}</g:link>&nbsp;
-        </g:each>--}%
-        <!--li class="add">
-            <g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'formAPart1ContainmentUnit.label', default: 'FormAPart1ContainmentUnit')])}</g:link>
-        </li-->
-    </ul>
-</div>
+
 <script type="text/javascript">
 
     function addRows(html) {
         $('#formAContainmentUnitLisTbl > tbody:last').append(html);
+    }
+
+    $(document).ready(function(){
+
+        $("#formAContainmentUnitLisTbl").on('click','.deleteLink',function(){
+            var tr = $(this).closest('tr');
+            tr.css("background-color","#FF3700");
+
+            var id = tr.find('.cuId').val();
+            if (!id){ //non-persisted row,remove from DOM
+                removeRow(tr);
+            }else{
+                <g:remoteFunction  action="deleteContainmentUnit" onSuccess="removeRow(tr, data)" params="'id='+id"/>
+            }
+        });
+    });
+
+    function removeRow(tr, data){
+
+        if (data){
+            $("#ajax-message").html(data.message).show().delay(2500).fadeOut();
+        }
+        tr.fadeOut(400, function(){
+            tr.remove();
+        });
     }
 
 </script>
@@ -96,9 +112,11 @@
 
             <g:sortableColumn property="unitType" title="${message(code: 'formAPart1ContainmentUnit.unitType.label', default: 'Unit Type')}" />
 
-            <g:sortableColumn property="unitSize" title="${message(code: 'formAPart1ContainmentUnit.unitSize.label', default: 'Unit Size')}" />
+            <g:sortableColumn property="unitSize" title="${message(code: 'formAPart1ContainmentUnit.unitSize.label', default: 'Unit Size (sqM)')}" />
 
             <g:sortableColumn property="comment" title="${message(code: 'formAPart1ContainmentUnit.comment.label', default: 'Comment')}" />
+
+            <g:sortableColumn property="comment" title="${message(code: 'default.button.delete.label', default: 'Delete')}" />
 
         </tr>
         </thead>
@@ -107,8 +125,11 @@
             <g:render template="../formAPart1ContainmentUnit/rowContainmentUnit" />
         </tbody>
     </table>
-    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="addRows(data)">Add More Rows</g:remoteLink>
-    %{--<g:remoteLink id="addRowsLink" action="addMoreRows" update="formAContainmentUnitLisTbl"  params="['formAPart1.id': formAPart1aInstance?.id, 'report.id':formAPart1aInstance?.report?.id]" onSuccess="">Add More Rows</g:remoteLink>--}%
+    <div  class="message" id="ajax-message" style="display: none"></div>
+    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="addRows(data)">
+        ${message(code: 'default.add.label', args: [message(code: 'formAPart1.containmentUnit', default: 'Containment Unit')])}
+    </g:remoteLink>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'scope', 'error')} required long">
@@ -121,6 +142,3 @@
 
 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
 <g:render template="../formStatus"/>
-
-
-
