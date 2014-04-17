@@ -89,7 +89,7 @@
                     <g:render template="listContainmentUnits" contextPath="../formAPart1ContainmentUnit" ></g:render>
 
                 </g:if>
-                [<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
+                %{--[<g:link controller="formAPart1ContainmentUnit" action="create" params="['formAPart1.id': formAPart1aInstance?.id]"><g:message code="default.button.create.label"/></g:link>]--}%
 
                 <g:if test="${formAPart1aInstance?.scope}">
                     <h4><g:message code="formAPart1.scope.label" default="Scope"/></h4>
