@@ -5,13 +5,14 @@
             <g:select name="formAPart1ContainmentUnit.bioSafetyLevel"
                       from="${formAPart1ContainmentUnitInstance.constraints.bioSafetyLevel.inList}"
                       value="${formAPart1ContainmentUnitInstance?.bioSafetyLevel}"
-                      valueMessagePrefix="formAPart1ContainmentUnit.bioSafetyLevel" noSelection="['': '']"/>
+                      valueMessagePrefix="formAPart1ContainmentUnit.bioSafetyLevel" />
             <g:hiddenField class="cuId" name="formAPart1ContainmentUnitId" value="${formAPart1ContainmentUnitInstance.id}"/>
         </td>
         <td>
-            <g:select name="formAPart1ContainmentUnit.unitType" from="${formAPart1ContainmentUnitInstance.constraints.unitType.inList}"
+            <g:select name="formAPart1ContainmentUnit.unitType"
+                      from="${formAPart1ContainmentUnitInstance.constraints.unitType.inList}"
                       value="${formAPart1ContainmentUnitInstance?.unitType}"
-                      valueMessagePrefix="formAPart1ContainmentUnit.unitType" noSelection="['': '']"/>
+                      valueMessagePrefix="formAPart1ContainmentUnit.unitType"/>
         </td>
         <td>
             <g:field name="formAPart1ContainmentUnit.unitSize" class="number" type="number" value="${formAPart1ContainmentUnitInstance.unitSize}" required=""/>

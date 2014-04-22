@@ -18,8 +18,8 @@ class FormAPart1ContainmentUnit {
 
 
     static constraints = {
-        bioSafetyLevel inList: ["BSL4", "Enhanced BSL3"]
-        unitType inList: ["laboratory", "treatment module"]
+        bioSafetyLevel blank:false,  inList: ["BSL4", "Enhanced BSL3"]
+        unitType blank:false, inList: ["laboratory", "treatment module"]
         unitSize blank: false
         comment maxSize: 200
         facility nullable: false
