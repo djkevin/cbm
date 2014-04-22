@@ -85,7 +85,9 @@
             var id = tr.find('.cuId').val();
 
             if (id){
-                <g:remoteFunction  action="deleteContainmentUnit" onSuccess="removeRow(tr);displayMsg(data)" params="'id='+id"/>
+                if (confirm("Are you sure?")) {
+                    <g:remoteFunction  action="deleteContainmentUnit" onSuccess="removeRow(tr);displayMsg(data)" params="'id='+id"/>
+                }
             }else{
                 //non-persisted row,remove from DOM only
                 removeRow(tr);
