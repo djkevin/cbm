@@ -102,7 +102,7 @@ environments {
 
 // log4j configuration
 log4j = {
-    debug 'grails.app'
+    //debug 'grails.app'
 
     // Example of changing the log pattern for the default console appender:
     //
