@@ -26,12 +26,7 @@ class FormAPart2bController {
     }
 
     def create() {
-        println "in create"
-        def reportId = params.long('reportId')
-        Report r =  Report.findById(reportId)
-        FormAPart2b f = new FormAPart2b()
-        f.setReport(r)
-        respond f
+        respond  new FormAPart2b(params)
     }
 
     @Transactional

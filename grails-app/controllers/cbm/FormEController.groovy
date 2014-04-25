@@ -22,11 +22,8 @@ class FormEController {
     }
 
     def create() {
-        def reportId = params.long('reportId')
-        Report r =  Report.findById(reportId)
-        FormE f = new FormE()
-        f.setReport(r)
-        // Need to initialise embedded domain classes if they contain inList Constraints
+        FormE f = new FormE(params)
+        // Need to initialise embedded domain classes to allow access to domain constraints
         f.setDevelopmentAndMeansOfDelivery(new DeclarationOfMeasures())
         f.setExportsOfMicroOrganisms(new DeclarationOfMeasures())
         f.setBiosafetyAndBioSecurity(new DeclarationOfMeasures())

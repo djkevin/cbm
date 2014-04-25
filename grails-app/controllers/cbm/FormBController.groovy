@@ -22,12 +22,7 @@ class FormBController {
     }
 
     def create() {
-        def reportId = params.long('reportId')
-        Report r =  Report.findById(reportId)
-        FormB f = new FormB();
-        f.setReport(r)
-        respond f
-
+        respond new FormB(params)
     }
 
     @Transactional

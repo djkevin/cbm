@@ -19,47 +19,17 @@ class FormGController {
     def show(FormG formGInstance) {
         respond formGInstance
     }
-/*    private def withReport(id="reportId", Closure c) {
-        println("params: "+params)
-        def report = Report.get(params[id])
-        if(report) {
-            println "report:"+ report
-            c.call report
-        } else {
-            println "report not found"
-            flash.message = "The report was not found."
-            redirect action:"list"
-        }
-    }*/
 
-    def create() {  //TODO use mixin/abstract class to extract common controller methods
- /*       withReport{r ->
-
-            println "report2: "+report
-
-            FormG formG = new FormG()
-            formG.setReport(r)
-            respond formG
-        }*/
-
-        def reportId = params.long('reportId')
-        Report r =  Report.findById(reportId)
-        FormG formG = new FormG();
-        formG.setReport(r)
+    def create() {
+        FormG formG = new FormG(params);
 
         Address a = new Address() //Embedded object
         formG.setLocation(a)
         respond formG
-
-
     }
 
     @Transactional
     def save(FormG formGInstance) {
-        println "in create"+formGInstance
-
-        println "facility: "+ formGInstance.facilityName
-        println "street: "+ formGInstance.location.street1
 
         if (formGInstance == null) {
             notFound()

@@ -22,11 +22,6 @@ class FormAPart2cController {
     }
 
     def create() {
-/*        def formAPart2bId = params.long('formAPart2b.id')
-        FormAPart2b formAPart2b = FormAPart2b.findById(formAPart2bId)
-
-        FormAPart2c f = new FormAPart2c(params)
-        f.setFormAPart2b(formAPart2b)*/
         respond new FormAPart2c(params)
     }
 

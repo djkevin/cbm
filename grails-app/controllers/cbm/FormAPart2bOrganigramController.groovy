@@ -21,7 +21,7 @@ class FormAPart2bOrganigramController {
     }
 
     def create() {
-
+        //TODO fetch formAPart2b automatically from params
         def formAPart2bId = params.long('formAPart2b.id')
         println "in create: "+formAPart2bId
         FormAPart2b formAPart2b = FormAPart2b.findById(formAPart2bId)

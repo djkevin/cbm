@@ -149,7 +149,7 @@
                             </g:if>
 						</td>
 						<td>
-                            <g:link controller="formAPart1a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            <g:link controller="formAPart1a" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -160,7 +160,7 @@
 						</td>
 						<td>
                             <g:if test="${reportInstance?.formAPart1b == null}">
-							<g:link controller="formAPart1b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
 					</tr>
@@ -176,7 +176,7 @@
 						</td>
 							<td>
                             <g:if test="${reportInstance?.formAPart2a == null}">
-							<g:link controller="formAPart2a" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
 					</tr>
@@ -192,7 +192,7 @@
 
 						</td>
 						<td>
-                            <g:link controller="formAPart2b" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -206,7 +206,7 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formB" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formB" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -220,7 +220,7 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formC" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formC" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -234,7 +234,7 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formE" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formE" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -248,7 +248,7 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formF" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formF" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -262,7 +262,7 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formG" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formG" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -273,7 +273,7 @@
 						</td>
 						<td>
                             <g:if test="${reportInstance?.formZero == null}">
-							<g:link controller="formZero" action="create" params="['reportId': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
 					</tr>
