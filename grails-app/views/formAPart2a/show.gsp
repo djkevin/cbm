@@ -38,6 +38,9 @@
                     <span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
 				</g:if>
 
+                <g:set var="formInstance" value="${formAPart2aInstance}"></g:set>
+                <g:render template="../showStatus"/>
+
             </ol>
 			<g:form url="[resource:formAPart2aInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

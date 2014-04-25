@@ -18,5 +18,8 @@
 
 <div><g:checkBox name="existingNationalProgrammes" value="${formAPart2aInstance?.existingNationalProgrammes}"/></div>
 
+<g:set var="formInstance" value="${formAPart2aInstance}"></g:set>
+<g:render template="../formStatus"/>
+
 
 
