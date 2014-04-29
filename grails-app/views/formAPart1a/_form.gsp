@@ -72,16 +72,21 @@
 
 <script type="text/javascript">
 
-    function addRows(html) {
+    function appendRows(html) {
         $('#formAContainmentUnitLisTbl > tbody:last').append(html);
     }
 
+    //initialise all Jquery functions here, after DOM is fully constructed
     $(document).ready(function(){
 
+        //Fetch element with the formAContainmentUnitLisTbl, and attach an onClick event to the element within which has the deleteLink CSS selector
         $("#formAContainmentUnitLisTbl").on('click','.deleteLink',function(){
+
+            //Get the tr enclosing the td with the deleteLink selector, and change its background color
             var tr = $(this).closest('tr');
             tr.css("background-color","#FF3700");
 
+            //check if this row was already persisted or if it is a new row
             var id = tr.find('.cuId').val();
 
             if (id){
@@ -129,7 +134,7 @@
         </tbody>
     </table>
     <div  class="message" id="ajax-message" style="display: none"></div>
-    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="addRows(data)">
+    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="appendRows(data)">
         ${message(code: 'default.add.label', args: [message(code: 'formAPart1.containmentUnit', default: 'Containment Unit')])}
     </g:remoteLink>
 
