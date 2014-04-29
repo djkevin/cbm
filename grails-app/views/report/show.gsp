@@ -4,20 +4,6 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-        <style type="text/css" media="screen">
-            .draft {
-          /*      width: 20px;
-                height: 20px; */
-                background-image:url("${resource(dir: 'images/skin', file: 'pen_alt_fill_12x12.png')}");
-            }
-            .completed {
-                background-image:url("${resource(dir: 'images/skin', file: 'check_12x10.png')}");
-            }
-            .private {
-                background-image:url("${resource(dir: 'images/skin', file: 'lock_fill_9x12.png')}");
-            }
-
-        </style>
 		<g:set var="entityName" value="${message(code: 'report.label', default: 'Report')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
@@ -128,7 +114,7 @@
             <br/>
             <h1 id="clean"><g:message code="default.forms.list"/> - ${reportInstance.reportName}</h1>
             <br/>
-			<table>
+			<table id="cssTable">
 				<thead>
 					<tr>
                         <th><g:message code="form.label" default="Form" /></th>
@@ -148,7 +134,8 @@
                                 <g:render template="../formDetail"/>
                             </g:if>
 						</td>
-						<td>
+						<td class="center">
+                            <i class="fa fa-plus-square-o"></i>
                             <g:link controller="formAPart1a" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -160,6 +147,7 @@
 						</td>
 						<td>
                             <g:if test="${reportInstance?.formAPart1b == null}">
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
@@ -176,6 +164,7 @@
 						</td>
 							<td>
                             <g:if test="${reportInstance?.formAPart2a == null}">
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
@@ -192,6 +181,7 @@
 
 						</td>
 						<td>
+                            <i class="fa fa-plus-square-o"></i>
                             <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -206,6 +196,7 @@
                             </g:if>
 						</td>
 						<td>
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formB" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -220,6 +211,7 @@
                             </g:if>
 						</td>
 						<td>
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formC" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -234,6 +226,7 @@
                             </g:if>
 						</td>
 						<td>
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formE" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -248,6 +241,7 @@
                             </g:if>
 						</td>
 						<td>
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formF" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -262,6 +256,7 @@
                             </g:if>
 						</td>
 						<td>
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formG" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
@@ -273,6 +268,7 @@
 						</td>
 						<td>
                             <g:if test="${reportInstance?.formZero == null}">
+                            <i class="fa fa-plus-square-o"></i>
 							<g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
                             </g:if>
 						</td>
@@ -286,6 +282,7 @@
                             </g:each>
                         </td>
                         <td>
+                            <i class="fa fa-plus-square-o"></i>
                             <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id]"><g:message code="default.button.create.label"/></g:link>
                         </td>
                     </tr>

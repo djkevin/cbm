@@ -741,6 +741,12 @@ div.table div div {
     width: 106px;
 }
 
+#cssTable td
+{
+    text-align:left;
+    vertical-align:middle;
+}
+
 .box ul:first-child, .box ul.first {
     margin-left: 0;
 }

@@ -14,7 +14,9 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 		<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
-		
+        <!--font-awesome via CDN-->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
 		<r:script disposition="head">
             var URL_ROOT = '${request.contextPath}';
         </r:script>
@@ -25,7 +27,6 @@
 		
 	</head>
 	<body>
-
     <div id="topmenu">
         <div id="topmenucontent">
             <div id="languages">
@@ -40,7 +41,7 @@
                     <li>
                     <sec:ifLoggedIn>
                         <g:message code="user.login.as" default="You are logged in as: "/> <b><sec:loggedInUserInfo field="username"/></b>
-                        <g:link controller='logout' action='index'>[<g:message code="user.logout" default="logout"/>]</g:link>
+                        <g:link controller='logout' action='index'><i class="fa fa-sign-out"></i><g:message code="user.logout" default="Logout"/></g:link>
                     </sec:ifLoggedIn>
                     </li>
                 </ul>

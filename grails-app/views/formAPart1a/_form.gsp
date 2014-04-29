@@ -134,6 +134,7 @@
         </tbody>
     </table>
     <div  class="message" id="ajax-message" style="display: none"></div>
+    <i class="fa fa-plus-square-o"></i>
     <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="appendRows(data)">
         ${message(code: 'default.add.label', args: [message(code: 'formAPart1.containmentUnit', default: 'Containment Unit')])}
     </g:remoteLink>

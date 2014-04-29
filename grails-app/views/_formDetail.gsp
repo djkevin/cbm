@@ -5,14 +5,14 @@
 
             <!-- Draft or completed-->
             <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
-                <td class="draft"></td>
+                <td><i class="fa fa-pencil"></i></td>
             </g:if>
             <g:else>
-                <td class="completed"/></td>
+                <td><i class="fa fa-check"></i></td>
             </g:else>
             <!-- Private or public -->
             <g:if test="${f.visibility.equalsIgnoreCase("private")}">
-                <td class="private"></td>
+                <td><i class="fa fa-lock"></i></td>
             </g:if>
             <g:else>
                 <td>&nbsp;</td>
