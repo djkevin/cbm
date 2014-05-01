@@ -1,7 +1,7 @@
 <table id="inner-table">
     <g:each in="${forms}" var="f">
         <tr>
-            <td width="90%"><g:link controller="${controller}" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link></td>
+            <td width="90%"><g:link controller="${controller}" action="show" id="${f.id}">${f.title}: ${f ? f.encodeAsHTML():''}</g:link></td>
 
             <!-- Draft or completed-->
             <g:if test="${f.formStatus.equalsIgnoreCase("draft")}">
