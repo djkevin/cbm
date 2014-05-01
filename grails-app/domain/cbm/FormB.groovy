@@ -2,7 +2,6 @@ package cbm
 
 class FormB extends BaseForm {
 
-    static auditable = true
     static belongsTo = [Report]
 
     String eventName

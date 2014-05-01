@@ -2,7 +2,6 @@ package cbm
 
 class FormZero extends BaseForm {
 
-    static auditable = true
     static belongsTo = [Report]
     static embedded = ['formAPart1', 'formAPart2a', 'formAPart2b', 'formAPart2c', 'formB', 'formC', 'formE', 'formF', 'formG']
 

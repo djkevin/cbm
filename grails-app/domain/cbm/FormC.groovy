@@ -2,7 +2,6 @@ package cbm
 
 class FormC extends BaseForm {
 
-    static auditable = true
     static belongsTo = [Report]
 
     String comments

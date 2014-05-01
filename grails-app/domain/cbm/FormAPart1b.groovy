@@ -2,7 +2,6 @@ package cbm
 
 class FormAPart1b extends BaseForm {
 
-    static auditable = true
     Boolean bioSafetyLevel3
     Boolean bioSafetyLevel2
     String additionalInformation

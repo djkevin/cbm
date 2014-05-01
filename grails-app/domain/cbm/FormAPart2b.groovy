@@ -2,7 +2,6 @@ package cbm
 
 class FormAPart2b extends BaseForm {
 
-    static auditable = true
     static belongsTo = [Report]
     static hasMany = [formAPart2c: FormAPart2c]
     static hasOne = [formAPart2bOrganigram: FormAPart2bOrganigram]

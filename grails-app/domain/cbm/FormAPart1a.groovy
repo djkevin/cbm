@@ -2,7 +2,6 @@ package cbm
 
 class FormAPart1a extends BaseForm {
 
-    static auditable = true
     static belongsTo = [Report]
     static hasMany = [formAContainmentUnitList: FormAPart1ContainmentUnit]
     String facilityName
