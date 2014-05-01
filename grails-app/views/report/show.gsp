@@ -290,5 +290,11 @@
 				</tbody>
 			</table>
 		</div>
+    <div id="legend">
+        <g:message code="status.legend" default="Legend"/>:
+        <span> <i class="fa fa-pencil fa-border"></i><g:message code="status.draft" default="Draft"/>  </span>
+        <span> <i class="fa fa-check fa-border"></i> <g:message code="status.completed" default="Completed"/></span>
+        <span> <i class="fa fa-lock fa-border"></i> <g:message code="status.private" default="Private"/></span>
+    </div>
 	</body>
 </html>
