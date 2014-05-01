@@ -748,6 +748,11 @@ div.table div div {
 
 }
 
+/*Aligns the rows in report show for elems without embedded tables*/
+#cssTable td.noTable  {
+    padding-left:9px;
+}
+
 #legend{
     text-align: right;
     opacity:0.9;
@@ -941,5 +946,7 @@ div.inline {
 .property-label-b {
     font-weight: bolder;
 }
+
+
 
 

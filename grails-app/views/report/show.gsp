@@ -143,8 +143,16 @@
 						<td><g:message code="report.formAPart1b.label" default="Form A Part 1b" /></td>
 						<td>${reportInstance?.formAPart1b ? 1:0}</td>
 						<td>
-							<g:link controller="formAPart1b" action="show" id="${reportInstance?.formAPart1b?.id}">${reportInstance?.formAPart1b?.encodeAsHTML()}</g:link>
-						</td>
+                        <g:if test="${reportInstance?.formAPart1b != null}">
+                            <g:set var="forms" value="${reportInstance?.formAPart1b}"></g:set>
+                            <g:set var="controller" value="formAPart1b"/>
+                            <g:render template="../formDetail"/>
+                        </g:if>
+                        </td>
+                        %{--${reportInstance?.formAPart1b ? 1:0}</td>--}%
+						%{--<td>--}%
+							%{--<g:link controller="formAPart1b" action="show" id="${reportInstance?.formAPart1b?.id}">${reportInstance?.formAPart1b?.encodeAsHTML()}</g:link>--}%
+						%{--</td>--}%
 						<td>
                             <g:if test="${reportInstance?.formAPart1b == null}">
                             <i class="fa fa-plus-square-o"></i>
@@ -155,7 +163,7 @@
 					<tr class="odd">
 						<td><g:message code="report.formAPart2a.label" default="Form A Part 2a" /></td>
 						<td>${reportInstance?.formAPart2a ? 1:0}</td>
-						<td>
+						<td class="noTable">
                             <g:if test ="${reportInstance.formAPart2a}">
                                 <g:link controller="formAPart2a" action="show" id="${reportInstance?.formAPart2a?.id}">
                                     <g:message code="formaAPar2a.existingProgrammes"/><g:formatBoolean boolean="${reportInstance?.formAPart2a?.existingNationalProgrammes}" />
@@ -263,7 +271,7 @@
 					<tr class="even">
 						<td><g:message code="report.formZero.label" default="Form 0" /></td>
 						<td>${reportInstance?.formZero ? 1:0}</td>
-						<td>
+						<td  class="noTable">
 							<g:link controller="formZero" action="show" id="${reportInstance?.formZero?.id}">${reportInstance?.formZero?.encodeAsHTML()}</g:link>
 						</td>
 						<td>
@@ -276,7 +284,7 @@
                     <tr class="odd">
                         <td><g:message code="report.nationalContact" default="National Contact" /></td>
                         <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
-                        <td>
+                        <td  class="noTable">
                             <g:each in="${reportInstance?.stateParty?.nationalContact}" var="f">
                                 <g:link controller="nationalContact" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
                             </g:each>
