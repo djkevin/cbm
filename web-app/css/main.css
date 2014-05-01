@@ -748,6 +748,13 @@ div.table div div {
 
 }
 
+#legend{
+    text-align: right;
+    opacity:0.9;
+    font-size:85%;
+    margin-right: 5px;
+}
+
 
 .box ul:first-child, .box ul.first {
     margin-left: 0;
