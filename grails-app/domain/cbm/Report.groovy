@@ -1,7 +1,5 @@
 package cbm
 
-import org.joda.time.LocalDate
-
 class Report {
 
 
@@ -15,13 +13,14 @@ class Report {
 
     Language language
     Integer year
-    String reportStatus
+    ReportStatus reportStatus
     String publicationStatus
     Boolean officialVersion
 
     String getReportName() {
         "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) } + "_${language.abbreviation}"
     }
+
 
     StateParty stateParty
 
@@ -31,7 +30,7 @@ class Report {
 //        reportName()
         language unique: ['year', 'stateParty']
         year range: 2000..2014//new LocalDate().getYear().intValue()
-        reportStatus inList: ["Draft", "Submitted"]
+        reportStatus blank:false
         publicationStatus inList: ["Not published", "Published"]
         officialVersion()
         //Set below hasOne relationships to nullable to avoid validation errors upon bootstrap
