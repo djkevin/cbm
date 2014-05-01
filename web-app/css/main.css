@@ -741,11 +741,13 @@ div.table div div {
     width: 106px;
 }
 
-#cssTable td
-{
+#cssTable td {
     text-align:left;
     vertical-align:middle;
+    padding: 2px 2px 2px 5px;
+
 }
+
 
 .box ul:first-child, .box ul.first {
     margin-left: 0;
@@ -904,7 +906,7 @@ div.inline {
 }
 
 #inner-table {
-    border-top: 0px;
+    border-top: 3px;
     padding: 0px;
     margin: 0px;
 }
