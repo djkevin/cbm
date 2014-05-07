@@ -62,6 +62,7 @@ grails.project.dependency.resolution = {
         // plugins for the build system only
         build ":tomcat:7.0.50"
 
+
         // plugins for the compile step
         compile ":scaffolding:2.0.1"
         compile ':cache:1.1.1'
@@ -69,6 +70,7 @@ grails.project.dependency.resolution = {
 		compile ":audit-logging:0.5.5.2"
         compile ':spring-security-core:2.0-RC2'
         compile ":db-reverse-engineer:0.5"
+
 //        compile "org.springframework:spring-test:3.2.6.RELEASE"
 
         compile ":rendering:0.4.4"

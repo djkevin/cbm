@@ -2,6 +2,10 @@ package cbm
 
 class Report {
 
+//    @I18nEnum
+//    enum PublicationStatus {
+//        NOTPUBLISHED, PUBLISHED
+//    }
 
     static hasMany = [formAPart1: FormAPart1a, formAPart2b: FormAPart2b, formAPart2c: FormAPart2c, formB: FormB, formC: FormC, formE: FormE, formF: FormF, formG: FormG]
     static hasOne = [formAPart1b: FormAPart1b, formAPart2a: FormAPart2a, formZero: FormZero]// for hasOne a Report object has to be specified on the other side
@@ -14,12 +18,13 @@ class Report {
     Language language
     Integer year
     ReportStatus reportStatus
-    String publicationStatus
+    PublicationStatus publicationStatus
     Boolean officialVersion
 
     String getReportName() {
         "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) } + "_${language.abbreviation}"
     }
+
 
 
     StateParty stateParty
@@ -31,7 +36,7 @@ class Report {
         language unique: ['year', 'stateParty']
         year range: 2000..2014//new LocalDate().getYear().intValue()
         reportStatus blank:false
-        publicationStatus inList: ["Not published", "Published"]
+        publicationStatus blank:false// inList: ["Not published", "Published"]
         officialVersion()
         //Set below hasOne relationships to nullable to avoid validation errors upon bootstrap
         formAPart1b nullable: true

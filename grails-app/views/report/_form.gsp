@@ -32,7 +32,8 @@
 		<g:message code="report.publicationStatus.label" default="Publication Status" />
 		
 	</label>
-	<g:select name="publicationStatus" from="${reportInstance.constraints.publicationStatus.inList}" value="${reportInstance?.publicationStatus?: reportInstance.constraints.publicationStatus.inList[0]}" valueMessagePrefix="report.publicationStatus" noSelection="['': '']"/>
+    <g:select name="publicationStatus" from="${cbm.Report.PublicationStatus?.values()}" keys="${cbm.Report.PublicationStatus.values()*.name()}" required="" value="${reportInstance?.publicationStatus?.name()}"/>
+	%{--<g:select name="publicationStatus" from="${reportInstance.constraints.publicationStatus.inList}" value="${reportInstance?.publicationStatus?: reportInstance.constraints.publicationStatus.inList[0]}" valueMessagePrefix="report.publicationStatus" noSelection="['': '']"/>--}%
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'officialVersion', 'error')} ">
