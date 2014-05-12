@@ -1,4 +1,8 @@
-package cbm
+package cbm.form
+
+import cbm.BaseForm
+import cbm.DeclarationOfMeasures
+import cbm.Report
 
 class FormE extends BaseForm {
 
