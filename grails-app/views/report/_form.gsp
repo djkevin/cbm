@@ -4,7 +4,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'language', 'error')} required">
 	<label for="language" class="property-label25">
-		<g:message code="report.language.label" default="Language" />
+		<g:message code="language.label" default="Language" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select name="language" from="${cbm.constants.Language?.values()}" keys="${cbm.constants.Language.values()*.name()}" required="" value="${reportInstance?.language?.name()}"/>
@@ -12,7 +12,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'year', 'error')} required">
 	<label for="year" class="property-label25">
-		<g:message code="report.year.label" default="Year" />
+		<g:message code="year.label" default="Year" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select name="year" from="${2000..2050}" class="range" required="" value="${fieldValue(bean: reportInstance, field: 'year')}"/>
