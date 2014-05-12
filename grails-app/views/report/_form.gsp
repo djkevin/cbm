@@ -32,7 +32,7 @@
 		<g:message code="report.publicationStatus.label" default="Publication Status" />
 		
 	</label>
-    <g:select name="publicationStatus" from="${cbm.PublicationStatus?.values()}" keys="${cbm.   PublicationStatus.values()*.name()}" required="" value="${reportInstance?.publicationStatus?.name()}"/>
+    <g:select name="publicationStatus" from="${cbm.constants.PublicationStatus?.values()}" keys="${cbm.constants.PublicationStatus.values()*.name()}" required="" value="${reportInstance?.publicationStatus?.name()}"/>
 	%{--<g:select name="publicationStatus" from="${reportInstance.constraints.publicationStatus.inList}" value="${reportInstance?.publicationStatus?: reportInstance.constraints.publicationStatus.inList[0]}" valueMessagePrefix="report.publicationStatus" noSelection="['': '']"/>--}%
 </div>
 

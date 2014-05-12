@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.constants.PublicationStatus
+
 class Report {
 
 //    @I18nEnum
