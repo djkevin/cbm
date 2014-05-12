@@ -2,9 +2,9 @@
 	Requires the caller to pass a parameter "reportId". The value of this parameter is the id of the Report linked to the FormAPart2c.
  -->
  
-<%@page import="cbm.FormAPart2b"%>
-<%@page import="cbm.FormAPart2c" %>
-<%@page import="cbm.Report" %>
+<%@page import="cbm.form.FormAPart2b"%>
+<%@page import="cbm.form.FormAPart2c" %>
+<%@page import="cbm.report.Report" %>
 
  
 
@@ -24,7 +24,7 @@
     </label>
     <g:hiddenField name="formAPart2b.id" id="formAPart2b" value="${formAPart2cInstance?.formAPart2b?.id}" />
     <g:field type="text" id="formAPart2b.name" name="formAPart2b.name" value="${formAPart2cInstance?.formAPart2b}" readonly="true" />
-%{--    <g:select id="formAPart2b" name="formAPart2b.id" from="${cbm.FormAPart2b.list()}" optionKey="id" required=""
+%{--    <g:select id="formAPart2b" name="formAPart2b.id" from="${cbm.form.FormAPart2b.list()}" optionKey="id" required=""
                value="${formAPart2cInstance?.formAPart2b?.id}" class="many-to-one" readonly="true"/>--}%
 </div>
 

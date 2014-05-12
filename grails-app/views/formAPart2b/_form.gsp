@@ -1,4 +1,4 @@
-<%@ page import="cbm.FormAPart2b" %>
+<%@ page import="cbm.form.FormAPart2b" %>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">

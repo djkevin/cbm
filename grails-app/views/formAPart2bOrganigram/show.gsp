@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.FormAPart2bOrganigram" %>
+<%@ page import="cbm.form.FormAPart2bOrganigram" %>
 <!DOCTYPE html>
 <html>
 	<head>

@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.form.FormAPart2b
+import cbm.form.FormAPart2bOrganigram
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*

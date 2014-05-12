@@ -1,4 +1,6 @@
-package cbm
+package cbm.form
+
+import cbm.form.FormAPart2b
 
 class FormAPart2bOrganigram {
 

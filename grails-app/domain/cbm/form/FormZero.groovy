@@ -2,7 +2,7 @@ package cbm.form
 
 import cbm.BaseForm
 import cbm.DeclarationForm
-import cbm.Report
+import cbm.report.Report
 
 class FormZero extends BaseForm {
 

@@ -2,7 +2,7 @@ package cbm.form
 
 import cbm.BaseForm
 import cbm.PastBiologicalRnDActivity
-import cbm.Report
+import cbm.report.Report
 
 class FormF extends BaseForm {
 

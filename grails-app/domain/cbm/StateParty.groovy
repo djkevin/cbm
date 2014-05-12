@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.report.Report
 import org.joda.time.LocalDate
 
 class StateParty {

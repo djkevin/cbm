@@ -2,7 +2,7 @@ package cbm.form
 
 import cbm.BaseForm
 import cbm.DeclarationOfMeasures
-import cbm.Report
+import cbm.report.Report
 
 class FormE extends BaseForm {
 

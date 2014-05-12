@@ -2,7 +2,7 @@ package cbm.form
 
 import cbm.Address
 import cbm.BaseForm
-import cbm.Report
+import cbm.report.Report
 
 
 class FormG extends BaseForm {

@@ -1,4 +1,4 @@
-<%@ page import="cbm.FormAPart2bOrganigram" %>
+<%@ page import="cbm.form.FormAPart2bOrganigram" %>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bOrganigramInstance, field: 'formAPart2b', 'error')} required">
     <label for="formAPart2b">

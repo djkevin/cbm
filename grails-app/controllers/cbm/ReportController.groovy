@@ -1,6 +1,7 @@
 package cbm
 
 import cbm.form.FormAPart1a
+import cbm.report.Report
 import grails.plugin.springsecurity.SpringSecurityUtils
 
 import static org.springframework.http.HttpStatus.*

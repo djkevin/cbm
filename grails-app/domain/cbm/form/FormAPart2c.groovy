@@ -1,4 +1,7 @@
-package cbm
+package cbm.form
+
+import cbm.BaseForm
+import cbm.form.FormAPart2b
 
 class FormAPart2c extends BaseForm {
     //Detailed info on facilities. Each program (FormAPart2b) can have many facilities assigned/contributing to it
