@@ -7,7 +7,7 @@
 		<g:message code="report.language.label" default="Language" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="language" from="${cbm.Language?.values()}" keys="${cbm.Language.values()*.name()}" required="" value="${reportInstance?.language?.name()}"/>
+	<g:select name="language" from="${cbm.constants.Language?.values()}" keys="${cbm.constants.Language.values()*.name()}" required="" value="${reportInstance?.language?.name()}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'year', 'error')} required">

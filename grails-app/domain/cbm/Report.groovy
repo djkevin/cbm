@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.constants.Language
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
 
