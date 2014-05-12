@@ -1,9 +1,4 @@
 package cbm.constants
-
-import cbm.MessageSourceResolvableUtil
-
-
-
 /**
  * Created with IntelliJ IDEA.
  * User: jutliah

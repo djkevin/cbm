@@ -1,4 +1,4 @@
-package cbm
+package cbm.constants
 
 /**
  * Created with IntelliJ IDEA.
