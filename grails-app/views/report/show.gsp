@@ -124,6 +124,19 @@
 					</tr>
 				</thead>
 				<tbody>
+                    <tr class="even">
+                        <td><g:message code="report.formZero.label" default="Form 0" /></td>
+                        <td>${reportInstance?.formZero ? 1:0}</td>
+                        <td  class="noTable">
+                            <g:link controller="formZero" action="show" id="${reportInstance?.formZero?.id}">${reportInstance?.formZero?.encodeAsHTML()}</g:link>
+                        </td>
+                        <td>
+                            <g:if test="${reportInstance?.formZero == null}">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            </g:if>
+                        </td>
+                    </tr>
 					<tr class="odd">
 						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
 						<td>${reportInstance?.formAPart1.size()}</td>
@@ -268,21 +281,8 @@
 							<g:link controller="formG" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
 						</td>
 					</tr>
-					<tr class="even">
-						<td><g:message code="report.formZero.label" default="Form 0" /></td>
-						<td>${reportInstance?.formZero ? 1:0}</td>
-						<td  class="noTable">
-							<g:link controller="formZero" action="show" id="${reportInstance?.formZero?.id}">${reportInstance?.formZero?.encodeAsHTML()}</g:link>
-						</td>
-						<td>
-                            <g:if test="${reportInstance?.formZero == null}">
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
-                            </g:if>
-						</td>
-					</tr>
-                    <tr class="odd">
-                        <td><g:message code="report.nationalContact" default="National Contact" /></td>
+                    <tr class="even">
+                        <td><g:message code="nationalContact.label" default="National Contact" /></td>
                         <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
                         <td  class="noTable">
                             <g:each in="${reportInstance?.stateParty?.nationalContact}" var="f">
