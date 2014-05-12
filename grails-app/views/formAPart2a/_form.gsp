@@ -2,7 +2,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2aInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">
-        <g:message code="formAPart2a.report.label" default="Report"/>
+        <g:message code="report.label" default="Report"/>
         <span class="required-indicator">*</span>
     </label>
     <g:hiddenField name="report.id" id="report" value="${formAPart2aInstance?.report?.id}" />
