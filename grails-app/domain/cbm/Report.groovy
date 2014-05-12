@@ -4,6 +4,7 @@ import cbm.constants.Language
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
 import cbm.form.FormB
+import cbm.form.FormC
 import cbm.form.FormE
 import cbm.form.FormG
 import cbm.form.FormZero

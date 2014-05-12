@@ -1,4 +1,4 @@
-<%@ page import="cbm.FormC" %>
+<%@ page import="cbm.form.FormC" %>
 
 <div class="fieldcontain ${hasErrors(bean: formCInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">

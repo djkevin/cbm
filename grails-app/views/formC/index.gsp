@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.FormC" %>
+<%@ page import="cbm.form.FormC" %>
 <!DOCTYPE html>
 <html>
 	<head>

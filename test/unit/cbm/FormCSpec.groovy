@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.form.FormC
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
