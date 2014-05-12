@@ -23,7 +23,7 @@
 		<g:message code="report.reportStatus.label" default="Report Status" />
 		
 	</label>
-    <g:select name="reportStatus" from="${cbm.ReportStatus?.values()}" keys="${cbm.ReportStatus.values()*.name()}" required="" value="${reportInstance?.reportStatus?.name()}"/>
+    <g:select name="reportStatus" from="${cbm.constants.ReportStatus.values()}" keys="${cbm.constants.ReportStatus.values()*.name()}" required="" value="${reportInstance?.reportStatus?.name()}"/>
 	%{--<g:select name="reportStatus" from="${reportInstance.constraints.reportStatus.inList}" value="${reportInstance?.reportStatus?: reportInstance.constraints.reportStatus.inList[0]}" valueMessagePrefix="report.reportStatus" noSelection="['': '']"/>--}%
 </div>
 

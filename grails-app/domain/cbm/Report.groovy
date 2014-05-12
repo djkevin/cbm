@@ -1,6 +1,7 @@
 package cbm
 
 import cbm.constants.PublicationStatus
+import cbm.constants.ReportStatus
 
 class Report {
 
