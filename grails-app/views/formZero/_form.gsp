@@ -1,4 +1,4 @@
-<%@ page import="cbm.FormZero" %>
+<%@ page import="cbm.form.FormZero" %>
 <div class="fieldcontain ${hasErrors(bean: formZeroInstance, field: 'report', 'error')} required">
     <label for="report" class="property-label25">
         <g:message code="report.label" default="Report" />

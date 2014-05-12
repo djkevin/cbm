@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.form.FormG
 import grails.test.MockUtils
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor

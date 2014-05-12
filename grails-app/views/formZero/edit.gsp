@@ -1,4 +1,4 @@
-<%@ page import="cbm.FormZero" %>
+<%@ page import="cbm.form.FormZero" %>
 <!DOCTYPE html>
 <html>
 	<head>

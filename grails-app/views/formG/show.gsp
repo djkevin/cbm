@@ -1,4 +1,4 @@
-<%@ page import="cbm.FormG" %>
+<%@ page import="cbm.form.FormG" %>
 <%@ defaultCodec="none" %>
 <!DOCTYPE html>
 <html>

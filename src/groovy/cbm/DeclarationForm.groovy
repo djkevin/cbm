@@ -1,7 +1,7 @@
 package cbm
 
 /**
- * These fields get embedded in cbm.FormZero 
+ * These fields get embedded in cbm.form.FormZero
  * @author jutliah
  *
  */

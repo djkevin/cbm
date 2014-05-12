@@ -1,4 +1,8 @@
-package cbm
+package cbm.form
+
+import cbm.Address
+import cbm.BaseForm
+import cbm.Report
 
 
 class FormG extends BaseForm {

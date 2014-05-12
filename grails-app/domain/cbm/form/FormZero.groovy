@@ -1,4 +1,8 @@
-package cbm
+package cbm.form
+
+import cbm.BaseForm
+import cbm.DeclarationForm
+import cbm.Report
 
 class FormZero extends BaseForm {
 
