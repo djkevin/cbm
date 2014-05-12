@@ -1,5 +1,6 @@
-package cbm
+package cbm.admin
 
+import cbm.NationalContact
 import cbm.report.Report
 import org.joda.time.LocalDate
 
@@ -7,7 +8,7 @@ class StateParty {
 
     static hasMany = [report: Report, nationalContact: NationalContact]
 
-    Country country
+    cbm.Country country
     Date accessionRatification
 
     String toString() {

@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.admin.StateParty
+
 class NationalContact {
 
     static auditable = true

@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.StateParty" %>
+<%@ page import="cbm.admin.StateParty" %>
 <!DOCTYPE html>
 <html>
 	<head>

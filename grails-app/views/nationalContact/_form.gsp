@@ -1,4 +1,4 @@
-<%@ page import="cbm.StateParty; cbm.NationalContact" %>
+<%@ page import="cbm.admin.StateParty; cbm.StateParty; cbm.NationalContact" %>
 
 
 
@@ -114,7 +114,7 @@
     </g:if>
     <g:else>
         <g:hiddenField id="stateParty" name="stateParty.id" value="${params?.stateParty?.id}" />
-        <g:textField id="stateParty.country" name="stateParty.country" value="${StateParty.get(params?.stateParty?.id)}" readonly=""/>
+        <g:textField id="stateParty.country" name="stateParty.country" value="${cbm.admin.StateParty.get(params?.stateParty?.id)}" readonly=""/>
     </g:else>
 </div>
 

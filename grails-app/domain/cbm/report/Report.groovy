@@ -1,6 +1,6 @@
 package cbm.report
 
-import cbm.StateParty
+import cbm.admin.StateParty
 import cbm.constants.Language
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
