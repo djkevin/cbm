@@ -1,4 +1,5 @@
 import cbm.*
+import cbm.form.FormB
 
 fixture {
     spSWE(StateParty) {
