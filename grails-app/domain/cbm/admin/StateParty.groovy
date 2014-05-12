@@ -1,6 +1,5 @@
 package cbm.admin
 
-import cbm.NationalContact
 import cbm.report.Report
 import org.joda.time.LocalDate
 

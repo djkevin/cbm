@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.admin.NationalContact
 import grails.test.mixin.TestFor
 import spock.lang.Unroll
 

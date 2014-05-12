@@ -1,4 +1,4 @@
-<%@ page import="cbm.admin.StateParty; cbm.StateParty; cbm.NationalContact" %>
+<%@ page import="cbm.admin.StateParty; cbm.StateParty; cbm.admin.NationalContact" %>
 
 
 

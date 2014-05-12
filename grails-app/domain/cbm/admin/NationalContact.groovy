@@ -1,5 +1,6 @@
-package cbm
+package cbm.admin
 
+import cbm.Address
 import cbm.admin.StateParty
 
 class NationalContact {

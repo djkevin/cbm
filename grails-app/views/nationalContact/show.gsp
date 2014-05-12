@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.NationalContact" %>
+<%@ page import="cbm.admin.NationalContact" %>
 <!DOCTYPE html>
 <html>
 	<head>

@@ -1,7 +1,6 @@
 package cbm
 
-
-
+import cbm.admin.NationalContact
 import grails.test.mixin.*
 import spock.lang.*
 
