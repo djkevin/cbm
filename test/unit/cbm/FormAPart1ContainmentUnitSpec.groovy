@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.form.FormAPart1ContainmentUnit
 import grails.test.mixin.TestFor
 import spock.lang.Unroll
 
