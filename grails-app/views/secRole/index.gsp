@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.SecRole" %>
+<%@ page import="cbm.usermgt.SecRole" %>
 <!DOCTYPE html>
 <html>
 	<head>

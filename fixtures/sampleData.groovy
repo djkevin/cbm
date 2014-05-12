@@ -8,6 +8,10 @@ import cbm.form.FormAPart2b
 import cbm.form.FormAPart2c
 import cbm.form.FormB
 import cbm.report.Report
+import cbm.usermgt.AdminUser
+import cbm.usermgt.SecRole
+import cbm.usermgt.SecUserSecRole
+import cbm.usermgt.User
 
 fixture {
     spSWE(StateParty) {

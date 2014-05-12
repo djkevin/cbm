@@ -1,4 +1,4 @@
-package cbm
+package cbm.usermgt
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 

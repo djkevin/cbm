@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.usermgt.User
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*

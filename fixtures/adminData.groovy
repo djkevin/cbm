@@ -1,6 +1,6 @@
-import cbm.AdminUser
-import cbm.SecRole
-import cbm.SecUserSecRole
+import cbm.usermgt.AdminUser
+import cbm.usermgt.SecRole
+import cbm.usermgt.SecUserSecRole
 
 /**
  * Created with IntelliJ IDEA.

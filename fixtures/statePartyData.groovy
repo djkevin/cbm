@@ -1,6 +1,6 @@
-import cbm.SecRole
-import cbm.SecUserSecRole
-import cbm.User
+import cbm.usermgt.SecRole
+import cbm.usermgt.SecUserSecRole
+import cbm.usermgt.User
 import cbm.admin.StateParty
 import org.joda.time.LocalDate
 

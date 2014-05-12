@@ -1,6 +1,6 @@
-import cbm.SecRole
-import cbm.SecUser
-import cbm.SecUserSecRole
+import cbm.usermgt.SecRole
+import cbm.usermgt.SecUser
+import cbm.usermgt.SecUserSecRole
 
 class BootStrap {
 

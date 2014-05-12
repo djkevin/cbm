@@ -1,4 +1,4 @@
-package cbm
+package cbm.usermgt
 
 class SecUser {
 

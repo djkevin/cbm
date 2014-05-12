@@ -1,6 +1,6 @@
 package cbm
 
-
+import cbm.usermgt.SecRole
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
