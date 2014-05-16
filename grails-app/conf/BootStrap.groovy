@@ -32,7 +32,7 @@ class BootStrap {
                 assert SecUserSecRole.count() == 2
 				 */
 
-       /*         println "loading statePartyData..."
+/*                println "loading statePartyData..."
                 fixtureLoader.load("statePartyData")
                 println "loading adminData..."
                 fixtureLoader.load("adminData")*/
