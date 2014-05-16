@@ -19,5 +19,14 @@ class FormF extends BaseForm {
 
     static constraints = {
         entryIntoForceOfConvention()
+        offensiveActivity validator: pastActivityValidator
+        defensiveActivity validator: pastActivityValidator
+
+    }
+
+    static pastActivityValidator = { val ->
+        if (val.pastBiologicalActivity && !val.periodOfActivity) {
+            return false
+        }
     }
 }
