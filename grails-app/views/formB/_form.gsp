@@ -17,10 +17,10 @@
 	<g:textField name="eventName" required="" maxlength="${formBInstance?.constraints?.eventName?.maxSize}" value="${formBInstance?.eventName}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'eventCategory', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'eventCategory', 'error')} required">
 	<label for="eventCategory" class="property-label25" >
 		<g:message code="formB.eventCategory.label" default="Event Category" />
-		
+        <span class="required-indicator">*</span>
 	</label>
 	<g:select name="eventCategory" from="${formBInstance.constraints.eventCategory.inList}" value="${formBInstance?.eventCategory}" valueMessagePrefix="formB.eventCategory" noSelection="['': '']"/>
 </div>
