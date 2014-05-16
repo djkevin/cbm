@@ -19,7 +19,7 @@ class FormG extends BaseForm {
     static constraints = {
         facilityName maxSize: 250, blank: false
         location()
-        typesOfDiseaseCovered maxSize: 5000
+        typesOfDiseaseCovered maxSize: 5000, blank:false
 
     }
 
