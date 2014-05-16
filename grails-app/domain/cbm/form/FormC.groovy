@@ -25,7 +25,7 @@ class FormC extends BaseForm {
 
 
     String stripHTML(String htmlContent){
-       htmlContent.replaceAll("<(.|\n)*?>", '')
+       htmlContent?.replaceAll("<(.|\n)*?>", '')
     }
 
     /*
