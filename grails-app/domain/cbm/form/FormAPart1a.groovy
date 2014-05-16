@@ -22,7 +22,7 @@ class FormAPart1a extends BaseForm {
 
 
     static constraints = {
-        facilityName maxSize: 250, blank: false
+        facilityName maxSize: 250, blank: false, nullable: false
         responsibleOrganisation maxSize: 500, blank: false
         location maxSize: 500, blank: false
         postalAddress maxSize: 500, blank: false
