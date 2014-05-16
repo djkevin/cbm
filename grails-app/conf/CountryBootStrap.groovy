@@ -5,7 +5,9 @@ class CountryBootStrap {
 
 
     def init = { servletContext ->
-        log.debug "Running init CountryBootStrap"
+        log.debug "Running init CountryBootStrap..."
+
+
         if (!cbm.admin.Country.count()) {
             log.debug(" no countries in db currently")
             String inputFile = "D:\\temp\\EFSRCA.txt"
