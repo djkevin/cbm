@@ -10,7 +10,7 @@
 		<div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"  params="['reportId':reportId]"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="list" action="index"  params="['reportId':formAPart1aInstance?.report?.id]"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             </ul>
 		</div>
 		<div id="create-formAPart1" class="content scaffold-create" role="main">
