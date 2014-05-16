@@ -4,24 +4,9 @@ import cbm.admin.StateParty
 import cbm.constants.Language
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
-import cbm.form.FormAPart1a
-import cbm.form.FormAPart1b
-import cbm.form.FormAPart2a
-import cbm.form.FormAPart2b
-import cbm.form.FormAPart2c
-import cbm.form.FormB
-import cbm.form.FormC
-import cbm.form.FormE
-import cbm.form.FormF
-import cbm.form.FormG
-import cbm.form.FormZero
+import cbm.form.*
 
 class Report {
-
-//    @I18nEnum
-//    enum PublicationStatus {
-//        NOTPUBLISHED, PUBLISHED
-//    }
 
     static hasMany = [formAPart1: FormAPart1a, formAPart2b: FormAPart2b, formB: FormB, formC: FormC, formE: FormE, formF: FormF, formG: FormG]
     static hasOne = [formAPart1b: FormAPart1b, formAPart2a: FormAPart2a, formZero: FormZero]// for hasOne a Report object has to be specified on the other side
@@ -41,18 +26,15 @@ class Report {
         "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) } + "_${language.abbreviation}"
     }
 
-
-
     StateParty stateParty
 
     static transients = ['reportName']
 
     static constraints = {
-//        reportName()
         language unique: ['year', 'stateParty']
         year range: 2000..2014//new LocalDate().getYear().intValue()
-        reportStatus blank:false
-        publicationStatus blank:false// inList: ["Not published", "Published"]
+        reportStatus blank: false
+        publicationStatus blank: false// inList: ["Not published", "Published"]
         officialVersion()
         //Set below hasOne relationships to nullable to avoid validation errors upon bootstrap
         formAPart1b nullable: true
