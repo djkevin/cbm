@@ -16,21 +16,16 @@ class FormC extends BaseForm {
 
     }
 
-    String toString(){
+    String toString() {
         //Replaces the htmltags
-        int maxChars=20
-        comments?.length()<maxChars?stripHTML(comments):stripHTML(comments).substring(0,maxChars)+"..."
+        int maxChars = 20
+        comments?.length() < maxChars ? stripHTML(comments) : stripHTML(comments).substring(0, maxChars) + "..."
 
     }
 
 
-    String stripHTML(String htmlContent){
-       htmlContent?.replaceAll("<(.|\n)*?>", '')
+    String stripHTML(String htmlContent) {
+        htmlContent?.replaceAll("<(.|\n)*?>", '')
     }
 
-    /*
-String getTitle(){
-    //return  report.reportName+ " form c"
-    return "formC instance ${id}"
-} */
 }
