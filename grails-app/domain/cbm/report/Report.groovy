@@ -23,7 +23,7 @@ class Report {
 //        NOTPUBLISHED, PUBLISHED
 //    }
 
-    static hasMany = [formAPart1: FormAPart1a, formAPart2b: FormAPart2b, formAPart2c: FormAPart2c, formB: FormB, formC: FormC, formE: FormE, formF: FormF, formG: FormG]
+    static hasMany = [formAPart1: FormAPart1a, formAPart2b: FormAPart2b, formB: FormB, formC: FormC, formE: FormE, formF: FormF, formG: FormG]
     static hasOne = [formAPart1b: FormAPart1b, formAPart2a: FormAPart2a, formZero: FormZero]// for hasOne a Report object has to be specified on the other side
     static belongsTo = [stateParty: StateParty]
     static auditable = true
