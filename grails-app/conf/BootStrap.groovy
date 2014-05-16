@@ -1,6 +1,8 @@
+import cbm.admin.StateParty
 import cbm.usermgt.SecRole
 import cbm.usermgt.SecUser
 import cbm.usermgt.SecUserSecRole
+import cbm.usermgt.User
 
 class BootStrap {
 
@@ -32,10 +34,17 @@ class BootStrap {
                 assert SecUserSecRole.count() == 2
 				 */
 
-   /*            println "loading statePartyData..."
-                fixtureLoader.load("statePartyData")
-                println "loading adminData..."
-                fixtureLoader.load("adminData")*/
+                if (!StateParty.count()){
+                    println "loading statePartyData..."
+                    fixtureLoader.load("statePartyData")
+                    print "done"
+                }
+                if (!User.count()){
+                    println "loading adminData..."
+                    fixtureLoader.load("adminData")
+                    print "done"
+                }
+
 
 //				fixtureLoader.load("sampleData")
 
