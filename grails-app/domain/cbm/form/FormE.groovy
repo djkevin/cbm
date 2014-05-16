@@ -19,6 +19,28 @@ class FormE extends BaseForm {
     Report report
 
     static constraints = {
-        additionalComments maxSize: 2000, blank: true, nullable: true
+        //val maxSize: 2000, blank: false, nullable: false
+        additionalComments nullable: true, blank: true, maxSize: 2000, validator: { val, object ->
+            def err = true
+            if (object.developmentAndMeansOfDelivery?.hasDeclaration() && (!val || val?.isEmpty())) {
+                err = 'formE.additionalComments.development.blank.error'
+            }
+            if (object.exportsOfMicroOrganisms?.hasDeclaration() && (!val || val?.isEmpty())) {
+                err = 'formE.additionalComments.export.blank.error'
+            }
+            if (object.importsOfMicroOrganisms?.hasDeclaration() && (!val || val?.isEmpty())) {
+                err = 'formE.additionalComments.import.blank.error'
+            }
+            if (object.biosafetyAndBioSecurity?.hasDeclaration() && (!val || val?.isEmpty())) {
+                err = 'formE.additionalComments.biosafety.blank.error'
+            }
+            return err
+        }
+
     }
+
+    String toString() {
+        println "id: ${id}, dev:${developmentAndMeansOfDelivery}"
+    }
+
 }
