@@ -124,7 +124,7 @@
 
             <g:sortableColumn property="comment" title="${message(code: 'formAPart1ContainmentUnit.comment.label', default: 'Comment')}" />
 
-            <g:sortableColumn property="comment" title="${message(code: 'default.button.delete.label', default: 'Delete')}" />
+            <g:sortableColumn property="delete" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
 
         </tr>
         </thead>
@@ -134,8 +134,9 @@
         </tbody>
     </table>
     <div  class="message" id="ajax-message" style="display: none"></div>
-    <i class="fa fa-plus-square-o"></i>
+
     <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="appendRows(data)">
+        <i class="fa fa-plus-square-o"></i>
         ${message(code: 'default.add.label', args: [message(code: 'formAPart1.containmentUnit', default: 'Containment Unit')])}
     </g:remoteLink>
 

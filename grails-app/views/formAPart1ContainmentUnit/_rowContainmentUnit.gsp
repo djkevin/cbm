@@ -25,8 +25,9 @@
                          value="${formAPart1ContainmentUnitInstance?.comment}"/>
         </td>
         <td>
-            <i class="fa fa-trash-o"></i>
+
             <a class="deleteLink" href="javascript:void(0);">
+                <i class="fa fa-trash-o"></i>
                 <g:message code="default.button.delete.label" default="Delete"/>
             </a>
         </td>

@@ -21,81 +21,81 @@
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list report">
-			
+
 				<g:if test="${reportInstance?.reportName}">
 				<li class="fieldcontain">
 					<span id="report-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
-					
+
 						<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="reportName"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${reportInstance?.language}">
 				<li class="fieldcontain">
 					<span id="language-label" class="property-label"><g:message code="language.label" default="Language" /></span>
-					
+
 						<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="language"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${reportInstance?.year}">
 				<li class="fieldcontain">
 					<span id="year-label" class="property-label"><g:message code="year.label" default="Year" /></span>
-					
+
 						<span class="property-value" aria-labelledby="year-label">${reportInstance.year}</span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${reportInstance?.reportStatus}">
 				<li class="fieldcontain">
 					<span id="reportStatus-label" class="property-label"><g:message code="report.reportStatus.label" default="Report Status" /></span>
-					
+
 						<span class="property-value" aria-labelledby="reportStatus-label"><g:fieldValue bean="${reportInstance}" field="reportStatus"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${reportInstance?.publicationStatus}">
 				<li class="fieldcontain">
 					<span id="publicationStatus-label" class="property-label"><g:message code="report.publicationStatus.label" default="Publication Status" /></span>
-					
+
 						<span class="property-value" aria-labelledby="publicationStatus-label"><g:fieldValue bean="${reportInstance}" field="publicationStatus"/></span>
-					
+
 				</li>
 				</g:if>
-			
+
 				<g:if test="${reportInstance?.officialVersion}">
 				<li class="fieldcontain">
 					<span id="officialVersion-label" class="property-label"><g:message code="report.officialVersion.label" default="Official Version" /></span>
-					
+
 						<span class="property-value" aria-labelledby="officialVersion-label"><g:formatBoolean boolean="${reportInstance?.officialVersion}" /></span>
-					
+
 				</li>
 				</g:if>
-			
-			
+
+
 				<g:if test="${reportInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="dateCreated.label" default="Date Created" /></span>
-					
+
 						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.dateCreated}" /></span>
-					
+
 				</li>
 				</g:if>
-			
-			
+
+
 				<g:if test="${reportInstance?.lastUpdated}">
 				<li class="fieldcontain">
 					<span id="lastUpdated-label" class="property-label"><g:message code="lastUpdated.label" default="Last Updated" /></span>
-					
+
 						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.lastUpdated}" /></span>
-					
+
 				</li>
 				</g:if>
-	
+
 			</ol>
 
             <!-- *-*-*-*-*-*-*-*-*-*-*-* action buttons *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
@@ -132,8 +132,10 @@
                         </td>
                         <td>
                             <g:if test="${reportInstance?.formZero == null}">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                                <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]">
+                                    <i class="fa fa-plus-square-o"></i>
+                                    <g:message code="default.button.create.label"/>
+                                </g:link>
                             </g:if>
                         </td>
                     </tr>
@@ -148,8 +150,10 @@
                             </g:if>
 						</td>
 						<td class="center">
-                            <i class="fa fa-plus-square-o"></i>
-                            <g:link controller="formAPart1a" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            <g:link controller="formAPart1a" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -168,8 +172,10 @@
 						%{--</td>--}%
 						<td>
                             <g:if test="${reportInstance?.formAPart1b == null}">
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
                             </g:if>
 						</td>
 					</tr>
@@ -185,8 +191,10 @@
 						</td>
 							<td>
                             <g:if test="${reportInstance?.formAPart2a == null}">
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                                <g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]">
+                                    <i class="fa fa-plus-square-o"></i>
+                                    <g:message code="default.button.create.label"/>
+                                </g:link>
                             </g:if>
 						</td>
 					</tr>
@@ -202,8 +210,10 @@
 
 						</td>
 						<td>
-                            <i class="fa fa-plus-square-o"></i>
-                            <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+                            <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -217,8 +227,10 @@
                             </g:if>
 						</td>
 						<td>
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formB" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formB" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -232,8 +244,10 @@
                             </g:if>
 						</td>
 						<td>
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formC" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formC" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -247,8 +261,10 @@
                             </g:if>
 						</td>
 						<td>
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formE" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formE" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
 					<tr class="even">
@@ -262,8 +278,10 @@
                             </g:if>
 						</td>
 						<td>
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formF" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formF" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -277,8 +295,10 @@
                             </g:if>
 						</td>
 						<td>
-                            <i class="fa fa-plus-square-o"></i>
-							<g:link controller="formG" action="create" params="['report.id': reportInstance.id]"><g:message code="default.button.create.label"/></g:link>
+							<g:link controller="formG" action="create" params="['report.id': reportInstance.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
 						</td>
 					</tr>
                     <tr class="even">
@@ -290,11 +310,13 @@
                             </g:each>
                         </td>
                         <td>
-                            <i class="fa fa-plus-square-o"></i>
-                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id]"><g:message code="default.button.create.label"/></g:link>
+                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
                         </td>
                     </tr>
-					
+
 				</tbody>
 			</table>
 		</div>
