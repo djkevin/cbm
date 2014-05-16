@@ -9,6 +9,7 @@ class DeclarationOfMeasures {
 
     static transients = ['declaration']
 
+    //TODO change inLists to enum
     static constraints = {
         legislation inList: ["Yes", "No", "Unknown"]
         regulation inList: ["Yes", "No", "Unknown"]
