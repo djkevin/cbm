@@ -24,7 +24,7 @@
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'typesOfDiseaseCovered', 'error')} ">
 	<label for="typesOfDiseaseCovered">
 		<g:message code="formG.typesOfDiseaseCovered.label" default="Types Of Disease Covered" />
-		
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textArea class="wysiwyg"  name="typesOfDiseaseCovered" cols="40" rows="5" maxlength="${formGInstance?.constraints?.typesOfDiseaseCovered?.maxSize}" value="${formGInstance?.typesOfDiseaseCovered}"/>
 </div>
