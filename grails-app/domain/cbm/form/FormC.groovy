@@ -12,8 +12,20 @@ class FormC extends BaseForm {
     Report report
 
     static constraints = {
-        comments maxSize: 5000
+        comments blank: false, maxSize: 5000
 
+    }
+
+    String toString(){
+        //Replaces the htmltags
+        int maxChars=20
+        comments?.length()<maxChars?stripHTML(comments):stripHTML(comments).substring(0,maxChars)+"..."
+
+    }
+
+
+    String stripHTML(String htmlContent){
+       htmlContent.replaceAll("<(.|\n)*?>", '')
     }
 
     /*
