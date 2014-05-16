@@ -12,7 +12,7 @@
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'facilityName', 'error')} ">
 	<label for="facilityName" class="property-label25">
 		<g:message code="formG.facilityName.label" default="Facility Name" />
-		
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textField name="facilityName" maxlength="${formGInstance?.constraints?.facilityName?.maxSize}" value="${formGInstance?.facilityName}"/>
 </div>
