@@ -27,7 +27,7 @@ class FormAPart1a extends BaseForm {
         location maxSize: 500, blank: false
         postalAddress maxSize: 500, blank: false
         financingSources maxSize: 1000, blank: false
-        scope maxSize: 5000, blank: false
+        scope maxSize: 5000, blank: true
         formAContainmentUnitList nullable: true
     }
 }
