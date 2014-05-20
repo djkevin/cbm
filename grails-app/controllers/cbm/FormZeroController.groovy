@@ -1,7 +1,7 @@
 package cbm
 
-import cbm.form.FormAPart1a
 import cbm.form.FormZero
+import cbm.report.Report
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -11,11 +11,13 @@ import static org.springframework.http.HttpStatus.*
 @Transactional(readOnly = true)
 class FormZeroController {
 
+    def formService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond FormZero.list(params), model:[formZeroInstanceCount: FormZero.count()]
+        respond FormZero.list(params), model: [formZeroInstanceCount: FormZero.count()]
     }
 
     def show(FormZero formZeroInstance) {
@@ -25,20 +27,25 @@ class FormZeroController {
      * When we create the Declaration form,
      * We use a service to pre-fill the values
      * based on whether the form has been created or not
-     * @return  a formZero instance
+     * @return a formZero instance
+     * TODO: Move to FormService
      */
     def create() {
         FormZero formZero = new FormZero(params)
+        def reportId = params.long('report.id')
+        Report r = Report.findById(reportId)
+
         //Instantations required to be able to access domain constraints from gsp
-        formZero.setFormAPart1(new DeclarationForm())
-        formZero.setFormAPart2a(new DeclarationForm())
-        formZero.setFormAPart2b(new DeclarationForm())
-        formZero.setFormAPart2c(new DeclarationForm())
-        formZero.setFormB(new DeclarationForm())
-        formZero.setFormC(new DeclarationForm())
-        formZero.setFormE(new DeclarationForm())
-        formZero.setFormF(new DeclarationForm())
-        formZero.setFormG(new DeclarationForm())
+        formZero.setFormAPart1(new DeclarationForm(nothingToDeclare: !r.formAPart1, nothingNewToDeclare: !r.formAPart1))
+        formZero.setFormAPart2a(new DeclarationForm(nothingToDeclare: !r.formAPart2a, nothingNewToDeclare: !r.formAPart2a))
+        formZero.setFormAPart2b(new DeclarationForm(nothingToDeclare: !r.formAPart2b, nothingNewToDeclare: !r.formAPart2b))
+        formZero.setFormAPart2c(new DeclarationForm(nothingToDeclare: !r.formAPart2b.formAPart2c, nothingNewToDeclare: !r.formAPart2b.formAPart2c))
+        formZero.setFormB(new DeclarationForm(nothingToDeclare: !r.formB, nothingNewToDeclare: !r.formB))
+        formZero.setFormC(new DeclarationForm(nothingToDeclare: !r.formC, nothingNewToDeclare: !r.formC))
+        formZero.setFormE(new DeclarationForm(nothingToDeclare: !r.formE, nothingNewToDeclare: !r.formE))
+        formZero.setFormF(new DeclarationForm(nothingToDeclare: !r.formF, nothingNewToDeclare: !r.formF))
+        formZero.setFormG(new DeclarationForm(nothingToDeclare: !r.formG, nothingNewToDeclare: !r.formG))
+
         respond formZero
     }
 
@@ -50,17 +57,17 @@ class FormZeroController {
         }
 
         if (formZeroInstance.hasErrors()) {
-            respond formZeroInstance.errors, view:'create'
+            respond formZeroInstance.errors, view: 'create'
             return
         }
 
-        formZeroInstance.save flush:true
+        formZeroInstance.save flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formZeroInstance.label', default: 'FormZero'), formZeroInstance.id])
                 //redirect formZeroInstance
-                redirect (controller: "report", action:"show", id:formZeroInstance.report.id, report:formZeroInstance.report)
+                redirect(controller: "report", action: "show", id: formZeroInstance.report.id, report: formZeroInstance.report)
             }
             '*' { respond formZeroInstance, [status: CREATED] }
         }
@@ -78,18 +85,18 @@ class FormZeroController {
         }
 
         if (formZeroInstance.hasErrors()) {
-            respond formZeroInstance.errors, view:'edit'
+            respond formZeroInstance.errors, view: 'edit'
             return
         }
 
-        formZeroInstance.save flush:true
+        formZeroInstance.save flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'FormZero.label', default: 'FormZero'), formZeroInstance.id])
                 redirect formZeroInstance
             }
-            '*'{ respond formZeroInstance, [status: OK] }
+            '*' { respond formZeroInstance, [status: OK] }
         }
     }
 
@@ -101,14 +108,14 @@ class FormZeroController {
             return
         }
 
-        formZeroInstance.delete flush:true
+        formZeroInstance.delete flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormZero.label', default: 'FormZero'), formZeroInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -118,7 +125,7 @@ class FormZeroController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formZeroInstance.label', default: 'FormZero'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 
