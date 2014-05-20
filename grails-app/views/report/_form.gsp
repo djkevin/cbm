@@ -15,7 +15,7 @@
 		<g:message code="year.label" default="Year" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="year" from="${2000..2050}" class="range" required="" value="${fieldValue(bean: reportInstance, field: 'year')}"/>
+	<g:select name="year" from="${reportInstance.constraints.year.range}" class="range" required="" value="${fieldValue(bean: reportInstance, field: 'year')}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'reportStatus', 'error')} ">
