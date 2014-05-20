@@ -113,8 +113,6 @@ class FormAPart1aSpec extends AbstractConstraintsSpec {
         where:
         scope               || error
         null                || 'nullable'
-        ''                  || 'blank'
-        ' '                 || 'blank'
         getLongString(5000) || 'valid'
         getLongString(5001) || 'maxSize'
     }
