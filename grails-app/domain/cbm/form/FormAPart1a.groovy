@@ -10,7 +10,7 @@ class FormAPart1a extends BaseForm {
     String facilityName
     String responsibleOrganisation
     String location
-    String postalAddress
+//    String postalAddress
     String financingSources
     String scope
     Report report
@@ -25,7 +25,7 @@ class FormAPart1a extends BaseForm {
         facilityName maxSize: 250, blank: false, nullable: false
         responsibleOrganisation maxSize: 500, blank: false
         location maxSize: 500, blank: false
-        postalAddress maxSize: 500, blank: false
+//        postalAddress maxSize: 500, blank: false
         financingSources maxSize: 1000, blank: false
         scope maxSize: 5000, blank: true
         formAContainmentUnitList nullable: true

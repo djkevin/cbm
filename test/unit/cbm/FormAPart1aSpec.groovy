@@ -68,7 +68,7 @@ class FormAPart1aSpec extends AbstractConstraintsSpec {
         getLongString(501) || 'maxSize'
     }
 
-    @Unroll("postalAddress '#postalAddress' should result in '#error'")
+/*    @Unroll("postalAddress '#postalAddress' should result in '#error'")
     def "test formAPart1a postalAddress constraints"() {
         when:
         domain.postalAddress = postalAddress
@@ -83,7 +83,7 @@ class FormAPart1aSpec extends AbstractConstraintsSpec {
         ' '                || 'blank'
         getLongString(500) || 'valid'
         getLongString(501) || 'maxSize'
-    }
+    }*/
 
     @Unroll("financingSources '#financingSources' should result in '#error'")
     def "test formAPart1a financingSources constraints"() {

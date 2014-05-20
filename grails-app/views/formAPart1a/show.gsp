@@ -60,7 +60,7 @@
                 </g:if>
                 <br/>
 
-                <g:if test="${formAPart1aInstance?.postalAddress}">
+        %{--        <g:if test="${formAPart1aInstance?.postalAddress}">
                     <h4><g:message code="formAPart1.postalAddress.label" default="Postal Address"/></h4>
                     <li>
 
@@ -68,7 +68,7 @@
                                 bean="${formAPart1aInstance}" field="postalAddress"/></span>
                     </li>
                 </g:if>
-                <br/>
+                <br/>--}%
 
                 <g:if test="${formAPart1aInstance?.financingSources}">
                     <h4><g:message code="formAPart1.financingSources.label" default="Financing Sources"/></h4>

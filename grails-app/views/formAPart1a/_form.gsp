@@ -25,21 +25,24 @@
 </div>
 <div><g:textArea class="longTextSml" name="responsibleOrganisation" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.responsibleOrganisation?.maxSize}" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
 
+<div
+        class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'location', 'error')} required">
+    <label for="location"> <g:message
+            code="formAPart1.location.label" default="Location" /> <span
+            class="required-indicator">*</span>
+    </label>
+</div>
+<div>
+    <g:textArea class="twoCol" name="location" cols="40" rows="5"
+                maxlength="${formAPart1aInstance?.constraints?.location?.maxSize}" required="" value="${formAPart1aInstance?.location}" />
+</div>
+%{--
 <div class="wrapper">
 	<div class="left1">
-		<div
-			class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'location', 'error')} required">
-			<label for="location"> <g:message
-					code="formAPart1.location.label" default="Location" /> <span
-				class="required-indicator">*</span>
-			</label>
-		</div>
-		<div>
-			<g:textArea class="twoCol" name="location" cols="40" rows="5"
-				maxlength="${formAPart1aInstance?.constraints?.location?.maxSize}" required="" value="${formAPart1aInstance?.location}" />
-		</div>
+
 	</div>
-	<div class="left2">
+--}%
+%{--	<div class="left2">
 		<div
 			class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'postalAddress', 'error')} required">
 			<label for="postalAddress"> <g:message
@@ -52,8 +55,10 @@
 				maxlength="${formAPart1aInstance?.constraints?.postalAddress?.maxSize}" required=""
 				value="${formAPart1aInstance?.postalAddress}" />
 		</div>
-	</div>
+	</div>--}%%{--
+
 </div>
+--}%
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'financingSources', 'error')} required">
 	<label for="financingSources">
