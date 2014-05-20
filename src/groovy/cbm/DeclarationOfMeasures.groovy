@@ -26,7 +26,7 @@ class DeclarationOfMeasures {
       * @return True if at least one Yes filled
      */
     boolean hasDeclaration() {
-        (legislation.equalsIgnoreCase("Yes") || regulation.equalsIgnoreCase("Yes") && otherMeasures.equalsIgnoreCase("Yes") && amendedSinceLastYear.equalsIgnoreCase("Yes"))
+        (legislation?.equalsIgnoreCase("Yes") || regulation?.equalsIgnoreCase("Yes") && otherMeasures?.equalsIgnoreCase("Yes") && amendedSinceLastYear?.equalsIgnoreCase("Yes"))
     }
 
 

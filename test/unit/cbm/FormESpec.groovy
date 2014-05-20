@@ -11,67 +11,35 @@ import spock.lang.Unroll
 class FormESpec extends AbstractConstraintsSpec {
 
     def setup() {
-         def developmentAndMeansOfDelivery = new DeclarationOfMeasures(legislation: true, regulation: true, otherMeasures: true, amendedSinceLastYear: false)
-        mockForConstraintsTests(FormE, [new FormE(formStatus: 'Draft')])
-        domain.developmentAndMeansOfDelivery = developmentAndMeansOfDelivery
-
-        println("domain: " + domain)
+        mockForConstraintsTests(FormE, [new FormE()])
     }
 
     def cleanup() {
     }
 
-    @Unroll("additionalComments '#additionalComments' should result in '#error'")
+
+    @Unroll("additionalComments '#additionalComments' with declaration '#developmentAndMeansOfDelivery' should result in '#error'")
     def "test additional comments should be filled if any declaration is made"() {
 
         when:
         domain.additionalComments = additionalComments
-
-
-//        def developmentAndMeansOfDelivery = new DeclarationOfMeasures(legislation: true, regulation: true, otherMeasures: true, amendedSinceLastYear: false)
-//        domain.setDevelopmentAndMeansOfDelivery(developmentAndMeansOfDelivery)
+        domain.developmentAndMeansOfDelivery = developmentAndMeansOfDelivery
 
         then:
         validateConstraints(domain, 'additionalComments', error)
 
         where:
-        additionalComments || error
-//        ''                 || 'existing declaration, cannot be null'
-        getLongString(2000)      || 'valid'
-        getLongString(2001)      || 'maxSize'
-
+        additionalComments  || error                                              || developmentAndMeansOfDelivery
+        ''                  || 'formE.additionalComments.development.blank.error' || developmentAndMeansOfDeliveryWithDeclaration()
+        ''|| 'valid'||developmentAndMeansOfDeliveryWithoutDeclaration()
     }
 
-    /*def "test additionalComments constraint"() {
-        setup:
-        mockForConstraintsTests(FormE, [new FormE()] )
-        mockDomain(DeclarationOfMeasures)
-        def developmentAndMeansOfDelivery = new DeclarationOfMeasures(legislation: true, regulation: true, otherMeasures: true, amendedSinceLastYear: false)
-        def exportsOfMicroOrganisms = new DeclarationOfMeasures(legislation: true, regulation: true, otherMeasures: true, amendedSinceLastYear: false)
-        def importsOfMicroOrganisms = new DeclarationOfMeasures(legislation: true, regulation: true, otherMeasures: true, amendedSinceLastYear: false)
-        def biosafetyAndBioSecurity = new DeclarationOfMeasures(legislation: true, regulation: true, otherMeasures: true, amendedSinceLastYear: false)
-
-        def formE = new FormE(
-                developmentAndMeansOfDelivery: developmentAndMeansOfDelivery,
-                exportsOfMicroOrganisms: exportsOfMicroOrganisms,
-                importsOfMicroOrganisms: importsOfMicroOrganisms,
-                biosafetyAndBioSecurity: biosafetyAndBioSecurity,
-                formStatus: 'Draft',
-                visibility: 'Public',
-                title: 'test',
-                dateCreated: new Date(),
-                lastUpdated: new Date()
-
-        ).save()
-
-        when:
-
-        formE.validate()
-
-        then:
-        false
-       // formE.errors.hasFieldErrors("additionalComments")
+    DeclarationOfMeasures developmentAndMeansOfDeliveryWithDeclaration() {
+        return new DeclarationOfMeasures(legislation: "Yes")
+    }
+    DeclarationOfMeasures developmentAndMeansOfDeliveryWithoutDeclaration() {
+        return new DeclarationOfMeasures()
+    }
 
 
-    }*/
 }
