@@ -4,10 +4,10 @@ import cbm.form.FormAPart1a
 import cbm.report.Report
 import cbm.usermgt.SecUser
 import grails.plugin.springsecurity.SpringSecurityUtils
+import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -15,9 +15,9 @@ class ReportController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def springSecurityService
- //   def user =SecUser.get(springSecurityService.principal.id)
+    def securityService
 
-    SecUser getUser(){
+    SecUser getUser() {
         return SecUser.get(springSecurityService.principal.id)
     }
 
@@ -26,15 +26,22 @@ class ReportController {
 
         if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')) {
             respond Report.findAll()
-        }else{
+        } else {
             def user = getUser()
-            respond Report.findAllByStateParty(user.stateParty), model:[reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
+            respond Report.findAllByStateParty(user.stateParty), model: [reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
         }
 
     }
 
+    // @Secured(["@securityService.canView(#reportInstance)"])
     def show(Report reportInstance) {
-        respond reportInstance
+        if (securityService.canView(reportInstance)) {
+            respond reportInstance
+        } else {
+            flash.message = message(code: 'report.url.access.error', default: 'You can only access records created by your country')
+            redirect action: "index", method: "GET"
+        }
+
     }
 
     def create() {
@@ -49,11 +56,11 @@ class ReportController {
         }
 
         if (reportInstance.hasErrors()) {
-            respond reportInstance.errors, view:'create'
+            respond reportInstance.errors, view: 'create'
             return
         }
 
-        reportInstance.save flush:true
+        reportInstance.save flush: true
 
         request.withFormat {
             form {
@@ -76,18 +83,18 @@ class ReportController {
         }
 
         if (reportInstance.hasErrors()) {
-            respond reportInstance.errors, view:'edit'
+            respond reportInstance.errors, view: 'edit'
             return
         }
 
-        reportInstance.save flush:true
+        reportInstance.save flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
                 redirect reportInstance
             }
-            '*'{ respond reportInstance, [status: OK] }
+            '*' { respond reportInstance, [status: OK] }
         }
     }
 
@@ -99,14 +106,14 @@ class ReportController {
             return
         }
 
-        reportInstance.delete flush:true
+        reportInstance.delete flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -116,13 +123,13 @@ class ReportController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'reportInstance.label', default: 'Report'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 
     def print(Report reportInstance) {
 
-        Set<FormAPart1a> formAPart1as= reportInstance.formAPart1
-        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances:formAPart1as]
+        Set<FormAPart1a> formAPart1as = reportInstance.formAPart1
+        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances: formAPart1as]
     }
 }
