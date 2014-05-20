@@ -25,8 +25,8 @@ class FormF extends BaseForm {
     }
 
     static pastActivityValidator = { val ->
-        if (val.pastBiologicalActivity && !val.periodOfActivity) {
-            return false
+        if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
+            return 'default.blank.message'
         }
     }
 }
