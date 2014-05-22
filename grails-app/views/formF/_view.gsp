@@ -18,13 +18,13 @@
 <g:if test="${formFInstance?.offensiveActivity}">
     <g:set var="activity" value="${formFInstance.offensiveActivity}"></g:set>
 
-    <g:if test="${activity?.pastBiologicalActivity}">
+    %{--<g:if test="${activity?.pastBiologicalActivity}">--}%
         <li>
             <h4><g:message code="formF.offensiveActivity.pastBiologicalActivity.label" default="Past biological activity" /></h4>
             <span class="property-value" aria-labelledby="pastBiologicalActivity-label"><g:formatBoolean boolean="${activity.pastBiologicalActivity}"/></span>
         </li>
         <br/>
-    </g:if>
+    %{--</g:if>--}%
 
     <g:if test="${activity?.periodOfActivity}">
         <h4><span id="periodOfActivity-label" class="property-label"><g:message code="formF.offensiveActivity.periodOfActivity.label" default="Period of activity" /></span></h4>
@@ -48,13 +48,13 @@
 <g:if test="${formFInstance?.defensiveActivity}">
     <g:set var="activity" value="${formFInstance.defensiveActivity}"></g:set>
 
-    <g:if test="${activity?.pastBiologicalActivity}">
+    %{--<g:if test="${activity?.pastBiologicalActivity}">--}%
         <li>
             <h4><g:message code="formF.defensiveActivity.pastBiologicalActivity.label" default="Past biological activity" /></h4>
             <span class="property-value" aria-labelledby="pastBiologicalDActivity-label"><g:formatBoolean boolean="${activity.pastBiologicalActivity}"/></span>
         </li>
         <br/>
-    </g:if>
+    %{--</g:if>--}%
 
     <g:if test="${activity?.periodOfActivity}">
         <h4> <span id="periodOfDActivity-label" class="property-label"><g:message code="formF.defensiveActivity.periodOfActivity.label" default="Period of activity" /></span></h4>

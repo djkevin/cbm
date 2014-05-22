@@ -24,7 +24,12 @@
         <label for="offensiveActivity.pastBiologicalActivity" >
             <g:message code="formF.offensiveActivity.pastBiologicalActivity.label" default="Past Biological Activity" />
         </label>
-        <g:checkBox name="offensiveActivity.pastBiologicalActivity" value="${formFInstance?.offensiveActivity?.pastBiologicalActivity}" />
+        %{--<g:checkBox name="offensiveActivity.pastBiologicalActivity" value="${formFInstance?.offensiveActivity?.pastBiologicalActivity}" />--}%
+        <g:radioGroup name="offensiveActivity.pastBiologicalActivity" value="${formFInstance?.offensiveActivity?.pastBiologicalActivity}"
+                      values="['true','false']"
+                      labels="['Yes','No']" >
+            <span>${it.radio} ${it.label}</span>
+        </g:radioGroup>
     </div>
 
     <div class="fieldcontain ${hasErrors(bean: formFInstance, field: 'offensiveActivity.periodOfActivity', 'error')} ">
@@ -51,7 +56,12 @@
 	<label for="defensiveActivity.pastBiologicalActivity" >
 		<g:message code="formF.defensiveActivity.pastBiologicalActivity.label" default="Past Biological Activity" />
 	</label>
-	<g:checkBox name="defensiveActivity.pastBiologicalActivity" value="${formFInstance.defensiveActivity?.pastBiologicalActivity}" />
+	%{--<g:checkBox name="defensiveActivity.pastBiologicalActivity" value="${formFInstance.defensiveActivity?.pastBiologicalActivity}" />--}%
+    <g:radioGroup name="defensiveActivity.pastBiologicalActivity" value="${formFInstance?.defensiveActivity?.pastBiologicalActivity}"
+                  values="['true','false']"
+                  labels="['Yes','No']" >
+        <span>${it.radio} ${it.label}</span>
+    </g:radioGroup>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formFInstance, field: 'defensiveActivity.periodOfActivity', 'error')} ">

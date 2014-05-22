@@ -19,14 +19,29 @@ class FormF extends BaseForm {
 
     static constraints = {
         entryIntoForceOfConvention()
-        offensiveActivity validator: pastActivityValidator
-        defensiveActivity validator: pastActivityValidator
+        offensiveActivity validator: pastOffensiveActivityValidator
+        defensiveActivity validator: pastDefensiveActivityValidator
 
     }
 
-    static pastActivityValidator = { val ->
-        if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
-            return 'default.blank.message'
+    static pastOffensiveActivityValidator = { val ->
+        if (val?.pastBiologicalActivity == null){
+            return 'formF.offensiveActivity.activity.notchecked.error'
         }
+        if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
+            return 'formF.offensiveActivity.activity.empty.fields.error'
+        }
+    }
+    static pastDefensiveActivityValidator = { val ->
+        if (val?.pastBiologicalActivity == null){
+            return 'formF.defensiveActivity.activity.notchecked.error'
+        }
+        if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
+            return 'formF.defensiveActivity.activity.empty.fields.error'
+        }
+    }
+
+    String toString(){
+        return id
     }
 }
