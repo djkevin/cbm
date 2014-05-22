@@ -40,7 +40,7 @@ class FormE extends BaseForm {
     }
 
     String toString() {
-        println "id: ${id}, dev:${developmentAndMeansOfDelivery}"
+        return id
     }
 
 }
