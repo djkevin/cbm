@@ -23,56 +23,44 @@
 			<ol class="property-list report">
 
 				<g:if test="${reportInstance?.reportName}">
-				<li class="fieldcontain">
-					<span id="report-label" class="property-label"><g:message code="report.reportName.label" default="Report Name" /></span>
-
-						<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="reportName"/></span>
-
-				</li>
+                <li class="fieldcontain">
+                    <span id="report-label" class="property-label"><g:message code="report.reportName.label" default="Report Name"/></span>
+                    <span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="reportName"/></span>
+                </li>
 				</g:if>
 
 				<g:if test="${reportInstance?.language}">
 				<li class="fieldcontain">
 					<span id="language-label" class="property-label"><g:message code="language.label" default="Language" /></span>
-
-						<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="language"/></span>
-
+					<span class="property-value" aria-labelledby="language-label"><g:fieldValue bean="${reportInstance}" field="language"/></span>
 				</li>
 				</g:if>
 
 				<g:if test="${reportInstance?.year}">
 				<li class="fieldcontain">
 					<span id="year-label" class="property-label"><g:message code="year.label" default="Year" /></span>
-
-						<span class="property-value" aria-labelledby="year-label">${reportInstance.year}</span>
-
+					<span class="property-value" aria-labelledby="year-label">${reportInstance.year}</span>
 				</li>
 				</g:if>
 
 				<g:if test="${reportInstance?.reportStatus}">
 				<li class="fieldcontain">
 					<span id="reportStatus-label" class="property-label"><g:message code="report.reportStatus.label" default="Report Status" /></span>
-
-						<span class="property-value" aria-labelledby="reportStatus-label"><g:fieldValue bean="${reportInstance}" field="reportStatus"/></span>
-
+					<span class="property-value" aria-labelledby="reportStatus-label"><g:fieldValue bean="${reportInstance}" field="reportStatus"/></span>
 				</li>
 				</g:if>
 
 				<g:if test="${reportInstance?.publicationStatus}">
 				<li class="fieldcontain">
 					<span id="publicationStatus-label" class="property-label"><g:message code="report.publicationStatus.label" default="Publication Status" /></span>
-
-						<span class="property-value" aria-labelledby="publicationStatus-label"><g:fieldValue bean="${reportInstance}" field="publicationStatus"/></span>
-
+					<span class="property-value" aria-labelledby="publicationStatus-label"><g:fieldValue bean="${reportInstance}" field="publicationStatus"/></span>
 				</li>
 				</g:if>
 
 				<g:if test="${reportInstance?.officialVersion}">
 				<li class="fieldcontain">
 					<span id="officialVersion-label" class="property-label"><g:message code="report.officialVersion.label" default="Official Version" /></span>
-
-						<span class="property-value" aria-labelledby="officialVersion-label"><g:formatBoolean boolean="${reportInstance?.officialVersion}" /></span>
-
+					<span class="property-value" aria-labelledby="officialVersion-label"><g:formatBoolean boolean="${reportInstance?.officialVersion}" /></span>
 				</li>
 				</g:if>
 
@@ -80,9 +68,7 @@
 				<g:if test="${reportInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="dateCreated.label" default="Date Created" /></span>
-
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.dateCreated}" /></span>
-
+					<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.dateCreated}" /></span>
 				</li>
 				</g:if>
 
@@ -90,9 +76,7 @@
 				<g:if test="${reportInstance?.lastUpdated}">
 				<li class="fieldcontain">
 					<span id="lastUpdated-label" class="property-label"><g:message code="lastUpdated.label" default="Last Updated" /></span>
-
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.lastUpdated}" /></span>
-
+					<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.lastUpdated}" /></span>
 				</li>
 				</g:if>
 
