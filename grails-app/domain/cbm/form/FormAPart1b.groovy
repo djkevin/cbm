@@ -16,8 +16,19 @@ class FormAPart1b extends BaseForm {
 
 
     static constraints = {
-        bioSafetyLevel3()
-        bioSafetyLevel2()
+        bioSafetyLevel3 nullable: true, validator: bsl3Validator
+        bioSafetyLevel2 nullable: true, validator: bsl3Validator
         additionalInformation nullable: true, maxSize: 5000
+    }
+
+    static bsl3Validator = { val, object ->
+        if (object.bioSafetyLevel3 && object.bioSafetyLevel2) {
+            return 'formAPart1b.BSL.both.error'
+        }
+
+        if (!object.bioSafetyLevel3 && !object.bioSafetyLevel2) {
+            return 'formAPart1b.BSL.min.error'
+        }
+
     }
 }
