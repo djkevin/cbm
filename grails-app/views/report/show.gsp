@@ -182,25 +182,42 @@
                             </g:if>
 						</td>
 					</tr>
-					<tr class="even">
-						<td><g:message code="report.formAPart2b.label" default="Form A Part 2b" /></td>
-						<td>${reportInstance?.formAPart2b?.size()}</td>
-						<td>
+                    <tr class="even">
+                        <td><g:message code="report.formAPart2b.label" default="Form A Part 2b"/></td>
+                        <td>${reportInstance?.formAPart2b?.size()}</td>
+                        <td>
                             <g:if test="${reportInstance?.formAPart2b != null}">
                                 <g:set var="forms" value="${reportInstance?.formAPart2b}"></g:set>
                                 <g:set var="controller" value="formAPart2b"/>
                                 <g:render template="../formDetail"/>
                             </g:if>
 
-						</td>
-						<td>
+                        </td>
+                        <td>
                             <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]">
                                 <i class="fa fa-plus-square-o"></i>
                                 <g:message code="default.button.create.label"/>
                             </g:link>
-						</td>
-					</tr>
-					<tr class="odd">
+                        </td>
+                    </tr>
+                    <tr class="odd">
+                        <td><g:message code="report.formAPart2c.label" default="Form A Part 2c"/></td>
+                        <td>${reportInstance?.getFormAPart2cs()?.size()}</td>
+                        <td>
+                            <g:if test="${reportInstance?.getFormAPart2cs() != null}">
+                                <g:set var="forms" value="${reportInstance?.getFormAPart2cs()}"></g:set>
+                                <g:set var="controller" value="formAPart2c"/>
+                                <g:render template="../formDetail"/>
+                            </g:if>
+                        </td>
+                        <td>
+                            <g:link onclick="alert('${message(code: 'formAPart2c.create.from.FormAPart2b.message', default: 'Form A Part 2(iii) can only be created from within a Programme (Form A Part 2(ii))')}');return false;" >
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
+                        </td>
+                    </tr>
+					<tr class="even">
 						<td><g:message code="report.formB.label" default="Form B" /></td>
 						<td>${reportInstance?.formB?.size()}</td>
 						<td>
@@ -217,7 +234,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="even">
+					<tr class="odd">
 						<td><g:message code="report.formC.label" default="Form C" /></td>
 						<td>${reportInstance?.formC?.size()}</td>
 						<td>
@@ -234,7 +251,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="odd">
+					<tr class="even">
 						<td><g:message code="report.formE.label" default="Form E" /></td>
 						<td>${reportInstance?.formE?.size()}</td>
 						<td>
@@ -251,7 +268,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="even">
+					<tr class="odd">
 						<td><g:message code="report.formF.label" default="Form F" /></td>
 						<td>${reportInstance?.formF?.size()}</td>
 						<td>
@@ -268,7 +285,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="odd">
+					<tr class="even">
 						<td><g:message code="report.formG.label" default="Form G" /></td>
 						<td>${reportInstance?.formG?.size()}</td>
 						<td>
@@ -285,7 +302,7 @@
                             </g:link>
 						</td>
 					</tr>
-                    <tr class="even">
+                    <tr class="odd">
                         <td><g:message code="nationalContact.label" default="National Contact" /></td>
                         <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
                         <td  class="noTable">

@@ -22,7 +22,7 @@ class Report {
     ReportStatus reportStatus
     PublicationStatus publicationStatus
     Boolean officialVersion
-    static int currentYear =  new LocalDate().getYear()
+    static int currentYear = new LocalDate().getYear()
 
     String getReportName() {
         "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) } + "_${language.abbreviation}"
@@ -30,11 +30,11 @@ class Report {
 
     StateParty stateParty
 
-    static transients = ['reportName',  'currentYear']
+    static transients = ['reportName', 'currentYear']
 
     static constraints = {
         language unique: ['year', 'stateParty']
-        year  range: currentYear..currentYear-5
+        year range: currentYear..currentYear - 5
         reportStatus blank: false
         publicationStatus blank: false// inList: ["Not published", "Published"]
         officialVersion()
@@ -49,6 +49,16 @@ class Report {
     }
 
     def capitalize(s) { s[0].toUpperCase() + s[1..-1].toLowerCase() }
+
+    public Set<FormAPart2c> getFormAPart2cs() {
+        Set<FormAPart2c> formAPart2c = new HashSet<FormAPart2c>()
+        for (def faP2b : formAPart2b) {
+            formAPart2c.addAll(faP2b.formAPart2c)
+            println("added" + faP2b.formAPart2c.size() + " faP2cs")
+        }
+        return formAPart2c
+
+    }
 
 
 }
