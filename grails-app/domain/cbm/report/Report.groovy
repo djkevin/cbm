@@ -54,7 +54,6 @@ class Report {
         Set<FormAPart2c> formAPart2c = new HashSet<FormAPart2c>()
         for (def faP2b : formAPart2b) {
             formAPart2c.addAll(faP2b.formAPart2c)
-            println("added" + faP2b.formAPart2c.size() + " faP2cs")
         }
         return formAPart2c
 
