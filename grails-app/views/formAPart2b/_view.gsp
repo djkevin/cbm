@@ -68,12 +68,7 @@
 </g:if>
 
 <h4><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></h4>
-
-
-<div style="width:100%">
-    <rendering:inlineJpeg  bytes="${formAPart2bInstance?.formAPart2bOrganigram.organisationalStructureDiagram}" />
-</div>
-
+<rendering:inlineJpeg  bytes="${formAPart2bInstance?.formAPart2bOrganigram.organisationalStructureDiagram}" />
 
 <g:if test="${formAPart2bInstance?.declaration}">
     <h4><g:message code="formAPart2b.declaration.label" default="Declaration" /></h4>
