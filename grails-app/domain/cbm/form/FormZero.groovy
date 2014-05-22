@@ -23,6 +23,27 @@ class FormZero extends BaseForm {
     Report report
 
     static constraints = {
+        formAPart1 validator: declarationValidator
+        formAPart2a validator: declarationValidator
+        formAPart2b validator: declarationValidator
+        formAPart2c validator: declarationValidator
+        formB validator: declarationValidator
+        formC validator: declarationValidator
+        formE validator: declarationValidator
+        formF validator: declarationValidator
+        formG validator: declarationValidator
+    }
+
+    //TODO data binding does not work correctly if we Update the year and set it to 'empty' in the select box
+    static declarationValidator = { val ->
+
+        if (val.nothingToDeclare && val.nothingNewToDeclare) {
+            return 'formZero.bothFieldsChecked.error'
+        }
+        if (val.nothingNewToDeclare && !val.yearOfLastDeclaration) {
+            return 'formZero.noYearSelected.error'
+        }
+
     }
 
     String toString() {
