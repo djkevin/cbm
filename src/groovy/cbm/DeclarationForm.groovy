@@ -16,7 +16,7 @@ class DeclarationForm {
 	static constraints = {
 		nothingToDeclare()
 		nothingNewToDeclare()
-        yearOfLastDeclaration  range: currentYear..currentYear-5, nullable:true
+        yearOfLastDeclaration  range: currentYear..currentYear-15, nullable:true
 	}
 
     String toString(){
