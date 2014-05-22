@@ -38,13 +38,10 @@ class BootStrap {
                     println "loading statePartyData..."
                     fixtureLoader.load("statePartyData")
                     print "done"
-                }
-                if (!User.count()){
                     println "loading adminData..."
                     fixtureLoader.load("adminData")
                     print "done"
                 }
-
 
 //				fixtureLoader.load("sampleData")
 
