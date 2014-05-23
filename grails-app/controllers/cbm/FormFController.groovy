@@ -41,7 +41,7 @@ class FormFController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'formFInstance.label', default: 'FormF'), formFInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'formF.label', default: 'FormF'), formFInstance.id])
                 redirect formFInstance
             }
             '*' { respond formFInstance, [status: CREATED] }
@@ -68,7 +68,7 @@ class FormFController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'FormF.label', default: 'FormF'), formFInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'formF.label', default: 'FormF'), formFInstance.id])
                 redirect formFInstance
             }
             '*'{ respond formFInstance, [status: OK] }
@@ -87,8 +87,8 @@ class FormFController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormF.label', default: 'FormF'), formFInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'formF.label', default: 'FormF'), formFInstance.id])
+                redirect action: "show", controller: "report", id: formFInstance.report.id, method: "GET"
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -97,7 +97,7 @@ class FormFController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formFInstance.label', default: 'FormF'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formF.label', default: 'FormF'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

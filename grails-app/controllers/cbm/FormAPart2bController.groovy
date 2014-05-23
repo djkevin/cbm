@@ -51,7 +51,7 @@ class FormAPart2bController {
         println "after save,id: "+formAPart2bInstance.id
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart2bInstance.label', default: 'FormAPart2b'), formAPart2bInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
                 //redirect formAPart2bInstance
                 redirect (controller: "report", action:"show", id:formAPart2bInstance.report.id, report:formAPart2bInstance.report)
             }
@@ -81,7 +81,7 @@ class FormAPart2bController {
         request.withFormat {
 
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'FormAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'formAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
                println "Save ok"
                 redirect formAPart2bInstance
             }
@@ -101,8 +101,8 @@ class FormAPart2bController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'formAPart2b.label', default: 'FormAPart2b'), formAPart2bInstance.id])
+                redirect action: "show", controller: "report", id: formAPart2bInstance.report.id, method: "GET"
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -111,7 +111,7 @@ class FormAPart2bController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart2bInstance.label', default: 'FormAPart2b'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart2b.label', default: 'FormAPart2b'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

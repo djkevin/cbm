@@ -4,10 +4,10 @@ import cbm.form.FormAPart1ContainmentUnit
 import cbm.form.FormAPart1a
 import cbm.report.Report
 import grails.converters.JSON
+import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -17,9 +17,9 @@ class FormAPart1aController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        def reportId=params.long('reportId')
+        def reportId = params.long('reportId')
         Report r = Report.findById(reportId)
-        respond FormAPart1a.findAllByReport(r,[sort: "facilityName"]), model:[formAPart1InstanceCount: FormAPart1a.count(),reportId: r.id]
+        respond FormAPart1a.findAllByReport(r, [sort: "facilityName"]), model: [formAPart1InstanceCount: FormAPart1a.count(), reportId: r.id]
     }
 
     def show(FormAPart1a formAPart1Instance) {
@@ -38,20 +38,20 @@ class FormAPart1aController {
         }
 
         if (formAPart1Instance.hasErrors()) {
-            respond formAPart1Instance.errors, view:'create'
+            respond formAPart1Instance.errors, view: 'create'
             return
         }
 
-        if (params.containsKey('formAPart1ContainmentUnitId')){
-            Set<FormAPart1ContainmentUnit> containmentUnits =  getContainmentUnitsFromParams(params, formAPart1Instance)
+        if (params.containsKey('formAPart1ContainmentUnitId')) {
+            Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
             formAPart1Instance.formAContainmentUnitList = containmentUnits
         }
 
-        formAPart1Instance.save flush:true
+        formAPart1Instance.save flush: true
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart1Instance.label', default: 'FormAPart1'), formAPart1Instance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart1.label', default: 'FormAPart1'), formAPart1Instance.id])
                 redirect formAPart1Instance
             }
             '*' { respond formAPart1Instance, [status: CREATED] }
@@ -62,33 +62,34 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
-    private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, def formAPart1Instance){
+    private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, def formAPart1Instance) {
 
-        def  containmentUnitIds = params.list('formAPart1ContainmentUnitId')
-        def  containmentUnitBioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
-        def  containmentUnitUnitTypes = params.list('formAPart1ContainmentUnit.unitType')
-        def  containmentUnitUnitSize = params.list('formAPart1ContainmentUnit.unitSize')
-        def  containmentUnitComments = params.list('formAPart1ContainmentUnit.comment')
-        Set<FormAPart1ContainmentUnit> results= new HashSet<FormAPart1ContainmentUnit>()
+        def containmentUnitIds = params.list('formAPart1ContainmentUnitId')
+        def containmentUnitBioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
+        def containmentUnitUnitTypes = params.list('formAPart1ContainmentUnit.unitType')
+        def containmentUnitUnitSize = params.list('formAPart1ContainmentUnit.unitSize')
+        def containmentUnitComments = params.list('formAPart1ContainmentUnit.comment')
+        Set<FormAPart1ContainmentUnit> results = new HashSet<FormAPart1ContainmentUnit>()
 
-        for (int i = 0; i < containmentUnitIds.size(); i++){
+        for (int i = 0; i < containmentUnitIds.size(); i++) {
             FormAPart1ContainmentUnit formAPart1ContainmentUnit
-            if (containmentUnitIds[i]==''){  //new containment unit
+            if (containmentUnitIds[i] == '') {  //new containment unit
                 formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
-            }else{
+            } else {
                 formAPart1ContainmentUnit = FormAPart1ContainmentUnit.findById(containmentUnitIds[i])
 
             }
-            formAPart1ContainmentUnit.bioSafetyLevel =  containmentUnitBioSafetyLevels[i]
-            formAPart1ContainmentUnit.unitType =  containmentUnitUnitTypes[i]
-            formAPart1ContainmentUnit.unitSize =  Integer.parseInt(containmentUnitUnitSize[i])
-            formAPart1ContainmentUnit.comment =  containmentUnitComments[i]
-            formAPart1ContainmentUnit.facility  =formAPart1Instance
+            formAPart1ContainmentUnit.bioSafetyLevel = containmentUnitBioSafetyLevels[i]
+            formAPart1ContainmentUnit.unitType = containmentUnitUnitTypes[i]
+            formAPart1ContainmentUnit.unitSize = Integer.parseInt(containmentUnitUnitSize[i])
+            formAPart1ContainmentUnit.comment = containmentUnitComments[i]
+            formAPart1ContainmentUnit.facility = formAPart1Instance
 
             results.add(formAPart1ContainmentUnit)
         }
         return results
     }
+
     @Transactional
     def update(FormAPart1a formAPart1Instance) {
         if (formAPart1Instance == null) {
@@ -97,24 +98,24 @@ class FormAPart1aController {
         }
 
         if (formAPart1Instance.hasErrors()) {
-            respond formAPart1Instance.errors, view:'edit'
+            respond formAPart1Instance.errors, view: 'edit'
             return
         }
 
         //Update Containment Units if any
-        if (params.containsKey('formAPart1ContainmentUnitId')){
-            Set<FormAPart1ContainmentUnit> containmentUnits=  getContainmentUnitsFromParams(params, formAPart1Instance)
+        if (params.containsKey('formAPart1ContainmentUnitId')) {
+            Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
             formAPart1Instance.getFormAContainmentUnitList().addAll(containmentUnits)
         }
 
-        formAPart1Instance.save flush:true
+        formAPart1Instance.save flush: true
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'FormAPart1.label', default: 'FormAPart1'), formAPart1Instance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'formAPart1.label', default: 'FormAPart1'), formAPart1Instance.id])
                 redirect formAPart1Instance
             }
-            '*'{ respond formAPart1Instance, [status: OK] }
+            '*' { respond formAPart1Instance, [status: OK] }
         }
     }
 
@@ -126,24 +127,24 @@ class FormAPart1aController {
             return
         }
 
-        formAPart1Instance.delete flush:true
+        formAPart1Instance.delete flush: true
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormAPart1.label', default: 'FormAPart1'), formAPart1Instance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'formAPart1.label', default: 'FormAPart1'), formAPart1Instance.id])
+                redirect action: "show", controller: "report", id: formAPart1Instance.report.id, method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart1Instance.label', default: 'FormAPart1'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart1.label', default: 'FormAPart1'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 
@@ -154,30 +155,30 @@ class FormAPart1aController {
 
     def addMoreRows() {
 
-        def reportId=params.long('report.id')
+        def reportId = params.long('report.id')
         Report r = Report.findById(reportId)
 
         FormAPart1a formAPart1a = new FormAPart1a(report: r);
-        FormAPart1ContainmentUnit formAPart1ContainmentUnit  = new FormAPart1ContainmentUnit()
+        FormAPart1ContainmentUnit formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
         formAPart1a.addToFormAContainmentUnitList(formAPart1ContainmentUnit)
 
-        render template: "../formAPart1ContainmentUnit/rowContainmentUnit", model: [formAPart1ContainmentUnitInstanceList: formAPart1a?.formAContainmentUnitList ]
+        render template: "../formAPart1ContainmentUnit/rowContainmentUnit", model: [formAPart1ContainmentUnitInstanceList: formAPart1a?.formAContainmentUnitList]
 
     }
 
     @Transactional
-    def deleteContainmentUnit(){
+    def deleteContainmentUnit() {
         def formAP1CUId = params.long('id')
         FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance = FormAPart1ContainmentUnit.findById(formAP1CUId)
 
-        formAPart1ContainmentUnitInstance.delete flush:true
+        formAPart1ContainmentUnitInstance.delete flush: true
         request.withFormat {
             form {
                 //Ajax Call - flash message cannot be used since rendered every RESPONSE
                 def msg = message(code: 'default.deleted.message', args: [message(code: 'formAPart1.containmentUnit', default: 'FormAPart1ContainmentUnit'), formAPart1ContainmentUnitInstance.id])
-                render ([message: msg] as JSON)
+                render([message: msg] as JSON)
             }
-            '*'{ render status: OK }
+            '*' { render status: OK }
         }
     }
 }

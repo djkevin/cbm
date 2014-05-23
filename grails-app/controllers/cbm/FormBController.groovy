@@ -41,7 +41,7 @@ class FormBController {
         println("after save")
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'formBInstance.label', default: 'FormB'), formBInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'formB.label', default: 'FormB'), formBInstance.id])
                 /*redirect formBInstance*/
                 redirect (controller: "report", action:"show", id:formBInstance.report.id, report:formBInstance.report)
             }
@@ -69,7 +69,7 @@ class FormBController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'FormB.label', default: 'FormB'), formBInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'formB.label', default: 'FormB'), formBInstance.id])
                 redirect formBInstance
             }
             '*'{ respond formBInstance, [status: OK] }
@@ -88,8 +88,8 @@ class FormBController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormB.label', default: 'FormB'), formBInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'formB.label', default: 'FormB'), formBInstance.id])
+                redirect action: "show", controller: "report", id: formBInstance.report.id, method: "GET"
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -98,7 +98,7 @@ class FormBController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formBInstance.label', default: 'FormB'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'formB.label', default: 'FormB'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

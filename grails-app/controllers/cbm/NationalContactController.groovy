@@ -33,10 +33,8 @@ class NationalContactController {
             notFound()
             return
         }
-        println (params)
-        println "statePartyId: "+params.get('stateParty.id');
-        println "street: "+ nationalContactInstance.location.street1
         nationalContactInstance.stateParty.id = params.long('stateParty.id')
+        def reportId = params.long('report.id')
 
         if (nationalContactInstance.hasErrors()) {
             respond nationalContactInstance.errors, view:'create'
@@ -47,8 +45,8 @@ class NationalContactController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'nationalContactInstance.label', default: 'NationalContact'), nationalContactInstance.id])
-                redirect nationalContactInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'nationalContact.label', default: 'NationalContact'), nationalContactInstance.id])
+                redirect action: "show",  id: nationalContactInstance.id, method: "GET", params: ['report.id':reportId]
             }
             '*' { respond nationalContactInstance, [status: CREATED] }
         }
@@ -64,7 +62,6 @@ class NationalContactController {
             notFound()
             return
         }
-        println (params)
         if (nationalContactInstance.hasErrors()) {
             respond nationalContactInstance.errors, view:'edit'
             return
@@ -74,7 +71,7 @@ class NationalContactController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'NationalContact.label', default: 'NationalContact'), nationalContactInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'nationalContact.label', default: 'NationalContact'), nationalContactInstance.id])
                 redirect nationalContactInstance
             }
             '*'{ respond nationalContactInstance, [status: OK] }
@@ -88,13 +85,19 @@ class NationalContactController {
             notFound()
             return
         }
-
         nationalContactInstance.delete flush:true
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'NationalContact.label', default: 'NationalContact'), nationalContactInstance.id])
-                redirect action:"index", method:"GET"
+
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'nationalContact.label', default: 'NationalContact'), nationalContactInstance.id])
+
+                //National contact can be accessed via admin page or Report Show page
+                if (params?.report.id){
+                    redirect action: "show", controller: "report", id: params.report.id, method: "GET"
+                }else{
+                    redirect action: "index", method: "GET"
+                }
             }
             '*'{ render status: NO_CONTENT }
         }
@@ -103,7 +106,7 @@ class NationalContactController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'nationalContactInstance.label', default: 'NationalContact'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'nationalContact.label', default: 'NationalContact'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
