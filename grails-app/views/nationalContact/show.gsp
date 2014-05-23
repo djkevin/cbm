@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.admin.NationalContact" %>
+<%@ page import="cbm.report.Report; cbm.admin.NationalContact" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,6 +12,12 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+                <g:if test="${params?.report.id}">
+                    <li>
+                        <g:link class="list" controller="report" action="show" id="${params?.report.id}">${Report.get(params?.report.id).reportName}</g:link>
+                    </li>
+                </g:if>
+
 				%{--<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>--}%
 				%{--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
 			</ul>
@@ -113,6 +119,7 @@
 			
 			</ol>
 			<g:form url="[resource:nationalContactInstance, action:'delete']" method="DELETE">
+                <g:hiddenField name="report.id" id="report" value="${params?.report.id}" />
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${nationalContactInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

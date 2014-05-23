@@ -118,3 +118,5 @@
     </g:else>
 </div>
 
+<g:hiddenField name="report.id" id="report" value="${params?.report.id}" />
+<g:textField name="baba" id="baba" value="${params?.report.id}"/>

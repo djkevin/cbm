@@ -307,11 +307,11 @@
                         <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
                         <td  class="noTable">
                             <g:each in="${reportInstance?.stateParty?.nationalContact}" var="f">
-                                <g:link controller="nationalContact" action="show" id="${f.id}">${f ? f.encodeAsHTML():''}</g:link>,
+                                <g:link controller="nationalContact" action="show" id="${f.id}" params="['report.id':reportInstance?.id]">${f ? f.encodeAsHTML():''}</g:link>,
                             </g:each>
                         </td>
                         <td>
-                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id]">
+                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id, 'report.id':reportInstance?.id]">
                                 <i class="fa fa-plus-square-o"></i>
                                 <g:message code="default.button.create.label"/>
                             </g:link>
