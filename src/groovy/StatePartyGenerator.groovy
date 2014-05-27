@@ -40,14 +40,14 @@ class StatePartyGenerator {
         def line = lines.toString().tokenize(",")
         def countryFixture = """\
         sp${count}(StateParty) {
-             ${fields[0]} =  "${formatCountry(line[0])}"
+             ${fields[0]} =  Country.findByIso3('${line[2]}')
              ${fields[1]} =  ${formatDate(line[1])}
         }
         """
 
         def userFixture = """\
             user${count}(User) {
-                userName = "${line[2].toLowerCase()}"
+                username = "${line[2].toLowerCase()}"
                 password = "${line[2]}123"
                 stateParty = [sp${count}]
             }
@@ -85,6 +85,9 @@ class StatePartyGenerator {
     private String formatCountry(String s) {
         return s.toUpperCase().replaceAll('\'', '').replaceAll(' ', '_').replaceAll('\\(', '_').replaceAll('\\)', '').replaceAll('-', '_').replaceAll('__', '_')
     }
+    private String formatCountryISO(String s) {
+        return s.toUpperCase().replaceAll('\'', '').replaceAll(' ', '_').replaceAll('\\(', '_').replaceAll('\\)', '').replaceAll('-', '_').replaceAll('__', '_')
+    }
 
     private String formatDate(String s) {
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-MMM-yy")
@@ -98,8 +101,10 @@ class StatePartyGenerator {
         StatePartyGenerator spg = new StatePartyGenerator(inputFile)
 /*
         println spg.messagesEN
-        println spg.fixture
+
         println spg.constants   */
+
+        println spg.fixture
         println spg.userFixtureG
 
 //        println spg.messagesFR

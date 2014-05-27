@@ -34,14 +34,14 @@ class BootStrap {
                 assert SecUserSecRole.count() == 2
 				 */
 
-                if (!StateParty.count()){
+ /*               if (!StateParty.count()){
                     println "loading statePartyData..."
-                    fixtureLoader.load("statePartyData")
+                    fixtureLoader.load("statePartyDataWCountries")
                     print "done"
                     println "loading adminData..."
                     fixtureLoader.load("adminData")
                     print "done"
-                }
+                }*/
 
 //				fixtureLoader.load("sampleData")
 

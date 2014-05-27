@@ -5,7 +5,7 @@ class CountryBootStrap {
 
 
     def init = { servletContext ->
-        log.debug "Running init CountryBootStrap..."
+        println "Running init CountryBootStrap..."
 
 
         if (!cbm.admin.Country.count()) {
@@ -64,11 +64,12 @@ class CountryBootStrap {
             }
 
         }
+        println " done loading Countries..."
 
     }
 
     def destroy = {
-        log.debug "Running destroy CountryBootStrap"
+        println "Running destroy CountryBootStrap"
 
     }
 }
