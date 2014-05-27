@@ -50,10 +50,9 @@
 					
 						<td>${fieldValue(bean: formAPart1aInstance, field: "postalAddress")}</td>
 					
-<%--						<td>${fieldValue(bean: formAPart1Instance, field: "financingSources")}</td>--%>
-					
-<%--						<td>${fieldValue(bean: formAPart1Instance, field: "scope")}</td>--%>
-					
+
+
+
 					</tr>
 				</g:each>
 				</tbody>
