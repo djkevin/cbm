@@ -1,5 +1,8 @@
 <%@ page import="cbm.admin.StateParty" %>
 
+<g:set var="locale" value="${org.springframework.web.servlet.support.RequestContextUtils.getLocale(request)}" />
+<%-- ${locale} --%>
+
 
 
 <div class="fieldcontain ${hasErrors(bean: statePartyInstance, field: 'country', 'error')} required">
@@ -8,7 +11,16 @@
 		<span class="required-indicator">*</span>
 	</label>
 <%--	<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>--%>
-	<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>
+	%{--<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>--}%
+
+<g:set var="promptCountrySelect" value="${message(code:'global.label.choose', locale:locale)}" />
+<g:select name="country"
+          value="${statePartyInstance?.country?.id}"
+          noSelection="['':promptCountrySelect]"
+          from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
+          optionKey="id"
+          optionValue="${{it.getName()}}"
+          class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: statePartyInstance, field: 'accessionRatification', 'error')} ">

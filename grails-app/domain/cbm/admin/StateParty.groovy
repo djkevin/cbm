@@ -7,7 +7,7 @@ class StateParty {
 
     static hasMany = [report: Report, nationalContact: NationalContact]
 
-    cbm.Country country
+    Country country
     Date accessionRatification
 
     String toString() {
