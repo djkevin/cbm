@@ -48,7 +48,10 @@ class Report {
         return "${stateParty?.country}_${year}_${language?.abbreviation}"
     }
 
-    def capitalize(s) { s[0].toUpperCase() + s[1..-1].toLowerCase() }
+    def capitalize(s) { //TODO remove and replace by name
+        return s
+        //s[0].toUpperCase() + s[1..-1].toLowerCase()
+    }
 
     public Set<FormAPart2c> getFormAPart2cs() {
         Set<FormAPart2c> formAPart2c = new HashSet<FormAPart2c>()
