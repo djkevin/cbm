@@ -67,12 +67,14 @@ class NationalContactController {
             return
         }
 
+        def reportId = params.long('report.id')
+
         nationalContactInstance.save flush:true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'nationalContact.label', default: 'NationalContact'), nationalContactInstance.id])
-                redirect nationalContactInstance
+                redirect action: "show",  id: nationalContactInstance.id, method: "GET", params: ['report.id':reportId]
             }
             '*'{ respond nationalContactInstance, [status: OK] }
         }
