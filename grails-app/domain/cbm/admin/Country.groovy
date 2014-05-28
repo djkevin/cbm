@@ -19,6 +19,9 @@ class Country {
     String formalNameRu
     String formalNameCh
     String formalNameAr
+    String name
+
+    static transients = ['name']
 
 
     static constraints = {

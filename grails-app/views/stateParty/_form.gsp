@@ -1,9 +1,9 @@
 <%@ page import="cbm.admin.StateParty" %>
+%{--<%@ defaultCodec="none" %>--}%
+<%@page defaultCodec="HTML" %>
 
-<g:set var="locale" value="${org.springframework.web.servlet.support.RequestContextUtils.getLocale(request)}" />
+%{--<g:set var="locale" value="${org.springframework.web.servlet.support.RequestContextUtils.getLocale(request)}" />--}%
 <%-- ${locale} --%>
-
-
 
 <div class="fieldcontain ${hasErrors(bean: statePartyInstance, field: 'country', 'error')} required">
 	<label for="country" class="property-label25">
@@ -13,14 +13,19 @@
 <%--	<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>--%>
 	%{--<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>--}%
 
-<g:set var="promptCountrySelect" value="${message(code:'global.label.choose', locale:locale)}" />
-<g:select name="country"
+<g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
+<g:select name="country2"
           value="${statePartyInstance?.country?.id}"
           noSelection="['':promptCountrySelect]"
           from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
           optionKey="id"
           optionValue="${{it.getName()}}"
           class="many-to-one"/>
+    %{--TODO replace with taglib--}%
+%{--<g:countrySelector name="country" field="${statePartyInstance?.country}" noSelection="['':promptCountrySelect]"/>--}%
+</div>
+<div>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: statePartyInstance, field: 'accessionRatification', 'error')} ">
