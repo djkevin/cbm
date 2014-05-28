@@ -1,6 +1,7 @@
 package cbm
 
 import cbm.admin.NationalContact
+import cbm.report.Report
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -22,8 +23,10 @@ class NationalContactController {
     }
 
     def create() {
+        Report r = Report.get(params.long('report.id'))
         NationalContact n = new NationalContact()
         n.location = new Address()
+        n.country = r.getStateParty().country
         respond n
     }
 

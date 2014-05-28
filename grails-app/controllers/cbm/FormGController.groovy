@@ -1,6 +1,8 @@
 package cbm
 
+import cbm.admin.NationalContact
 import cbm.form.FormG
+import cbm.report.Report
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
@@ -23,6 +25,9 @@ class FormGController {
 
     def create() {
         FormG formG = new FormG(params);
+
+        Report r = Report.get(params.long('report.id'))
+        formG.country = r.getStateParty().country
 
         Address a = new Address() //Embedded object
         formG.setLocation(a)
