@@ -19,6 +19,24 @@
 
 <g:set var="addressInstance" value="${formGInstance}"></g:set>
 <g:render template="../address"/>
+<div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'country', 'error')} required">
+    <label for="country" class="property-label25">
+        <g:message code="formG.location.country.label" default="Country"/>
+        <span class="required-indicator">*</span>
+    </label>
+
+    %{-- <g:select name="location.country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required=""
+               value="${addressInstance?.location?.country?.name()}"/>--}%
+
+    <g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
+    <g:select name="country"
+              value="${formGInstance?.country?.id}"
+              noSelection="['':promptCountrySelect]"
+              from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
+              optionKey="id"
+              optionValue="${{it.getName()}}"
+              class="many-to-one"/>
+</div>
 
 
 <div class="fieldcontain ${hasErrors(bean: formGInstance, field: 'typesOfDiseaseCovered', 'error')} ">

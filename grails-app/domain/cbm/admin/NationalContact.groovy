@@ -18,6 +18,7 @@ class NationalContact {
     String fax
     String email
     String url
+    Country country
 
     static constraints = {
         title inList: ["Mr", "Ms", "Dr"], blank: false
@@ -29,6 +30,7 @@ class NationalContact {
         fax maxSize: 20, nullable: true
         email email: true, nullable: true
         url maxSize: 100, nullable: true
+        country nullable: false
     }
 
     String toString() {

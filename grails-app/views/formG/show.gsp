@@ -44,7 +44,7 @@
 				<li class="fieldcontain">
 					<span id="location-label" class="property-label"><g:message code="formG.location.label" default="Location" /></span>
 					
-						<span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${formGInstance}" field="location"/></span>
+						<span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${formGInstance}" field="location"/>,<g:fieldValue bean="${formGInstance}" field="country"/> </span>
 					
 				</li>
 				</g:if>

@@ -2,6 +2,7 @@ package cbm.form
 
 import cbm.Address
 import cbm.BaseForm
+import cbm.admin.Country
 import cbm.report.Report
 
 
@@ -12,6 +13,7 @@ class FormG extends BaseForm {
 
     String facilityName
     Address location
+    Country country
     String typesOfDiseaseCovered
 
     Report report
@@ -20,6 +22,7 @@ class FormG extends BaseForm {
         facilityName maxSize: 250, blank: false
         location()
         typesOfDiseaseCovered maxSize: 5000, blank:false
+        country nullable: false
 
     }
 
