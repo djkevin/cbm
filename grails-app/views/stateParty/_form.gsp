@@ -10,11 +10,10 @@
 		<g:message code="stateParty.country.label" default="Country" />
 		<span class="required-indicator">*</span>
 	</label>
-<%--	<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>--%>
-	%{--<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${statePartyInstance?.country?.name()}"/>--}%
+
 
 <g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
-<g:select name="country2"
+<g:select name="country"
           value="${statePartyInstance?.country?.id}"
           noSelection="['':promptCountrySelect]"
           from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
