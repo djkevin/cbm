@@ -16,7 +16,13 @@
     </label>
 </div>
 
-<div><g:checkBox name="existingNationalProgrammes" value="${formAPart2aInstance?.existingNationalProgrammes}"/></div>
+<div class="fieldcontain">%{-- style="text-align:center" <g:checkBox name="existingNationalProgrammes" value="${formAPart2aInstance?.existingNationalProgrammes}"/>--}%
+    <g:radioGroup name="existingNationalProgrammes" value="${formAPart2aInstance?.existingNationalProgrammes}"
+                  values="['true','false']"
+                  labels="['Yes','No']" >     %{--TODO i18n--}%
+        <span>${it.radio} ${it.label}</span>
+    </g:radioGroup>
+</div>
 
 <g:set var="formInstance" value="${formAPart2aInstance}"></g:set>
 <g:render template="../formStatus"/>

@@ -31,12 +31,12 @@
                     </li>
                 </g:if>
 
-				<g:if test="${formAPart2aInstance?.existingNationalProgrammes}">
+				%{--<g:if test="${formAPart2aInstance?.existingNationalProgrammes}">--}%
 				<li class="fieldcontain">
 					<span id="existingNationalProgrammes-label" class="property-label25"><g:message code="formAPart2a.existingNationalProgrammes.label" default="Existing National Programmes" /></span>
 				</li>
                     <span class="property-value" aria-labelledby="existingNationalProgrammes-label"><g:formatBoolean boolean="${formAPart2aInstance?.existingNationalProgrammes}" /></span>
-				</g:if>
+				%{--</g:if>--}%
 
                 <g:set var="formInstance" value="${formAPart2aInstance}"></g:set>
                 <g:render template="../showStatus"/>

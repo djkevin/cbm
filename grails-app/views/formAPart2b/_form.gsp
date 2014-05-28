@@ -46,6 +46,7 @@
         <span class="required-indicator">*</span>
     </label>
     <g:field name="amount" value="${fieldValue(bean: formAPart2bInstance, field: 'amount')}" required="" type="number"/>
+    >>${formAPart2bInstance.amount}, fieldVal:${fieldValue(bean: formAPart2bInstance, field: 'amount')} <<
 </div>
 
 
@@ -55,7 +56,14 @@
 
     </label>
 </div>
-<div><g:checkBox name="conductedUnderContract" value="${formAPart2bInstance?.conductedUnderContract}"/></div>
+%{--<div><g:checkBox name="conductedUnderContract" value="${formAPart2bInstance?.conductedUnderContract}"/></div>--}%
+<div class="fieldcontain">
+    <g:radioGroup name="conductedUnderContract" value="${formAPart2bInstance?.conductedUnderContract}"
+                  values="['true','false']"
+                  labels="['Yes','No']" >     %{--TODO i18n--}%
+        <span>${it.radio} ${it.label}</span>
+    </g:radioGroup>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'proportionContracted', 'error')} required">
     <label for="proportionContracted">

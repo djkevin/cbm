@@ -71,13 +71,13 @@
                     <br/>
                 </g:if>
 
-				<g:if test="${formAPart2bInstance?.conductedUnderContract}">
+				%{--<g:if test="${formAPart2bInstance?.conductedUnderContract}">--}%
                     <h4><g:message code="formAPart2b.conductedUnderContract.label" default="Conducted Under Contract" /></h4>
                     <li>
                         <span class="property-value" aria-labelledby="conductedUnderContract-label"><g:formatBoolean boolean="${formAPart2bInstance?.conductedUnderContract}" /></span>
                     </li>
                     <br/>
-				</g:if>
+				%{--</g:if>--}%
 			
 				<g:if test="${formAPart2bInstance?.proportionContracted}">
                     <h4><g:message code="formAPart2b.proportionContracted.label" default="Proportion Contracted" /></h4>
