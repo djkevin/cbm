@@ -32,9 +32,15 @@ class FormAPart1aController {
 
     @Transactional
     def save(FormAPart1a formAPart1Instance) {
+
         if (formAPart1Instance == null) {
             notFound()
             return
+        }
+
+        if (params.containsKey('formAPart1ContainmentUnit')) {
+            Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
+            formAPart1Instance.formAContainmentUnitList = containmentUnits
         }
 
         if (formAPart1Instance.hasErrors()) {
@@ -42,10 +48,6 @@ class FormAPart1aController {
             return
         }
 
-        if (params.containsKey('formAPart1ContainmentUnitId')) {
-            Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
-            formAPart1Instance.formAContainmentUnitList = containmentUnits
-        }
 
         formAPart1Instance.save flush: true
 
@@ -97,15 +99,15 @@ class FormAPart1aController {
             return
         }
 
+        //Update Containment Units if any
+        if (params.containsKey('formAPart1ContainmentUnit')) {
+            Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
+            formAPart1Instance.getFormAContainmentUnitList().addAll(containmentUnits)
+        }
+
         if (formAPart1Instance.hasErrors()) {
             respond formAPart1Instance.errors, view: 'edit'
             return
-        }
-
-        //Update Containment Units if any
-        if (params.containsKey('formAPart1ContainmentUnitId')) {
-            Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
-            formAPart1Instance.getFormAContainmentUnitList().addAll(containmentUnits)
         }
 
         formAPart1Instance.save flush: true
