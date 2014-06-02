@@ -120,17 +120,11 @@
     <table id="formAContainmentUnitLisTbl">
         <thead>
         <tr>
-
-            <g:sortableColumn property="bioSafetyLevel" title="${message(code: 'formAPart1ContainmentUnit.bioSafetyLevel.label', default: 'Bio Safety Level')}" />
-
-            <g:sortableColumn property="unitType" title="${message(code: 'formAPart1ContainmentUnit.unitType.label', default: 'Unit Type')}" />
-
-            <g:sortableColumn property="unitSize" title="${message(code: 'formAPart1ContainmentUnit.unitSize.label', default: 'Unit Size (sqM)')}" />
-
-            <g:sortableColumn property="comment" title="${message(code: 'formAPart1ContainmentUnit.comment.label', default: 'Comment')}" />
-
-            <g:sortableColumn property="delete" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" />
-
+            <th>${message(code: 'formAPart1ContainmentUnit.bioSafetyLevel.label', default: 'Bio Safety Level')}</th>
+            <th>${message(code: 'formAPart1ContainmentUnit.unitType.label', default: 'Unit Type')}</th>
+            <th>${message(code: 'formAPart1ContainmentUnit.unitSize.label', default: 'Unit Size (sqM)')}</th>
+            <th>${message(code: 'formAPart1ContainmentUnit.comment.label', default: 'Comment')}</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
         </tr>
         </thead>
         <tbody >
