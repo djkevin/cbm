@@ -1,8 +1,9 @@
 <div class="fieldcontain ${hasErrors(bean: addressInstance.location, field: 'street1', 'error')}">
     <label for="location.street1" class="property-label25">
         <g:message code="formG.location.street1.label" default="Street1"/>
+        <span class="required-indicator">*</span>
     </label>
-    <g:textField class="medText" name="location.street1"
+    <g:textField class="medText" name="location.street1" required=""
                  maxlength="${addressInstance?.location?.constraints.street1.maxSize}"
                  value="${addressInstance?.location?.street1}"/>
 </div>
@@ -36,24 +37,3 @@
     <g:textField name="location.state" maxlength="${addressInstance?.location?.constraints.state.maxSize}" value="${addressInstance?.location?.state}"/>
 </div>
 
-%{--
-<div class="fieldcontain ${hasErrors(bean: addressInstance.location, field: 'country', 'error')} required">
-    <label for="location.country" class="property-label25">
-        <g:message code="formG.location.country.label" default="Country"/>
-        <span class="required-indicator">*</span>
-    </label>
-
-   --}%
-%{-- <g:select name="location.country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required=""
-              value="${addressInstance?.location?.country?.name()}"/>--}%%{--
-
-
-    <g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
-    <g:select name="location.country"
-              value="${addressInstance?.location?.country?.id}"
-              noSelection="['':promptCountrySelect]"
-              from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
-              optionKey="id"
-              optionValue="${{it.getName()}}"
-              class="many-to-one"/>
-</div>--}%
