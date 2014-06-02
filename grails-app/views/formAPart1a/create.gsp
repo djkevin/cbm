@@ -22,7 +22,6 @@
 			</g:if>
 
 			<g:hasErrors bean="${formAPart1aInstance}">
-                errors found!
 			<ul class="errors" role="alert">
 				<g:eachError bean="${formAPart1aInstance}" var="error">
 
