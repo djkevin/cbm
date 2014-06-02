@@ -7,15 +7,13 @@ class Address {
     String town
     String state
     String postCode
-   // cbm.Country country
 
     static constraints = {
-        street1 maxSize: 100, nullable: true
+        street1 maxSize: 100, blank:false
         street2 maxSize: 100, nullable: true
         town maxSize: 50, nullable: true
         state maxSize: 50, nullable: true
         postCode maxSize: 10, nullable: true
-     //   country blank: false
     }
 
     String toString() {
