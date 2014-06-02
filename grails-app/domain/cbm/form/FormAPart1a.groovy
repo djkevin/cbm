@@ -30,4 +30,19 @@ class FormAPart1a extends BaseForm {
         scope maxSize: 5000, blank: false
         formAContainmentUnitList nullable: true
     }
+
+    public boolean hasBSL4() {
+        if (!formAContainmentUnitList) return false
+
+        for (FormAPart1ContainmentUnit formAPart1ContainmentUnit:formAContainmentUnitList){
+            if (formAPart1ContainmentUnit.bioSafetyLevel.equalsIgnoreCase("BSL4")){
+                return true
+            }
+        }
+        return false
+   /*     formAContainmentUnitList.each { it ->
+            println "equals: "+it.bioSafetyLevel.equalsIgnoreCase("BSL4")
+            return it.bioSafetyLevel.equalsIgnoreCase("BSL4")
+        }*/
+    }
 }

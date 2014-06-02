@@ -1,10 +1,11 @@
 package cbm
 
 import cbm.form.FormAPart1b
+import cbm.report.Report
+import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -14,15 +15,20 @@ class FormAPart1bController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond FormAPart1b.list(params), model:[formAPart1bInstanceCount: FormAPart1b.count()]
+        respond FormAPart1b.list(params), model: [formAPart1bInstanceCount: FormAPart1b.count()]
     }
 
     def show(FormAPart1b formAPart1bInstance) {
         respond formAPart1bInstance
     }
 
+
+
     def create() {
-        respond  new FormAPart1b(params)
+        def report = Report.get(params.long('report.id'))
+        FormAPart1b formAPart1b = new FormAPart1b(params)
+        if (report.hasBSL4()) formAPart1b.errors.reject("formAPart1.error.existing.BSL4")
+        respond formAPart1b
     }
 
     @Transactional
@@ -33,11 +39,11 @@ class FormAPart1bController {
         }
 
         if (formAPart1bInstance.hasErrors()) {
-            respond formAPart1bInstance.errors, view:'create'
+            respond formAPart1bInstance.errors, view: 'create'
             return
         }
 
-        formAPart1bInstance.save flush:true
+        formAPart1bInstance.save flush: true
 
         request.withFormat {
             form {
@@ -60,18 +66,18 @@ class FormAPart1bController {
         }
 
         if (formAPart1bInstance.hasErrors()) {
-            respond formAPart1bInstance.errors, view:'edit'
+            respond formAPart1bInstance.errors, view: 'edit'
             return
         }
 
-        formAPart1bInstance.save flush:true
+        formAPart1bInstance.save flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'formAPart1b.label', default: 'FormAPart1b'), formAPart1bInstance.id])
                 redirect formAPart1bInstance
             }
-            '*'{ respond formAPart1bInstance, [status: OK] }
+            '*' { respond formAPart1bInstance, [status: OK] }
         }
     }
 
@@ -83,14 +89,14 @@ class FormAPart1bController {
             return
         }
 
-        formAPart1bInstance.delete flush:true
+        formAPart1bInstance.delete flush: true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'formAPart1b.label', default: 'FormAPart1b'), formAPart1bInstance.id])
                 redirect action: "show", controller: "report", id: formAPart1bInstance.report.id, method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -100,7 +106,7 @@ class FormAPart1bController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart1b.label', default: 'FormAPart1b'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 

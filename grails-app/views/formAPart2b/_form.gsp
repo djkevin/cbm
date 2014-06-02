@@ -45,8 +45,7 @@
         <g:message code="formAPart2b.amount.label" default="Amount" />
         <span class="required-indicator">*</span>
     </label>
-    <g:field name="amount" value="${fieldValue(bean: formAPart2bInstance, field: 'amount')}" required="" type="number"/>
-    >>${formAPart2bInstance.amount}, fieldVal:${fieldValue(bean: formAPart2bInstance, field: 'amount')} <<
+    <g:textField name="amount" value="${formAPart2bInstance.amount}" required="" />
 </div>
 
 

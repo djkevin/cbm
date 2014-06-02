@@ -62,5 +62,22 @@ class Report {
 
     }
 
+    public boolean hasBSL4(){
+        println "checking.... if report has BSL4"
+        if (!formAPart1) return false;
+
+        for (FormAPart1a formAPart1a: formAPart1){
+            if (formAPart1a.hasBSL4()){
+                return  true
+            }
+        }
+
+ /*       formAPart1.each {it->
+            println " hasBSL report level: "+it?.hasBSL4()
+            if (it?.hasBSL4()) return true
+        }*/
+        return false;
+    }
+
 
 }

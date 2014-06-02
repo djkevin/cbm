@@ -32,7 +32,10 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <g:if test="${!formAPart1bInstance?.report?.hasBSL4()}">
+                        <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}"  />
+                    </g:if>
+
 				</fieldset>
 			</g:form>
 		</div>
