@@ -25,7 +25,7 @@
             <g:message code="formF.offensiveActivity.pastBiologicalActivity.label" default="Past Biological Activity" />
         </label>
         %{--<g:checkBox name="offensiveActivity.pastBiologicalActivity" value="${formFInstance?.offensiveActivity?.pastBiologicalActivity}" />--}%
-        <g:radioGroup name="offensiveActivity.pastBiologicalActivity" value="${formFInstance?.offensiveActivity?.pastBiologicalActivity}"
+        <g:radioGroup name="offensiveActivity.pastBiologicalActivity" value="${formFInstance?.offensiveActivity ? formFInstance?.offensiveActivity?.pastBiologicalActivity:'false'}"
                       values="['true','false']"
                       labels="['Yes','No']" >     %{--TODO i18n--}%
             <span>${it.radio} ${it.label}</span>
@@ -57,7 +57,7 @@
 		<g:message code="formF.defensiveActivity.pastBiologicalActivity.label" default="Past Biological Activity" />
 	</label>
 	%{--<g:checkBox name="defensiveActivity.pastBiologicalActivity" value="${formFInstance.defensiveActivity?.pastBiologicalActivity}" />--}%
-    <g:radioGroup name="defensiveActivity.pastBiologicalActivity" value="${formFInstance?.defensiveActivity?.pastBiologicalActivity}"
+    <g:radioGroup name="defensiveActivity.pastBiologicalActivity" value="${formFInstance?.defensiveActivity ? formFInstance?.defensiveActivity?.pastBiologicalActivity:'false'}"
                   values="['true','false']"
                   labels="['Yes','No']" >      %{--TODO i18n--}%
         <span>${it.radio} ${it.label}</span>
