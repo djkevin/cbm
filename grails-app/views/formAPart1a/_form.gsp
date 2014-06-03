@@ -97,6 +97,8 @@
             if (id){
                 if (confirm("Are you sure?")) {
                     <g:remoteFunction  action="deleteContainmentUnit" onSuccess="removeRow(tr);displayMsg(data)" params="'id='+id"/>
+                }else{
+                    tr.css("background-color","");
                 }
             }else{
                 //non-persisted row,remove from DOM only
