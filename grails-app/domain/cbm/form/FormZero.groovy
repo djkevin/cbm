@@ -34,14 +34,19 @@ class FormZero extends BaseForm {
         formG validator: declarationValidator
     }
 
-    //TODO data binding does not work correctly if we Update the year and set it to 'empty' in the select box
     static declarationValidator = { val ->
 
         if (val.nothingToDeclare && val.nothingNewToDeclare) {
             return 'formZero.bothFieldsChecked.error'
         }
+        if (!val.nothingToDeclare && !val.nothingNewToDeclare) {
+            return 'formZero.no.checkbox.selected'
+        }
         if (val.nothingNewToDeclare && !val.yearOfLastDeclaration) {
             return 'formZero.noYearSelected.error'
+        }
+        if (!val.nothingNewToDeclare && val.yearOfLastDeclaration) {
+            return 'formZero.error.year.without.nothing.new'
         }
 
     }
