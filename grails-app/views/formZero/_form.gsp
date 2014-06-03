@@ -26,7 +26,6 @@
 
             if (this.checked) {
                 if (arr[1] == "nothingToDeclare") {
-
                     $('[name="' + nothingNewToDeclare + '"]').attr('checked', false);
                     $('[name="' + yearOfLastDeclaration + '"]').val('');
                 }
