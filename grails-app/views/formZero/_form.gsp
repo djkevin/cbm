@@ -9,6 +9,46 @@
 </div>
 
 <br/>
+<script type="text/javascript">
+    //initialise all Jquery functions here, after DOM is fully constructed
+    $(document).ready(function () {
+
+        // all checkboxex within list-formZero div
+        $("#list-formZero input:checkbox").change(function () {
+            var name1 = $(this).attr("name");
+
+
+            var arr = name1.split('.');
+            //name in the format formX.nothingToDeclare
+            var nothingToDeclare = arr[0] + "." + "nothingToDeclare"
+            var nothingNewToDeclare = arr[0] + "." + "nothingNewToDeclare"
+            var yearOfLastDeclaration = arr[0] + "." + "yearOfLastDeclaration"
+
+            if (this.checked) {
+                if (arr[1] == "nothingToDeclare") {
+
+                    $('[name="' + nothingNewToDeclare + '"]').attr('checked', false);
+                    $('[name="' + yearOfLastDeclaration + '"]').val('');
+                }
+
+                if (arr[1] == "nothingNewToDeclare") {
+                    $('[name="' + nothingToDeclare + '"]').attr('checked', false);
+                }
+            }else{
+                if (arr[1] == "nothingToDeclare") {
+                    $('[name="' + nothingNewToDeclare + '"]').prop('checked', true);
+                }
+
+                if (arr[1] == "nothingNewToDeclare") {
+                    $('[name="' + nothingToDeclare + '"]').prop('checked', true);
+                    $('[name="' + yearOfLastDeclaration + '"]').val('');
+                }
+
+            }
+        });
+    });
+
+</script>
 
 <div id="list-formZero" class="content scaffold-list" role="main">
     <table>
@@ -21,15 +61,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
+        <tr id="formAPart1">
             <td><g:message code="formAPart1.label" default="Form A Part 1"/></td>
-            <td><g:checkBox name="formAPart1.nothingToDeclare" value="${formZeroInstance.formAPart1?.nothingToDeclare}"/></td>
+            <td><g:checkBox name="formAPart1.nothingToDeclare" value="${formZeroInstance.formAPart1?.nothingToDeclare}" /></td>
             <td><g:checkBox name="formAPart1.nothingNewToDeclare" value="${formZeroInstance.formAPart1?.nothingNewToDeclare}"/></td>
             <td><g:select name="formAPart1.yearOfLastDeclaration"
                           from="${formZeroInstance.formAPart1?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formAPart1?.yearOfLastDeclaration}"
-                          noSelection="['null': '--']"/>
+                          noSelection="['': '--']"/>
             </td>
         </tr>
         <tr>
@@ -38,9 +78,9 @@
             <td><g:checkBox name="formAPart2a.nothingNewToDeclare" value="${formZeroInstance.formAPart2a?.nothingNewToDeclare}"/></td>
             <td><g:select name="formAPart2a.yearOfLastDeclaration"
                           from="${formZeroInstance?.formAPart2a?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formAPart2a?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/></td>
+                          noSelection="${['': '--']}"/></td>
         </tr>
         <tr>
             <td><g:message code="formAPart2b.label" default="Form A Part 2b"/></td>
@@ -48,9 +88,9 @@
             <td><g:checkBox name="formAPart2b.nothingNewToDeclare" value="${formZeroInstance.formAPart2b?.nothingNewToDeclare}"/></td>
             <td><g:select name="formAPart2b.yearOfLastDeclaration"
                           from="${formZeroInstance?.formAPart2b?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formAPart2b?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/></td>
+                          noSelection="${['': '--']}"/></td>
         </tr>
 
         <tr>
@@ -59,9 +99,9 @@
             <td><g:checkBox name="formAPart2c.nothingNewToDeclare" value="${formZeroInstance.formAPart2c?.nothingNewToDeclare}"/></td>
             <td><g:select name="formAPart2c.yearOfLastDeclaration"
                           from="${formZeroInstance?.formAPart2c?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formAPart2c?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/>
+                          noSelection="${['': '--']}"/>
             </td>
         </tr>
         <tr>
@@ -70,9 +110,9 @@
             <td><g:checkBox name="formB.nothingNewToDeclare" value="${formZeroInstance.formB?.nothingNewToDeclare}"/></td>
             <td><g:select name="formB.yearOfLastDeclaration"
                           from="${formZeroInstance.formB?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formB?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/>
+                          noSelection="${['': '--']}"/>
             </td>
         </tr>
         <tr>
@@ -81,9 +121,9 @@
             <td><g:checkBox name="formC.nothingNewToDeclare" value="${formZeroInstance.formC?.nothingNewToDeclare}"/></td>
             <td><g:select name="formC.yearOfLastDeclaration"
                           from="${formZeroInstance.formC?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formC?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/>
+                          noSelection="${['': '--']}"/>
             </td>
         </tr>
         <tr>
@@ -92,9 +132,9 @@
             <td><g:checkBox name="formE.nothingNewToDeclare" value="${formZeroInstance.formE?.nothingNewToDeclare}"/></td>
             <td><g:select name="formE.yearOfLastDeclaration"
                           from="${formZeroInstance.formE?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formE?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/>
+                          noSelection="${['': '--']}"/>
             </td>
         </tr>
         <tr>
@@ -103,9 +143,9 @@
             <td><g:checkBox name="formF.nothingNewToDeclare" value="${formZeroInstance.formF?.nothingNewToDeclare}"/></td>
             <td><g:select name="formF.yearOfLastDeclaration"
                           from="${formZeroInstance.formF?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formF?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/>
+                          noSelection="${['': '--']}"/>
             </td>
         </tr>
         <tr>
@@ -114,9 +154,9 @@
             <td><g:checkBox name="formG.nothingNewToDeclare" value="${formZeroInstance.formG?.nothingNewToDeclare}"/></td>
             <td><g:select name="formG.yearOfLastDeclaration"
                           from="${formZeroInstance.formG?.constraints.yearOfLastDeclaration?.range}"
-                          class="range" required=""
+                          class="range"
                           value="${formZeroInstance.formG?.yearOfLastDeclaration}"
-                          noSelection="${['null': '--']}"/>
+                          noSelection="${['': '--']}"/>
             </td>
         </tr>
 
