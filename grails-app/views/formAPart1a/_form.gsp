@@ -146,9 +146,10 @@
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'scope', 'error')} required long">
 	<label for="scope">
 		<g:message code="formAPart1.scope.label" default="Scope" />
+        <span class="required-indicator">*</span>
 	</label>
 </div>
-<div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.scope?.maxSize}" value="${formAPart1aInstance?.scope}" required="required"/></div>
+<div><g:textArea class="wysiwyg" name="scope" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.scope?.maxSize}" value="${formAPart1aInstance?.scope}" required=""/></div>
 
 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
 <g:render template="../formStatus"/>
