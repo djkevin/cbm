@@ -2,7 +2,7 @@ package cbm.form
 
 class FormAPart1ContainmentUnit {
 
-    static auditable = true
+    //static auditable = true   Commented because of flush() error - See ticket #33
     static belongsTo = [FormAPart1a]
     String bioSafetyLevel
     String unitType
