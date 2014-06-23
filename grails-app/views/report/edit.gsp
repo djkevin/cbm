@@ -1,4 +1,4 @@
-<%@ page import="cbm.Report" %>
+<%@ page import="cbm.report.Report" %>
 <!DOCTYPE html>
 <html>
 	<head>

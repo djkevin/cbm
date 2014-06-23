@@ -1,4 +1,4 @@
-<%@ page import="cbm.Report" %>
+<%@ page import="cbm.report.Report" %>
 
 <!--  TODO: introduce labels in message.properties -->
 
