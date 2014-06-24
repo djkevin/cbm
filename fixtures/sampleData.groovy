@@ -25,7 +25,7 @@ fixture {
     }
 
     spUK(StateParty) {
-        country = "cbm.Country.UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND"
+        country = "UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND"
         accessionRatification = new Date()
     }
 
