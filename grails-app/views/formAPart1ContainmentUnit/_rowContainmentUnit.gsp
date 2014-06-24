@@ -1,6 +1,8 @@
-<g:each in="${formAPart1ContainmentUnitInstanceList}" status="i" var="formAPart1ContainmentUnitInstance">
+<g:each in="${formAPart1ContainmentUnitInstanceList?.sort{it.created}}" status="i" var="formAPart1ContainmentUnitInstance">
 
     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+        <td style="display:none;">
+            <joda:timeField name="formAPart1ContainmentUnit.created" value="${formAPart1ContainmentUnitInstance?.created}"  />
         <td>
             <g:select name="formAPart1ContainmentUnit.bioSafetyLevel"
                       from="${formAPart1ContainmentUnitInstance.constraints.bioSafetyLevel.inList}"

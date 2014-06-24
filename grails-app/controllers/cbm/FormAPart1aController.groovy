@@ -6,7 +6,8 @@ import cbm.report.Report
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
-
+import org.joda.time.LocalDateTime
+import org.joda.time.format.DateTimeFormat
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
@@ -71,7 +72,9 @@ class FormAPart1aController {
         def containmentUnitUnitTypes = params.list('formAPart1ContainmentUnit.unitType')
         def containmentUnitUnitSize = params.list('formAPart1ContainmentUnit.unitSize')
         def containmentUnitComments = params.list('formAPart1ContainmentUnit.comment')
+        def containmentUnitCreateDates = params.list('formAPart1ContainmentUnit.created')
         Set<FormAPart1ContainmentUnit> results = new HashSet<FormAPart1ContainmentUnit>()
+
 
         for (int i = 0; i < containmentUnitIds.size(); i++) {
             FormAPart1ContainmentUnit formAPart1ContainmentUnit
@@ -87,6 +90,7 @@ class FormAPart1aController {
             formAPart1ContainmentUnit.comment = containmentUnitComments[i]
             formAPart1ContainmentUnit.facility = formAPart1Instance
 
+            formAPart1ContainmentUnit.created = LocalDateTime.parse(containmentUnitCreateDates[i], DateTimeFormat.forPattern("HH:mm:ss.SSS"))
             results.add(formAPart1ContainmentUnit)
         }
         return results
