@@ -1,8 +1,12 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="cbm.FormService" %>
+
 <g:each in="${formAPart1ContainmentUnitInstanceList?.sort{it.created}}" status="i" var="formAPart1ContainmentUnitInstance">
 
     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
         <td style="display:none;">
-            <joda:timeField name="formAPart1ContainmentUnit.created" value="${formAPart1ContainmentUnitInstance?.created}"  />
+            <g:hiddenField name="formAPart1ContainmentUnit.created" value="${new SimpleDateFormat(FormService.TIMESTAMP_FORMAT).format(formAPart1ContainmentUnitInstance?.created)}"  />            
+         </td>
         <td>
             <g:select name="formAPart1ContainmentUnit.bioSafetyLevel"
                       from="${formAPart1ContainmentUnitInstance.constraints.bioSafetyLevel.inList}"
@@ -26,8 +30,7 @@
                          maxlength="${formAPart1ContainmentUnitInstance?.constraints?.comment?.maxSize}"
                          value="${formAPart1ContainmentUnitInstance?.comment}"/>
         </td>
-        <td>
-
+        <td>			
             <a class="deleteLink" href="javascript:void(0);">
                 <i class="fa fa-trash-o"></i>
                 <g:message code="default.button.delete.label" default="Delete"/>

@@ -6,6 +6,8 @@ import grails.transaction.Transactional
 @Transactional
 class FormService {
 
+	public static final TIMESTAMP_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS"
+	
     def serviceMethod() {
 
     }

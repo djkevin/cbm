@@ -1,7 +1,5 @@
 package cbm.form
 
-import org.joda.time.LocalDateTime
-
 class FormAPart1ContainmentUnit{
 
     //static auditable = true   Commented because of flush() error - See ticket #33
@@ -12,7 +10,7 @@ class FormAPart1ContainmentUnit{
     String comment
     FormAPart1a facility
 
-    LocalDateTime created = LocalDateTime.now() // For ordering list
+    Date created = new Date() // For ordering list
 
 
     String toString() {

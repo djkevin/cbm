@@ -6,6 +6,7 @@ import cbm.report.Report
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
+import java.text.SimpleDateFormat
 import org.joda.time.LocalDateTime
 import org.joda.time.format.DateTimeFormat
 import static org.springframework.http.HttpStatus.*
@@ -65,6 +66,7 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
+	
     private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, def formAPart1Instance) {
 
         def containmentUnitIds = params.list('formAPart1ContainmentUnitId')
@@ -90,7 +92,8 @@ class FormAPart1aController {
             formAPart1ContainmentUnit.comment = containmentUnitComments[i]
             formAPart1ContainmentUnit.facility = formAPart1Instance
 
-            formAPart1ContainmentUnit.created = LocalDateTime.parse(containmentUnitCreateDates[i], DateTimeFormat.forPattern("HH:mm:ss.SSS"))
+            //formAPart1ContainmentUnit.created = LocalDateTime.parse(containmentUnitCreateDates[i], DateTimeFormat.forPattern("HH:mm:ss.SSS"))
+			formAPart1ContainmentUnit.created = new SimpleDateFormat(FormService.TIMESTAMP_FORMAT).parse(containmentUnitCreateDates[i]);
             results.add(formAPart1ContainmentUnit)
         }
         return results
