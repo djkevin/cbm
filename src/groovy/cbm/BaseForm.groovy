@@ -2,7 +2,7 @@ package cbm
 
 abstract class BaseForm {
 
-    static auditable = true
+    //static auditable = true
 
     String title
     String formStatus
