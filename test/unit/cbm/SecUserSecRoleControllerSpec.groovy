@@ -1,6 +1,7 @@
 package cbm
 
 
+import cbm.usermgt.SecUserSecRole
 
 import grails.test.mixin.*
 import spock.lang.*

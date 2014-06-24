@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.admin.StateParty
+import cbm.report.Report
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

@@ -1,6 +1,6 @@
 package cbm
 
-
+import cbm.admin.StateParty
 
 import grails.test.mixin.*
 import spock.lang.*

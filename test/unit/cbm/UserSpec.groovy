@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.usermgt.User
+
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

@@ -1,6 +1,6 @@
 package cbm
 
-
+import cbm.usermgt.User
 
 import grails.test.mixin.*
 import spock.lang.*

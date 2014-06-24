@@ -6,7 +6,7 @@ import spock.lang.Specification
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(AdminUser)
+@TestFor(cbm.usermgt.AdminUser)
 class AdminUserSpec extends Specification {
 
     def setup() {

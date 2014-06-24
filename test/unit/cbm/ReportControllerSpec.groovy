@@ -1,5 +1,9 @@
 package cbm
 
+import cbm.admin.StateParty
+import cbm.report.Report
+import cbm.usermgt.SecUser
+import cbm.usermgt.SecUserSecRole
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.test.mixin.*
 import grails.test.mixin.domain.DomainClassUnitTestMixin

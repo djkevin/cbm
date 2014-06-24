@@ -1,14 +1,18 @@
 package cbm
 
+import cbm.admin.StateParty
 import grails.test.mixin.TestFor
+
 import org.joda.time.LocalDate
+import org.junit.After;
+
 import spock.lang.Unroll
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(StateParty)
-class StatePartySpec extends AbstractConstraintsSpec {
+class StatePartySpec extends AbstractConstraintSpec {
 
     def setup() {
         mockForConstraintsTests(StateParty, [new StateParty(country: Country.AUSTRALIA)])
