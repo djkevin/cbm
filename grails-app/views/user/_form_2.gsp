@@ -24,7 +24,7 @@
 		
 	</label>
 </div>
-<div><g:select id="stateParty" name="stateParty.id" from="${cbm.StateParty.list()}" optionKey="id" value="${userInstance?.stateParty?.id}" class="many-to-one" noSelection="['null': '']"/></div>
+<div><g:select id="stateParty" name="stateParty.id" from="${cbm.admin.StateParty.list()}" optionKey="id" value="${userInstance?.stateParty?.id}" class="many-to-one" noSelection="['null': '']"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
 	<label for="accountExpired">

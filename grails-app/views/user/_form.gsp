@@ -23,7 +23,7 @@
 		<g:message code="user.stateParty.label" default="State Party" />
 		
 	</label>
-	<g:select id="stateParty" name="stateParty.id" from="${cbm.StateParty.list()}" optionKey="id" value="${userInstance?.stateParty?.id}" class="many-to-one" noSelection="['null': '']"/>
+	<g:select id="stateParty" name="stateParty.id" from="${cbm.admin.StateParty.list()}" optionKey="id" value="${userInstance?.stateParty?.id}" class="many-to-one" noSelection="['null': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">
