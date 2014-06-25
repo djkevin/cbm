@@ -2,7 +2,7 @@
 	Requires a URL parameter "formAPart2b.id". The value of this parameter is the id of the FormAPart2b linked to the FormAPart2c.
  -->
  
-<%@ page import="cbm.form.FormAPart2b; cbm.FormAPart2b; cbm.report.Report" %>
+<%@ page import="cbm.form.FormAPart2b; cbm.form.FormAPart2b; cbm.report.Report" %>
 
 <!DOCTYPE html>
 <html>
