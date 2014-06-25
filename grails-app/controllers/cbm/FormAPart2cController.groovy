@@ -1,6 +1,8 @@
 package cbm
 
+import cbm.form.FormAPart2b
 import cbm.form.FormAPart2c
+import cbm.report.Report
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -22,7 +24,11 @@ class FormAPart2cController {
     }
 
     def create() {
-        respond new FormAPart2c(params)
+        println "params: "+params
+        FormAPart2b formAPart2b = FormAPart2b.get(params.long('formAPart2b.id'))
+        Report r = formAPart2b.report
+
+        respond new FormAPart2c(params) , model: [fAP2bs:r.formAPart2b]
     }
 
     @Transactional

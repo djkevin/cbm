@@ -23,9 +23,10 @@
         <span class="required-indicator">*</span>
     </label>
     <g:hiddenField name="formAPart2b.id" id="formAPart2b" value="${formAPart2cInstance?.formAPart2b?.id}" />
-    <g:field type="text" id="formAPart2b.name" name="formAPart2b.name" value="${formAPart2cInstance?.formAPart2b}" readonly="true" />
-%{--    <g:select id="formAPart2b" name="formAPart2b.id" from="${cbm.form.FormAPart2b.list()}" optionKey="id" required=""
-               value="${formAPart2cInstance?.formAPart2b?.id}" class="many-to-one" readonly="true"/>--}%
+    %{--<g:field type="text" id="formAPart2b.name" name="formAPart2b.name" value="${formAPart2cInstance?.formAPart2b}" readonly="true" />--}%
+    %{--cbm.form.FormAPart2b.findByReport(formAPart2cInstance.formAPart2b.report)--}%
+    <g:select id="formAPart2b" name="formAPart2b.id" from="${fAP2bs}" optionKey="id" required=""
+               value="${formAPart2cInstance?.formAPart2b?.id}" class="many-to-one" readonly="true"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'facilityName', 'error')} required">
