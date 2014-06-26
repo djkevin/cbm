@@ -24,11 +24,11 @@ class FormAPart2cController {
     }
 
     def create() {
-        println "params: "+params
-        FormAPart2b formAPart2b = FormAPart2b.get(params.long('formAPart2b.id'))
-        Report r = formAPart2b.report
 
-        respond new FormAPart2c(params) , model: [fAP2bs:r.formAPart2b]
+        def reportId = params.long('report.id')
+        Set<FormAPart2b> formAPart2bs = Report.get(reportId).formAPart2b
+        FormAPart2c formAPart2c = new FormAPart2c(params)
+        respond formAPart2c , model: [formAPart2bs:formAPart2bs]
     }
 
     @Transactional
@@ -43,20 +43,27 @@ class FormAPart2cController {
             return
         }
 
-        formAPart2cInstance.save flush:true
+        FormAPart2b formAPart2b = FormAPart2b.get(params.formAPart2b.id)
+        formAPart2b.addToFormAPart2c(formAPart2cInstance)
+
+        formAPart2b.save flush: true
+       // formAPart2cInstance.save flush:true
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formAPart2cInstance.label', default: 'FormAPart2c'), formAPart2cInstance.id])
-                redirect (controller: "formAPart2b", action:"show", id:formAPart2cInstance.formAPart2b.id)
-              //  redirect formAPart2cInstance
+           //     redirect (controller: "formAPart2b", action:"show", id:formAPart2cInstance.formAPart2b.id)
+                redirect formAPart2cInstance
             }
             '*' { respond formAPart2cInstance, [status: CREATED] }
         }
     }
 
     def edit(FormAPart2c formAPart2cInstance) {
-        respond formAPart2cInstance
+        def reportId = params.long('report.id')
+        Set<FormAPart2b> formAPart2bs = Report.get(reportId).formAPart2b
+
+        respond formAPart2cInstance//, model: [formAPart2bs:formAPart2bs]
     }
 
     @Transactional
@@ -95,8 +102,8 @@ class FormAPart2cController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'FormAPart2c.label', default: 'FormAPart2c'), formAPart2cInstance.id])
-              /*  redirect action:"index", method:"GET"*/
-                redirect (controller: "formAPart2b", action:"show", id:formAPart2cInstance.formAPart2b.id)
+                redirect action: "show", controller: "report", id: formAPart2cInstance.formAPart2b.report.id, method: "GET"
+//              redirect (controller: "formAPart2b", action:"show", id:formAPart2cInstance.formAPart2b.id)
             }
             '*'{ render status: NO_CONTENT }
         }

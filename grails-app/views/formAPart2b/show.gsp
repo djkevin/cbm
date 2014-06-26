@@ -117,7 +117,7 @@
                 </g:if>
 
                 <span class="property-label-b"><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" />
-                [<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]
+                %{--[<g:link controller="formAPart2c" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]--}%
                 </span>
 
                 <br/>

@@ -18,7 +18,8 @@
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li>
                     %{--<g:link class="list" controller="report" action="show" id="${report.id}">${report.reportName}</g:link>--}%
-                    <g:link class="list" controller="formAPart2b" action="show" id="${formAPart2cInstance?.formAPart2b?.id}">${formAPart2cInstance?.formAPart2b}</g:link>
+                    %{--<g:link class="list" controller="formAPart2b" action="show" id="${formAPart2cInstance?.formAPart2b?.id}">${formAPart2cInstance?.formAPart2b}</g:link>--}%
+                    <g:link class="list" controller="report" action="show" id="${formAPart2cInstance?.formAPart2b?.report?.id}">${formAPart2cInstance?.formAPart2b?.report?.reportName}</g:link>
                 </li>
 			</ul>
 		</div>
@@ -269,7 +270,7 @@
 			</ol>
 			<g:form url="[resource:formAPart2cInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${formAPart2cInstance}" params="['reportId':report.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+					<g:link class="edit" action="edit" resource="${formAPart2cInstance}" params="['report.id':report.id]"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
