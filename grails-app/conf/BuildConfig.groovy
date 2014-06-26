@@ -70,6 +70,8 @@ grails.project.dependency.resolution = {
 		compile ":audit-logging:0.5.5.2"
         compile ':spring-security-core:2.0-RC2'
         compile ":db-reverse-engineer:0.5"
+        compile ":jquery:1.11.1"
+        compile ":jquery-ui:1.10.3"
 
 //        compile "org.springframework:spring-test:3.2.6.RELEASE"
 
@@ -78,7 +80,8 @@ grails.project.dependency.resolution = {
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.7" // or ":hibernate4:4.1.11.2"
         runtime ":database-migration:1.3.5"
-        runtime ":jquery:1.10.2"
+
+
         runtime ":resources:1.2.7"
         runtime ":joda-time:1.4"
 
