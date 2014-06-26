@@ -8,6 +8,8 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
+    <jqui:resources/>
+
 		<a href="#show-report" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
             <ul>
@@ -81,13 +83,88 @@
 				</g:if>
 
 			</ol>
+      %{--  <div id="dialog-confirm" title="Empty the recycle bin?">
+            <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+        </div>--}%
+            <script type="text/javascript">
+
+        /*        function confirmDelete(){
+                    $( "#dialog-confirm" ).dialog({
+                        resizable: false,
+
+                        modal: true,
+                        buttons: {
+                            "Delete all items": function() {
+                                $( this ).dialog( "close" );
+                            },
+                            Cancel: function() {
+                                $( this ).dialog( "close" );
+                            }
+                        }
+                    });
+
+                    return false;
+                }*/
+
+                function getDeleteText(){
+
+                    var questionEmpty = '${message(code: 'report.empty.delete.confirm.msg', default: 'Are you sure?')}'+'\n'
+                    var questionFull = '${message(code: 'report.full.delete.confirm.msg', default: 'Are you sure?')}'+'\n'
+
+                    var deleteText ='';
+
+                    var declarationForm = '${reportInstance?.formZero == null ? 0 : 1}'
+                    if (declarationForm > 0) deleteText += '${message(code: 'report.formZero.label')}' + " : " + declarationForm +'\n'
+
+                    var numFormAPart1a =  ${reportInstance.formAPart1.size()}
+                    if (numFormAPart1a > 0) deleteText += '${message(code: 'formAPart1.facilities', default: 'Facilities')}' + " : " + numFormAPart1a +'\n'
+
+                    var numFormAPart1b = ${reportInstance?.formAPart1b ? 1:0}
+                    if (numFormAPart1b > 0) deleteText += '${message(code: 'formAPart1b.label')}' + " : " + numFormAPart1b +'\n'
+
+                    var numFormAPart2a = ${reportInstance?.formAPart2a ? 1:0}
+                    if (numFormAPart2a > 0) deleteText += '${message(code: 'formAPart2a.label')}' + " : " + numFormAPart2a +'\n'
+
+                    var numFormAPart2b = ${reportInstance?.formAPart2b?.size()}
+                    if (numFormAPart2b > 0) deleteText += '${message(code: 'formAPart2b.programmes')}' + " : " + numFormAPart2b +'\n'
+
+                    var numFormAPart2c = ${(reportInstance?.getFormAPart2cs() != null) ? reportInstance?.getFormAPart2cs().size():0}
+                    if (numFormAPart2c > 0) deleteText += '${message(code: 'formAPart2c.label')}' + " : " + numFormAPart2c +'\n'
+
+                    var numFormB = ${reportInstance?.formB?.size()}
+                    if (numFormB > 0) deleteText += '${message(code: 'formB.label')}' + " : " + numFormB +'\n'
+
+                    var numFormC = ${reportInstance?.formC?.size()}
+                    if (numFormC > 0) deleteText += '${message(code: 'formC.label')}' + " : " + numFormC +'\n'
+
+                    var numFormE = ${reportInstance?.formE?.size()}
+                    if (numFormE > 0) deleteText += '${message(code: 'formE.label')}' + " : " + numFormE +'\n'
+
+                    var numFormF = ${reportInstance?.formF?.size()}
+                    if (numFormF > 0) deleteText += '${message(code: 'formC.label')}' + " : " + numFormF +'\n'
+
+                    var numFormG = ${reportInstance?.formG?.size()}
+                    if (numFormG > 0) deleteText += '${message(code: 'formE.label')}' + " : " + numFormG +'\n'
+
+                    if (deleteText.length > 0){
+                        deleteText = questionFull + deleteText
+                    }else {
+                        deleteText = questionEmpty + deleteText
+                    }
+
+                    console.log(deleteText)
+                    return deleteText;
+                }
+            </script>
+
 
             <!-- *-*-*-*-*-*-*-*-*-*-*-* action buttons *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
 
             <g:form url="[resource:reportInstance, action:'delete']" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm(getDeleteText());" />
+                    %{--<g:link class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return getDeleteText();" ><g:message code="default.button.delete.label" default="Delete" /></g:link>--}%
                     <g:actionSubmit class="submit" action="" value="${message(code: 'default.button.submit.label', default: 'Submit')}" onclick="alert('${message(code: 'default.under.implementation.message', default: 'Feature under implementation')}');return false;" />
                     <g:link class="print" action="print" resource="${reportInstance}" target="_blank"
                             title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
@@ -139,6 +216,7 @@
                                 <g:set var="controller" value="formAPart1a"/>
                                 <g:set var="customTitle" value="${message(code: 'formAPart1.facilityName', default: 'Facility Name')}" />
                                 <g:render template="../formDetail"/>
+                                <g:set var="customTitle" value="${null}" /> <!--reset the value-->
                             </g:if>
 						</td>
 						<td class="center">
@@ -206,6 +284,7 @@
                                 <g:set var="controller" value="formAPart2b"/>
                                 <g:set var="customTitle" value="${message(code: 'formAPart2b.programme', default: 'Programme')}" />
                                 <g:render template="../formDetail"/>
+                                <g:set var="customTitle" value="${null}" /> <!--reset the value-->
                             </g:if>
 
                         </td>
