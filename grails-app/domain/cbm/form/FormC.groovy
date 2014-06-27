@@ -17,12 +17,12 @@ class FormC extends BaseForm {
     }
 
     String toString() {
-        //Replaces the htmltags
-        int maxChars = 20
-        comments?.length() < maxChars ? stripHTML(comments) : stripHTML(comments).substring(0, maxChars) + "..."
-
+        return getSummary(stripHTML(comments)) + "..."
     }
 
+    String getSummary(String s){
+        def summary = s.length() > 20 ? s.substring(0, 20) : s
+    }
 
     String stripHTML(String htmlContent) {
         htmlContent?.replaceAll("<(.|\n)*?>", '')
