@@ -63,7 +63,6 @@ class Report {
     }
 
     public boolean hasBSL4(){
-        println "checking.... if report has BSL4"
         if (!formAPart1) return false;
 
         for (FormAPart1a formAPart1a: formAPart1){
