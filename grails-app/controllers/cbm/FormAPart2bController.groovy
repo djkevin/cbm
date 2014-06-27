@@ -16,6 +16,8 @@ class FormAPart2bController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
+    static int MAX_FILE_SIZE = 5 * 1024 * 1024
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
        // respond FormAPart2b.list(params), model:[formAPart2bInstanceCount: FormAPart2b.count()]
@@ -35,7 +37,6 @@ class FormAPart2bController {
 
     @Transactional
     def save(FormAPart2b formAPart2bInstance) {
-        println params
 
         //TODO move to Service
         MultipartFile uploadedFile = null
@@ -52,15 +53,23 @@ class FormAPart2bController {
             uploadedFile = request.getFile(fileName)
 
         }
-        if (!okContentTypes.contains(uploadedFile.contentType)) {
-            formAPart2bInstance.errors.rejectValue("formAPart2bOrganigram", "Image type must be one of: ${okContentTypes}")//TODO i18n
+        if (!uploadedFile.empty){
 
-        }else if (!uploadedFile.empty){
-            FormAPart2bOrganigram formAPart2bOrganigram = new FormAPart2bOrganigram()
-            formAPart2bOrganigram.fileName = uploadedFile.originalFilename
-            formAPart2bOrganigram.contentType = uploadedFile.contentType // TODO check unsupported types
-            formAPart2bOrganigram.organisationalStructureDiagram = uploadedFile.bytes
-            formAPart2bInstance.formAPart2bOrganigram = formAPart2bOrganigram
+            if (uploadedFile.size > MAX_FILE_SIZE){
+                formAPart2bInstance.errors.reject("Image size exceeds 5 MB") //TODO i18n
+            }
+
+            if (!okContentTypes.contains(uploadedFile.contentType)) {
+                formAPart2bInstance.errors.reject("Image type must be one of: ${okContentTypes}") //TODO i18n
+
+            }else {
+                formAPart2bOrganigram =  (formAPart2bInstance.formAPart2bOrganigram ==null)? new FormAPart2bOrganigram() : formAPart2bInstance.formAPart2bOrganigram
+                formAPart2bOrganigram.fileName = uploadedFile.originalFilename
+                formAPart2bOrganigram.contentType = uploadedFile.contentType // TODO check unsupported types
+                formAPart2bOrganigram.organisationalStructureDiagram = uploadedFile.bytes
+                formAPart2bInstance.formAPart2bOrganigram = formAPart2bOrganigram
+
+            }
         }
 
         if (formAPart2bInstance == null) {
@@ -105,19 +114,30 @@ class FormAPart2bController {
             //Get a reference to the uploaded file.
             uploadedFile = request.getFile(fileName)
 
-            println "content type" + uploadedFile.contentType
+
         }
+        FormAPart2bOrganigram formAPart2bOrganigram = new FormAPart2bOrganigram()
 
-        if (!okContentTypes.contains(uploadedFile.contentType)) {
-            formAPart2bInstance.errors.rejectValue("formAPart2bOrganigram", "Image type must be one of: ${okContentTypes}") //TODO i18n
+        println "file size is: "+uploadedFile.size
+        //+ " max size is: "+ formAPart2bOrganigram.constraints.organisationalStructureDiagram.size
 
-        }else if (!uploadedFile.empty){
-            FormAPart2bOrganigram formAPart2bOrganigram =  (formAPart2bInstance.formAPart2bOrganigram ==null)? new FormAPart2bOrganigram() : formAPart2bInstance.formAPart2bOrganigram
-            formAPart2bOrganigram.fileName = uploadedFile.originalFilename
-            formAPart2bOrganigram.contentType = uploadedFile.contentType // TODO check unsupported types
-            formAPart2bOrganigram.organisationalStructureDiagram = uploadedFile.bytes
-            formAPart2bInstance.formAPart2bOrganigram = formAPart2bOrganigram
+        if (!uploadedFile.empty){
 
+            if (uploadedFile.size > MAX_FILE_SIZE){
+                formAPart2bInstance.errors.reject("Image size exceeds 5 MB") //TODO i18n
+            }
+
+            if (!okContentTypes.contains(uploadedFile.contentType)) {
+                formAPart2bInstance.errors.reject("Image type must be one of: ${okContentTypes}") //TODO i18n
+
+            }else {
+                formAPart2bOrganigram =  (formAPart2bInstance.formAPart2bOrganigram ==null)? new FormAPart2bOrganigram() : formAPart2bInstance.formAPart2bOrganigram
+                formAPart2bOrganigram.fileName = uploadedFile.originalFilename
+                formAPart2bOrganigram.contentType = uploadedFile.contentType // TODO check unsupported types
+                formAPart2bOrganigram.organisationalStructureDiagram = uploadedFile.bytes
+                formAPart2bInstance.formAPart2bOrganigram = formAPart2bOrganigram
+
+            }
         }
 
         if (formAPart2bInstance == null) {
