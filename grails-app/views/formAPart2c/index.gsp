@@ -24,15 +24,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="addressLine2" title="${message(code: 'formAPart2c.addressLine2.label', default: 'Address Line2')}" />
+						<%-- g:sortableColumn property="addressLine2" title="${message(code: 'formAPart2c.addressLine2.label', default: 'Address Line2')}" / --%>
 					
-						<g:sortableColumn property="city" title="${message(code: 'formAPart2c.city.label', default: 'City')}" />
+						<%-- g:sortableColumn property="city" title="${message(code: 'formAPart2c.city.label', default: 'City')}" / --%>
 					
 						<g:sortableColumn property="facilityName" title="${message(code: 'formAPart2c.facilityName.label', default: 'Facility Name')}" />
 					
 						<g:sortableColumn property="location" title="${message(code: 'formAPart2c.location.label', default: 'Location')}" />
 					
-						<g:sortableColumn property="mailingAddress" title="${message(code: 'formAPart2c.mailingAddress.label', default: 'Mailing Address')}" />
+						<g:sortableColumn property="mailingAddress" title="${message(code: 'formAPart2c.postalAddress.label', default: 'Postal Address')}" />
 					
 					</tr>
 				</thead>
@@ -40,15 +40,15 @@
 				<g:each in="${formAPart2cInstanceList}" status="i" var="formAPart2cInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${formAPart2cInstance.id}">${fieldValue(bean: formAPart2cInstance, field: "addressLine2")}</g:link></td>
+						<%--  td><g:link action="show" id="${formAPart2cInstance.id}">${fieldValue(bean: formAPart2cInstance, field: "addressLine2")}</g:link></td --%>
 					
-						<td>${fieldValue(bean: formAPart2cInstance, field: "city")}</td>
+						<%-- td>${fieldValue(bean: formAPart2cInstance, field: "city")}</td --%>
 					
-						<td>${fieldValue(bean: formAPart2cInstance, field: "facilityName")}</td>
+						<td><g:link action="show" id="${formAPart2cInstance.id}">${fieldValue(bean: formAPart2cInstance, field: "facilityName")}</g:link></td>
 					
 						<td>${fieldValue(bean: formAPart2cInstance, field: "location")}</td>
 					
-						<td>${fieldValue(bean: formAPart2cInstance, field: "mailingAddress")}</td>
+						<td>${fieldValue(bean: formAPart2cInstance, field: "postalAddress")}</td>
 					
 					</tr>
 				</g:each>
