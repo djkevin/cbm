@@ -14,8 +14,11 @@ class NationalContactController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
         respond NationalContact.list(params), model:[nationalContactInstanceCount: NationalContact.count()]
+		*/		
+		response.sendError(404)
     }
 
     def show(NationalContact nationalContactInstance) {

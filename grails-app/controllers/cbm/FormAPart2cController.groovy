@@ -15,8 +15,11 @@ class FormAPart2cController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
         respond FormAPart2c.list(params), model:[formAPart2cInstanceCount: FormAPart2c.count()]
+		*/		
+		response.sendError(404)
     }
 
     def show(FormAPart2c formAPart2cInstance) {

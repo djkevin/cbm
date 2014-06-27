@@ -7,9 +7,6 @@ import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 import java.text.SimpleDateFormat
-import org.joda.time.LocalDateTime
-import org.joda.time.format.DateTimeFormat
-import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -18,10 +15,12 @@ class FormAPart1aController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
-        def reportId = params.long('reportId')
-        Report r = Report.findById(reportId)
+        def reportId = params.long('reportId')Report r = Report.findById(reportId)
         respond FormAPart1a.findAllByReport(r, [sort: "facilityName"]), model: [formAPart1InstanceCount: FormAPart1a.count(), reportId: r.id]
+		*/
+		response.sendError(404)
     }
 
     def show(FormAPart1a formAPart1Instance) {

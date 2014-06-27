@@ -14,8 +14,11 @@ class FormAPart1ContainmentUnitController {
 	static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
         respond FormAPart1ContainmentUnit.list(params), model:[formAPart1ContainmentUnitInstanceCount: FormAPart1ContainmentUnit.count()]
+		*/		
+		response.sendError(404)
     }
 
     def show(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {

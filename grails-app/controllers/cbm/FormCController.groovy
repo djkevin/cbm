@@ -13,8 +13,11 @@ class FormCController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
         respond FormC.list(params), model:[formCInstanceCount: FormC.count()]
+		*/		
+		response.sendError(404)
     }
 
     def show(FormC formCInstance) {

@@ -14,8 +14,11 @@ class FormAPart2bOrganigramController {
     static allowedMethods = [save: "POST", update: "POST", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
         respond FormAPart2bOrganigram.list(params), model: [formAPart2bOrganigramInstanceCount: FormAPart2bOrganigram.count()]
+        */
+		response.sendError(404)
     }
 
     def show(FormAPart2bOrganigram formAPart2bOrganigramInstance) {

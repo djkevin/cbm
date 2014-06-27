@@ -19,12 +19,14 @@ class FormAPart2bController {
     static int MAX_FILE_SIZE = 5 * 1024 * 1024
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
-       // respond FormAPart2b.list(params), model:[formAPart2bInstanceCount: FormAPart2b.count()]
-
+		// respond FormAPart2b.list(params), model:[formAPart2bInstanceCount: FormAPart2b.count()]
         def reportId =params.long('reportId')
         Report r = Report.findById(reportId)
         respond FormAPart2b.findAllByReport(r) , model:[formAPart2bInstanceCount: FormAPart2b.count(), reportId:reportId]
+		*/
+		response.sendError(404)
     }
 
     def show(FormAPart2b formAPart2bInstance) {

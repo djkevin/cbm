@@ -15,8 +15,11 @@ class FormGController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
+		/*
         params.max = Math.min(max ?: 10, 100)
         respond FormG.list(params), model:[formGInstanceCount: FormG.count()]
+		*/		
+		response.sendError(404)
     }
 
     def show(FormG formGInstance) {
