@@ -952,4 +952,7 @@ i[class^="icon-"]:before {
     text-decoration: none;
 }
 
-
+.instructions{
+    color:#808080;
+    font-style: italic;
+}

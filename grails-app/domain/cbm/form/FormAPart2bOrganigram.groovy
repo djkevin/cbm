@@ -1,12 +1,13 @@
 package cbm.form
 
-import cbm.form.FormAPart2b
-
 class FormAPart2bOrganigram {
 
     static belongsTo = [FormAPart2b]
 
+    String fileName
+    String contentType
     byte[] organisationalStructureDiagram
+
     FormAPart2b formAPart2b
 
     static constraints = {

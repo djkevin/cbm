@@ -27,7 +27,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:formAPart2bInstance, action:'save']">
+			<g:form url="[resource:formAPart2bInstance, action:'save']" method="POST"  enctype="multipart/form-data">
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
