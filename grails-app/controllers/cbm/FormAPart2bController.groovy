@@ -56,11 +56,11 @@ class FormAPart2bController {
         if (!uploadedFile.empty){
 
             if (uploadedFile.size > MAX_FILE_SIZE){
-                formAPart2bInstance.errors.reject("Image size exceeds 5 MB") //TODO i18n
+                formAPart2bInstance.errors.reject("formAPart2b.image.size.error")
             }
 
             if (!okContentTypes.contains(uploadedFile.contentType)) {
-                formAPart2bInstance.errors.reject("Image type must be one of: ${okContentTypes}") //TODO i18n
+                formAPart2bInstance.errors.reject("formAPart2b.image.type.error")
 
             }else {
                 formAPart2bOrganigram =  (formAPart2bInstance.formAPart2bOrganigram ==null)? new FormAPart2bOrganigram() : formAPart2bInstance.formAPart2bOrganigram
@@ -124,11 +124,11 @@ class FormAPart2bController {
         if (!uploadedFile.empty){
 
             if (uploadedFile.size > MAX_FILE_SIZE){
-                formAPart2bInstance.errors.reject("Image size exceeds 5 MB") //TODO i18n
+                formAPart2bInstance.errors.reject("formAPart2b.image.size.error")
             }
 
             if (!okContentTypes.contains(uploadedFile.contentType)) {
-                formAPart2bInstance.errors.reject("Image type must be one of: ${okContentTypes}") //TODO i18n
+                formAPart2bInstance.errors.reject("formAPart2b.image.type.error")
 
             }else {
                 formAPart2bOrganigram =  (formAPart2bInstance.formAPart2bOrganigram ==null)? new FormAPart2bOrganigram() : formAPart2bInstance.formAPart2bOrganigram
