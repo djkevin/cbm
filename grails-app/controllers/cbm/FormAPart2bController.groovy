@@ -53,6 +53,9 @@ class FormAPart2bController {
             uploadedFile = request.getFile(fileName)
 
         }
+
+        FormAPart2bOrganigram formAPart2bOrganigram = new FormAPart2bOrganigram()
+
         if (!uploadedFile.empty){
 
             if (uploadedFile.size > MAX_FILE_SIZE){
@@ -117,9 +120,6 @@ class FormAPart2bController {
 
         }
         FormAPart2bOrganigram formAPart2bOrganigram = new FormAPart2bOrganigram()
-
-        println "file size is: "+uploadedFile.size
-        //+ " max size is: "+ formAPart2bOrganigram.constraints.organisationalStructureDiagram.size
 
         if (!uploadedFile.empty){
 
