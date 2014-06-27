@@ -39,9 +39,9 @@ class FormZero extends BaseForm {
         if (val.nothingToDeclare && val.nothingNewToDeclare) {
             return 'formZero.bothFieldsChecked.error'
         }
-        if (!val.nothingToDeclare && !val.nothingNewToDeclare) {
+     /*   if (!val.nothingToDeclare && !val.nothingNewToDeclare) {
             return 'formZero.no.checkbox.selected'
-        }
+        }*/
         if (val.nothingNewToDeclare && !val.yearOfLastDeclaration) {
             return 'formZero.noYearSelected.error'
         }
