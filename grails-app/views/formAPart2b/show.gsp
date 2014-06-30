@@ -105,6 +105,7 @@
                   <g:else>
                       %{--[<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]--}%
                       <g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" />
+                      <br><br>
                   </g:else>
               </div>
 

@@ -91,7 +91,7 @@
 
 </div>
 <!-- file upload -->
-<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram"/>
+<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram" value="${formAPart2bInstance?.formAPart2bOrganigram?.organisationalStructureDiagram }" />
     <g:if test = "${formAPart2bInstance?.formAPart2bOrganigram}">
         <g:link action="displayImage" params="['formAPart2bOrganigram.id': formAPart2bInstance.formAPart2bOrganigram.id]">${formAPart2bInstance.formAPart2bOrganigram.fileName}</g:link>
     </g:if>
