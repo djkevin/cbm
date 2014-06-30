@@ -1,7 +1,7 @@
 package cbm.form
 
 import cbm.BaseForm
-import cbm.form.FormAPart2b
+import cbm.report.Report
 
 class FormAPart2c extends BaseForm {
     //Detailed info on facilities. Each program (FormAPart2b) can have many facilities assigned/contributing to it
@@ -37,8 +37,9 @@ class FormAPart2c extends BaseForm {
     String publicationPolicy
     String publicPapers
     String bioDefenseWork
+   // Report report
 
-    static transients = ['totalFloorArea', 'totalPersonnel']
+    static transients = ['totalFloorArea', 'totalPersonnel','report']
 
     static constraints = {
         facilityName maxSize: 250, blank: false
@@ -80,6 +81,11 @@ class FormAPart2c extends BaseForm {
 
     String toString() {
         return "${facilityName}"
+    }
+
+    // To make this form have a similar behavior to other forms. Used in SecurityFilters
+    Report getReport(){
+        return formAPart2b.report
     }
 
 }

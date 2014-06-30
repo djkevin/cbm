@@ -13,4 +13,8 @@ class SecurityService {
         User user = springSecurityService.getCurrentUser()
         return user?.stateParty == report?.stateParty
     }
+
+    public boolean canView(User user, Report report){
+        return user?.stateParty == report?.stateParty
+    }
 }
