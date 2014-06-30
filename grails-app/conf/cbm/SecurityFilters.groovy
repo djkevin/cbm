@@ -8,7 +8,7 @@ class SecurityFilters {
     def springSecurityService
 
     def filters = {
-        all(controller: 'form*', action: '*') { //TODO implement similar filter for other domain classes, e.g Report, StateParty, NationalContact etc
+ /*       all(controller: 'form*', action: '*') { //TODO implement similar filter for other domain classes, e.g Report, StateParty, NationalContact etc
             before = {
                 def user = springSecurityService.getCurrentUser()
 
@@ -18,11 +18,14 @@ class SecurityFilters {
                 Class clazz = grailsApplication.getDomainClass(domainClassName).clazz
 
                 def report
-
+                println params
+                println "action: "+actionName+ " params.id: "+params.id + " reportId: "+params['report.id']
                 if (params.id){
+                    println "fetching params.id: "+params.id
                     def form = clazz?.findById(params.id)
                     report = form?.getReport()
                 }else if(params['report.id']){
+                    println "fetching report.id: "+params['report.id']
                     report = Report.get(params.long('report.id'))
                 }
 
@@ -43,7 +46,7 @@ class SecurityFilters {
             afterView = { Exception e ->
 
             }
-        }
+        }*/
     }
 
     def capitalize(s) { //TODO remove and replace by name
