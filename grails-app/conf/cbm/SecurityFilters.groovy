@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.report.Report
+
 class SecurityFilters {
 
     def securityService
@@ -15,8 +17,14 @@ class SecurityFilters {
                 String domainClassName = "cbm.form." + capitalize(controllerName)
                 Class clazz = grailsApplication.getDomainClass(domainClassName).clazz
 
-                def form = clazz?.findById(params.id)
-                def report = form?.getReport()
+                def report
+
+                if (params.id){
+                    def form = clazz?.findById(params.id)
+                    report = form?.getReport()
+                }else if(params['report.id']){
+                    report = Report.get(params.long('report.id'))
+                }
 
                 if (report && user) {
                     boolean canView = securityService.canView(user, report)
