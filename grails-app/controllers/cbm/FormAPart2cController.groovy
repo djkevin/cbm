@@ -30,7 +30,13 @@ class FormAPart2cController {
 
         def reportId = params.long('report.id')
         Set<FormAPart2b> formAPart2bs = Report.get(reportId).formAPart2b
+
         FormAPart2c formAPart2c = new FormAPart2c(params)
+        if (!formAPart2bs){
+            formAPart2c.errors.reject("formAPart2c.no.program.message")
+        }
+
+
         respond formAPart2c , model: [formAPart2bs:formAPart2bs]
     }
 

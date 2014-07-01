@@ -39,7 +39,9 @@
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    <g:if test="${formAPart2bs}"> <!-- We can only create if there is at least 1 Form A Part 2 b -->
+					    <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+                    </g:if>
 				</fieldset>
 			</g:form>
 		</div>
