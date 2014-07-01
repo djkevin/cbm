@@ -82,6 +82,11 @@ class FormAPart2bController {
             return
         }
         if (formAPart2bInstance.hasErrors()) {
+
+            if (!uploadedFile.empty){
+                formAPart2bInstance.errors.reject("formAPart2b.image.reupload")// Ask to resubmit image
+            }
+
             respond formAPart2bInstance.errors, view:'create'
             return
         }
@@ -202,6 +207,11 @@ class FormAPart2bController {
 
         def id = params.long('formAPart2bOrganigram.id')
         FormAPart2bOrganigram formAPart2bOrganigram = FormAPart2bOrganigram.get(id)
+
+        if (formAPart2bOrganigram == null) { //e.g during validation errors, file is not reuploaded automatically
+            notFound()
+            return
+        }
 
         render file: formAPart2bOrganigram.organisationalStructureDiagram , contentType: formAPart2bOrganigram.contentType
 

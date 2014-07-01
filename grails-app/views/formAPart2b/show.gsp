@@ -98,15 +98,15 @@
               <h4><g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram" /></h4>
               <div style="width:100%">
                     <g:if test="${formAPart2bInstance?.formAPart2bOrganigram}">
-                        %{--[<g:link controller="formAPart2bOrganigram" action="edit" params="['id': formAPart2bInstance.formAPart2bOrganigram.id, 'formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.edit.label"/></g:link>]--}%
-                      <img style="width:100%" src="${createLink(controller:'image', id:formAPart2bInstance?.formAPart2bOrganigram?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.form.FormAPart2bOrganigram',mime:'image/jpeg'])}"/>
-                      <br/>
+                        <g:link action="displayImage" target="_blank" params="['formAPart2bOrganigram.id': formAPart2bInstance.formAPart2bOrganigram.id]">${formAPart2bInstance.formAPart2bOrganigram.fileName}</g:link>
+                      %{--<img style="width:100%" src="${createLink(controller:'image', id:formAPart2bInstance?.formAPart2bOrganigram?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.form.FormAPart2bOrganigram',mime:'image/jpeg'])}"/>--}%
                   </g:if>
                   <g:else>
                       %{--[<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]--}%
                       <g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" />
-                      <br><br>
+
                   </g:else>
+                  <br/><br/>
               </div>
 
 

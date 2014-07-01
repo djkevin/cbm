@@ -84,16 +84,16 @@
                  value="${formAPart2bInstance?.summaryObjectivesContractor}"/></div>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance?.formAPart2bOrganigram, field: 'organisationalStructureDiagram', 'error')} required">
-    <label for="organisationalStructureDiagram">
+    <label for="formAPart2bOrganigram.organisationalStructureDiagram">
         <g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram"/>
         <span class="required-indicator">*</span>
     </label>
 
 </div>
-<!-- file upload -->
-<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram" value="${formAPart2bInstance?.formAPart2bOrganigram?.organisationalStructureDiagram }" />
+<!-- file upload - value is readonly and can only be set by user selecting a file -->
+<div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram" value="" />
     <g:if test = "${formAPart2bInstance?.formAPart2bOrganigram}">
-        <g:link action="displayImage" params="['formAPart2bOrganigram.id': formAPart2bInstance.formAPart2bOrganigram.id]">${formAPart2bInstance.formAPart2bOrganigram.fileName}</g:link>
+        <g:link action="displayImage" target="_blank" params="['formAPart2bOrganigram.id': formAPart2bInstance.formAPart2bOrganigram.id]">${formAPart2bInstance.formAPart2bOrganigram.fileName}</g:link>
     </g:if>
     <br/>
     <span class="instructions"><g:message code="formAPart2b.orgdiagram.format" /> </span>
