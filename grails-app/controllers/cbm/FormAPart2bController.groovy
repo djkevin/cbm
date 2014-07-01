@@ -62,9 +62,8 @@ class FormAPart2bController {
 
             if (uploadedFile.size > MAX_FILE_SIZE){
                 formAPart2bInstance.errors.reject("formAPart2b.image.size.error")
-            }
 
-            if (!okContentTypes.contains(uploadedFile.contentType)) {
+            } else if (!okContentTypes.contains(uploadedFile.contentType)) {
                 formAPart2bInstance.errors.reject("formAPart2b.image.type.error")
 
             }else {
@@ -132,9 +131,7 @@ class FormAPart2bController {
 
             if (uploadedFile.size > MAX_FILE_SIZE){
                 formAPart2bInstance.errors.reject("formAPart2b.image.size.error")
-            }
-
-            if (!okContentTypes.contains(uploadedFile.contentType)) {
+            } else if (!okContentTypes.contains(uploadedFile.contentType)) {
                 formAPart2bInstance.errors.reject("formAPart2b.image.type.error")
 
             }else {
