@@ -17,6 +17,16 @@ class Address {
     }
 
     String toString() {
-        "${street1}, ${street2}, ${town}, ${state}, ${postCode}"
+		/*
+        "${street1}, ${street2 ?: ""}, ${town ?: ""}, ${state ?:""}, ${postCode?:""}"
+        */
+		def ret=street1
+		
+		if (street2) ret += ", ${street2}"
+		if (town) ret+= ", ${town}"
+		if (state) ret+= ", ${state}"
+		if (postCode) ret += ", ${postCode}"
+		
+		return ret
     }
 }
