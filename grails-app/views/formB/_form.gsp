@@ -261,7 +261,10 @@
 		<g:message code="formB.additionalInfo.label" default="Additional Info" />
 		
 	</label>
-	<g:textArea class="wysiwyg" name="additionalInfo" cols="40" rows="5" maxlength="${formBInstance?.constraints?.additionalInfo?.maxSize}" value="${formBInstance?.additionalInfo}"/>
+    <div>
+        <g:textArea class="wysiwyg" name="additionalInfo" cols="40" rows="5" maxlength="${formBInstance?.constraints?.additionalInfo?.maxSize}" value="${formBInstance?.additionalInfo}"/>
+    </div>
+
 </div>
 
 <g:set var="formInstance" value="${formBInstance}"></g:set>

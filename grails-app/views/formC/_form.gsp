@@ -14,8 +14,9 @@
         <g:message code="formC.comments.label" default="Comments" />
         <span class="required-indicator">*</span>
     </label>
+    <div> <g:textArea class="wysiwyg" name="comments" cols="40" rows="5" maxlength="${formCInstance?.constraints?.comments?.maxSize}" value="${formCInstance?.comments}"/></div>
 </div>
-<div> <g:textArea class="wysiwyg" name="comments" cols="40" rows="5" maxlength="${formCInstance?.constraints?.comments?.maxSize}" value="${formCInstance?.comments}"/></div>
+
 
 
 <g:set var="formInstance" value="${formCInstance}"></g:set>

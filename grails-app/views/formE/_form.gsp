@@ -57,8 +57,11 @@
 <div class="fieldcontain ${hasErrors(bean: formEInstance, field: 'additionalComments', 'error')} ">
     <label for="additionalComments">
         <g:message code="formE.additionalComments.label" default="Additional Comments" />
+        <span class="required-indicator">*</span>
     </label>
-    <g:textArea class="wysiwyg" name="additionalComments" value="${formEInstance?.additionalComments}" maxlength="${formEInstance?.constraints?.additionalComments?.maxSize}"/>
+    <div>
+        <g:textArea class="wysiwyg" name="additionalComments" value="${formEInstance?.additionalComments}" maxlength="${formEInstance?.constraints?.additionalComments?.maxSize}"/>
+    </div>
 </div>
 <g:set var="formInstance" value="${formEInstance}"></g:set>
 <g:render template="../formStatus"/>

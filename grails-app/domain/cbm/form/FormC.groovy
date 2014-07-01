@@ -17,7 +17,9 @@ class FormC extends BaseForm {
     }
 
     String toString() {
-        return getSummary(stripHTML(comments)) + "..."
+        if (comments != null){
+            return getSummary(stripHTML(comments)) + "..."
+        }
     }
 
     String getSummary(String s){

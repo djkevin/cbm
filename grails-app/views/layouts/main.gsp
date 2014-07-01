@@ -73,6 +73,21 @@
 		
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		<g:javascript library="application"/>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            CKEDITOR.on('instanceReady', function (event) {
+                var textarea = $(event.editor.element.$)[0],
+                        element = $(event.editor.container.$)[0];
+
+               //All wsywig ckeditor textareas need to be nested inside fieldcontain div
+                if ($(element).parent().parent().hasClass('error')) {
+                    $(element).css({ border: '1px solid #cc0000' });
+                }
+            });
+        });
+    </script>
 		<r:layoutResources />
 	</body>
 </html>
