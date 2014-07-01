@@ -95,9 +95,12 @@
 </div>
 <!-- file upload - value is readonly and can only be set by user selecting a file -->
 <div><input type="file" id="formAPart2bOrganigram.organisationalStructureDiagram" name="organisationalStructureDiagram" value="" accept="image/*" />
+
+
     <g:if test = "${formAPart2bInstance?.formAPart2bOrganigram}">
         <g:link action="displayImage" target="_blank" params="['formAPart2bOrganigram.id': formAPart2bInstance.formAPart2bOrganigram.id]">${formAPart2bInstance.formAPart2bOrganigram.fileName}</g:link>
     </g:if>
+
     <br/>
     <span class="instructions"><g:message code="formAPart2b.orgdiagram.format" /> </span>
     %{--<g:else><g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" /></g:else>--}%
