@@ -32,8 +32,11 @@ class FormAPart2cController {
         Set<FormAPart2b> formAPart2bs = Report.get(reportId).formAPart2b
 
         FormAPart2c formAPart2c = new FormAPart2c(params)
-        if (!formAPart2bs){
-            formAPart2c.errors.reject("formAPart2c.no.program.message")
+        if (!formAPart2bs) {
+
+            flash.message = message(code: "formAPart2c.no.program.message", default: "No program created")
+            redirect controller: "report", action: "show", params: [id: reportId]
+            return
         }
 
 
