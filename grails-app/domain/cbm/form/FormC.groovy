@@ -23,6 +23,7 @@ class FormC extends BaseForm {
     }
 
     String getSummary(String s){
+		if (!s) return null
         def summary = s.length() > 20 ? s.substring(0, 20) : s
     }
 
