@@ -1,4 +1,4 @@
-<%@ page import="cbm.SecUserSecRole" %>
+<%@ page import="cbm.usermgt.SecUserSecRole" %>
 
 
 

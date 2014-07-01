@@ -1,4 +1,4 @@
-<%@ page import="cbm.User" %>
+<%@ page import="cbm.usermgt.User" %>
 
 
 
