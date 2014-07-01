@@ -1,4 +1,6 @@
+<%@ page import="cbm.report.Report" %>
 <%@ page import="cbm.admin.NationalContact" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,8 +13,13 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				%{--<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
+				<%-- li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li --%>
+				<%-- <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li --%>
+				<g:if test="${params?.report.id}">
+                    <li>
+                        <g:link class="list" controller="report" action="show" id="${params?.report.id}">${Report.get(params?.report.id).reportName}</g:link>
+                    </li>
+                </g:if>
 			</ul>
 		</div>
 		<div id="edit-nationalContact" class="content scaffold-edit" role="main">
