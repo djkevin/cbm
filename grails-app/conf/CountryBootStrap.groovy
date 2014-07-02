@@ -9,8 +9,9 @@ class CountryBootStrap {
 
 
         if (!cbm.admin.Country.count()) {
-            log.debug(" no countries in db currently")
-            String inputFile = "D:\\temp\\EFSRCA.txt"
+            log.debug(" no countries in db currently, loading from file...")
+
+            String inputFile = "fixtures/EFSRCA.txt"
 
             File f = new File(inputFile)
 
