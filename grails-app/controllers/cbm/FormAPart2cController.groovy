@@ -33,13 +33,16 @@ class FormAPart2cController {
         Set<FormAPart2b> formAPart2bs = report.formAPart2b
 
         FormAPart2c formAPart2c = new FormAPart2c(params)
-		FormAPart2c.report = report
+		//FormAPart2c.report = report
 		
         if (!formAPart2bs) {
 
             flash.message = message(code: "formAPart2c.no.program.message", default: "No program created")
             redirect controller: "report", action: "show", params: [id: reportId]
             return
+        }else{
+            //set default formAPart2b
+            formAPart2c.formAPart2b = formAPart2bs.first()
         }
 
         respond formAPart2c , model: [formAPart2bs:formAPart2bs]
@@ -51,9 +54,11 @@ class FormAPart2cController {
             notFound()
             return
         }
+        Report report = formAPart2cInstance.report
+        Set<FormAPart2b> formAPart2bs =  report.formAPart2b
 
         if (formAPart2cInstance.hasErrors()) {
-            respond formAPart2cInstance.errors, view:'create'
+            respond formAPart2cInstance.errors, view:'create' , model: [formAPart2bs:formAPart2bs]
             return
         }
 
