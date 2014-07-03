@@ -13,7 +13,7 @@
     //initialise all Jquery functions here, after DOM is fully constructed
     $(document).ready(function () {
 
-        // all checkboxex within list-formZero div
+        // all checkboxes within list-formZero div
         $("#list-formZero input:checkbox").change(function () {
             var name1 = $(this).attr("name");
 
@@ -33,7 +33,7 @@
                 if (arr[1] == "nothingNewToDeclare") {
                     $('[name="' + nothingToDeclare + '"]').attr('checked', false);
                 }
-            }else{
+            }/*else{
                 if (arr[1] == "nothingToDeclare") {
                     $('[name="' + nothingNewToDeclare + '"]').prop('checked', true);
                 }
@@ -42,8 +42,8 @@
                     $('[name="' + nothingToDeclare + '"]').prop('checked', true);
                     $('[name="' + yearOfLastDeclaration + '"]').val('');
                 }
+            } */
 
-            }
         });
     });
 
