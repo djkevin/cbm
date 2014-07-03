@@ -1,9 +1,13 @@
 <%@ defaultCodec="none" %>
 %{--FormAPart2c is a subform of FormAPart2B so it is printed from within the FormAPart2b print function--}%
 
-<h3><g:message code="formAPart2b.long.label" default="National biological defence Research and Development Programmes"/></h3>
-<br/>
-<h4><g:message code="formAPart2c.facilities" default="Facilities"/></h4><br/>
+<div class="box">
+    <h1><g:message code="formAPart2c.label" default="Form A Part 2(iii)"/> </h1>
+</div>
+<br/><br/>
+%{--<h3><g:message code="formAPart2b.long.label" default="National biological defence Research and Development Programmes"/></h3>--}%
+%{--<br/>--}%
+%{--<h4><g:message code="formAPart2c.facilities" default="Facilities"/></h4><br/>--}%
 
 <g:if test="${formAPart2cInstance?.facilityName}">
     <li class="fieldcontain">
