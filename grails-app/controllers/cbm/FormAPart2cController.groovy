@@ -1,9 +1,9 @@
 package cbm
 
+import cbm.form.FormAPart1a;
 import cbm.form.FormAPart2b
 import cbm.form.FormAPart2c
 import cbm.report.Report
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
@@ -29,16 +29,18 @@ class FormAPart2cController {
     def create() {
 
         def reportId = params.long('report.id')
-        Set<FormAPart2b> formAPart2bs = Report.get(reportId).formAPart2b
+		def report = Report.get(reportId)
+        Set<FormAPart2b> formAPart2bs = report.formAPart2b
 
         FormAPart2c formAPart2c = new FormAPart2c(params)
+		FormAPart2c.report = report
+		
         if (!formAPart2bs) {
 
             flash.message = message(code: "formAPart2c.no.program.message", default: "No program created")
             redirect controller: "report", action: "show", params: [id: reportId]
             return
         }
-
 
         respond formAPart2c , model: [formAPart2bs:formAPart2bs]
     }

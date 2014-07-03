@@ -16,8 +16,8 @@
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li>
-                    <g:link class="list" controller="report" action="show" id="${params.report?.id}">${Report.get(params.long('report.id')).reportName}</g:link>
+				<li>                    
+                    <g:link class="list" controller="report" action="show" id="${formAPart2cInstance?.report?.id}">${formAPart2cInstance?.report?.reportName}</g:link>
                 </li>
 			</ul>
 		</div>
