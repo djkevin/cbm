@@ -66,7 +66,7 @@ class FormAPart1aController {
     }
 
 	
-    private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, def formAPart1Instance) {
+    private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, FormAPart1a formAPart1Instance) {
 
         def containmentUnitIds = params.list('formAPart1ContainmentUnitId')
         def containmentUnitBioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
@@ -79,6 +79,7 @@ class FormAPart1aController {
 
         for (int i = 0; i < containmentUnitIds.size(); i++) {
             FormAPart1ContainmentUnit formAPart1ContainmentUnit
+
             if (containmentUnitIds[i] == '') {  //new containment unit
                 formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
             } else {
@@ -87,13 +88,24 @@ class FormAPart1aController {
             }
             formAPart1ContainmentUnit.bioSafetyLevel = containmentUnitBioSafetyLevels[i]
             formAPart1ContainmentUnit.unitType = containmentUnitUnitTypes[i]
-            formAPart1ContainmentUnit.unitSize = Integer.parseInt(containmentUnitUnitSize[i])
+
+            String unitSize = containmentUnitUnitSize[i].toString().trim()
+            if (unitSize.isInteger()) {
+                formAPart1ContainmentUnit.unitSize = unitSize.toInteger()
+            } else {
+                def a= new Object[1]
+                a[0] = unitSize
+                formAPart1Instance.errors.reject("formAPart1a.containment.unit.size.error",a, "Unit size error")
+            }
+
             formAPart1ContainmentUnit.comment = containmentUnitComments[i]
             formAPart1ContainmentUnit.facility = formAPart1Instance
 
-            //formAPart1ContainmentUnit.created = LocalDateTime.parse(containmentUnitCreateDates[i], DateTimeFormat.forPattern("HH:mm:ss.SSS"))
-			formAPart1ContainmentUnit.created = new SimpleDateFormat(FormService.TIMESTAMP_FORMAT).parse(containmentUnitCreateDates[i]);
-            results.add(formAPart1ContainmentUnit)
+            formAPart1ContainmentUnit.created = new SimpleDateFormat(FormService.TIMESTAMP_FORMAT).parse(containmentUnitCreateDates[i]);
+
+            if (unitSize.isInteger()){  //TODO change to generic error checking at row level
+                results.add(formAPart1ContainmentUnit)
+            }
         }
         return results
     }
