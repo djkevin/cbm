@@ -232,6 +232,7 @@
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.scientificDisciplines.label" default="scientific disciplines" />
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textArea class="longTextMed" name="scientificDisciplines" maxlength="${formAPart2cInstance?.constraints?.scientificDisciplines?.maxSize}" required="" >${formAPart2cInstance?.scientificDisciplines}</g:textArea>
 </div>
@@ -239,6 +240,7 @@
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.contractors.label" default="contractors" />
+        <span class="required-indicator">*</span>
 	</label>
 	<span class="property-value" >
 		<g:textField name="contractors" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'contractors')}"/>
@@ -248,6 +250,7 @@
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.fundingSources.label" default="funding sources" />
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textArea class="longTextMed" name="fundingSources" maxlength="${formAPart2cInstance?.constraints?.fundingSources?.maxSize}" required="" >${formAPart2cInstance?.fundingSources}</g:textArea>
 </div>
@@ -293,6 +296,7 @@
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.publicationPolicy.label" default="publication policy" />
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textArea class="longTextMed" name="publicationPolicy" maxlength="${formAPart2cInstance?.constraints?.publicationPolicy?.maxSize}" required="" >${formAPart2cInstance?.publicationPolicy}</g:textArea>
 </div>	
@@ -300,6 +304,7 @@
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.publicPapers.label" default="public papers" />
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textArea class="longTextMed" name="publicPapers" maxlength="${formAPart2cInstance?.constraints?.publicPapers?.maxSize}" required="" >${formAPart2cInstance?.publicPapers}</g:textArea>
 </div>	
@@ -307,6 +312,7 @@
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.bioDefenseWork.label" default="bio defense work" />
+        <span class="required-indicator">*</span>
 	</label>
 	<g:textArea class="longTextMed" name="bioDefenseWork" maxlength="${formAPart2cInstance?.constraints?.bioDefenseWork?.maxSize}" required="" >${formAPart2cInstance?.bioDefenseWork}</g:textArea>
 </div>

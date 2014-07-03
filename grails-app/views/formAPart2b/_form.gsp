@@ -89,7 +89,6 @@
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance?.formAPart2bOrganigram, field: 'organisationalStructureDiagram', 'error')} required">
     <label for="formAPart2bOrganigram.organisationalStructureDiagram">
         <g:message code="formAPart2b.organisationalStructureDiagram.label" default="Organisational Structure Diagram"/>
-        <span class="required-indicator">*</span>
     </label>
 
 </div>
