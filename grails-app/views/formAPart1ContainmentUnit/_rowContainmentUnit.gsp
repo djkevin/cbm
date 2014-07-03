@@ -25,7 +25,7 @@
             <g:field name="formAPart1ContainmentUnit.unitSize" class="number" type="number"
                      value="${formAPart1ContainmentUnitInstance.unitSize}" required=""/>
         </td>
-        <td width="50%">
+        <td width="45%">
             <g:textField name="formAPart1ContainmentUnit.comment" class="longText"
                          maxlength="${formAPart1ContainmentUnitInstance?.constraints?.comment?.maxSize}"
                          value="${formAPart1ContainmentUnitInstance?.comment}"/>
