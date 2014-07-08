@@ -120,7 +120,7 @@
 </h4>
 <li>
     <span class="property-value" aria-labelledby="scientificDisciplines-label">
-        <g:fieldValue bean="${formAPart2cInstance}" field="scientificDisciplines"/>
+        ${formAPart2cInstance.scientificDisciplines}
     </span>
 </li>
 
@@ -139,9 +139,7 @@
     <g:message code="formAPart2c.fundingSources.label" default="funding Sources" />
 </h4>
 <li>
-    <span class="property-value" aria-labelledby="fundingSources-label">
-        <g:fieldValue bean="${formAPart2cInstance}" field="fundingSources"/>
-    </span>
+    <span class="property-value" aria-labelledby="fundingSources-label">${formAPart2cInstance.fundingSources}</span>
 </li>
 
 <br/>
@@ -172,9 +170,7 @@
     <g:message code="formAPart2c.publicationPolicy.label" default="publication Policy" />
 </h4>
 <li>
-    <span class="property-value" aria-labelledby="publicationPolicy-label">
-        <g:fieldValue bean="${formAPart2cInstance}" field="publicationPolicy"/>
-    </span>
+    <span class="property-value" aria-labelledby="publicationPolicy-label">${formAPart2cInstance.publicationPolicy}</span>
 </li>
 
 <br/>
@@ -182,9 +178,7 @@
     <g:message code="formAPart2c.publicPapers.label" default="public Papers" />
 </h4>
 <li>
-    <span class="property-value" aria-labelledby="publicPapers-label">
-        <g:fieldValue bean="${formAPart2cInstance}" field="publicPapers"/>
-    </span>
+    <span class="property-value" aria-labelledby="publicPapers-label">${formAPart2cInstance.publicPapers}</span>
 </li>
 
 <br/>
@@ -192,9 +186,7 @@
     <g:message code="formAPart2c.bioDefenseWork.label" default="bio Defense Work" />
 </h4>
 <li>
-    <span class="property-value" aria-labelledby="bioDefenseWork-label">
-        <g:fieldValue bean="${formAPart2cInstance}" field="bioDefenseWork"/>
-    </span>
+    <span class="property-value" aria-labelledby="bioDefenseWork-label">${formAPart2cInstance.bioDefenseWork}</span>
 </li>
 
 <br/><br/>%{--to allow gap when multi-page print--}%

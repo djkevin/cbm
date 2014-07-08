@@ -23,8 +23,8 @@
         <g:message code="formAPart2b.objectives.label" default="Objectives"/>
         <span class="required-indicator">*</span>
     </label>
-    <div><g:textArea class="wysiwyg" name="objectives" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.objectives?.maxSize}" required=""
-                     value="${formAPart2bInstance?.objectives}"/></div>
+    <g:textArea class="wysiwyg" name="objectives" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.objectives?.maxSize}" required=""
+                     value="${formAPart2bInstance?.objectives}"/>
 </div>
 
 
@@ -71,8 +71,8 @@
         <g:message code="formAPart2b.proportionContracted.label" default="Proportion Contracted"/>
         <span class="required-indicator">*</span>
     </label>
-    <div><g:textArea class="wysiwyg" name="proportionContracted" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.proportionContracted?.maxSize}" required=""
-                     value="${formAPart2bInstance?.proportionContracted}"/></div>
+    <g:textArea class="wysiwyg" name="proportionContracted" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.proportionContracted?.maxSize}" required=""
+                     value="${formAPart2bInstance?.proportionContracted}"/>
 </div>
 
 
@@ -81,8 +81,8 @@
         <g:message code="formAPart2b.summaryObjectivesContractor.label" default="Summary Objectives Contractor"/>
         <span class="required-indicator">*</span>
     </label>
-    <div><g:textArea class="wysiwyg" name="summaryObjectivesContractor" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.summaryObjectivesContractor?.maxSize}" required=""
-                     value="${formAPart2bInstance?.summaryObjectivesContractor}"/></div>
+    <g:textArea class="wysiwyg" name="summaryObjectivesContractor" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.summaryObjectivesContractor?.maxSize}" required=""
+                     value="${formAPart2bInstance?.summaryObjectivesContractor}"/>
 </div>
 
 
@@ -112,8 +112,8 @@
         <g:message code="formAPart2b.declaration.label" default="Declaration"/>
         <span class="required-indicator">*</span>
     </label>
-    <div><g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.declaration?.maxSize}" required=""
-                     value="${formAPart2bInstance?.declaration}"/></div>
+    <g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.declaration?.maxSize}" required=""
+                     value="${formAPart2bInstance?.declaration}"/>
 </div>
 
 

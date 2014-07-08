@@ -38,17 +38,18 @@
 		<g:message code="formB.timeOfOutbreak.label" default="Time Of Outbreak" />
 		
 	</label>
+    <div>
+        <g:textArea class="wysiwyg" name="timeOfOutbreak" cols="40" rows="5" maxlength="${formBInstance?.constraints?.timeOfOutbreak?.maxSize}" value="${formBInstance?.timeOfOutbreak}"/>
+    </div>
 </div>
-<div>
-	<g:textArea class="longTextMed" name="timeOfOutbreak" cols="40" rows="5" maxlength="${formBInstance?.constraints?.timeOfOutbreak?.maxSize}" value="${formBInstance?.timeOfOutbreak}"/>
-</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'locationAffected', 'error')} ">
 	<label for="locationAffected" >
 		<g:message code="formB.locationAffected.label" default="Location Affected" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="locationAffected" cols="40" rows="5" maxlength="${formBInstance?.constraints?.locationAffected?.maxSize}" value="${formBInstance?.locationAffected}"/>
+	<g:textArea class="wysiwyg" name="locationAffected" cols="40" rows="5" maxlength="${formBInstance?.constraints?.locationAffected?.maxSize}" value="${formBInstance?.locationAffected}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'typeOfDisease', 'error')} ">
@@ -56,7 +57,7 @@
 		<g:message code="formB.typeOfDisease.label" default="Type Of Disease" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="typeOfDisease" cols="40" rows="5" maxlength="${formBInstance?.constraints?.typeOfDisease?.maxSize}" value="${formBInstance?.typeOfDisease}"/>
+	<g:textArea class="wysiwyg" name="typeOfDisease" cols="40" rows="5" maxlength="${formBInstance?.constraints?.typeOfDisease?.maxSize}" value="${formBInstance?.typeOfDisease}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'sourceOfDisease', 'error')} ">
@@ -64,7 +65,7 @@
 		<g:message code="formB.sourceOfDisease.label" default="Source of Disease" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="sourceOfDisease" cols="40" rows="5" maxlength="${formBInstance?.constraints?.sourceOfDisease?.maxSize}" value="${formBInstance?.sourceOfDisease}"/>
+	<g:textArea class="wysiwyg" name="sourceOfDisease" cols="40" rows="5" maxlength="${formBInstance?.constraints?.sourceOfDisease?.maxSize}" value="${formBInstance?.sourceOfDisease}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'possibleCause', 'error')} ">
@@ -72,7 +73,7 @@
 		<g:message code="formB.possibleCause.label" default="Possible Cause" />
 
 	</label>
-	<g:textArea class="longTextMed" name="possibleCause" cols="40" rows="5" maxlength="${formBInstance?.constraints?.possibleCause?.maxSize}" value="${formBInstance?.possibleCause}"/>
+	<g:textArea class="wysiwyg" name="possibleCause" cols="40" rows="5" maxlength="${formBInstance?.constraints?.possibleCause?.maxSize}" value="${formBInstance?.possibleCause}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'mainCharacteristics', 'error')} ">
@@ -80,7 +81,7 @@
 		<g:message code="formB.mainCharacteristics.label" default="Main Characteristics" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="mainCharacteristics" cols="40" rows="5" maxlength="${formBInstance?.constraints?.mainCharacteristics?.maxSize}" value="${formBInstance?.mainCharacteristics}"/>
+	<g:textArea class="wysiwyg" name="mainCharacteristics" cols="40" rows="5" maxlength="${formBInstance?.constraints?.mainCharacteristics?.maxSize}" value="${formBInstance?.mainCharacteristics}"/>
 </div>
 
 
@@ -221,7 +222,7 @@
 		<g:message code="formB.numOfPrimaryCases.label" default="Num Of Primary Cases" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="numOfPrimaryCases" cols="40" rows="5" maxlength="${formBInstance?.constraints?.numOfPrimaryCases?.maxSize}" value="${formBInstance?.numOfPrimaryCases}"/>
+	<g:textArea class="wysiwyg" name="numOfPrimaryCases" cols="40" rows="5" maxlength="${formBInstance?.constraints?.numOfPrimaryCases?.maxSize}" value="${formBInstance?.numOfPrimaryCases}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'numOfTotalCases', 'error')} ">
@@ -229,7 +230,7 @@
 		<g:message code="formB.numOfTotalCases.label" default="Num Of Total Cases" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="numOfTotalCases" cols="40" rows="5" maxlength="${formBInstance?.constraints?.numOfTotalCases?.maxSize}" value="${formBInstance?.numOfTotalCases}"/>
+	<g:textArea class="wysiwyg" name="numOfTotalCases" cols="40" rows="5" maxlength="${formBInstance?.constraints?.numOfTotalCases?.maxSize}" value="${formBInstance?.numOfTotalCases}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'numDeaths', 'error')} ">
@@ -237,7 +238,7 @@
 		<g:message code="formB.numDeaths.label" default="Num Deaths" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="numDeaths" cols="40" rows="5" maxlength="${formBInstance?.constraints?.numDeaths?.maxSize}" value="${formBInstance?.numDeaths}"/>
+	<g:textArea class="wysiwyg" name="numDeaths" cols="40" rows="5" maxlength="${formBInstance?.constraints?.numDeaths?.maxSize}" value="${formBInstance?.numDeaths}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'developmentOfOutbreak', 'error')} ">
@@ -245,7 +246,7 @@
 		<g:message code="formB.developmentOfOutbreak.label" default="Development Of Outbreak" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="developmentOfOutbreak" cols="40" rows="5" maxlength="${formBInstance?.constraints?.developmentOfOutbreak?.maxSize}" value="${formBInstance?.developmentOfOutbreak}"/>
+	<g:textArea class="wysiwyg" name="developmentOfOutbreak" cols="40" rows="5" maxlength="${formBInstance?.constraints?.developmentOfOutbreak?.maxSize}" value="${formBInstance?.developmentOfOutbreak}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'measuresTaken', 'error')} ">
@@ -253,7 +254,7 @@
 		<g:message code="formB.measuresTaken.label" default="Measures Taken" />
 		
 	</label>
-	<g:textArea class="longTextMed" name="measuresTaken" cols="40" rows="5" maxlength="${formBInstance?.constraints?.measuresTaken?.maxSize}" value="${formBInstance?.measuresTaken}"/>
+	<g:textArea class="wysiwyg" name="measuresTaken" cols="40" rows="5" maxlength="${formBInstance?.constraints?.measuresTaken?.maxSize}" value="${formBInstance?.measuresTaken}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'additionalInfo', 'error')} ">

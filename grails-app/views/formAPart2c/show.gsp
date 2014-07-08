@@ -1,5 +1,6 @@
 <%@ page import="cbm.form.FormAPart2c" %>
 <%@ page import="cbm.report.Report" %>
+<%@ defaultCodec="none" %>
 
 <!--  retrieve the Report object associated with this FormAPart2c object, because we need to use the report id and name. -->
 <g:set var="report" value="${formAPart2cInstance?.formAPart2b?.report}" />
@@ -186,9 +187,7 @@
 					<g:message code="formAPart2c.scientificDisciplines.label" default="scientific Disciplines" />		
 				</h4>
 				<li>
-					<span class="property-value" aria-labelledby="scientificDisciplines-label">
-						<g:fieldValue bean="${formAPart2cInstance}" field="scientificDisciplines"/>
-					</span>					
+					<span class="property-value" aria-labelledby="scientificDisciplines-label">${formAPart2cInstance.scientificDisciplines}</span>
 				</li>
 				
 				<br/>
@@ -206,9 +205,7 @@
 					<g:message code="formAPart2c.fundingSources.label" default="funding Sources" />		
 				</h4>
 				<li>
-					<span class="property-value" aria-labelledby="fundingSources-label">
-						<g:fieldValue bean="${formAPart2cInstance}" field="fundingSources"/>
-					</span>					
+					<span class="property-value" aria-labelledby="fundingSources-label">${formAPart2cInstance.fundingSources}</span>
 				</li>
 				
 				<br/>
@@ -239,9 +236,7 @@
 					<g:message code="formAPart2c.publicationPolicy.label" default="publication Policy" />		
 				</h4>
 				<li>
-					<span class="property-value" aria-labelledby="publicationPolicy-label">
-						<g:fieldValue bean="${formAPart2cInstance}" field="publicationPolicy"/>
-					</span>					
+					<span class="property-value" aria-labelledby="publicationPolicy-label">${formAPart2cInstance.publicationPolicy}</span>
 				</li>
 		
 		 		<br/>
@@ -249,9 +244,7 @@
 					<g:message code="formAPart2c.publicPapers.label" default="public Papers" />		
 				</h4>
 				<li>
-					<span class="property-value" aria-labelledby="publicPapers-label">
-						<g:fieldValue bean="${formAPart2cInstance}" field="publicPapers"/>
-					</span>					
+					<span class="property-value" aria-labelledby="publicPapers-label">${formAPart2cInstance.publicPapers}</span>
 				</li>
 		
 				<br/>
@@ -259,9 +252,7 @@
 					<g:message code="formAPart2c.bioDefenseWork.label" default="bio Defense Work" />		
 				</h4>
 				<li>
-					<span class="property-value" aria-labelledby="bioDefenseWork-label">
-						<g:fieldValue bean="${formAPart2cInstance}" field="bioDefenseWork"/>
-					</span>					
+					<span class="property-value" aria-labelledby="bioDefenseWork-label">${formAPart2cInstance.bioDefenseWork}</span>
 				</li>
 		
 				<g:set var="formInstance" value="${formAPart2cInstance}"></g:set>

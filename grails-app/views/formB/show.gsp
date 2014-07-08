@@ -64,8 +64,7 @@
                 <g:if test="${formBInstance?.timeOfOutbreak}">
                     <h4><g:message code="formB.timeOfOutbreak.label" default="Time Of Outbreak"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="timeOfOutbreak-label"><g:fieldValue
-                                bean="${formBInstance}" field="timeOfOutbreak"/></span>
+                        <span class="property-value" aria-labelledby="timeOfOutbreak-label">${formBInstance.timeOfOutbreak}</span>
                     </li>
                 </g:if>
                 <br/>
@@ -73,8 +72,7 @@
                 <g:if test="${formBInstance?.locationAffected}">
                     <h4><g:message code="formB.locationAffected.label" default="Location Affected"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="locationAffected-label"><g:fieldValue
-                                bean="${formBInstance}" field="locationAffected"/></span>
+                        <span class="property-value" aria-labelledby="locationAffected-label">${formBInstance.locationAffected}</span>
                     </li>
                     <br/>
                 </g:if>
@@ -83,8 +81,7 @@
                 <g:if test="${formBInstance?.typeOfDisease}">
                     <h4><g:message code="formB.typeOfDisease.label" default="Type Of Disease"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="typeOfDisease-label"><g:fieldValue
-                                bean="${formBInstance}" field="typeOfDisease"/></span>
+                        <span class="property-value" aria-labelledby="typeOfDisease-label">${formBInstance.typeOfDisease}</span>
                     </li>
                     <br/>
                 </g:if>
@@ -93,8 +90,7 @@
                 <g:if test="${formBInstance?.sourceOfDisease}">
                     <h4><g:message code="formB.sourceOfDisease.label" default="Source Of Disease"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="sourceOfDisease-label"><g:fieldValue
-                                bean="${formBInstance}" field="sourceOfDisease"/></span>
+                        <span class="property-value" aria-labelledby="sourceOfDisease-label">${formBInstance.sourceOfDisease}</span>
                     </li>
                     <br/>
                 </g:if>
@@ -103,8 +99,7 @@
                 <g:if test="${formBInstance?.possibleCause}">
                     <h4><g:message code="formB.possibleCause.label" default="Possible Cause"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="possibleCause-label"><g:fieldValue
-                                bean="${formBInstance}" field="possibleCause"/></span>
+                        <span class="property-value" aria-labelledby="possibleCause-label">${formBInstance.possibleCause}</span>
                     </li>
                     <br/>
                 </g:if>
@@ -113,8 +108,7 @@
                 <g:if test="${formBInstance?.mainCharacteristics}">
                     <h4><g:message code="formB.mainCharacteristics.label" default="Main Characteristics"/></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="mainCharacteristics-label"><g:fieldValue
-                                bean="${formBInstance}" field="mainCharacteristics"/></span>
+                        <span class="property-value" aria-labelledby="mainCharacteristics-label">${formBInstance.mainCharacteristics}</span>
                     </li>
                     <br/>
                 </g:if>
@@ -246,7 +240,7 @@
 				<g:if test="${formBInstance?.numOfPrimaryCases}">
                 <h4><g:message code="formB.numOfPrimaryCases.label" default="Num Of Primary Cases" /></h4>
 				<li>
-					<span class="property-value" aria-labelledby="numOfPrimaryCases-label"><g:fieldValue bean="${formBInstance}" field="numOfPrimaryCases"/></span>
+					<span class="property-value" aria-labelledby="numOfPrimaryCases-label">${formBInstance.numOfPrimaryCases}</span>
 				</li>
 				</g:if>
                 <br/>
@@ -254,7 +248,7 @@
 				<g:if test="${formBInstance?.numOfTotalCases}">
                 <h4><g:message code="formB.numOfTotalCases.label" default="Num Of Total Cases" /></h4>
 				<li>
-					<span class="property-value" aria-labelledby="numOfTotalCases-label"><g:fieldValue bean="${formBInstance}" field="numOfTotalCases"/></span>
+					<span class="property-value" aria-labelledby="numOfTotalCases-label">${formBInstance.numOfTotalCases}</span>
 				</li>
 				</g:if>
                 <br/>
@@ -262,7 +256,7 @@
 				<g:if test="${formBInstance?.numDeaths}">
                 <h4><g:message code="formB.numDeaths.label" default="Num Deaths" /></h4>
 				<li>
-				    <span class="property-value" aria-labelledby="numDeaths-label"><g:fieldValue bean="${formBInstance}" field="numDeaths"/></span>
+				    <span class="property-value" aria-labelledby="numDeaths-label">${formBInstance.numDeaths}</span>
 				</li>
 				</g:if>
                 <br/>
@@ -270,7 +264,7 @@
 				<g:if test="${formBInstance?.developmentOfOutbreak}">
                 <h4><g:message code="formB.developmentOfOutbreak.label" default="Development Of Outbreak" /></h4>
 				<li>
-					<span class="property-value" aria-labelledby="developmentOfOutbreak-label"><g:fieldValue bean="${formBInstance}" field="developmentOfOutbreak"/></span>
+					<span class="property-value" aria-labelledby="developmentOfOutbreak-label">${formBInstance.developmentOfOutbreak}</span>
 				</li>
 				</g:if>
                 <br/>
@@ -278,7 +272,7 @@
 				<g:if test="${formBInstance?.measuresTaken}">
                 <h4><g:message code="formB.measuresTaken.label" default="Measures Taken" /></h4>
 				<li>
-				    <span class="property-value" aria-labelledby="measuresTaken-label"><g:fieldValue bean="${formBInstance}" field="measuresTaken"/></span>
+				    <span class="property-value" aria-labelledby="measuresTaken-label">${formBInstance.measuresTaken}</span>
 				</li>
 				</g:if>
                 <br/>

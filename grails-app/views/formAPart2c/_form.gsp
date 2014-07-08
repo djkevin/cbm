@@ -229,12 +229,12 @@
 	</span>
 </div>
 
-<div class="fieldcontain property-label">
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'scientificDisciplines', 'error')} property-label">
 	<label>
 		<g:message code="formAPart2c.scientificDisciplines.label" default="scientific disciplines" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:textArea class="longTextMed" name="scientificDisciplines" maxlength="${formAPart2cInstance?.constraints?.scientificDisciplines?.maxSize}" required="" >${formAPart2cInstance?.scientificDisciplines}</g:textArea>
+    <g:textArea class="wysiwyg" name="scientificDisciplines" maxlength="${formAPart2cInstance?.constraints?.scientificDisciplines?.maxSize}" required="" >${formAPart2cInstance?.scientificDisciplines}</g:textArea>
 </div>
 
 <div class="fieldcontain property-label">
@@ -247,12 +247,12 @@
 	</span>
 </div>
 
-<div class="fieldcontain property-label">
+<div class="fieldcontain property-label ${hasErrors(bean: formAPart2cInstance, field: 'fundingSources', 'error')}">
 	<label>
 		<g:message code="formAPart2c.fundingSources.label" default="funding sources" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:textArea class="longTextMed" name="fundingSources" maxlength="${formAPart2cInstance?.constraints?.fundingSources?.maxSize}" required="" >${formAPart2cInstance?.fundingSources}</g:textArea>
+	<g:textArea class="wysiwyg" name="fundingSources" maxlength="${formAPart2cInstance?.constraints?.fundingSources?.maxSize}" required="" >${formAPart2cInstance?.fundingSources}</g:textArea>
 </div>
 	
 <div class="fieldcontain property-label">
@@ -293,28 +293,28 @@
 		
 		 
 		
-<div class="fieldcontain property-label">
+<div class="fieldcontain property-label ${hasErrors(bean: formAPart2cInstance, field: 'publicationPolicy', 'error')}">
 	<label>
 		<g:message code="formAPart2c.publicationPolicy.label" default="publication policy" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:textArea class="longTextMed" name="publicationPolicy" maxlength="${formAPart2cInstance?.constraints?.publicationPolicy?.maxSize}" required="" >${formAPart2cInstance?.publicationPolicy}</g:textArea>
+	<g:textArea class="wysiwyg" name="publicationPolicy" maxlength="${formAPart2cInstance?.constraints?.publicationPolicy?.maxSize}" required="" >${formAPart2cInstance?.publicationPolicy}</g:textArea>
 </div>	
 
-<div class="fieldcontain property-label">
+<div class="fieldcontain property-label ${hasErrors(bean: formAPart2cInstance, field: 'publicPapers', 'error')}">
 	<label>
 		<g:message code="formAPart2c.publicPapers.label" default="public papers" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:textArea class="longTextMed" name="publicPapers" maxlength="${formAPart2cInstance?.constraints?.publicPapers?.maxSize}" required="" >${formAPart2cInstance?.publicPapers}</g:textArea>
+	<g:textArea class="wysiwyg" name="publicPapers" maxlength="${formAPart2cInstance?.constraints?.publicPapers?.maxSize}" required="" >${formAPart2cInstance?.publicPapers}</g:textArea>
 </div>	
 
-<div class="fieldcontain property-label">
+<div class="fieldcontain property-label ${hasErrors(bean: formAPart2cInstance, field: 'bioDefenseWork', 'error')}">
 	<label>
 		<g:message code="formAPart2c.bioDefenseWork.label" default="bio defense work" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:textArea class="longTextMed" name="bioDefenseWork" maxlength="${formAPart2cInstance?.constraints?.bioDefenseWork?.maxSize}" required="" >${formAPart2cInstance?.bioDefenseWork}</g:textArea>
+	<g:textArea class="wysiwyg" name="bioDefenseWork" maxlength="${formAPart2cInstance?.constraints?.bioDefenseWork?.maxSize}" required="" >${formAPart2cInstance?.bioDefenseWork}</g:textArea>
 </div>
 		
 <g:set var="formInstance" value="${formAPart2cInstance}"></g:set>

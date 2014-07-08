@@ -82,7 +82,7 @@
                         element = $(event.editor.container.$)[0];
 
                //All wsywig ckeditor textareas need to be nested inside fieldcontain div
-                if ($(element).parent().parent().hasClass('error')) {
+                if ($(element).parent().parent().hasClass('error') || $(element).parent().hasClass('error') ) {
                     $(element).css({ border: '1px solid #cc0000' });
                 }
             });

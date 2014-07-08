@@ -149,7 +149,7 @@
 		<g:message code="formAPart1.scope.label" default="Scope" />
         <span class="required-indicator">*</span>
 	</label>
-    <div id="wysiwyg"><g:textArea  class="wysiwyg" name="scope" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.scope?.maxSize}" value="${formAPart1aInstance?.scope}" required=""/></div>
+    <g:textArea  class="wysiwyg" name="scope" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.scope?.maxSize}" value="${formAPart1aInstance?.scope}" required=""/>
 </div>
 
 
