@@ -61,7 +61,7 @@ class FormAPart2c extends BaseForm {
         fundDevelopment nullable: false, min: 0L
         fundTest nullable: false, min: 0L
         publicationPolicy maxSize: 2000, blank: true
-        publicPapers maxSize: 2000, blank: true
+        publicPapers maxSize: 50000, blank: true
         bioDefenseWork maxSize: 2000, blank: true
     }
 

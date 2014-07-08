@@ -48,8 +48,8 @@ class FormAPart2bSpec extends AbstractConstraintsSpec {
         null                || 'nullable'
         ''                  || 'blank'
         ' '                 || 'blank'
-        getLongString(5000) || 'valid'
-        getLongString(5001) || 'maxSize'
+        getLongString(50000) || 'valid'
+        getLongString(50001) || 'maxSize'
     }
 
     @Unroll("proportionContracted '#proportionContracted' should result in '#error'")
@@ -65,8 +65,8 @@ class FormAPart2bSpec extends AbstractConstraintsSpec {
         null                 || 'nullable'
         ''                   || 'blank'
         ' '                  || 'blank'
-        getLongString(5000)  || 'valid'
-        getLongString(5001)  || 'maxSize'
+        getLongString(50000)  || 'valid'
+        getLongString(50001)  || 'maxSize'
     }
 
     @Unroll("summaryObjectivesContractor '#summaryObjectivesContractor' should result in '#error'")
@@ -82,8 +82,8 @@ class FormAPart2bSpec extends AbstractConstraintsSpec {
         null                        || 'nullable'
         ''                          || 'blank'
         ' '                         || 'blank'
-        getLongString(5000)         || 'valid'
-        getLongString(5001)         || 'maxSize'
+        getLongString(50000)         || 'valid'
+        getLongString(50001)         || 'maxSize'
     }
 
     @Unroll("declaration '#declaration' should result in '#error'")
@@ -99,8 +99,8 @@ class FormAPart2bSpec extends AbstractConstraintsSpec {
         null                || 'nullable'
         ''                  || 'blank'
         ' '                 || 'blank'
-        getLongString(5000) || 'valid'
-        getLongString(5001) || 'maxSize'
+        getLongString(50000) || 'valid'
+        getLongString(50001) || 'maxSize'
     }
 
     @Unroll("value '#amount' should result in '#error'")
@@ -122,22 +122,22 @@ class FormAPart2bSpec extends AbstractConstraintsSpec {
         1000000000.01 | 'max' // more than max amount
     }
 
-    @Unroll("value '#organisationalStructureDiagram' should result in '#error'")
-    def "test formAPart2b organisationalStructureDiagram constraints"() {
-        when:
-        domain.organisationalStructureDiagram = organisationalStructureDiagram
-
-        then:
-        validateConstraints(domain, 'organisationalStructureDiagram', error)
-
-        where:
-        organisationalStructureDiagram | error
-        null                           | 'valid'
-        new byte[1024]                 | 'valid'
-//        new byte[5242880]                     | 'valid' //1024 * 1024 * 5 Commented because takes infinitely long
-//        new byte[5242881]              | 'max'//1024 * 1024 * 5+1
-
-    }
+//    @Unroll("value '#organisationalStructureDiagram' should result in '#error'")
+//    def "test formAPart2b organisationalStructureDiagram constraints"() {
+//        when:
+//        domain.organisationalStructureDiagram = organisationalStructureDiagram
+//
+//        then:
+//        validateConstraints(domain, 'organisationalStructureDiagram', error)
+//
+//        where:
+//        organisationalStructureDiagram | error
+//        null                           | 'valid'
+//        new byte[1024]                 | 'valid'
+////        new byte[5242880]                     | 'valid' //1024 * 1024 * 5 Commented because takes infinitely long
+////        new byte[5242881]              | 'max'//1024 * 1024 * 5+1
+//
+//    }
 
     @Unroll("source '#source' should result in '#error'")
     def "test formAPart2b source constraints"() {
@@ -149,8 +149,8 @@ class FormAPart2bSpec extends AbstractConstraintsSpec {
 
         where:
         source             || error
-        getLongString(500) || 'valid'
-        getLongString(501) || 'maxSize'
+        getLongString(5000) || 'valid'
+        getLongString(5001) || 'maxSize'
     }
 }
 
