@@ -207,7 +207,22 @@
                             </g:if>
                         </td>
                     </tr>
-					<tr class="odd">
+                    <tr class="odd">
+                        <td><g:message code="nationalContact.label" default="National Contact" /></td>
+                        <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
+                        <td  class="noTable">
+                            <g:each in="${reportInstance?.stateParty?.nationalContact}" var="f">
+                                <g:link controller="nationalContact" action="show" id="${f.id}" params="['report.id':reportInstance?.id]">${f ? f.encodeAsHTML():''}</g:link>,
+                            </g:each>
+                        </td>
+                        <td>
+                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id, 'report.id':reportInstance?.id]">
+                                <i class="fa fa-plus-square-o"></i>
+                                <g:message code="default.button.create.label"/>
+                            </g:link>
+                        </td>
+                    </tr>
+					<tr class="even">
 						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
@@ -226,7 +241,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="even">
+					<tr class="odd">
 						<td><g:message code="report.formAPart1b.label" default="Form A Part 1b" /></td>
 						<td>${reportInstance?.formAPart1b ? 1:0}</td>
 						<td>
@@ -249,7 +264,7 @@
                             </g:if>
 						</td>
 					</tr>
-					<tr class="odd">
+					<tr class="even">
 						<td><g:message code="report.formAPart2a.label" default="Form A Part 2a" /></td>
 						<td>${reportInstance?.formAPart2a ? 1:0}</td>
 		%{--				<td class="noTable">
@@ -275,7 +290,7 @@
                             </g:if>
 						</td>
 					</tr>
-                    <tr class="even">
+                    <tr class="odd">
                         <td><g:message code="report.formAPart2b.label" default="Form A Part 2b"/></td>
                         <td>${reportInstance?.formAPart2b?.size()}</td>
                         <td>
@@ -295,7 +310,7 @@
                             </g:link>
                         </td>
                     </tr>
-                    <tr class="odd">
+                    <tr class="even">
                         <td><g:message code="report.formAPart2c.label" default="Form A Part 2c"/></td>
                         <td>${reportInstance?.getFormAPart2cs()?.size()}</td>
                         <td>
@@ -321,7 +336,7 @@
                             </g:link>--}%
                         </td>
                     </tr>
-					<tr class="even">
+					<tr class="odd">
 						<td><g:message code="report.formB.label" default="Form B" /></td>
 						<td>${reportInstance?.formB?.size()}</td>
 						<td>
@@ -338,7 +353,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="odd">
+					<tr class="even">
 						<td><g:message code="report.formC.label" default="Form C" /></td>
 						<td>${reportInstance?.formC?.size()}</td>
 						<td>
@@ -355,7 +370,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="even">
+					<tr class="odd">
 						<td><g:message code="report.formE.label" default="Form E" /></td>
 						<td>${reportInstance?.formE?.size()}</td>
 						<td>
@@ -372,7 +387,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="odd">
+					<tr class="even">
 						<td><g:message code="report.formF.label" default="Form F" /></td>
 						<td>${reportInstance?.formF?.size()}</td>
 						<td>
@@ -389,7 +404,7 @@
                             </g:link>
 						</td>
 					</tr>
-					<tr class="even">
+					<tr class="odd">
 						<td><g:message code="report.formG.label" default="Form G" /></td>
 						<td>${reportInstance?.formG?.size()}</td>
 						<td>
@@ -406,21 +421,7 @@
                             </g:link>
 						</td>
 					</tr>
-                    <tr class="odd">
-                        <td><g:message code="nationalContact.label" default="National Contact" /></td>
-                        <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
-                        <td  class="noTable">
-                            <g:each in="${reportInstance?.stateParty?.nationalContact}" var="f">
-                                <g:link controller="nationalContact" action="show" id="${f.id}" params="['report.id':reportInstance?.id]">${f ? f.encodeAsHTML():''}</g:link>,
-                            </g:each>
-                        </td>
-                        <td>
-                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id, 'report.id':reportInstance?.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
-                        </td>
-                    </tr>
+
 
 				</tbody>
 			</table>
