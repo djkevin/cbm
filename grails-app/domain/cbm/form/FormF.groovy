@@ -25,23 +25,27 @@ class FormF extends BaseForm {
     }
 
     static pastOffensiveActivityValidator = { val ->
-        if (val?.pastBiologicalActivity == null){
+        if (val?.pastBiologicalActivity == null) {
             return 'formF.offensiveActivity.activity.notchecked.error'
-        }
-        if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
+        } else if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
             return 'formF.offensiveActivity.activity.empty.fields.error'
+        }  else if  (val.summaryOfRnDActivities.length() > 5000) {
+            return ['cbm.form.FormF.offensiveActivity.summaryOfRnDActivities.maxSize.error', 5000]
         }
     }
     static pastDefensiveActivityValidator = { val ->
-        if (val?.pastBiologicalActivity == null){
+        if (val?.pastBiologicalActivity == null) {
             return 'formF.defensiveActivity.activity.notchecked.error'
-        }
-        if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
+        } else if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
             return 'formF.defensiveActivity.activity.empty.fields.error'
+        } else if (val.summaryOfRnDActivities.length() > 5000) {
+            //TODO fetch from constraints e.g like offensiveActivity?.constraints?.summaryOfRnDActivities?.maxSize
+            return ['cbm.form.FormF.defensiveActivity.summaryOfRnDActivities.maxSize.error', 5000]
         }
+
     }
 
-    String toString(){
+    String toString() {
         return id
     }
 }

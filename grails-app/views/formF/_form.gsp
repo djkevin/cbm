@@ -47,7 +47,8 @@
         </label>
     </div>
     <div>
-        <g:textArea class="wysiwyg" name="offensiveActivity.summaryOfRnDActivities" cols="40" rows="5" maxlength="5000" value="${formFInstance?.offensiveActivity?.summaryOfRnDActivities}"/>
+        <g:textArea class="wysiwyg" name="offensiveActivity.summaryOfRnDActivities" cols="40" rows="5"
+                    maxlength="${formFInstance?.offensiveActivity?.constraints?.summaryOfRnDActivities?.maxSize}" value="${formFInstance?.offensiveActivity?.summaryOfRnDActivities}"/>
     </div>
 
 <!-- Defensive activities -->
@@ -79,7 +80,7 @@
 	</label>
 </div>
 <div>
-	<g:textArea class="wysiwyg" name="defensiveActivity.summaryOfRnDActivities" cols="40" rows="5" maxlength="5000" value="${formFInstance.defensiveActivity?.summaryOfRnDActivities}"/>
+	<g:textArea class="wysiwyg" name="defensiveActivity.summaryOfRnDActivities" cols="40" rows="5" maxlength="${formFInstance?.defensiveActivity?.constraints?.summaryOfRnDActivities?.maxSize}" value="${formFInstance.defensiveActivity?.summaryOfRnDActivities}"/>
 </div>
 
 <g:set var="formInstance" value="${formFInstance}"></g:set>

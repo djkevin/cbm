@@ -12,7 +12,7 @@ class PastBiologicalRnDActivity {
     static constraints = {
         pastBiologicalActivity()
         periodOfActivity maxSize: 250, blank: true, nullable: true
-        summaryOfRnDActivities maxSize: 5000, blank: true, nullable: true
+        summaryOfRnDActivities maxSize: 5000, blank: true, nullable: true  //TODO check formF validation if we change maxSize constraint
     }
 
     String toString() {
