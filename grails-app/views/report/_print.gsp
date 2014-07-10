@@ -41,7 +41,19 @@
     </div>
 </div>
 
+%{---------------------------------------------------------------------------- FORM ZERO  --------------------------------------------------------------------------}%
+<div class="A4portrait">
+<g:if test="${reportInstance.formZero}">
+
+    <g:set var="formZeroInstance" value="${reportInstance.formZero}"  />
+    <g:render template="../formZero/view"/>
+
+</g:if>
+</div>
+
+
 %{------------------------------------------------------------------------- FORM A PART 1A -------------------------------------------------------------------------}%
+<div class="A4portrait">
 <g:if test="${reportInstance.formAPart1}">
     <g:each in="${reportInstance.formAPart1}" var="f">
 
@@ -50,6 +62,7 @@
 
     </g:each>
 </g:if>
+</div>
 
 <br/><br/>
 %{------------------------------------------------------------------------- FORM A PART 1B -------------------------------------------------------------------------}%
@@ -135,17 +148,6 @@
 
     </g:each>
 </g:if>
-
-<br/><br/>
-%{---------------------------------------------------------------------------- FORM ZERO  --------------------------------------------------------------------------}%
-<g:if test="${reportInstance.formZero}">
-
-    <g:set var="formZeroInstance" value="${reportInstance.formZero}"  />
-    <g:render template="../formZero/view"/>
-
-</g:if>
-
-
 
 
 </body>

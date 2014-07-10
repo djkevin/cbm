@@ -207,3 +207,8 @@ td:last-child {
     padding: 10px;
     text-align: center;
 }
+
+div.A4portrait {
+    height:25cm;
+    /*width:19cm;*/
+}
