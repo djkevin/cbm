@@ -38,13 +38,10 @@ class FormEController {
     @Transactional
     def save(FormE formEInstance) {
         if (formEInstance == null) {
-            println "formE is null!!!"
+
             notFound()
             return
         }
-        println formEInstance.report
-        println formEInstance.additionalComments
-        println ("dev and means of delivery"+formEInstance.developmentAndMeansOfDelivery)
 
         if (formEInstance.hasErrors()) {
             respond formEInstance.errors, view:'create'

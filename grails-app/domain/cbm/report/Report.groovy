@@ -70,11 +70,6 @@ class Report {
                 return  true
             }
         }
-
- /*       formAPart1.each {it->
-            println " hasBSL report level: "+it?.hasBSL4()
-            if (it?.hasBSL4()) return true
-        }*/
         return false;
     }
 

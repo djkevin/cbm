@@ -39,9 +39,9 @@ class FormBController {
             respond formBInstance.errors, view:'create'
             return
         }
-        println("no errors, about to save...")
+
         formBInstance.save flush:true
-        println("after save")
+
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'formB.label', default: 'FormB'), formBInstance.id])

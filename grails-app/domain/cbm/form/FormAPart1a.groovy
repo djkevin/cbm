@@ -40,9 +40,6 @@ class FormAPart1a extends BaseForm {
             }
         }
         return false
-   /*     formAContainmentUnitList.each { it ->
-            println "equals: "+it.bioSafetyLevel.equalsIgnoreCase("BSL4")
-            return it.bioSafetyLevel.equalsIgnoreCase("BSL4")
-        }*/
+
     }
 }

@@ -96,7 +96,7 @@ class FormAPart1ContainmentUnitController {
             notFound()
             return
         }
-		println "in delete"
+
         formAPart1ContainmentUnitInstance.delete flush:true
 
         request.withFormat {
