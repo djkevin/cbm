@@ -29,6 +29,13 @@ class FormAPart2b extends BaseForm {
         return "${programName}"
     }
 
+    static mapping = {
+        objectives type: 'text'
+        proportionContracted type: 'text'
+        summaryObjectivesContractor type: 'text'
+        declaration type: 'text'
+    }
+
 
     static constraints = {
         programName blank: false, maxSize: 200

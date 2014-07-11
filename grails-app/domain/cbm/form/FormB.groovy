@@ -45,15 +45,20 @@ class FormB extends BaseForm {
 
     Report report
 
+    static  mapping = {
+        measuresTaken type: 'text'
+        additionalInfo type: 'text'
+    }
+
     static constraints = {
         eventName blank: false, maxSize: 50
         eventCategory inList: ["Human", "Plant", "Animal"]
         eventDate()  //TODO future date validator
-        timeOfOutbreak maxSize: 5000, nullable: true
-        locationAffected maxSize: 5000, nullable: true
-        typeOfDisease maxSize: 5000, nullable: true
-        sourceOfDisease maxSize: 5000, nullable: true
-        possibleCause maxSize: 5000, nullable: true
+        timeOfOutbreak maxSize: 500, nullable: true
+        locationAffected maxSize: 500, nullable: true
+        typeOfDisease maxSize: 500, nullable: true
+        sourceOfDisease maxSize: 500, nullable: true
+        possibleCause maxSize: 500, nullable: true
         mainCharacteristics maxSize: 5000, nullable: true
 //        detailedSymptoms maxSize: 500, nullable: true
         symptomRespiratory maxSize: 100, nullable: true
@@ -73,12 +78,12 @@ class FormB extends BaseForm {
         deviationAgentDiffToDiagnose maxSize: 100, nullable: true
         deviationPresenceOfUnusualVectors maxSize: 100, nullable: true
         deviationOther maxSize: 100, nullable: true
-        numOfPrimaryCases maxSize: 5000, nullable: true
-        numOfTotalCases maxSize: 5000, nullable: true
-        numDeaths maxSize: 5000, nullable: true
+        numOfPrimaryCases maxSize: 500, nullable: true
+        numOfTotalCases maxSize: 500, nullable: true
+        numDeaths maxSize: 500, nullable: true
         developmentOfOutbreak maxSize: 500, nullable: true
         measuresTaken maxSize: 5000, nullable: true
-        additionalInfo maxSize: 10000, nullable: true
+        additionalInfo maxSize: 5000, nullable: true
     }
 
     String toString() {

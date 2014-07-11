@@ -38,6 +38,9 @@ class FormAPart2c extends BaseForm {
     String publicPapers
     String bioDefenseWork
    // Report report
+    static mapping = {
+        publicPapers type: 'text'
+    }
 
     static transients = ['totalFloorArea', 'totalPersonnel','report']
 
