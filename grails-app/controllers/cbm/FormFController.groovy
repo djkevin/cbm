@@ -108,6 +108,8 @@ class FormFController {
     }
 
     def print(FormF formFInstance) {
+        def fileName = formFInstance.report.getReportName() + "_"+ formFInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formFInstance: formFInstance]
     }
 }

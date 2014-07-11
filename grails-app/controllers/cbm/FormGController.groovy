@@ -118,6 +118,8 @@ class FormGController {
     }
 
     def print(FormG formGInstance) {
+        def fileName = formGInstance.report.getReportName() + "_"+ formGInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formGInstance: formGInstance]
     }
 }

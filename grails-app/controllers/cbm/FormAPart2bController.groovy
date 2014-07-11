@@ -197,6 +197,8 @@ class FormAPart2bController {
 
     def print(FormAPart2b formAPart2bInstance) {
         // to force browser to download PDF, add parameter  filename: '<name>.pdf'
+        def fileName = formAPart2bInstance.report.getReportName() + "_"+ formAPart2bInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart2bInstance: formAPart2bInstance]
     }
 

@@ -133,6 +133,9 @@ class FormZeroController {
     }
 
     def print(FormZero formZeroInstance) {
+
+        def fileName = formZeroInstance.report.getReportName() + "_"+ formZeroInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formZeroInstance: formZeroInstance]
     }
 }

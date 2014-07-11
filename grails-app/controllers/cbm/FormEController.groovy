@@ -119,6 +119,8 @@ class FormEController {
     }
 
     def print(FormE formEInstance) {
+        def fileName = formEInstance.report.getReportName() + "_"+ formEInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formEInstance: formEInstance]
     }
 }

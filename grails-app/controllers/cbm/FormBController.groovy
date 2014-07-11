@@ -109,6 +109,8 @@ class FormBController {
     }
 
     def print(FormB formBInstance) {
+        def fileName = formBInstance.report.getReportName() + "_"+ formBInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formBInstance: formBInstance]
     }
 }

@@ -114,6 +114,9 @@ class FormAPart1bController {
     }
 
     def print(FormAPart1b formAPart1bInstance) {
+
+        def fileName = formAPart1bInstance.report.getReportName() + "_"+ formAPart1bInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart1bInstance: formAPart1bInstance]
     }
 }
