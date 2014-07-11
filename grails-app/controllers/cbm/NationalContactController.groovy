@@ -120,4 +120,11 @@ class NationalContactController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
+    def print(NationalContact nationalContactInstance) {
+
+        def fileName = nationalContactInstance.country.iso2+"_"+nationalContactInstance.lastName
+        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
+        renderPdf template: 'print', contentType: 'application/pdf', model: [nationalContactInstance: nationalContactInstance]
+    }
 }

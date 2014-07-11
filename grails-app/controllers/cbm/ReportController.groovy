@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.admin.NationalContact
 import cbm.form.FormAPart1a
 import cbm.report.Report
 import cbm.usermgt.SecUser
@@ -132,6 +133,8 @@ class ReportController {
         Set<FormAPart1a> formAPart1as = reportInstance.formAPart1
         response.setHeader("Content-Disposition", "attachment; filename="+reportInstance+".pdf")
 
-        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances: formAPart1as]
+        Set<NationalContact> nationalContacts = reportInstance.stateParty.nationalContact
+
+        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances: formAPart1as, nationalContacts:nationalContacts]
     }
 }

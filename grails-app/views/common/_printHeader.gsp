@@ -1,3 +1,4 @@
+<!-- Use the print header to print form objects, which implement BaseForm  -->
 <div class="table header">
     <div>
         <div>
@@ -17,8 +18,8 @@
         <div>
             <h1><g:message code="report.label"/> </h1>
             %{--TODO i18n labels--}%
-            <h2>${formInstance.report.stateParty}</h2>
-            <h3>${formInstance.title}</h3>
+            <h2>${formInstance?.report?.stateParty}</h2>
+            <h3>${formInstance?.title}</h3>
         </div>
     </div>
 </div>
