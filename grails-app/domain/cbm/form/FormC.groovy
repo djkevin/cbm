@@ -12,7 +12,7 @@ class FormC extends BaseForm {
     Report report
 
     static constraints = {
-        comments blank: false, maxSize: 5000
+        comments blank: false, maxSize: 10000
 
     }
 

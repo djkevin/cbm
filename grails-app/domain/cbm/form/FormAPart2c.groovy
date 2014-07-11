@@ -54,15 +54,15 @@ class FormAPart2c extends BaseForm {
         engineers nullable: false, min: 0
         technicians nullable: false, min: 0
         administrators nullable: false, min: 0
-        scientificDisciplines maxSize: 2000, blank: false
+        scientificDisciplines maxSize: 5000, blank: false
         contractors nullable: false, min: 0
-        fundingSources maxSize: 2000, blank: false
+        fundingSources maxSize: 5000, blank: false
         fundResearch nullable: false, min: 0L
         fundDevelopment nullable: false, min: 0L
         fundTest nullable: false, min: 0L
-        publicationPolicy maxSize: 2000, blank: true
-        publicPapers maxSize: 50000, blank: true
-        bioDefenseWork maxSize: 2000, blank: true
+        publicationPolicy maxSize: 5000, blank: true
+        publicPapers maxSize: 65000, blank: true
+        bioDefenseWork maxSize: 5000, blank: true
     }
 
     BigDecimal getTotalFloorArea() {

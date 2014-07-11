@@ -27,7 +27,7 @@ class FormAPart2cSpec extends AbstractConstraintsSpec {
 
         where:
         publicPapers         || error
-        getLongString(50000) || 'valid'
-        getLongString(50001) || 'maxSize'
+        getLongString(65000) || 'valid'
+        getLongString(65001) || 'maxSize'
     }
 }

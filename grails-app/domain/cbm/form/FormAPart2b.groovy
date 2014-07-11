@@ -32,12 +32,12 @@ class FormAPart2b extends BaseForm {
 
     static constraints = {
         programName blank: false, maxSize: 200
-        objectives blank: false, maxSize: 50000
+        objectives blank: false, maxSize: 65000
         conductedUnderContract()
-        proportionContracted blank: false, maxSize: 50000
-        summaryObjectivesContractor blank: false, maxSize: 50000
+        proportionContracted blank: false, maxSize: 65000
+        summaryObjectivesContractor blank: false, maxSize: 65000
        /* organisationalStructureDiagram nullable: true, size: 0..1024 * 1024 * 5 //5MB*/
-        declaration blank: false, maxSize: 50000
+        declaration blank: false, maxSize: 65000
         amount min: 0.01, max: 1000000000.00, scale: 2, blank: false
         source maxSize: 5000
         //formAPart2c nullable: true

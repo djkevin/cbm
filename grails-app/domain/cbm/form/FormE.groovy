@@ -20,7 +20,7 @@ class FormE extends BaseForm {
 
     static constraints = {
         //val maxSize: 2000, blank: false, nullable: false
-        additionalComments nullable: true, blank: true, maxSize: 2000, validator: { val, object ->
+        additionalComments nullable: true, blank: true, maxSize: 10000, validator: { val, object ->
             def err = true
             if (object.developmentAndMeansOfDelivery?.hasDeclaration() && (!val || val?.isEmpty())) {
                 err = 'formE.additionalComments.development.blank.error'
