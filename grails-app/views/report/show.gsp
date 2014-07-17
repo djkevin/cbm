@@ -141,7 +141,7 @@
                     if (numFormE > 0) deleteText += '${message(code: 'formE.label')}' + " : " + numFormE +'\n'
 
                     var numFormF = ${reportInstance?.formF?.size()}
-                    if (numFormF > 0) deleteText += '${message(code: 'formC.label')}' + " : " + numFormF +'\n'
+                    if (numFormF > 0) deleteText += '${message(code: 'formF.label')}' + " : " + numFormF +'\n'
 
                     var numFormG = ${reportInstance?.formG?.size()}
                     if (numFormG > 0) deleteText += '${message(code: 'formE.label')}' + " : " + numFormG +'\n'
