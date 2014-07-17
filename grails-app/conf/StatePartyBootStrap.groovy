@@ -29,6 +29,15 @@ class StatePartyBootStrap {
             }
 
             test {
+
+                if (!StateParty.count()){
+                    println "loading statePartyData with countries..."
+                    fixtureLoader.load("stateParties")
+                    print "done."
+                    println "loading adminData..."
+                    fixtureLoader.load("adminData")
+                    print "done."
+                }
                 //fixtureLoader.load("sampleData")
             }
         }
