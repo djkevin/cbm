@@ -29,7 +29,7 @@ class FormF extends BaseForm {
             return 'formF.offensiveActivity.activity.notchecked.error'
         } else if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
             return 'formF.offensiveActivity.activity.empty.fields.error'
-        }  else if  (val.summaryOfRnDActivities.length() > 10000) {
+        }  else if  (val.summaryOfRnDActivities?.length() > 10000) {
             return ['cbm.form.FormF.offensiveActivity.summaryOfRnDActivities.maxSize.error', 10000]
         }
     }
@@ -38,7 +38,7 @@ class FormF extends BaseForm {
             return 'formF.defensiveActivity.activity.notchecked.error'
         } else if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
             return 'formF.defensiveActivity.activity.empty.fields.error'
-        } else if (val.summaryOfRnDActivities.length() > 10000) {
+        } else if (val.summaryOfRnDActivities?.length() > 10000) {
             //TODO fetch from constraints e.g like offensiveActivity?.constraints?.summaryOfRnDActivities?.maxSize
             return ['cbm.form.FormF.defensiveActivity.summaryOfRnDActivities.maxSize.error', 10000]
         }
