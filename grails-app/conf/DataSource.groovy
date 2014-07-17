@@ -1,13 +1,12 @@
 dataSource {
     pooled = true
-/*  driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""*/
-//    logSql = true
+
+    //logSql = true
 
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
     username = "cbm"
+   // password = "kn8DEoGHCb6Ik9V"
     password = "cbm2014"
 }
 hibernate {
@@ -29,6 +28,7 @@ environments {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://icts-sdu-jdev:3306/testCBM"
+        //    url = "jdbc:mysql://icts-hisql1.unog.un.org/cbm"
 
             properties {
                 maxActive = -1
@@ -48,6 +48,7 @@ environments {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+//            url = "jdbc:mysql://icts-hisql1.unog.un.org/testCBM"
             properties {
                maxActive = -1
                minEvictableIdleTimeMillis=1800000
