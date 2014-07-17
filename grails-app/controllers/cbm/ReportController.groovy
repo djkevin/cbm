@@ -131,7 +131,8 @@ class ReportController {
     def print(Report reportInstance) {
 
         Set<FormAPart1a> formAPart1as = reportInstance.formAPart1
-        response.setHeader("Content-Disposition", "attachment; filename="+reportInstance+".pdf")
+
+        response.setHeader("Content-Disposition", "attachment; filename="+reportInstance.getReportName()+".pdf")
 
         Set<NationalContact> nationalContacts = reportInstance.stateParty.nationalContact
 
