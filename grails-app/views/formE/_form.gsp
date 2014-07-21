@@ -36,6 +36,7 @@
             <td><g:select name="exportsOfMicroOrganisms.otherMeasures" from="${formEInstance?.exportsOfMicroOrganisms?.constraints?.otherMeasures?.inList}" value="${formEInstance?.exportsOfMicroOrganisms?.otherMeasures}" valueMessagePrefix="formE.selection" /></td>
             <td><g:select name="exportsOfMicroOrganisms.amendedSinceLastYear" from="${formEInstance?.exportsOfMicroOrganisms?.constraints?.amendedSinceLastYear?.inList}" value="${formEInstance?.exportsOfMicroOrganisms?.amendedSinceLastYear}" valueMessagePrefix="formE.selection" /></td>
         </tr>
+
         <tr>
             <td><g:message code="formE.import.microorganism" default="Imports of micro-organisms and toxins" /></td>
             <td><g:select name="importsOfMicroOrganisms.legislation" from="${formEInstance?.importsOfMicroOrganisms?.constraints?.legislation?.inList}" value="${formEInstance?.importsOfMicroOrganisms?.legislation}" valueMessagePrefix="formE.selection" /></td>
@@ -57,7 +58,7 @@
 <div class="fieldcontain ${hasErrors(bean: formEInstance, field: 'additionalComments', 'error')} ">
     <label for="additionalComments">
         <g:message code="formE.additionalComments.label" default="Additional Comments" />
-        %{--<span class="required-indicator">*</span>--}%
+        <span class="required-indicator">*</span>
     </label>
     <div>
         <g:textArea class="wysiwyg" name="additionalComments" value="${formEInstance?.additionalComments}" maxlength="${formEInstance?.constraints?.additionalComments?.maxSize}"/>
