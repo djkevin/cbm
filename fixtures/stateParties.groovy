@@ -688,7 +688,7 @@ fixture {
         country = Country.findByIso3('ZWE')
         accessionRatification = new LocalDate("1990-11-05").toDate()
     }
-
+   /*
      user1(User) {
         username = "afg"
         password = "AFG123"
@@ -758,12 +758,12 @@ fixture {
         username = "blr"
         password = "BLR123"
         stateParty = [sp14]
-    }
+    }   */
     user15(User) {
         username = "bel"
-        password = "BEL123"
+        password = "Sunning Bushings"
         stateParty = [sp15]
-    }
+    }  /*
     user16(User) {
         username = "blz"
         password = "BLZ123"
@@ -1293,7 +1293,7 @@ fixture {
         username = "mda"
         password = "MDA123"
         stateParty = [sp121]
-    }*/
+    }*/     /*
     user122(User) {
         username = "rou"
         password = "ROU123"
@@ -1408,17 +1408,17 @@ fixture {
         username = "swz"
         password = "SWZ123"
         stateParty = [sp144]
-    }
+    }  */
     user145(User) {
         username = "swe"
-        password = "SWE123"
+        password = "Rationalizing Trustfulness"
         stateParty = [sp145]
     }
     user146(User) {
         username = "che"
-        password = "CHE123"
+        password = "Capitalising Immunology"
         stateParty = [sp146]
-    }
+    }     /*
     user147(User) {
         username = "tjk"
         password = "TJK123"
@@ -1483,22 +1483,22 @@ fixture {
         username = "are"
         password = "ARE123"
         stateParty = [sp159]
-    }
+    }  */
     user160(User) {
         username = "gbr"
-        password = "GBR123"
+        password = "Compared Jacaranda"
         stateParty = [sp160]
     }
     user161(User) {
         username = "usa"
-        password = "USA123"
+        password = "Kickstarting Limerick"
         stateParty = [sp161]
     }
     user162(User) {
         username = "ury"
-        password = "URY123"
+        password = "Imagined Warranties"
         stateParty = [sp162]
-    }
+    } /*
     user163(User) {
         username = "uzb"
         password = "UZB123"
@@ -1548,8 +1548,8 @@ fixture {
         secRole = roleUser
     }
 
-    userRoleMAL(SecUserSecRole) {
-        secUser = user90
+    userRole162(SecUserSecRole) {
+        secUser = user162
         secRole = roleUser
     }
     userRoleBEL(SecUserSecRole) {
