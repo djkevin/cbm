@@ -2,6 +2,8 @@ import cbm.admin.StateParty
 
 class StatePartyBootStrap {
 
+    // Loaded after CountryBootstrap so that each State Party can be associated to a Country
+
     def fixtureLoader
 
     def init = { servletContext ->

@@ -1,5 +1,5 @@
 import cbm.admin.Country
-import org.apache.commons.lang.StringUtils
+import org.springframework.util.StringUtils
 
 class CountryBootStrap {
 
@@ -7,18 +7,17 @@ class CountryBootStrap {
     def init = { servletContext ->
         println "Running init CountryBootStrap..."
 
-
         if (!cbm.admin.Country.count()) {
-            log.debug(" no countries in db currently, loading from file...")
+            log.info " no countries in db currently, loading from file..."
 
-            String inputFile = "/var/tmp/EFSRCA.txt"  //TODO move this
-          // String inputFile = "D:\\temp\\fixtures\\EFSRCA.txt"
-
-            File f = new File(inputFile)
+            // Refer to http://groovy.codehaus.org/api/groovy/util/CharsetToolkit.html to get the correct charset
+            // data/countries relative to  conf directory
+            Reader reader = new InputStreamReader(getClass().getResourceAsStream('data/countries.txt'), "UTF-16LE")
 
             def lineNum = 0
-            f.eachLine {
-                if(lineNum>0){
+
+            reader.eachLine {
+                if (lineNum > 0) {
 
                     def origLine = it.toString()
                     //Cleanup articles, special chars
@@ -33,12 +32,12 @@ class CountryBootStrap {
                             .replaceAll(~/\(las\)/, '')
                             .replaceAll(~/\(el\)/, '')
                             .replaceAll(~/\(l'\)/, '')
-                            .replaceAll(~/\*/,'')
+                            .replaceAll(~/\*/, '')
 
                     def cols = cleanedLine.split(',')
 
-                    if (cols.size()!=14){
-                        println "orig: "+origLine
+                    if (cols.size() != 14) {
+                        println "orig: " + origLine
                         println "clean: " + cleanedLine
                         println "---------------------------------------------------------------------------------------------------------------"
                     }
@@ -59,19 +58,20 @@ class CountryBootStrap {
                             formalNameCh: cols[12].trim(),
                             formalNameAr: cols[13].trim()
                     ).save(flush: true)
-                   /* println "---------------------------------------------------------------------------------------------------------------"*/
+                    //println "---------------------------------------------------------------------------------------------------------------"
                 }
 
                 lineNum++
             }
 
         }
-        println " done loading Countries..."
+
+        log.info " done loading Countries..."
 
     }
 
     def destroy = {
-        println "Running destroy CountryBootStrap"
+        log.info "Running destroy CountryBootStrap"
 
     }
 }
