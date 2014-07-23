@@ -11,6 +11,8 @@ class BootStrap {
     def init = { servletContext ->
 		
 		println "running bootstrap init..."
+
+        // Bootstraps are loaded in alpabetical order, so Bootstrap.groovy is first, then CountryBootStrap, then StatePartyBootstrap
 			
 		environments{
 			development {
