@@ -21,13 +21,13 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:mysql://icts-sdu-jdev:3306/devCBM"
+            url = "jdbc:mysql://icts-sdu-jdev2:3306/devCBM"
         }
     }
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://icts-sdu-jdev:3306/testCBM"
+            url = "jdbc:mysql://icts-sdu-jdev2:3306/testCBM"
         //    url = "jdbc:mysql://icts-hisql1.unog.un.org/cbm"
 
             properties {
