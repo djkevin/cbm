@@ -192,14 +192,14 @@
                             <g:link controller="formZero" action="show" id="${reportInstance?.formZero?.id}">${reportInstance?.formZero?.encodeAsHTML()}</g:link>
                         </td>--}%
                         <td>
-                            <g:if test="${reportInstance?.formZero != null}">
+                            <g:if test="${reportInstance?.formZero}">
                                 <g:set var="forms" value="${reportInstance?.formZero}"></g:set>
                                 <g:set var="controller" value="formZero"/>
                                 <g:render template="../formDetail"/>
                             </g:if>
                         </td>
                         <td>
-                            <g:if test="${reportInstance?.formZero == null}">
+                            <g:if test="${!reportInstance?.formZero}">
                                 <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]">
                                     <i class="fa fa-plus-square-o"></i>
                                     <g:message code="default.button.create.label"/>
@@ -226,7 +226,7 @@
 						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
-                            <g:if test="${reportInstance?.formAPart1 != null}">
+                            <g:if test="${!reportInstance?.formAPart1}">
                                 <g:set var="forms" value="${reportInstance?.formAPart1}"></g:set>
                                 <g:set var="controller" value="formAPart1a"/>
                                 <g:set var="customTitle" value="${message(code: 'formAPart1.facilityName', default: 'Facility Name')}" />
@@ -245,7 +245,7 @@
 						<td><g:message code="report.formAPart1b.label" default="Form A Part 1b" /></td>
 						<td>${reportInstance?.formAPart1b ? 1:0}</td>
 						<td>
-                        <g:if test="${reportInstance?.formAPart1b != null}">
+                        <g:if test="${reportInstance?.formAPart1b}">
                             <g:set var="forms" value="${reportInstance?.formAPart1b}"></g:set>
                             <g:set var="controller" value="formAPart1b"/>
                             <g:render template="../formDetail"/>
@@ -256,7 +256,7 @@
 							%{--<g:link controller="formAPart1b" action="show" id="${reportInstance?.formAPart1b?.id}">${reportInstance?.formAPart1b?.encodeAsHTML()}</g:link>--}%
 						%{--</td>--}%
 						<td>
-                            <g:if test="${reportInstance?.formAPart1b == null}">
+                            <g:if test="${!reportInstance?.formAPart1b}">
 							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]">
                                 <i class="fa fa-plus-square-o"></i>
                                 <g:message code="default.button.create.label"/>
@@ -267,22 +267,15 @@
 					<tr class="even">
 						<td><g:message code="report.formAPart2a.label" default="Form A Part 2a" /></td>
 						<td>${reportInstance?.formAPart2a ? 1:0}</td>
-		%{--				<td class="noTable">
-                            <g:if test ="${reportInstance.formAPart2a}">
-                                <g:link controller="formAPart2a" action="show" id="${reportInstance?.formAPart2a?.id}">
-                                    <g:message code="formaAPar2a.existingProgrammes"/><g:formatBoolean boolean="${reportInstance?.formAPart2a?.existingNationalProgrammes}" />
-                                </g:link>
-                            </g:if>
-						</td>--}%
                         <td>
-                            <g:if test="${reportInstance?.formAPart2a != null}">
+                            <g:if test="${reportInstance?.formAPart2a}">
                                 <g:set var="forms" value="${reportInstance?.formAPart2a}"></g:set>
                                 <g:set var="controller" value="formAPart2a"/>
                                 <g:render template="../formDetail"/>
                             </g:if>
                         </td>
 						<td>
-                            <g:if test="${reportInstance?.formAPart2a == null}">
+                            <g:if test="${!reportInstance?.formAPart2a}">
                                 <g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]">
                                     <i class="fa fa-plus-square-o"></i>
                                     <g:message code="default.button.create.label"/>
@@ -294,14 +287,13 @@
                         <td><g:message code="report.formAPart2b.label" default="Form A Part 2b"/></td>
                         <td>${reportInstance?.formAPart2b?.size()}</td>
                         <td>
-                            <g:if test="${reportInstance?.formAPart2b != null}">
+                            <g:if test="${reportInstance?.formAPart2b}">
                                 <g:set var="forms" value="${reportInstance?.formAPart2b}"></g:set>
                                 <g:set var="controller" value="formAPart2b"/>
                                 <g:set var="customTitle" value="${message(code: 'formAPart2b.programme', default: 'Programme')}" />
                                 <g:render template="../formDetail"/>
                                 <g:set var="customTitle" value="${null}" /> <!--reset the value-->
                             </g:if>
-
                         </td>
                         <td>
                             <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]">
@@ -314,13 +306,13 @@
                         <td><g:message code="report.formAPart2c.label" default="Form A Part 2c"/></td>
                         <td>${reportInstance?.getFormAPart2cs()?.size()}</td>
                         <td>
-                            <g:if test="${reportInstance?.getFormAPart2cs() != null}">
+                            <g:if test="${reportInstance?.getFormAPart2cs()}">
                                 <g:set var="forms" value="${reportInstance?.getFormAPart2cs()}"></g:set>
                                 <g:set var="controller" value="formAPart2c"/>
                                 <g:render template="../formDetail"/>
                             </g:if>
                             <g:else>
-                                <span class="italics">
+                                <span class="instructions">
                                     <g:message code="report.formAPart2c.create.message" default="Please create a Form A Part 2b"/>
                                 </span>
                             </g:else>
@@ -330,21 +322,22 @@
                                 <i class="fa fa-plus-square-o"></i>
                                 <g:message code="default.button.create.label"/>
                             </g:link>
-                 %{--           <g:link onclick="alert('${message(code: 'formAPart2c.create.from.FormAPart2b.message', default: 'Form A Part 2(iii) can only be created from within a Programme (Form A Part 2(ii))')}');return false;" >
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>--}%
                         </td>
                     </tr>
 					<tr class="odd">
 						<td><g:message code="report.formB.label" default="Form B" /></td>
 						<td>${reportInstance?.formB?.size()}</td>
 						<td>
-                            <g:if test="${reportInstance?.formB != null}">
+                            <g:if test="${reportInstance?.formB}">
                                 <g:set var="forms" value="${reportInstance?.formB}"></g:set>
                                 <g:set var="controller" value="formB"/>
                                 <g:render template="../formDetail"/>
                             </g:if>
+                            <g:else>
+                                <span class="instructions">
+                                    <g:message code="report.formB.no.outbreak" default="No outbreak that seemingly deviates from the normal pattern"/>
+                                </span>
+                            </g:else>
 						</td>
 						<td>
 							<g:link controller="formB" action="create" params="['report.id': reportInstance.id]">
@@ -357,7 +350,7 @@
 						<td><g:message code="report.formC.label" default="Form C" /></td>
 						<td>${reportInstance?.formC?.size()}</td>
 						<td>
-                            <g:if test="${reportInstance?.formC != null}">
+                            <g:if test="${reportInstance?.formC}">
                                 <g:set var="forms" value="${reportInstance?.formC}"></g:set>
                                 <g:set var="controller" value="formC"/>
                                 <g:render template="../formDetail"/>
@@ -374,7 +367,7 @@
 						<td><g:message code="report.formE.label" default="Form E" /></td>
 						<td>${reportInstance?.formE?.size()}</td>
 						<td>
-                            <g:if test="${reportInstance?.formE != null}">
+                            <g:if test="${reportInstance?.formE}">
                                 <g:set var="forms" value="${reportInstance?.formE}"></g:set>
                                 <g:set var="controller" value="formE"/>
                                 <g:render template="../formDetail"/>
@@ -391,7 +384,7 @@
 						<td><g:message code="report.formF.label" default="Form F" /></td>
 						<td>${reportInstance?.formF?.size()}</td>
 						<td>
-                            <g:if test="${reportInstance?.formF != null}">
+                            <g:if test="${reportInstance?.formF}">
                                 <g:set var="forms" value="${reportInstance?.formF}"></g:set>
                                 <g:set var="controller" value="formF"/>
                                 <g:render template="../formDetail"/>
@@ -408,7 +401,7 @@
 						<td><g:message code="report.formG.label" default="Form G" /></td>
 						<td>${reportInstance?.formG?.size()}</td>
 						<td>
-                            <g:if test="${reportInstance?.formG != null}">
+                            <g:if test="${reportInstance?.formG}">
                                 <g:set var="forms" value="${reportInstance?.formG}"></g:set>
                                 <g:set var="controller" value="formG"/>
                                 <g:render template="../formDetail"/>
@@ -421,8 +414,6 @@
                             </g:link>
 						</td>
 					</tr>
-
-
 				</tbody>
 			</table>
 		</div>
