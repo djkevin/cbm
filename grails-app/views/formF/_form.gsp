@@ -15,7 +15,9 @@
 		<span class="required-indicator">*</span>
 	</label>
 
-	<g:datePicker name="entryIntoForceOfConvention" precision="day"  value="${formFInstance?.entryIntoForceOfConvention}"  />
+    <g:datePicker name="entryIntoForceOfConvention" precision="day" default="none"
+                  value="${formFInstance?.entryIntoForceOfConvention}"
+                  years="${formFInstance.constraints?.entryIntoForceOfConvention?.range}" noSelection="['': '--']"/>
 </div>
 <!-- Offensive activities -->
 <h1><g:message code="formF.offensiveActivity.label" default="Offensive Activity" /></h1>

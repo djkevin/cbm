@@ -3,6 +3,7 @@ package cbm.form
 import cbm.BaseForm
 import cbm.PastBiologicalRnDActivity
 import cbm.report.Report
+import org.joda.time.LocalDate
 
 class FormF extends BaseForm {
 
@@ -18,7 +19,7 @@ class FormF extends BaseForm {
 
 
     static constraints = {
-        entryIntoForceOfConvention()
+        entryIntoForceOfConvention range: new LocalDate().getYear()..1975
         offensiveActivity validator: pastOffensiveActivityValidator
         defensiveActivity validator: pastDefensiveActivityValidator
 
