@@ -1,6 +1,8 @@
 package cbm
 
 import cbm.admin.NationalContact
+import cbm.constants.PublicationStatus
+import cbm.constants.ReportStatus
 import cbm.form.FormAPart1a
 import cbm.report.Report
 import cbm.usermgt.SecUser
@@ -46,7 +48,10 @@ class ReportController {
     }
 
     def create() {
-        respond new Report(params)
+        Report report = new Report(params)
+        report.reportStatus = ReportStatus.DRAFT
+        report.publicationStatus = PublicationStatus.NOTPUBLISHED
+        respond report
     }
 
     @Transactional
