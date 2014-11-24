@@ -962,3 +962,23 @@ i[class^="icon-"]:before {
     color:#808080;
     font-style: italic;
 }
+
+.italics{
+    font-style: italic;
+    color:#808080;
+}
+
+
+hr{
+    border: 1px solid #eee
+}
+sup {
+    top: -0.5em;
+    color:#48802c;
+}
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
