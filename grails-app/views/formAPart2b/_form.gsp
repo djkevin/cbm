@@ -13,7 +13,7 @@
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'programName', 'error')} ">
     <label for="programName">
         <g:message code="formAPart2b.programName.label" default="Program Name"/>
-
+        <span class="required-indicator">*</span>
     </label>
 </div>
 <div><g:textField class="longText" name="programName" value="${formAPart2bInstance?.programName}"/></div>
@@ -37,7 +37,7 @@
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'source', 'error')} ">
     <label for="source">
         <g:message code="formAPart2b.source.label" default="Source" />
-
+        <span class="required-indicator">*</span>
     </label>
     <g:textArea class="longTextSml" name="source" value="${formAPart2bInstance?.source}" maxlength="${formAPart2bInstance?.constraints?.source?.maxSize}"/>
 </div>
