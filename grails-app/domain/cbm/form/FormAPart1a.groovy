@@ -14,6 +14,7 @@ class FormAPart1a extends BaseForm {
     String financingSources
     String scope
     Report report
+    Boolean declaredInAccordanceWithFormAPart2c
 
 
     String toString() {
