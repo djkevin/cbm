@@ -39,15 +39,17 @@ class FormZeroController {
         Report r = Report.findById(reportId)
 
         //new instances required to be able to access domain constraints from gsp
-        formZero.setFormAPart1(new DeclarationForm(nothingToDeclare: !r.formAPart1, nothingNewToDeclare: !r.formAPart1))
-        formZero.setFormAPart2a(new DeclarationForm(nothingToDeclare: !r.formAPart2a, nothingNewToDeclare: !r.formAPart2a))
-        formZero.setFormAPart2b(new DeclarationForm(nothingToDeclare: !r.formAPart2b, nothingNewToDeclare: !r.formAPart2b))
-        formZero.setFormAPart2c(new DeclarationForm(nothingToDeclare: !r.formAPart2b?.formAPart2c, nothingNewToDeclare: !r.formAPart2b?.formAPart2c))
-        formZero.setFormB(new DeclarationForm(nothingToDeclare: !r.formB, nothingNewToDeclare: !r.formB))
-        formZero.setFormC(new DeclarationForm(nothingToDeclare: !r.formC, nothingNewToDeclare: !r.formC))
-        formZero.setFormE(new DeclarationForm(nothingToDeclare: !r.formE, nothingNewToDeclare: !r.formE))
-        formZero.setFormF(new DeclarationForm(nothingToDeclare: !r.formF, nothingNewToDeclare: !r.formF))
-        formZero.setFormG(new DeclarationForm(nothingToDeclare: !r.formG, nothingNewToDeclare: !r.formG))
+        // Ticket 105 -  unchecked by default
+        formZero.setFormAPart1(new DeclarationForm(nothingToDeclare: r.formAPart1, nothingNewToDeclare: r.formAPart1))
+        formZero.setFormAPart2a(new DeclarationForm(nothingToDeclare: r.formAPart2a, nothingNewToDeclare: r.formAPart2a))
+        formZero.setFormAPart2b(new DeclarationForm(nothingToDeclare: r.formAPart2b, nothingNewToDeclare: r.formAPart2b))
+        formZero.setFormAPart2c(new DeclarationForm(nothingToDeclare: r.formAPart2b?.formAPart2c, nothingNewToDeclare: r.formAPart2b?.formAPart2c))
+        formZero.setFormB(new DeclarationForm(nothingToDeclare: r.formB, nothingNewToDeclare: r.formB))
+        formZero.setFormC(new DeclarationForm(nothingToDeclare: r.formC, nothingNewToDeclare: r.formC))
+        formZero.setFormE(new DeclarationForm(nothingToDeclare: r.formE, nothingNewToDeclare: r.formE))
+        formZero.setFormF(new DeclarationForm(nothingToDeclare: r.formF, nothingNewToDeclare: r.formF))
+        formZero.setFormG(new DeclarationForm(nothingToDeclare: r.formG, nothingNewToDeclare: r.formG))
+
 
         respond formZero
     }
