@@ -36,7 +36,15 @@
                     <h4><g:message code="formAPart1.facilityName.label" default="Facility Name" /></h4>
                     <li>
                         <span class="property-value" aria-labelledby="facilityName-label"><g:fieldValue
-                                bean="${formAPart1aInstance}" field="facilityName"/></span>
+                                bean="${formAPart1aInstance}" field="facilityName"/>
+                        </span>
+                        <span class="italics">
+                            <g:if test="${formAPart1aInstance.declaredInAccordanceWithFormAPart2c}">
+                                (<g:message code="formAPart1.declaredInAccordanceWithFormAPart2c.label"
+                                            default="Declared in accordance with FormAPart2c"/>)
+                            </g:if>
+
+                        </span>
                     </li>
 				</g:if>
                 <br/>
