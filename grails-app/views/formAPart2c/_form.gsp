@@ -155,6 +155,7 @@
 	<label>
 		<g:message code="formAPart2c.totalPersonnel.label" default="total personnel" />
 	</label>
+    <span class="instructions"><g:message code="formAPart2c.totalPersonnel.autocalc" default="autocalculated"/>  </span>
 </div>
 
 <div class="fieldcontain property-label">
