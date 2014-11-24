@@ -46,8 +46,10 @@
     <label for="amount" class="property-label25">
         <g:message code="formAPart2b.amount.label" default="Amount" />
         <span class="required-indicator">*</span>
+
     </label>
     <g:textField name="amount" value="${formAPart2bInstance.amount}" required="" />
+    <g:currencySelect name="currency" value="${formAPart2bInstance.currency}"/>
 </div>
 
 

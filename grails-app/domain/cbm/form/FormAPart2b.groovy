@@ -19,6 +19,7 @@ class FormAPart2b extends BaseForm {
 //    String declaration
     BigDecimal amount
     String source
+    String currency
 
 //    FormAPart2bOrganigram formAPart2bOrganigram
 

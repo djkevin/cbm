@@ -38,7 +38,9 @@
 
     <li class="fieldcontain">
         <span class="property-label"><g:message code="formAPart2b.amount.label" default="Amount" /></span>
-        <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/></span>
+        <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/>
+        <g:fieldValue bean="${formAPart2bInstance}"  field="currency"/>
+        </span>
     </li>
     <br/>
 </g:if>
