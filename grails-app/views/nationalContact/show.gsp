@@ -64,6 +64,15 @@
 					
 				</li>
 				</g:if>
+
+				<g:if test="${nationalContactInstance?.organization}">
+				<li class="fieldcontain">
+					<span id="organization-label" class="property-label"><g:message code="nationalContact.organization.label" default="Organization" /></span>
+
+						<span class="property-value" aria-labelledby="position-label"><g:fieldValue bean="${nationalContactInstance}" field="organization"/></span>
+
+				</li>
+				</g:if>
 			
 				<g:if test="${nationalContactInstance?.location}">
 				<li class="fieldcontain">

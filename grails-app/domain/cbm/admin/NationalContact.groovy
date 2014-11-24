@@ -19,6 +19,7 @@ class NationalContact {
     String email
     String url
     Country country
+    String organization
 
     static constraints = {
         title inList: ["Mr", "Ms", "Dr"], blank: false
@@ -31,6 +32,7 @@ class NationalContact {
         email email: true, nullable: true
         url maxSize: 100, nullable: true, url:true
         country nullable: false
+        organization maxSize: 100, nullable: true
     }
 
     String toString() {

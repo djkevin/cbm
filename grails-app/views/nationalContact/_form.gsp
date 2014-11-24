@@ -33,6 +33,16 @@
 	</label>
 	<g:textField name="position" maxlength="${nationalContactInstance?.constraints?.position?.maxSize}" value="${nationalContactInstance?.position}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'organization', 'error')} ">
+	<label for="organization" class="property-label25">
+		<g:message code="nationalContact.organization.label" default="Organization" />
+
+	</label>
+	<g:textField name="organization" maxlength="${nationalContactInstance?.constraints?.organization?.maxSize}" value="${nationalContactInstance?.organization}"/>
+</div>
+
+
 <h1><g:message code="nationalContact.address.label" default="Address" /></h1>
 <g:set var="addressInstance" value="${nationalContactInstance}"></g:set>
 <g:render template="../address"/>
