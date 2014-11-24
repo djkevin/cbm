@@ -143,6 +143,13 @@
         <span class="property-value" aria-labelledby="symptomOther-label"><g:fieldValue bean="${formBInstance}" field="symptomOther"/></span>
     </li>
 </g:if>
+
+<g:if test="${formBInstance?.detailedSymptomsComments}">
+    <h4><g:message code="formB.detailedSymptomsComments.label" default="Additional Comments" /></h4>
+    <li>
+        <span class="property-value" aria-labelledby="detailedSymptomsComments-label">${formBInstance.detailedSymptomsComments}</span>
+    </li>
+</g:if>
 <br/>
 
 
@@ -211,6 +218,14 @@
     <li class="fieldcontain">
         <span id="deviationOther-label" class="property-label">- <g:message code="formB.deviationOther.label" default="Deviation Other" />: </span>
         <span class="property-value" aria-labelledby="deviationOther-label"><g:fieldValue bean="${formBInstance}" field="deviationOther"/></span>
+    </li>
+</g:if>
+<br/>
+
+<g:if test="${formBInstance?.deviationFromNormalPatternComments}">
+    <h4><g:message code="formB.deviationFromNormalPatternComments.label" default="Additional Comments" /></h4>
+    <li>
+        <span class="property-value" aria-labelledby="deviationFromNormalPatternComments-label">${formBInstance.deviationFromNormalPatternComments}</span>
     </li>
 </g:if>
 <br/>

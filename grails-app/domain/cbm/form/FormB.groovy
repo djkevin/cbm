@@ -2,6 +2,7 @@ package cbm.form
 
 import cbm.BaseForm
 import cbm.report.Report
+import org.joda.time.LocalDate
 
 class FormB extends BaseForm {
 
@@ -17,7 +18,7 @@ class FormB extends BaseForm {
     String sourceOfDisease
     String possibleCause
     String mainCharacteristics
-//    String detailedSymptoms
+    String detailedSymptomsComments
     String symptomRespiratory
     String symptomCirculatory
     String symptomNeurologicalBehavioral
@@ -25,7 +26,7 @@ class FormB extends BaseForm {
     String symptomDermatological
     String symptomNephrological
     String symptomOther
-//    String deviationFromNormalPattern
+    String deviationFromNormalPatternComments
     String deviationType
     String deviationPlace
     String deviationTime
@@ -53,7 +54,7 @@ class FormB extends BaseForm {
     static constraints = {
         eventName blank: false, maxSize: 50
         eventCategory inList: ["Human", "Plant", "Animal"]
-        eventDate()  //TODO future date validator
+        eventDate() // range:  new LocalDate().getYear()..1975 TODO add validator
         timeOfOutbreak maxSize: 500, nullable: true
         locationAffected maxSize: 500, nullable: true
         typeOfDisease maxSize: 500, nullable: true
@@ -84,6 +85,9 @@ class FormB extends BaseForm {
         developmentOfOutbreak maxSize: 500, nullable: true
         measuresTaken maxSize: 5000, nullable: true
         additionalInfo maxSize: 5000, nullable: true
+        detailedSymptomsComments maxSize: 5000, nullable: true
+        deviationFromNormalPatternComments maxSize: 5000, nullable: true
+
     }
 
     String toString() {

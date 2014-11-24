@@ -30,7 +30,9 @@
         <g:message code="formB.eventDate.label" default="Event Date" />
         <span class="required-indicator">*</span>
     </label>
-    <g:datePicker name="eventDate" precision="day"  value="${formBInstance?.eventDate}"  />
+    <g:datePicker name="eventDate" precision="day" default="none"
+                  value="${formBInstance?.eventDate}"
+                  relativeYears="[0..-40]" noSelection="['': '--']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'timeOfOutbreak', 'error')} ">
@@ -141,6 +143,18 @@
     </label>
     <g:textField class="inlineText" name="symptomOther" maxlength="${formBInstance?.constraints?.symptomOther?.maxSize}" value="${formBInstance?.symptomOther}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'detailedSymptomsComments', 'error')} ">
+    <label for="detailedSymptomsComments" >
+        <g:message code="formB.detailedSymptomsComments.label" default="Additional Comments" />
+
+    </label>
+    <div>
+        <g:textArea class="wysiwyg" name="detailedSymptomsComments" cols="40" rows="5" maxlength="${formBInstance?.constraints?.detailedSymptomsComments?.maxSize}" value="${formBInstance?.detailedSymptomsComments}"/>
+    </div>
+
+</div>
+
 </fieldset>
 
 <fieldset class="embedded"><legend><g:message code="formB.deviationFromNormalPattern.label" default="Deviation From Normal Pattern" /></legend>
@@ -215,6 +229,16 @@
     </label>
     <g:textField class="inlineText" name="deviationOther" maxlength="${formBInstance?.constraints?.deviationOther?.maxSize}" value="${formBInstance?.deviationOther}"/>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'deviationFromNormalPatternComments', 'error')} ">
+    <label for="deviationFromNormalPatternComments" >
+        <g:message code="formB.deviationFromNormalPatternComments.label" default="Additional Comments" />
+    </label>
+    <div>
+        <g:textArea class="wysiwyg" name="deviationFromNormalPatternComments" cols="40" rows="5" maxlength="${formBInstance?.constraints?.deviationFromNormalPatternComments?.maxSize}" value="${formBInstance?.deviationFromNormalPatternComments}"/>
+    </div>
+
+</div>
 </fieldset>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'numOfPrimaryCases', 'error')} ">
@@ -271,4 +295,14 @@
 <g:set var="formInstance" value="${formBInstance}"></g:set>
 <g:render template="../formStatus"/>
 
-
+%{--<br>
+<div id="footnote">
+    <hr>
+    <br>
+    <ol>
+        <li>
+            <sup>10</sup>
+            <g:message code="formAPart2c.footer.9" default="Including viruses.."/>
+        </li>
+    </ol>
+</div>--}%
