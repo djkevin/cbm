@@ -54,7 +54,7 @@
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'conductedUnderContract', 'error')} ">
     <label for="conductedUnderContract">
         <g:message code="formAPart2b.conductedUnderContract.label" default="Conducted Under Contract"/>
-
+        <span class="required-indicator">*</span>
     </label>
 </div>
 %{--<div><g:checkBox name="conductedUnderContract" value="${formAPart2bInstance?.conductedUnderContract}"/></div>--}%
@@ -63,10 +63,11 @@
                   values="['true','false']"
                   labels="['Yes','No']" >     %{--TODO i18n--}%
         <span>${it.radio} ${it.label}</span>
+
     </g:radioGroup>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'proportionContracted', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'proportionContracted', 'error')} ">
     <label for="proportionContracted">
         <g:message code="formAPart2b.proportionContracted.label" default="Proportion Contracted"/>
         <span class="required-indicator">*</span>
@@ -76,7 +77,7 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'summaryObjectivesContractor', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'summaryObjectivesContractor', 'error')} ">
     <label for="summaryObjectivesContractor">
         <g:message code="formAPart2b.summaryObjectivesContractor.label" default="Summary Objectives Contractor"/>
         <span class="required-indicator">*</span>
@@ -105,16 +106,18 @@
     %{--<g:else><g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" /></g:else>--}%
 </div>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'declaration', 'error')} required">
+<br>
+<div>
+    <g:message code="formAPart2b.declaration.label" default="Declaration"/>
+</div>
+%{--<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'declaration', 'error')} required">
     <label for="declaration">
-        <g:message code="formAPart2b.declaration.label" default="Declaration"/>
+
         <span class="required-indicator">*</span>
     </label>
     <g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.declaration?.maxSize}" required=""
                      value="${formAPart2bInstance?.declaration}"/>
-</div>
+</div>--}%
 
 
 <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>

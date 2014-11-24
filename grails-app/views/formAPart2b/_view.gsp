@@ -73,13 +73,13 @@
     <rendering:inlineJpeg  bytes="${formAPart2bInstance?.formAPart2bOrganigram?.organisationalStructureDiagram}" />
 </g:if>
 
-<g:if test="${formAPart2bInstance?.declaration}">
+%{--<g:if test="${formAPart2bInstance?.declaration}">
     <h4><g:message code="formAPart2b.declaration.label" default="Declaration" /></h4>
     <li>
         <span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.declaration}</span>
     </li>
     <br/>
-</g:if>
+</g:if>--}%
 
 
 <br/><br/>

@@ -16,7 +16,7 @@ class FormAPart2b extends BaseForm {
     String proportionContracted
     String summaryObjectivesContractor
     //byte[] organisationalStructureDiagram     //Uploaded files bind automatically to byte[] field
-    String declaration
+//    String declaration
     BigDecimal amount
     String source
 
@@ -40,11 +40,19 @@ class FormAPart2b extends BaseForm {
     static constraints = {
         programName blank: false, maxSize: 200
         objectives blank: false, maxSize: 65000
-        conductedUnderContract()
-        proportionContracted blank: false, maxSize: 65000
-        summaryObjectivesContractor blank: false, maxSize: 65000
+        conductedUnderContract validator: {val, object ->
+            def res  = true
+            if (val){
+                if (!object.proportionContracted || !object.summaryObjectivesContractor){
+                    res = 'formAPart2b.error.conducted.under.contract'
+                }
+            }
+            res
+        }
+        proportionContracted maxSize: 65000, nullable: true
+        summaryObjectivesContractor maxSize: 65000, nullable: true
        /* organisationalStructureDiagram nullable: true, size: 0..1024 * 1024 * 5 //5MB*/
-        declaration blank: false, maxSize: 65000
+//        declaration blank: false, maxSize: 65000
         amount min: 0.01, max: 1000000000.00, scale: 2, blank: false
         source maxSize: 5000
         //formAPart2c nullable: true
