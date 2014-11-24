@@ -2,7 +2,9 @@ package cbm.constants
 
 
 public enum Language{
-    ENGLISH, SPANISH, ARABIC, FRENCH
+//    ENGLISH, SPANISH, ARABIC, FRENCH
+
+    ENGLISH,FRENCH
 
     @Delegate MessageSourceResolvableUtil messageSourceResolvableUtil= new MessageSourceResolvableUtil(this)
 
