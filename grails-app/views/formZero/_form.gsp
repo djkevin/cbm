@@ -60,7 +60,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr id="formAPart1">
+        <tr id="formAPart1" class="even">
             <td><g:message code="formAPart1.label" default="Form A Part 1"/></td>
             <td><g:checkBox name="formAPart1.nothingToDeclare" value="${formZeroInstance.formAPart1?.nothingToDeclare}" /></td>
             <td><g:checkBox name="formAPart1.nothingNewToDeclare" value="${formZeroInstance.formAPart1?.nothingNewToDeclare}"/></td>
@@ -71,7 +71,7 @@
                           noSelection="['': '--']"/>
             </td>
         </tr>
-        <tr>
+        <tr class="odd">
             <td><g:message code="formAPart2a.label" default="Form A Part 2a"/></td>
             <td><g:checkBox name="formAPart2a.nothingToDeclare" value="${formZeroInstance.formAPart2a?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formAPart2a.nothingNewToDeclare" value="${formZeroInstance.formAPart2a?.nothingNewToDeclare}"/></td>
@@ -81,7 +81,7 @@
                           value="${formZeroInstance.formAPart2a?.yearOfLastDeclaration}"
                           noSelection="${['': '--']}"/></td>
         </tr>
-        <tr>
+        <tr class="even">
             <td><g:message code="formAPart2b.label" default="Form A Part 2b"/></td>
             <td><g:checkBox name="formAPart2b.nothingToDeclare" value="${formZeroInstance.formAPart2b?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formAPart2b.nothingNewToDeclare" value="${formZeroInstance.formAPart2b?.nothingNewToDeclare}"/></td>
@@ -92,7 +92,7 @@
                           noSelection="${['': '--']}"/></td>
         </tr>
 
-        <tr>
+        <tr class="odd">
             <td><g:message code="formAPart2c.label" default="Form A Part 2c"/></td>
             <td><g:checkBox name="formAPart2c.nothingToDeclare" value="${formZeroInstance.formAPart2c?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formAPart2c.nothingNewToDeclare" value="${formZeroInstance.formAPart2c?.nothingNewToDeclare}"/></td>
@@ -103,7 +103,7 @@
                           noSelection="${['': '--']}"/>
             </td>
         </tr>
-        <tr>
+        <tr class="even">
             <td><g:message code="formB.label" default="Form B"/></td>
             <td><g:checkBox name="formB.nothingToDeclare" value="${formZeroInstance.formB?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formB.nothingNewToDeclare" value="${formZeroInstance.formB?.nothingNewToDeclare}"/></td>
@@ -125,7 +125,7 @@
                           noSelection="${['': '--']}"/>
             </td>
         </tr>
-        <tr>
+        <tr class="odd">
             <td><g:message code="formE.label" default="Form E"/></td>
             <td><g:checkBox name="formE.nothingToDeclare" value="${formZeroInstance.formE?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formE.nothingNewToDeclare" value="${formZeroInstance.formE?.nothingNewToDeclare}"/></td>
@@ -136,7 +136,7 @@
                           noSelection="${['': '--']}"/>
             </td>
         </tr>
-        <tr>
+        <tr class="even">
             <td><g:message code="formF.label" default="Form F"/></td>
             <td><g:checkBox name="formF.nothingToDeclare" value="${formZeroInstance.formF?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formF.nothingNewToDeclare" value="${formZeroInstance.formF?.nothingNewToDeclare}"/></td>
@@ -147,7 +147,7 @@
                           noSelection="${['': '--']}"/>
             </td>
         </tr>
-        <tr>
+        <tr class="odd">
             <td><g:message code="formG.label" default="Form G"/></td>
             <td><g:checkBox name="formG.nothingToDeclare" value="${formZeroInstance.formG?.nothingToDeclare}"/></td>
             <td><g:checkBox name="formG.nothingNewToDeclare" value="${formZeroInstance.formG?.nothingNewToDeclare}"/></td>
