@@ -17,7 +17,7 @@
             <th><g:message code="formE.relatingTo.label" default="Relating to" /></th>
             <th><g:message code="formE.legislation.label" default="Legislation" /></th>
             <th><g:message code="formE.regulation.label" default="Regulations" /></th>
-            <th><g:message code="formE.otherMeasures.label" default="Other Measures"/> </th>
+            <th><g:message code="formE.otherMeasures.label" default="Other Measures"/><sup>12</sup> </th>
             <th><g:message code="formE.amendedSinceLastYear.label" default="Amended since last year" /></th>
         </tr>
         </thead>
@@ -67,6 +67,28 @@
 <g:set var="formInstance" value="${formEInstance}"></g:set>
 <g:render template="../formStatus"/>
 
-
+<br>
+<div id="footnote">
+    <hr>
+    <br>
+    <ol>
+        <li>
+            <sup>12</sup>
+            <g:message code="formE.footer.12" default="Including guidelines"/>
+        </li>
+        <li>
+            <sup>13</sup>
+            <g:message code="formE.footer.13" default="Micro-organisms..."/>
+        </li>
+        <li>
+            <sup>14</sup>
+            <g:message code="formE.footer.14" default="In accordance with latest version.."/>
+        </li>
+        <li>
+            <sup>15</sup>
+            <g:message code="formE.footer.15" default="In accordance with latest version.."/>
+        </li>
+    </ol>
+</div>
 
 

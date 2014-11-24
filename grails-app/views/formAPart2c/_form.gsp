@@ -318,6 +318,18 @@
 </div>
 		
 <g:set var="formInstance" value="${formAPart2cInstance}"></g:set>
-<g:render template="../formStatus"/>		
+<g:render template="../formStatus"/>
+
+<br>
+<div id="footnote">
+    <hr>
+    <br>
+    <ol>
+        <li>
+            <sup>9</sup>
+            <g:message code="formAPart2c.footer.9" default="Including viruses.."/>
+        </li>
+    </ol>
+</div>
 		
 		

@@ -12,10 +12,22 @@
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'facilityName', 'error')} required">
 	<label for="facilityName">
 		<g:message code="formAPart1.facilityName.label" default="Facility Name" />
+        <sup>4</sup>
 		<span class="required-indicator">*</span>
 	</label>
 </div>
 <div><g:textField class="longText" name="facilityName" maxlength="${formAPart1aInstance?.constraints?.facilityName?.maxSize}" required="" value="${formAPart1aInstance?.facilityName}"/></div>
+
+<div class="test">
+    <label for="declaredInAccordanceWithFormAPart2c">
+        <g:message code="formAPart1.declaredInAccordanceWithFormAPart2c.label"
+                   default="Declared in accordance with FormAPart2c"/>
+        <g:checkBox name="declaredInAccordanceWithFormAPart2c"
+                    value="${formAPart1aInstance?.declaredInAccordanceWithFormAPart2c}"/>
+    </label>
+
+</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'responsibleOrganisation', 'error')} required">
 	<label for="responsibleOrganisation">
@@ -70,7 +82,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'formAContainmentUnitList', 'error')} ">
     <label for="formAContainmentUnitList">
-        <g:message code="formAPart1.formAContainmentUnitList.label" default="Form A Containment Unit List" />
+        <g:message code="formAPart1.formAContainmentUnitList.label" default="Form A Containment Unit List" /><sup>5</sup>
 
     </label>
 </div>
@@ -155,3 +167,24 @@
 
 <g:set var="formInstance" value="${formAPart1aInstance}"></g:set>
 <g:render template="../formStatus"/>
+
+<br>
+
+<div id="footnote">
+    <hr>
+    <br>
+    <ol>
+        <li>
+            <sup>3</sup>
+            <g:message code="formAPart1.footer.3" default="Containment units"/>
+        </li>
+        <li>
+            <sup>4</sup>
+            <g:message code="formAPart1.footer.4" default="For facilities"/>
+        </li>
+        <li>
+            <sup>5</sup>
+            <g:message code="formAPart1.footer.5" default="In accordance with..."/>
+        </li>
+    </ol>
+</div>
