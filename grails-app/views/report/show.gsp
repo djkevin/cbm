@@ -311,11 +311,11 @@
                                 <g:set var="controller" value="formAPart2c"/>
                                 <g:render template="../formDetail"/>
                             </g:if>
-                            <g:else>
+                            <g:elseif test="${!reportInstance?.formAPart2b}">
                                 <span class="instructions">
                                     <g:message code="report.formAPart2c.create.message" default="Please create a Form A Part 2b"/>
                                 </span>
-                            </g:else>
+                            </g:elseif>
                         </td>
                         <td>
                             <g:link controller="formAPart2c" action="create" params="['report.id': reportInstance.id]">
