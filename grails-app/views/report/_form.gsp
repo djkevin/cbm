@@ -42,10 +42,17 @@
 
 <div class="fieldcontain ${hasErrors(bean: reportInstance, field: 'officialVersion', 'error')} ">
 	<label for="officialVersion" class="property-label25">
-		<g:message code="report.officialVersion.label" default="Official Version" />
+		%{--<g:message code="report.officialVersion.label" default="Official Version" />--}%
 		
 	</label>
-	<g:checkBox name="officialVersion" value="${reportInstance?.officialVersion}" />
+	%{--<g:checkBox name="officialVersion" value="${reportInstance?.officialVersion}" />--}%
+
+
+    <g:radioGroup name="officialVersion" value="${reportInstance?.officialVersion}"
+                  values="['true','false']"
+                  labels="['Official','Translated']" >     %{--TODO i18n--}%
+        <span>${it.radio} ${it.label}</span>
+    </g:radioGroup>
 </div>
 
 <g:hiddenField name="stateParty.id" value="${reportInstance?.stateParty?.id}" />
