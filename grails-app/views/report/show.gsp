@@ -165,7 +165,7 @@
                     <g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm(getDeleteText());" />
                     %{--<g:link class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return getDeleteText();" ><g:message code="default.button.delete.label" default="Delete" /></g:link>--}%
-                    <g:actionSubmit class="submit" action="" value="${message(code: 'default.button.submit.label', default: 'Submit')}" onclick="alert('${message(code: 'default.under.implementation.message', default: 'Feature under implementation')}');return false;" />
+                    <g:link class="submit" action="review" resource="${reportInstance}"><g:message code="default.button.review.label" default="Review and Submit" /></g:link>
                     <g:link class="print" action="print" resource="${reportInstance}" target="_blank"
                             title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
                     </g:link>
@@ -226,7 +226,7 @@
 						<td><g:message code="report.formAPart1.label" default="Form A Part 1" /></td>
 						<td>${reportInstance?.formAPart1.size()}</td>
 						<td>
-                            <g:if test="${!reportInstance?.formAPart1}">
+                            <g:if test="${reportInstance?.formAPart1}">
                                 <g:set var="forms" value="${reportInstance?.formAPart1}"></g:set>
                                 <g:set var="controller" value="formAPart1a"/>
                                 <g:set var="customTitle" value="${message(code: 'formAPart1.facilityName', default: 'Facility Name')}" />
