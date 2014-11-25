@@ -32,15 +32,21 @@
             <g:each in="${errors?.status}" var="status">
                <li>${status}</li>
             </g:each>
-            %{--<g:eachError bean="${formZeroInstance}" var="error">--}%
-                %{--<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>--}%
-            %{--</g:eachError>--}%
         </ul>
 
-        <g:each in="${errors?.status}" var="status">
 
-        </g:each>
     </g:if>
+
+    <g:if test="${errors?.validation}">
+        <ul class="errors" role="alert">
+            <g:message code="report.submit.form.validation.error" default="The following validation errors were found:" />
+            <g:each in="${errors?.validation}" var="validationError">
+                <li>${validationError}</li>
+            </g:each>
+        </ul>
+    </g:if>
+
+
 </g:if>
 
 <script type="text/javascript">
