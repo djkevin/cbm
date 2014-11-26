@@ -25,13 +25,13 @@
         ${it.radio} <g:message code="${it.label}" />&nbsp;
     </g:radioGroup>
 </div>
+    <g:hiddenField name="visibility" value="${formInstance?.visibility ?:formInstance?.visibility?:formInstance.constraints.visibility.inList[0]}" />
+%{--<div class="inline fieldcontain ${hasErrors(bean: formInstance, field: 'visibility', 'error')} ">
+    <label for="visibility" class="property-inline">
+        <g:message code="form.visibility.label" default="Visibility" />
 
-%{--<div class="inline fieldcontain ${hasErrors(bean: formInstance, field: 'visibility', 'error')} ">--}%
-    %{--<label for="visibility" class="property-inline">--}%
-        %{--<g:message code="form.visibility.label" default="Visibility" />--}%
-
-    %{--</label>--}%
-    %{--<g:select name="visibility" from="${formInstance.constraints.visibility.inList}" value="${formInstance?.visibility?:formInstance.constraints.visibility.inList[0]}" valueMessagePrefix="formC.visibility" noSelection="['': '']"/>--}%
-%{--</div>--}%
+    </label>
+    <g:select name="visibility" from="${formInstance.constraints.visibility.inList}" value="${formInstance?.visibility?:formInstance.constraints.visibility.inList[0]}" valueMessagePrefix="formC.visibility" noSelection="['': '']"/>
+</div>--}%
     <br class="clearBoth" /><!-- you may or may not need this -->
 </div>
