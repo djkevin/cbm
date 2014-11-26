@@ -59,7 +59,7 @@
 					
 						<td><g:formatBoolean boolean="${reportInstance.officialVersion}" /></td>
 					
-					<td><g:formatDate format="yyyy-MM-dd" date="${reportInstance.lastUpdated}"/></td>
+					<td><g:formatDate date="${reportInstance.lastUpdated}"/></td>
 <%--						<td>${fieldValue(bean: reportInstance, field: "lastUpdated")}</td>--%>
 <%--						<td>${fieldValue(bean: reportInstance, field: "formAPart1b")}</td>--%>
 					

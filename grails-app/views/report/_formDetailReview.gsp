@@ -57,7 +57,7 @@
                     <span>${it.radio} ${it.label}</span>
 
                 </g:radioGroup>--}%
-
+                |&nbsp;&nbsp;&nbsp;
                 <g:radioGroup name="visibility_${f.title}_${f.id}"
                               values="${f.constraints.visibility.inList}"
                               labels="${f.constraints.visibility.inList}"

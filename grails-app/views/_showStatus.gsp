@@ -13,25 +13,25 @@
         <g:fieldValue bean="${formInstance}" field="formStatus"/>
     </div>
 
-    <div class="inline fieldcontain } ">
-        <label class="property-inline">
-            <g:message code="form.visibility.label" default="Visibility"/>
-        </label>
-        <g:fieldValue bean="${formInstance}" field="visibility"/>
-    </div>
+    %{--<div class="inline fieldcontain } ">--}%
+        %{--<label class="property-inline">--}%
+            %{--<g:message code="form.visibility.label" default="Visibility"/>--}%
+        %{--</label>--}%
+        %{--<g:fieldValue bean="${formInstance}" field="visibility"/>--}%
+    %{--</div>--}%
 
     <div class="inline fieldcontain } ">
         <label class="property-inline">
             <g:message code="form.dateCreated.label" default="Date Created"/>
         </label>
-        <g:formatDate format="dd-MMM-yyyy" date="${formInstance?.dateCreated}"/>
+        <g:formatDate date="${formInstance?.dateCreated}"/>
     </div>
 
     <div class="inline fieldcontain } ">
         <label class="property-inline">
             <g:message code="form.lastUpdated.label" default="Last Updated"/>
         </label>
-        <g:formatDate format="dd-MMM-yyyy" date="${formInstance?.lastUpdated}"/>
+        <g:formatDate date="${formInstance?.lastUpdated}"/>
     </div>
     <br class="clearBoth"/><!-- you may or may not need this -->
 </div>
