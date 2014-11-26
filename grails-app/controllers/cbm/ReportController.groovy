@@ -323,6 +323,27 @@ class ReportController {
             errors["validation"] << "A Form A Part 1(ii) must be filled if there is no Form A Part 1(i)"
         }
 
+        boolean hasBSL4 = false
+
+        formAPart1s.each{
+            if (it.hasBSL4()){
+                hasBSL4 = true
+            }
+
+        }
+
+        if (!hasBSL4 && !formAPart1b) {
+            errors["validation"] << "No BSL4 facility was declared in Form A Part 1(i). Please create a Form A Part 1(ii)"
+
+        }
+
+        // if existing national programmes declared, need to fill in formAPart2bs
+        if (formAPart2a.existingNationalProgrammes && !formAPart2bs){
+            errors["validation"] << "Please provide details of existing national programmes in Form A Part 2(ii)"
+        }
+
+
+
         if (errors["status"] || errors["validation"]) {
             println "printing errors to gsp...."
             render view: "review", model: [reportInstance: reportInstance, errors: errors]
