@@ -10,7 +10,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:~/data/devCBM"
+            url = "jdbc:h2:../cbm.data/devCBM"
 			pooled = true
 			jmxExport = true
 			driverClassName = "org.h2.Driver"

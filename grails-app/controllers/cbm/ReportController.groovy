@@ -13,7 +13,7 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_USER', 'ROLE_ADMIN', 'ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class ReportController {
 
@@ -48,6 +48,7 @@ class ReportController {
 
     }
 
+	@Secured(['ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def create() {
         Report report = new Report(params)
         report.reportStatus = ReportStatus.DRAFT
