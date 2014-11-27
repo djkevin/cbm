@@ -1,12 +1,14 @@
 import cbm.admin.Country
 import org.springframework.util.StringUtils
 
+
 class CountryBootStrap {
 
 
     def init = { servletContext ->
-        println "Running init CountryBootStrap..."
+        log.info "Running init BootStrapCountry..."
 
+		// if countries do not exist, create them FOR ALL ENVIRONMENTS!
         if (!cbm.admin.Country.count()) {
             log.info " no countries in db currently, loading from file..."
 
@@ -71,7 +73,7 @@ class CountryBootStrap {
     }
 
     def destroy = {
-        log.info "Running destroy CountryBootStrap"
+        log.info "Running destroy BootStrapCountry"
 
     }
 }
