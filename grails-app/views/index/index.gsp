@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="layout" content="main" />
-<title>Staff Counsellor Case Tracking system</title>
+<title>CBM</title>
 <style type="text/css" media="screen">
 #status {
 	background-color: #eee;
@@ -81,35 +81,25 @@ p {
 
 </head>
 <body>
-<div class="nav">&nbsp;
-	<div role="navigation" class="nav-left">
-		<ul>
-			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label" /></a></li>
-		</ul>
+	<div class="nav">&nbsp;
+		<div role="navigation" class="nav-left">
+			<ul>
+				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label" /></a></li>
+			</ul>
+		</div> 
 	</div>
-
- 
-	</div>
-	<%--			<div id="controller-list" role="navigation">				--%>
-<%--                <ul>--%>
-<%--                	<li> <g:link controller="StateParty" action="index">State Party</g:link> </li>     --%>
-<%--                    <li> <g:link controller="Report" action="index">Report</g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart1a" action="index"><g:message code="formAPart1a.label" default="Form A, part 1(i)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart1b" action="index"><g:message code="formAPart1b.label" default="Form A, part 1(ii)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart2a" action="index"><g:message code="formAPart2a.label" default="Form A, part 2(i)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart2b" action="index"><g:message code="formAPart2b.label" default="Form A, part 2(ii)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart2c" action="index"><g:message code="formAPart2c.label" default="Form A, part 2(iii)"/> </g:link> </li>      --%>
-<%--                    <li><a class="home" href="${createLink(uri: '/?lang=en')}">English</a></li>              --%>
-<%--                    <li><a class="home" href="${createLink(uri: '/?lang=fr')}">French</a></li>   --%>
-<%--                    <li><a class="home" href="http://bwcsite.teqservices.com/cbmsite/cbm/">US CBM</a></li>   --%>
-<%--                    --%>
-<%--                               --%>
-<%--                    <li> ... </li>                    --%>
-<%--                </ul>                            --%>
-<%--			</div> --%>
 
 	<div id="page-body" role="main">
 		
+		<g:link controller="admin" action="index">Admin index page</g:link>
+		
+		&nbsp;&nbsp;
+		
+	    <g:link controller="report" action="index">User index page</g:link>
+	    
+	    <br>
+	    
+	            
 		<div class="box table" style="margin: 0px auto; width: 42%;">
 			<div>
 				<ul>
@@ -179,6 +169,8 @@ p {
 			</ul>
 		</div>
 	</div>
+	
+	<tmpl:devInfo />
 
 </body>
 </html>
