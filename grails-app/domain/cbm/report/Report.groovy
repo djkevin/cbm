@@ -20,7 +20,10 @@ class Report {
     Language language
     Integer year
     ReportStatus reportStatus
-    PublicationStatus publicationStatus
+	
+	/** indicates whether report is published or not, meaning can be viewed by other State Parties and/or general public. */
+    PublicationStatus publicationStatus 
+    
     Boolean officialVersion
     static int currentYear = new LocalDate().getYear()
 
