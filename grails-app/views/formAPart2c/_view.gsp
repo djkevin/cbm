@@ -86,6 +86,14 @@
     </span>
 </li>
 
+<g:if test="${formAPart2cInstance?.orgStructureComments1}">
+    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+    <li>
+        <span class="property-value" aria-labelledby="orgStructureComments1-label">${formAPart2cInstance.orgStructureComments1}</span>
+    </li>
+    <br/>
+</g:if>
+
 <li class="fieldcontain">
     <span id="divisionPersonnel-label" class="property-label"><g:message code="formAPart2c.divisionPersonnel.label" default="div personnel" /></span>
     <span class="property-value" >
@@ -96,6 +104,14 @@
         <g:message code="formAPart2c.civilianPersonnel.label" default="civilianPersonnel" />
     </span>
 </li>
+
+<g:if test="${formAPart2cInstance?.orgStructureComments2}">
+    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+    <li>
+        <span class="property-value" aria-labelledby="orgStructureComments2-label">${formAPart2cInstance.orgStructureComments2}</span>
+    </li>
+    <br/>
+</g:if>
 
 <li class="fieldcontain">
     <span id="divisionPersonnelCategory-label" class="property-label"><g:message code="formAPart2c.divisionPersonnelCategory.label" default="div personnel cat" /></span>
@@ -113,6 +129,15 @@
         <g:message code="formAPart2c.administrators.label" default="administrators" />
     </span>
 </li>
+
+
+<g:if test="${formAPart2cInstance?.orgStructureComments3}">
+    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+    <li>
+        <span class="property-value" aria-labelledby="orgStructureComments3-label">${formAPart2cInstance.orgStructureComments3}</span>
+    </li>
+    <br/>
+</g:if>
 
 <br/>
 <h4>

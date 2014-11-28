@@ -114,7 +114,16 @@
 					<span id="totalPersonnel-label" class="property-label"><g:message code="formAPart2c.totalPersonnel.label" default="totalPersonnel" /></span>					
 					<span class="property-value" aria-labelledby="totalPersonnel-label"><g:fieldValue bean="${formAPart2cInstance}" field="totalPersonnel"/>
 					</span>					
-				</li>					
+				</li>
+
+
+                <g:if test="${formAPart2cInstance?.orgStructureComments1}">
+                    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="orgStructureComments3-label">${formAPart2cInstance.orgStructureComments1}</span>
+                    </li>
+                    <br/>
+                </g:if>
 								
 				<li class="fieldcontain">
 					<span id="divisionPersonnel-label" class="property-label"><g:message code="formAPart2c.divisionPersonnel.label" default="div personnel" /></span>
@@ -125,7 +134,16 @@
 					<g:fieldValue bean="${formAPart2cInstance}" field="civilianPersonnel"/> 
 					<g:message code="formAPart2c.civilianPersonnel.label" default="civilianPersonnel" />
 					</span>			
-				</li>				
+				</li>
+
+
+                <g:if test="${formAPart2cInstance?.orgStructureComments2}">
+                    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="orgStructureComments3-label">${formAPart2cInstance.orgStructureComments2}</span>
+                    </li>
+                    <br/>
+                </g:if>
 				
 				<!--  2 fields below merged as CSV above -->
 				<%-- li class="fieldcontain">
@@ -156,7 +174,16 @@
 					<g:message code="formAPart2c.administrators.label" default="administrators" />	
 					</span>
 				</li>
-				
+
+
+                <g:if test="${formAPart2cInstance?.orgStructureComments3}">
+                    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="orgStructureComments3-label">${formAPart2cInstance.orgStructureComments3}</span>
+                    </li>
+                    <br/>
+                </g:if>
+
 				<!--  4 fields below merged into CSV above -->
 				<%-- li class="fieldcontain">
 					<span id="scientists-label" class="property-label"><g:message code="formAPart2c.scientists.label" default="scientists" /></span>					

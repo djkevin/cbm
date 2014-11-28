@@ -158,6 +158,14 @@
     <span class="instructions"><g:message code="formAPart2c.totalPersonnel.autocalc" default="autocalculated"/>  </span>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'orgStructureComments1', 'error')} ">
+    <label for="orgStructureComments1">
+        <g:message code="default.additional.comments.label" default="Additional comments"/>
+    </label>
+    <g:textArea class="wysiwyg" name="orgStructureComments1" cols="40" rows="5" maxlength="${formAPart2cInstance?.constraints?.orgStructureComments1?.maxSize}" required=""
+                value="${formAPart2cInstance?.orgStructureComments1}"/>
+</div>
+
 <div class="fieldcontain property-label">
 	<label>
 		<g:message code="formAPart2c.divisionPersonnel.label" default="division of personnel" />
@@ -182,6 +190,14 @@
 	<span class="property-value" >
 		<g:textField name="civilianPersonnel" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'civilianPersonnel')}"/>
 	</span>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'orgStructureComments2', 'error')} ">
+    <label for="orgStructureComments2">
+        <g:message code="default.additional.comments.label" default="Additional comments"/>
+    </label>
+    <g:textArea class="wysiwyg" name="orgStructureComments2" cols="40" rows="5" maxlength="${formAPart2cInstance?.constraints?.orgStructureComments2?.maxSize}" required=""
+                value="${formAPart2cInstance?.orgStructureComments2}"/>
 </div>
 
 <div class="fieldcontain property-label">
@@ -229,6 +245,16 @@
 		<g:textField name="administrators" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'administrators')}"/>
 	</span>
 </div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'orgStructureComments3', 'error')} ">
+    <label for="orgStructureComments3">
+        <g:message code="default.additional.comments.label" default="Additional comments"/>
+    </label>
+    <g:textArea class="wysiwyg" name="orgStructureComments3" cols="40" rows="5" maxlength="${formAPart2cInstance?.constraints?.orgStructureComments3?.maxSize}" required=""
+                value="${formAPart2cInstance?.orgStructureComments3}"/>
+</div>
+
+<br>
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'scientificDisciplines', 'error')} property-label">
 	<label>

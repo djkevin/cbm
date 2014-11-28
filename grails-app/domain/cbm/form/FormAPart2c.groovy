@@ -34,12 +34,19 @@ class FormAPart2c extends BaseForm {
     Long fundDevelopment
     Long fundTest
 
+    String orgStructureComments1
+    String orgStructureComments2
+    String orgStructureComments3
+
     String publicationPolicy
     String publicPapers
     String bioDefenseWork
    // Report report
     static mapping = {
         publicPapers type: 'text'
+        orgStructureComments1 type: 'text'
+        orgStructureComments2 type: 'text'
+        orgStructureComments3 type: 'text'
     }
 
     static transients = ['totalFloorArea', 'totalPersonnel','report']
@@ -66,6 +73,9 @@ class FormAPart2c extends BaseForm {
         publicationPolicy maxSize: 5000, blank: true
         publicPapers maxSize: 65000, blank: true
         bioDefenseWork maxSize: 5000, blank: true
+        orgStructureComments1 maxSize: 5000, blank: true
+        orgStructureComments2 maxSize: 5000, blank: true
+        orgStructureComments3 maxSize: 5000, blank: true
     }
 
     BigDecimal getTotalFloorArea() {
