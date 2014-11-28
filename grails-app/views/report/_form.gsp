@@ -48,7 +48,7 @@
 	%{--<g:checkBox name="officialVersion" value="${reportInstance?.officialVersion}" />--}%
 
 
-    <g:radioGroup name="officialVersion" value="${reportInstance?.officialVersion}"
+    <g:radioGroup name="officialVersion" value="${reportInstance?.officialVersion ?: true}"
                   values="['true','false']"
                   labels="['Official','Translated']" >     %{--TODO i18n--}%
         <span>${it.radio} ${it.label}</span>

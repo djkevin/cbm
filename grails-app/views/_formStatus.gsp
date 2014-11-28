@@ -21,7 +21,7 @@
     <g:radioGroup name="formStatus"
                   values="${formInstance.constraints.formStatus.inList}"
                   labels="${formInstance.constraints.formStatus.inList}"
-                  value="${formInstance?.formStatus}">  %{--TODO i18n--}%
+                  value="${formInstance?.formStatus ?: formInstance.constraints.formStatus.inList[0]}">  %{--TODO i18n--}%
         ${it.radio} <g:message code="${it.label}" />&nbsp;
     </g:radioGroup>
 </div>
