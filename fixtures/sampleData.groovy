@@ -1,12 +1,5 @@
-import cbm.*
 import cbm.admin.StateParty
-import cbm.form.FormAPart1ContainmentUnit
-import cbm.form.FormAPart1a
-import cbm.form.FormAPart1b
-import cbm.form.FormAPart2a
-import cbm.form.FormAPart2b
-import cbm.form.FormAPart2c
-import cbm.form.FormB
+import cbm.form.*
 import cbm.report.Report
 import cbm.usermgt.AdminUser
 import cbm.usermgt.SecRole
