@@ -36,8 +36,8 @@ class Report {
     static transients = ['reportName', 'currentYear']
 
     static constraints = {
-        language unique: ['year', 'stateParty']
-        year range: currentYear..currentYear - 5
+        language unique: ['year', 'stateParty', 'officialVersion']
+        year range: currentYear..1975
         reportStatus blank: false
         publicationStatus blank: false// inList: ["Not published", "Published"]
         officialVersion()
