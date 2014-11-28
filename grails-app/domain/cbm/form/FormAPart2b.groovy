@@ -19,6 +19,7 @@ class FormAPart2b extends BaseForm {
     BigDecimal amount
     String source
     Currency currency
+    String fundingSourceRemarks
 
 
     String toString() {
@@ -30,6 +31,7 @@ class FormAPart2b extends BaseForm {
         proportionContracted type: 'text'
         summaryObjectivesContractor type: 'text'
         organigramDescription type: 'text'
+        fundingSourceRemarks type: 'text'
     }
 
 
@@ -51,6 +53,7 @@ class FormAPart2b extends BaseForm {
         source maxSize: 5000
         formAPart2bOrganigram nullable: true
         organigramDescription maxSize: 65000, nullable: true
+        fundingSourceRemarks maxSize: 65000, nullable: true
 
     }
 }

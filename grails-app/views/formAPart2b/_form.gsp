@@ -52,6 +52,14 @@
     <g:currencySelect name="currency" value="${formAPart2bInstance.currency}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'fundingSourceRemarks', 'error')} ">
+    <label for="summaryObjectivesContractor">
+        2.3 <g:message code="default.additional.comments.label" default="Additional comments"/>
+    </label>
+    <g:textArea class="wysiwyg" name="fundingSourceRemarks" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.fundingSourceRemarks?.maxSize}" required=""
+                value="${formAPart2bInstance?.fundingSourceRemarks}"/>
+</div>
+
 
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'conductedUnderContract', 'error')} ">
     <label for="conductedUnderContract">
@@ -108,10 +116,9 @@
     %{--<g:else><g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" /></g:else>--}%
 </div>
 
-
 <div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'organigramDescription', 'error')} ">
     <label for="summaryObjectivesContractor">
-        <g:message code="formAPart2b.organigramDescription.label" default="Additional comments"/>
+        6.1 <g:message code="formAPart2b.organigramDescription.label" default="Additional comments"/>
         %{--<span class="required-indicator">*</span>--}%
     </label>
     <g:textArea class="wysiwyg" name="organigramDescription" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.organigramDescription?.maxSize}" required=""

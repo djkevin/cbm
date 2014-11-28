@@ -65,10 +65,19 @@
                 <g:if test="${formAPart2bInstance?.amount}">
 
                     <li class="fieldcontain">
-                       <span class="property-label"><g:message code="formAPart2b.amount.label" default="Amount" /></span>
-                       <span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${formAPart2bInstance}" field="amount"/>
-                        <g:fieldValue bean="${formAPart2bInstance}"  field="currency"/>
-                       </span>
+                        <span class="property-label"><g:message code="formAPart2b.amount.label" default="Amount"/></span>
+                        <span class="property-value" aria-labelledby="amount-label">
+                            <g:fieldValue bean="${formAPart2bInstance}" field="amount"/>
+                            <g:fieldValue bean="${formAPart2bInstance}" field="currency"/>
+                        </span>
+                    </li>
+                    <br/>
+                </g:if>
+
+                <g:if test="${formAPart2bInstance?.fundingSourceRemarks}">
+                    <h4>2.3 <g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="fundingSourceRemarks-label">${formAPart2bInstance.fundingSourceRemarks}</span>
                     </li>
                     <br/>
                 </g:if>
@@ -103,17 +112,16 @@
                         <g:link action="displayImage" target="_blank" params="['formAPart2bOrganigram.id': formAPart2bInstance.formAPart2bOrganigram.id]">${formAPart2bInstance.formAPart2bOrganigram.fileName}</g:link>
                       %{--<img style="width:100%" src="${createLink(controller:'image', id:formAPart2bInstance?.formAPart2bOrganigram?.id, params:[fieldName:'organisationalStructureDiagram', classname:'cbm.form.FormAPart2bOrganigram',mime:'image/jpeg'])}"/>--}%
                   </g:if>
-                  <g:else>
-                      %{--[<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]--}%
-                      <g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" />
+                    <g:else>
+                    %{--[<g:link controller="formAPart2bOrganigram" action="create" params="['formAPart2b.id': formAPart2bInstance?.id]"><g:message code="default.button.create.label"/></g:link>]--}%
+                        <g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet"/>
 
-                  </g:else>
+                    </g:else>
                   <br/><br/>
               </div>
 
-
                 <g:if test="${formAPart2bInstance?.organigramDescription}">
-                    <h4><g:message code="formAPart2b.organigramDescription.label" default="Description" /></h4>
+                    <h4>6.1 <g:message code="formAPart2b.organigramDescription.label" default="Description"/></h4>
                     <li>
                         <span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.organigramDescription}</span>
                     </li>
@@ -121,9 +129,7 @@
                 </g:if>
 
 
-
-
-				<g:if test="${formAPart2bInstance?.formAPart2c}">
+                <g:if test="${formAPart2bInstance?.formAPart2c}">
                     <li>
                         <span class="property-label-b"><g:message code="formAPart2b.formAPart2c.label" default="Form A Part 2c" /></span>
                     </li>

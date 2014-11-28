@@ -45,6 +45,15 @@
     <br/>
 </g:if>
 
+<g:if test="${formAPart2bInstance?.fundingSourceRemarks}">
+    <h4>2.3 <g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+    <li>
+        <span class="property-value" aria-labelledby="fundingSourceRemarks-label">${formAPart2bInstance.fundingSourceRemarks}</span>
+    </li>
+    <br/>
+</g:if>
+
+
 <g:if test="${formAPart2bInstance?.conductedUnderContract}">
     <h4><g:message code="formAPart2b.conductedUnderContract.label" default="Conducted Under Contract" /></h4>
     <li>
@@ -76,7 +85,7 @@
 </g:if>
 
 <g:if test="${formAPart2bInstance?.organigramDescription}">
-    <h4><g:message code="formAPart2b.organigramDescription.label" default="Description" /></h4>
+    <h4>6.1 <g:message code="formAPart2b.organigramDescription.label" default="Description" /></h4>
     <li>
         <span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.organigramDescription}</span>
     </li>
