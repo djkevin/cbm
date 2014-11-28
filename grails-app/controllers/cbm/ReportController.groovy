@@ -321,7 +321,7 @@ class ReportController {
         //If no formAPart1a exists, then there needs to be a formAPart1b filled
         if (!formAPart1s && !formAPart1b) {
             println "validation error!!!!"
-            errors["validation"] << "A Form A Part 1(ii) must be filled if there is no Form A Part 1(i)"
+            errors["validation"] << message(code: 'report.submit.formA.validation.error', default: 'A Form A Part 1(ii) must be filled if there is no Form A Part 1(i)')
         }
 
         boolean hasBSL4 = false
@@ -334,13 +334,13 @@ class ReportController {
         }
 
         if (!hasBSL4 && !formAPart1b) {
-            errors["validation"] << "No BSL4 facility was declared in Form A Part 1(i). Please create a Form A Part 1(ii)"
+            errors["validation"] << message(code:'report.submit.formA.bsl4validation.error', default: 'No BSL4 error')
 
         }
 
         // if existing national programmes declared, need to fill in formAPart2bs
         if (formAPart2a.existingNationalProgrammes && !formAPart2bs){
-            errors["validation"] << "Please provide details of existing national programmes in Form A Part 2(ii)"
+            errors["validation"] << message(code: 'report.submit.formA.existing.programmes.error', default: 'Existing programmes error')
         }
 
 
