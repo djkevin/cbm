@@ -1,134 +1,373 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  
-  
+import cbm.*
+import cbm.admin.StateParty
+import cbm.form.FormAPart1ContainmentUnit
+import cbm.form.FormAPart1a
+import cbm.form.FormAPart1b
+import cbm.form.FormAPart2a
+import cbm.form.FormAPart2b
+import cbm.form.FormAPart2c
+import cbm.form.FormB
+import cbm.report.Report
+import cbm.usermgt.AdminUser
+import cbm.usermgt.SecRole
+import cbm.usermgt.SecUserSecRole
+import cbm.usermgt.User
 
-  
+fixture {
+    spSWE(StateParty) {
+        country = "SWEDEN"
+        accessionRatification = new Date()
+    }
+
+    spUS(StateParty) {
+        country = "UNITED_STATES_OF_AMERICA"
+        accessionRatification = new Date()
+    }
+
+    spUK(StateParty) {
+        country = "UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND"
+        accessionRatification = new Date()
+    }
+
+    spMAL(StateParty) {
+        country = "MALAYSIA"
+        accessionRatification = new Date()
+    }
+    spBEL(StateParty) {
+        country = "BELGIUM"
+        accessionRatification = new Date()
+    }
+
+    spAUS(StateParty) {
+        country = "AUSTRALIA"
+        accessionRatification = new Date()
+    }
+
+    spCAN(StateParty) {
+        country = "CANADA"
+        accessionRatification = new Date()
+    }
+
+    spMUS(StateParty) {
+        country = "MAURITIUS"
+        accessionRatification = new Date()
+    }
+
+    spSWI(StateParty) {
+        country = "SWITZERLAND"
+        accessionRatification = new Date()
+    }
+
+    spGRE(StateParty) {
+        country = "GREECE"
+        accessionRatification = new Date()
+    }
+
+    userSweden(User) {
+        username = "sweden"
+        password = "sweden"
+        stateParty = [spSWE]
+    }
+
+    userUS(User) {
+        username = "unitedstates"
+        password = "unitedstates"
+        stateParty = [spUS]
+    }
+
+    userUK(User) {
+        username = "unitedkingdom"
+        password = "unitedkingdom"
+        stateParty = [spUK]
+    }
+
+    userMalaysia(User) {
+        username = "malaysia"
+        password = "malaysia"
+        stateParty = [spMAL]
+    }
+
+    userBelgium(User) {
+        username = "belgium"
+        password = "belgium"
+        stateParty = [spBEL]
+    }
+
+    userCanada(User) {
+        username = "canada"
+        password = "canada"
+        stateParty = [spCAN]
+    }
+
+    userAustralia(User) {
+        username = "australia"
+        password = "australia"
+        stateParty = [spAUS]
+    }
+    /*Create admin user*/
+    userAdmin(AdminUser) {
+        username = "admin"
+        password = "admin"
+    }
+
+    roleAdmin(SecRole) {
+        authority = 'ROLE_ADMIN'
+    }
+
+    userRoleAdmin(SecUserSecRole) {
+        secUser = userAdmin
+        secRole = roleAdmin
+    }
+
+    roleUser(SecRole) {
+        authority = 'ROLE_USER'
+    }
+
+    userRoleCAN(SecUserSecRole) {
+        secUser = userCanada
+        secRole = roleUser
+    }
+
+    userRoleAUS(SecUserSecRole) {
+        secUser = userAustralia
+        secRole = roleUser
+    }
+
+    userRoleSWE(SecUserSecRole) {
+        secUser = userSweden
+        secRole = roleUser
+    }
+    userRoleUS(SecUserSecRole) {
+        secUser = userUS
+        secRole = roleUser
+    }
+
+    userRoleUK(SecUserSecRole) {
+        secUser = userUK
+        secRole = roleUser
+    }
+
+    userRoleMAL(SecUserSecRole) {
+        secUser = userMalaysia
+        secRole = roleUser
+    }
+    userRoleBEL(SecUserSecRole) {
+        secUser = userBelgium
+        secRole = roleUser
+    }
 
 
-  
 
-  <head>
-    <title>
-      /cbm/trunk/fixtures/sampleData.groovy – CBM
-    </title>
-        <link rel="search" href="/CBM/search" />
-        <link rel="help" href="/CBM/wiki/TracGuide" />
-        <link rel="alternate" href="/CBM/export/515/cbm/trunk/fixtures/sampleData.groovy" type="text/plain" title="Original Format" />
-        <link rel="up" href="/CBM/browser/cbm/trunk/fixtures" title="Parent directory" />
-        <link rel="start" href="/CBM/wiki" />
-        <link rel="stylesheet" href="/CBM/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/CBM/chrome/common/css/code.css" type="text/css" /><link rel="stylesheet" href="/CBM/chrome/common/css/browser.css" type="text/css" />
-        <link rel="shortcut icon" href="/CBM/chrome/common/trac.ico" type="image/x-icon" />
-        <link rel="icon" href="/CBM/chrome/common/trac.ico" type="image/x-icon" />
-      <link type="application/opensearchdescription+xml" rel="search" href="/CBM/search/opensearch" title="Search CBM" />
-    <script type="text/javascript" src="/CBM/chrome/common/js/jquery.js"></script><script type="text/javascript" src="/CBM/chrome/common/js/trac.js"></script><script type="text/javascript" src="/CBM/chrome/common/js/search.js"></script>
-    <!--[if lt IE 7]>
-    <script type="text/javascript" src="/CBM/chrome/common/js/ie_pre7_hacks.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-      jQuery(document).ready(function($) {
-        $("#jumploc input").hide();
-        $("#jumploc select").change(function () {
-          this.parentNode.parentNode.submit();
-        })
-      });
-    </script>
-  </head>
-  <body>
-    <div id="banner">
-      <div id="header">
-        <a id="logo" href="/CBM/wiki/TracIni#header_logo-section"><img src="/CBM/chrome/site/40px-Peace_sign.svg.png" alt="(please configure the [header_logo] section in trac.ini)" /></a>
-      </div>
-      <form id="search" action="/CBM/search" method="get">
-        <div>
-          <label for="proj-search">Search:</label>
-          <input type="text" id="proj-search" name="q" size="18" value="" />
-          <input type="submit" value="Search" />
-        </div>
-      </form>
-      <div id="metanav" class="nav">
-    <ul>
-      <li class="first">logged in as tsiamitas</li><li><a href="/CBM/logout">Logout</a></li><li><a href="/CBM/prefs">Preferences</a></li><li><a href="/CBM/wiki/TracGuide">Help/Guide</a></li><li class="last"><a href="/CBM/about">About Trac</a></li>
-    </ul>
-  </div>
-    </div>
-    <div id="mainnav" class="nav">
-    <ul>
-      <li class="first"><a href="/CBM/wiki">Wiki</a></li><li><a href="/CBM/timeline">Timeline</a></li><li><a href="/CBM/roadmap">Roadmap</a></li><li class="active"><a href="/CBM/browser">Browse Source</a></li><li><a href="/CBM/report">View Tickets</a></li><li><a href="/CBM/newticket">New Ticket</a></li><li><a href="/CBM/search">Search</a></li><li class="last"><a href="/CBM/admin" title="Administration">Admin</a></li>
-    </ul>
-  </div>
-    <div id="main">
-      <div id="ctxtnav" class="nav">
-        <h2>Context Navigation</h2>
-          <ul>
-              <li class="first"><a href="/CBM/changeset/382/cbm/trunk/fixtures/sampleData.groovy">Last Change</a></li><li><a href="/CBM/browser/cbm/trunk/fixtures/sampleData.groovy?annotate=blame&amp;rev=382" title="Annotate each line with the last changed revision (this can be time consuming...)">Annotate</a></li><li class="last"><a href="/CBM/log/cbm/trunk/fixtures/sampleData.groovy">Revision Log</a></li>
-          </ul>
-        <hr />
-      </div>
-    <div id="content" class="browser">
-      <h1>
-    <a class="pathentry first" title="Go to root directory" href="/CBM/browser">root</a><span class="pathentry sep">/</span><a class="pathentry" title="View cbm" href="/CBM/browser/cbm">cbm</a><span class="pathentry sep">/</span><a class="pathentry" title="View trunk" href="/CBM/browser/cbm/trunk">trunk</a><span class="pathentry sep">/</span><a class="pathentry" title="View fixtures" href="/CBM/browser/cbm/trunk/fixtures">fixtures</a><span class="pathentry sep">/</span><a class="pathentry" title="View sampleData.groovy" href="/CBM/browser/cbm/trunk/fixtures/sampleData.groovy">sampleData.groovy</a>
-    <br style="clear: both" />
-  </h1>
-      <div id="jumprev">
-        <form action="" method="get">
-          <div>
-            <label for="rev">
-              View revision:</label>
-            <input type="text" id="rev" name="rev" size="6" />
-          </div>
-        </form>
-      </div>
-      <table id="info" summary="Revision info">
-        <tr>
-          <th scope="col">
-            Revision <a href="/CBM/changeset/382">382</a>, <span title="13426 bytes">13.1 KB</span>
-            (checked in by jutliah, <a class="timeline" href="/CBM/timeline?from=2014-06-24T12%3A48%3A43%2B0200&amp;precision=second" title="2014-06-24T12:48:43+0200 in Timeline">5 months</a> ago)
-          </th>
-        </tr>
-        <tr>
-          <td class="message searchable">
-              <p>
-Removed countries label from messages.properties - ticket 27<br />
-</p>
-          </td>
-        </tr>
-      </table>
-      <div id="preview" class="searchable">
-    <table class="code"><thead><tr><th class="lineno" title="Line numbers">Line</th><th class="content"> </th></tr></thead><tbody><tr><th id="L1"><a href="#L1">1</a></th><td>import cbm.*</td></tr><tr><th id="L2"><a href="#L2">2</a></th><td>import cbm.admin.StateParty</td></tr><tr><th id="L3"><a href="#L3">3</a></th><td>import cbm.form.FormAPart1ContainmentUnit</td></tr><tr><th id="L4"><a href="#L4">4</a></th><td>import cbm.form.FormAPart1a</td></tr><tr><th id="L5"><a href="#L5">5</a></th><td>import cbm.form.FormAPart1b</td></tr><tr><th id="L6"><a href="#L6">6</a></th><td>import cbm.form.FormAPart2a</td></tr><tr><th id="L7"><a href="#L7">7</a></th><td>import cbm.form.FormAPart2b</td></tr><tr><th id="L8"><a href="#L8">8</a></th><td>import cbm.form.FormAPart2c</td></tr><tr><th id="L9"><a href="#L9">9</a></th><td>import cbm.form.FormB</td></tr><tr><th id="L10"><a href="#L10">10</a></th><td>import cbm.report.Report</td></tr><tr><th id="L11"><a href="#L11">11</a></th><td>import cbm.usermgt.AdminUser</td></tr><tr><th id="L12"><a href="#L12">12</a></th><td>import cbm.usermgt.SecRole</td></tr><tr><th id="L13"><a href="#L13">13</a></th><td>import cbm.usermgt.SecUserSecRole</td></tr><tr><th id="L14"><a href="#L14">14</a></th><td>import cbm.usermgt.User</td></tr><tr><th id="L15"><a href="#L15">15</a></th><td></td></tr><tr><th id="L16"><a href="#L16">16</a></th><td>fixture {</td></tr><tr><th id="L17"><a href="#L17">17</a></th><td>    spSWE(StateParty) {</td></tr><tr><th id="L18"><a href="#L18">18</a></th><td>        country = "SWEDEN"</td></tr><tr><th id="L19"><a href="#L19">19</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L20"><a href="#L20">20</a></th><td>    }</td></tr><tr><th id="L21"><a href="#L21">21</a></th><td></td></tr><tr><th id="L22"><a href="#L22">22</a></th><td>    spUS(StateParty) {</td></tr><tr><th id="L23"><a href="#L23">23</a></th><td>        country = "UNITED_STATES_OF_AMERICA"</td></tr><tr><th id="L24"><a href="#L24">24</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L25"><a href="#L25">25</a></th><td>    }</td></tr><tr><th id="L26"><a href="#L26">26</a></th><td></td></tr><tr><th id="L27"><a href="#L27">27</a></th><td>    spUK(StateParty) {</td></tr><tr><th id="L28"><a href="#L28">28</a></th><td>        country = "UNITED_KINGDOM_OF_GREAT_BRITAIN_AND_NORTHERN_IRELAND"</td></tr><tr><th id="L29"><a href="#L29">29</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L30"><a href="#L30">30</a></th><td>    }</td></tr><tr><th id="L31"><a href="#L31">31</a></th><td></td></tr><tr><th id="L32"><a href="#L32">32</a></th><td>    spMAL(StateParty) {</td></tr><tr><th id="L33"><a href="#L33">33</a></th><td>        country = "MALAYSIA"</td></tr><tr><th id="L34"><a href="#L34">34</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L35"><a href="#L35">35</a></th><td>    }</td></tr><tr><th id="L36"><a href="#L36">36</a></th><td>    spBEL(StateParty) {</td></tr><tr><th id="L37"><a href="#L37">37</a></th><td>        country = "BELGIUM"</td></tr><tr><th id="L38"><a href="#L38">38</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L39"><a href="#L39">39</a></th><td>    }</td></tr><tr><th id="L40"><a href="#L40">40</a></th><td></td></tr><tr><th id="L41"><a href="#L41">41</a></th><td>    spAUS(StateParty) {</td></tr><tr><th id="L42"><a href="#L42">42</a></th><td>        country = "AUSTRALIA"</td></tr><tr><th id="L43"><a href="#L43">43</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L44"><a href="#L44">44</a></th><td>    }</td></tr><tr><th id="L45"><a href="#L45">45</a></th><td></td></tr><tr><th id="L46"><a href="#L46">46</a></th><td>    spCAN(StateParty) {</td></tr><tr><th id="L47"><a href="#L47">47</a></th><td>        country = "CANADA"</td></tr><tr><th id="L48"><a href="#L48">48</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L49"><a href="#L49">49</a></th><td>    }</td></tr><tr><th id="L50"><a href="#L50">50</a></th><td></td></tr><tr><th id="L51"><a href="#L51">51</a></th><td>    spMUS(StateParty) {</td></tr><tr><th id="L52"><a href="#L52">52</a></th><td>        country = "MAURITIUS"</td></tr><tr><th id="L53"><a href="#L53">53</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L54"><a href="#L54">54</a></th><td>    }</td></tr><tr><th id="L55"><a href="#L55">55</a></th><td></td></tr><tr><th id="L56"><a href="#L56">56</a></th><td>    spSWI(StateParty) {</td></tr><tr><th id="L57"><a href="#L57">57</a></th><td>        country = "SWITZERLAND"</td></tr><tr><th id="L58"><a href="#L58">58</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L59"><a href="#L59">59</a></th><td>    }</td></tr><tr><th id="L60"><a href="#L60">60</a></th><td></td></tr><tr><th id="L61"><a href="#L61">61</a></th><td>    spGRE(StateParty) {</td></tr><tr><th id="L62"><a href="#L62">62</a></th><td>        country = "GREECE"</td></tr><tr><th id="L63"><a href="#L63">63</a></th><td>        accessionRatification = new Date()</td></tr><tr><th id="L64"><a href="#L64">64</a></th><td>    }</td></tr><tr><th id="L65"><a href="#L65">65</a></th><td></td></tr><tr><th id="L66"><a href="#L66">66</a></th><td>    userSweden(User) {</td></tr><tr><th id="L67"><a href="#L67">67</a></th><td>        username = "sweden"</td></tr><tr><th id="L68"><a href="#L68">68</a></th><td>        password = "sweden"</td></tr><tr><th id="L69"><a href="#L69">69</a></th><td>        stateParty = [spSWE]</td></tr><tr><th id="L70"><a href="#L70">70</a></th><td>    }</td></tr><tr><th id="L71"><a href="#L71">71</a></th><td></td></tr><tr><th id="L72"><a href="#L72">72</a></th><td>    userUS(User) {</td></tr><tr><th id="L73"><a href="#L73">73</a></th><td>        username = "unitedstates"</td></tr><tr><th id="L74"><a href="#L74">74</a></th><td>        password = "unitedstates"</td></tr><tr><th id="L75"><a href="#L75">75</a></th><td>        stateParty = [spUS]</td></tr><tr><th id="L76"><a href="#L76">76</a></th><td>    }</td></tr><tr><th id="L77"><a href="#L77">77</a></th><td></td></tr><tr><th id="L78"><a href="#L78">78</a></th><td>    userUK(User) {</td></tr><tr><th id="L79"><a href="#L79">79</a></th><td>        username = "unitedkingdom"</td></tr><tr><th id="L80"><a href="#L80">80</a></th><td>        password = "unitedkingdom"</td></tr><tr><th id="L81"><a href="#L81">81</a></th><td>        stateParty = [spUK]</td></tr><tr><th id="L82"><a href="#L82">82</a></th><td>    }</td></tr><tr><th id="L83"><a href="#L83">83</a></th><td></td></tr><tr><th id="L84"><a href="#L84">84</a></th><td>    userMalaysia(User) {</td></tr><tr><th id="L85"><a href="#L85">85</a></th><td>        username = "malaysia"</td></tr><tr><th id="L86"><a href="#L86">86</a></th><td>        password = "malaysia"</td></tr><tr><th id="L87"><a href="#L87">87</a></th><td>        stateParty = [spMAL]</td></tr><tr><th id="L88"><a href="#L88">88</a></th><td>    }</td></tr><tr><th id="L89"><a href="#L89">89</a></th><td></td></tr><tr><th id="L90"><a href="#L90">90</a></th><td>    userBelgium(User) {</td></tr><tr><th id="L91"><a href="#L91">91</a></th><td>        username = "belgium"</td></tr><tr><th id="L92"><a href="#L92">92</a></th><td>        password = "belgium"</td></tr><tr><th id="L93"><a href="#L93">93</a></th><td>        stateParty = [spBEL]</td></tr><tr><th id="L94"><a href="#L94">94</a></th><td>    }</td></tr><tr><th id="L95"><a href="#L95">95</a></th><td></td></tr><tr><th id="L96"><a href="#L96">96</a></th><td>    userCanada(User) {</td></tr><tr><th id="L97"><a href="#L97">97</a></th><td>        username = "canada"</td></tr><tr><th id="L98"><a href="#L98">98</a></th><td>        password = "canada"</td></tr><tr><th id="L99"><a href="#L99">99</a></th><td>        stateParty = [spCAN]</td></tr><tr><th id="L100"><a href="#L100">100</a></th><td>    }</td></tr><tr><th id="L101"><a href="#L101">101</a></th><td></td></tr><tr><th id="L102"><a href="#L102">102</a></th><td>    userAustralia(User) {</td></tr><tr><th id="L103"><a href="#L103">103</a></th><td>        username = "australia"</td></tr><tr><th id="L104"><a href="#L104">104</a></th><td>        password = "australia"</td></tr><tr><th id="L105"><a href="#L105">105</a></th><td>        stateParty = [spAUS]</td></tr><tr><th id="L106"><a href="#L106">106</a></th><td>    }</td></tr><tr><th id="L107"><a href="#L107">107</a></th><td>    /*Create admin user*/</td></tr><tr><th id="L108"><a href="#L108">108</a></th><td>    userAdmin(AdminUser) {</td></tr><tr><th id="L109"><a href="#L109">109</a></th><td>        username = "admin"</td></tr><tr><th id="L110"><a href="#L110">110</a></th><td>        password = "admin"</td></tr><tr><th id="L111"><a href="#L111">111</a></th><td>    }</td></tr><tr><th id="L112"><a href="#L112">112</a></th><td></td></tr><tr><th id="L113"><a href="#L113">113</a></th><td>    roleAdmin(SecRole) {</td></tr><tr><th id="L114"><a href="#L114">114</a></th><td>        authority = 'ROLE_ADMIN'</td></tr><tr><th id="L115"><a href="#L115">115</a></th><td>    }</td></tr><tr><th id="L116"><a href="#L116">116</a></th><td></td></tr><tr><th id="L117"><a href="#L117">117</a></th><td>    userRoleAdmin(SecUserSecRole) {</td></tr><tr><th id="L118"><a href="#L118">118</a></th><td>        secUser = userAdmin</td></tr><tr><th id="L119"><a href="#L119">119</a></th><td>        secRole = roleAdmin</td></tr><tr><th id="L120"><a href="#L120">120</a></th><td>    }</td></tr><tr><th id="L121"><a href="#L121">121</a></th><td></td></tr><tr><th id="L122"><a href="#L122">122</a></th><td>    roleUser(SecRole) {</td></tr><tr><th id="L123"><a href="#L123">123</a></th><td>        authority = 'ROLE_USER'</td></tr><tr><th id="L124"><a href="#L124">124</a></th><td>    }</td></tr><tr><th id="L125"><a href="#L125">125</a></th><td></td></tr><tr><th id="L126"><a href="#L126">126</a></th><td>    userRoleCAN(SecUserSecRole) {</td></tr><tr><th id="L127"><a href="#L127">127</a></th><td>        secUser = userCanada</td></tr><tr><th id="L128"><a href="#L128">128</a></th><td>        secRole = roleUser</td></tr><tr><th id="L129"><a href="#L129">129</a></th><td>    }</td></tr><tr><th id="L130"><a href="#L130">130</a></th><td></td></tr><tr><th id="L131"><a href="#L131">131</a></th><td>    userRoleAUS(SecUserSecRole) {</td></tr><tr><th id="L132"><a href="#L132">132</a></th><td>        secUser = userAustralia</td></tr><tr><th id="L133"><a href="#L133">133</a></th><td>        secRole = roleUser</td></tr><tr><th id="L134"><a href="#L134">134</a></th><td>    }</td></tr><tr><th id="L135"><a href="#L135">135</a></th><td></td></tr><tr><th id="L136"><a href="#L136">136</a></th><td>    userRoleSWE(SecUserSecRole) {</td></tr><tr><th id="L137"><a href="#L137">137</a></th><td>        secUser = userSweden</td></tr><tr><th id="L138"><a href="#L138">138</a></th><td>        secRole = roleUser</td></tr><tr><th id="L139"><a href="#L139">139</a></th><td>    }</td></tr><tr><th id="L140"><a href="#L140">140</a></th><td>    userRoleUS(SecUserSecRole) {</td></tr><tr><th id="L141"><a href="#L141">141</a></th><td>        secUser = userUS</td></tr><tr><th id="L142"><a href="#L142">142</a></th><td>        secRole = roleUser</td></tr><tr><th id="L143"><a href="#L143">143</a></th><td>    }</td></tr><tr><th id="L144"><a href="#L144">144</a></th><td></td></tr><tr><th id="L145"><a href="#L145">145</a></th><td>    userRoleUK(SecUserSecRole) {</td></tr><tr><th id="L146"><a href="#L146">146</a></th><td>        secUser = userUK</td></tr><tr><th id="L147"><a href="#L147">147</a></th><td>        secRole = roleUser</td></tr><tr><th id="L148"><a href="#L148">148</a></th><td>    }</td></tr><tr><th id="L149"><a href="#L149">149</a></th><td></td></tr><tr><th id="L150"><a href="#L150">150</a></th><td>    userRoleMAL(SecUserSecRole) {</td></tr><tr><th id="L151"><a href="#L151">151</a></th><td>        secUser = userMalaysia</td></tr><tr><th id="L152"><a href="#L152">152</a></th><td>        secRole = roleUser</td></tr><tr><th id="L153"><a href="#L153">153</a></th><td>    }</td></tr><tr><th id="L154"><a href="#L154">154</a></th><td>    userRoleBEL(SecUserSecRole) {</td></tr><tr><th id="L155"><a href="#L155">155</a></th><td>        secUser = userBelgium</td></tr><tr><th id="L156"><a href="#L156">156</a></th><td>        secRole = roleUser</td></tr><tr><th id="L157"><a href="#L157">157</a></th><td>    }</td></tr><tr><th id="L158"><a href="#L158">158</a></th><td></td></tr><tr><th id="L159"><a href="#L159">159</a></th><td></td></tr><tr><th id="L160"><a href="#L160">160</a></th><td></td></tr><tr><th id="L161"><a href="#L161">161</a></th><td>    reportAUSTRALIA2010EN(Report) {</td></tr><tr><th id="L162"><a href="#L162">162</a></th><td>        stateParty = [spAUS]</td></tr><tr><th id="L163"><a href="#L163">163</a></th><td>//              country = "AUSTRALIA"</td></tr><tr><th id="L164"><a href="#L164">164</a></th><td>        language = "ENGLISH"</td></tr><tr><th id="L165"><a href="#L165">165</a></th><td>        year = "2010"</td></tr><tr><th id="L166"><a href="#L166">166</a></th><td>        reportStatus = "Draft"</td></tr><tr><th id="L167"><a href="#L167">167</a></th><td>        publicationStatus = "Not published"</td></tr><tr><th id="L168"><a href="#L168">168</a></th><td>        officialVersion = true</td></tr><tr><th id="L169"><a href="#L169">169</a></th><td>    }</td></tr><tr><th id="L170"><a href="#L170">170</a></th><td></td></tr><tr><th id="L171"><a href="#L171">171</a></th><td>    reportCANADA2010EN(Report) {</td></tr><tr><th id="L172"><a href="#L172">172</a></th><td>        stateParty = [spCAN]</td></tr><tr><th id="L173"><a href="#L173">173</a></th><td>//              country = "CANADA"</td></tr><tr><th id="L174"><a href="#L174">174</a></th><td>        language = "ENGLISH"</td></tr><tr><th id="L175"><a href="#L175">175</a></th><td>        year = "2010"</td></tr><tr><th id="L176"><a href="#L176">176</a></th><td>        reportStatus = "Draft"</td></tr><tr><th id="L177"><a href="#L177">177</a></th><td>        publicationStatus = "Not published"</td></tr><tr><th id="L178"><a href="#L178">178</a></th><td>        officialVersion = true</td></tr><tr><th id="L179"><a href="#L179">179</a></th><td>    }</td></tr><tr><th id="L180"><a href="#L180">180</a></th><td></td></tr><tr><th id="L181"><a href="#L181">181</a></th><td>    report3(Report) {</td></tr><tr><th id="L182"><a href="#L182">182</a></th><td>        stateParty = [spMUS]</td></tr><tr><th id="L183"><a href="#L183">183</a></th><td>//              country = "MAURITIUS"</td></tr><tr><th id="L184"><a href="#L184">184</a></th><td>        language = "ENGLISH"</td></tr><tr><th id="L185"><a href="#L185">185</a></th><td>        year = "2011"</td></tr><tr><th id="L186"><a href="#L186">186</a></th><td>        reportStatus = "Submitted"</td></tr><tr><th id="L187"><a href="#L187">187</a></th><td>        publicationStatus = "Published"</td></tr><tr><th id="L188"><a href="#L188">188</a></th><td>        officialVersion = true</td></tr><tr><th id="L189"><a href="#L189">189</a></th><td>    }</td></tr><tr><th id="L190"><a href="#L190">190</a></th><td></td></tr><tr><th id="L191"><a href="#L191">191</a></th><td>    report4(Report) {</td></tr><tr><th id="L192"><a href="#L192">192</a></th><td>        stateParty = [spSWI]</td></tr><tr><th id="L193"><a href="#L193">193</a></th><td>//              country = "SWITZERLAND"</td></tr><tr><th id="L194"><a href="#L194">194</a></th><td>        language = "ENGLISH"</td></tr><tr><th id="L195"><a href="#L195">195</a></th><td>        year = "2011"</td></tr><tr><th id="L196"><a href="#L196">196</a></th><td>        reportStatus = "Submitted"</td></tr><tr><th id="L197"><a href="#L197">197</a></th><td>        publicationStatus = "Published"</td></tr><tr><th id="L198"><a href="#L198">198</a></th><td>        officialVersion = true</td></tr><tr><th id="L199"><a href="#L199">199</a></th><td>    }</td></tr><tr><th id="L200"><a href="#L200">200</a></th><td></td></tr><tr><th id="L201"><a href="#L201">201</a></th><td>    facility1(FormAPart1a) {</td></tr><tr><th id="L202"><a href="#L202">202</a></th><td>        title = "formAPart1a"</td></tr><tr><th id="L203"><a href="#L203">203</a></th><td>        formStatus = "Completed"</td></tr><tr><th id="L204"><a href="#L204">204</a></th><td>        visibility = "Private"</td></tr><tr><th id="L205"><a href="#L205">205</a></th><td>        report = [reportCANADA2010EN]</td></tr><tr><th id="L206"><a href="#L206">206</a></th><td>        facilityName = "Animal Health Laboratory (AHL)"</td></tr><tr><th id="L207"><a href="#L207">207</a></th><td>        responsibleOrganisation = "Commonwealth Scientific and Industrial Research Organisation (CSIRO) (Federal Government) and the Department of Agriculture, Fisheries and Forestry (Federal Government). Note: Australia has a two-tiered system of Government, with the Federal Government and, to a lesser extent, the six respective State Governments and two Territories all involved in the formulation and implementation of Government policy."</td></tr><tr><th id="L208"><a href="#L208">208</a></th><td>        location = "5 Port Arlington Road, Geelong, Victoria, CANADA"</td></tr><tr><th id="L209"><a href="#L209">209</a></th><td>        postalAddress = "PO Bag 24, Geelong VIC 3220, CANADA"</td></tr><tr><th id="L210"><a href="#L210">210</a></th><td>        financingSources = "The AAHL is funded by the Canadian Government, via CSIRO and the Department of Agriculture, Fisheries and Forestry. It is also funded by industry organisations and commercial companies."</td></tr><tr><th id="L211"><a href="#L211">211</a></th><td>        scope = "&lt;p&gt;The AHL plays a &lt;b&gt;vital&lt;/b&gt; role in maintaining Australia's capability to diagnose quickly exotic (foreign) and emerging animal diseases. This is achieved through ongoing research programs to develop the most sensitive, accurate and timely diagnostic tests, which are critical to the success of any eradication campaign in the event of a disease outbreak. AAHL also undertakes research on exotic, new and emerging diseases to better understand the disease process and drivers for emergence of new diseases, to develop new diagnostic tests, vaccines and treatments for endemic animal diseases of national importance. Major diseases of livestock, aquaculture animals, and wildlife, are studied. AAHL includes a high-biocontainment facility, to safely fulfil its major role of diagnosing emergency animal disease outbreaks.&lt;/p&gt;"</td></tr><tr><th id="L212"><a href="#L212">212</a></th><td>    }</td></tr><tr><th id="L213"><a href="#L213">213</a></th><td></td></tr><tr><th id="L214"><a href="#L214">214</a></th><td>    containmentUnit1(FormAPart1ContainmentUnit) {</td></tr><tr><th id="L215"><a href="#L215">215</a></th><td>        facility = [facility1]</td></tr><tr><th id="L216"><a href="#L216">216</a></th><td>        bioSafetyLevel = "BSL4"</td></tr><tr><th id="L217"><a href="#L217">217</a></th><td>        unitType = "laboratory"</td></tr><tr><th id="L218"><a href="#L218">218</a></th><td>        unitSize = "250"</td></tr><tr><th id="L219"><a href="#L219">219</a></th><td>        comment = "Forensic Laboratory"</td></tr><tr><th id="L220"><a href="#L220">220</a></th><td>    }</td></tr><tr><th id="L221"><a href="#L221">221</a></th><td></td></tr><tr><th id="L222"><a href="#L222">222</a></th><td>    containmentUnit2(FormAPart1ContainmentUnit) {</td></tr><tr><th id="L223"><a href="#L223">223</a></th><td>        facility = [facility1]</td></tr><tr><th id="L224"><a href="#L224">224</a></th><td>        bioSafetyLevel = "Enhanced BSL3"</td></tr><tr><th id="L225"><a href="#L225">225</a></th><td>        unitType = "treatment module"</td></tr><tr><th id="L226"><a href="#L226">226</a></th><td>        unitSize = "250"</td></tr><tr><th id="L227"><a href="#L227">227</a></th><td>        comment = "Chemical diseases lab"</td></tr><tr><th id="L228"><a href="#L228">228</a></th><td>    }</td></tr><tr><th id="L229"><a href="#L229">229</a></th><td></td></tr><tr><th id="L230"><a href="#L230">230</a></th><td>    facility2(FormAPart1a) {</td></tr><tr><th id="L231"><a href="#L231">231</a></th><td>        title = "formAPart1a"</td></tr><tr><th id="L232"><a href="#L232">232</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L233"><a href="#L233">233</a></th><td>        visibility = "Public"</td></tr><tr><th id="L234"><a href="#L234">234</a></th><td>        report = [reportAUSTRALIA2010EN]</td></tr><tr><th id="L235"><a href="#L235">235</a></th><td>        facilityName = "National High Security Quarantine Laboratory (NHSQL)"</td></tr><tr><th id="L236"><a href="#L236">236</a></th><td>        responsibleOrganisation = "Department of Health and Ageing (Commonwealth Government), Victorian Department of Human Services (State Government)"</td></tr><tr><th id="L237"><a href="#L237">237</a></th><td>        location = "Victorian Infectious Diseases, Reference Laboratory, 10 Wreckyn Street, North Melbourne VIC, AUSTRALIA"</td></tr><tr><th id="L238"><a href="#L238">238</a></th><td>        postalAddress = "National High Security, Quarantine Laboratory, c/o VIDRL, Locked Bag 815, Carlton South VIC 3053, AUSTRALIA"</td></tr><tr><th id="L239"><a href="#L239">239</a></th><td>        financingSources = "This facility receives no funding from the Australian Government Department of Defence. It receives funding from the Commonwealth and State Departments of Health"</td></tr><tr><th id="L240"><a href="#L240">240</a></th><td>        scope = "&lt;p&gt;The diagnosis of possible imported cases of viral haemorrhagic fever or other quarantinable viral diseases that present a significant danger to the Australian community. Development of laboratory tests and protocols for exotic respiratory viral diseases, including influenza virus A/H5N1 (bird flu) and SARS. In addition, VIDRL has established and maintained the capability to perform diagnostic testing for the variola virus. See, also, background information"</td></tr><tr><th id="L241"><a href="#L241">241</a></th><td>    }</td></tr><tr><th id="L242"><a href="#L242">242</a></th><td></td></tr><tr><th id="L243"><a href="#L243">243</a></th><td>    facility3(FormAPart1a) {</td></tr><tr><th id="L244"><a href="#L244">244</a></th><td>        title = "formAPart1a"</td></tr><tr><th id="L245"><a href="#L245">245</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L246"><a href="#L246">246</a></th><td>        visibility = "Public"</td></tr><tr><th id="L247"><a href="#L247">247</a></th><td>        report = [reportCANADA2010EN]</td></tr><tr><th id="L248"><a href="#L248">248</a></th><td>        facilityName = "Ottawa Health Forensic Scientific Services (OHFSS)"</td></tr><tr><th id="L249"><a href="#L249">249</a></th><td>        responsibleOrganisation = "Queensland Department of Health (State Government)"</td></tr><tr><th id="L250"><a href="#L250">250</a></th><td>        location = "39 Kessels Road, Coopers Plains, QLD, OTTAWA"</td></tr><tr><th id="L251"><a href="#L251">251</a></th><td>        postalAddress = "PO Box 594, Archefield QLD 4108, OTTAWA"</td></tr><tr><th id="L252"><a href="#L252">252</a></th><td>        financingSources = "This facility receives no funding from the Canadian Government Department of Defence. It receives funding from Ottawa Department of Health"</td></tr><tr><th id="L253"><a href="#L253">253</a></th><td>        scope = "&lt;p&gt;The maximum containment facility at OHFSS, a state government public health virology laboratory, has both a diagnostic and a research function. The maximum containment facilities are used for the development and performance of diagnostic tests on patients with suspected exotic or endemic viral illness. This includes Henipah viruses or exotic haemorrhagic fever viruses. The only PC4 level pathogens that the laboratory has are Hendra virus and SARS coronavirus (AQIS QC4), which are used for diagnostic purposes. The laboratory intends to introduce reagents useful for the diagnosis of a number of exotic viral diseases including Ebola, Marburg, Lassa, Junin, Rift Valley fevers and Hantavirus among others. These reagents will consist of either inactivated diagnostic reagents, cloned viral subunits or live virus.&lt;/p&gt;"</td></tr><tr><th id="L254"><a href="#L254">254</a></th><td>    }</td></tr><tr><th id="L255"><a href="#L255">255</a></th><td></td></tr><tr><th id="L256"><a href="#L256">256</a></th><td>    containmentUnit3(FormAPart1ContainmentUnit) {</td></tr><tr><th id="L257"><a href="#L257">257</a></th><td>        facility = [facility3]</td></tr><tr><th id="L258"><a href="#L258">258</a></th><td>        bioSafetyLevel = "BSL4"</td></tr><tr><th id="L259"><a href="#L259">259</a></th><td>        unitType = "laboratory"</td></tr><tr><th id="L260"><a href="#L260">260</a></th><td>        unitSize = "250"</td></tr><tr><th id="L261"><a href="#L261">261</a></th><td>        comment = "Forensic Laboratory"</td></tr><tr><th id="L262"><a href="#L262">262</a></th><td>    }</td></tr><tr><th id="L263"><a href="#L263">263</a></th><td></td></tr><tr><th id="L264"><a href="#L264">264</a></th><td>    containmentUnit4(FormAPart1ContainmentUnit) {</td></tr><tr><th id="L265"><a href="#L265">265</a></th><td>        facility = [facility3]</td></tr><tr><th id="L266"><a href="#L266">266</a></th><td>        bioSafetyLevel = "Enhanced BSL3"</td></tr><tr><th id="L267"><a href="#L267">267</a></th><td>        unitType = "treatment module"</td></tr><tr><th id="L268"><a href="#L268">268</a></th><td>        unitSize = "250"</td></tr><tr><th id="L269"><a href="#L269">269</a></th><td>        comment = "Chemical diseases lab"</td></tr><tr><th id="L270"><a href="#L270">270</a></th><td>    }</td></tr><tr><th id="L271"><a href="#L271">271</a></th><td></td></tr><tr><th id="L272"><a href="#L272">272</a></th><td></td></tr><tr><th id="L273"><a href="#L273">273</a></th><td>    formAPart1b1(FormAPart1b) {</td></tr><tr><th id="L274"><a href="#L274">274</a></th><td>        title = "formAPart1b1"</td></tr><tr><th id="L275"><a href="#L275">275</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L276"><a href="#L276">276</a></th><td>        visibility = "Public"</td></tr><tr><th id="L277"><a href="#L277">277</a></th><td>        report = [reportAUSTRALIA2010EN]</td></tr><tr><th id="L278"><a href="#L278">278</a></th><td>        bioSafetyLevel3 = true</td></tr><tr><th id="L279"><a href="#L279">279</a></th><td>        bioSafetyLevel2 = false</td></tr><tr><th id="L280"><a href="#L280">280</a></th><td>        additionalInformation = "some sample text"</td></tr><tr><th id="L281"><a href="#L281">281</a></th><td>    }</td></tr><tr><th id="L282"><a href="#L282">282</a></th><td></td></tr><tr><th id="L283"><a href="#L283">283</a></th><td>    formAPart1b2(FormAPart1b) {</td></tr><tr><th id="L284"><a href="#L284">284</a></th><td>        title = "formAPart1b2"</td></tr><tr><th id="L285"><a href="#L285">285</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L286"><a href="#L286">286</a></th><td>        visibility = "Public"</td></tr><tr><th id="L287"><a href="#L287">287</a></th><td>        report = [reportCANADA2010EN]</td></tr><tr><th id="L288"><a href="#L288">288</a></th><td>        bioSafetyLevel3 = true</td></tr><tr><th id="L289"><a href="#L289">289</a></th><td>        bioSafetyLevel2 = false</td></tr><tr><th id="L290"><a href="#L290">290</a></th><td>        additionalInformation = "formAPart1B for reportCANADA2010EN"</td></tr><tr><th id="L291"><a href="#L291">291</a></th><td>    }</td></tr><tr><th id="L292"><a href="#L292">292</a></th><td></td></tr><tr><th id="L293"><a href="#L293">293</a></th><td>    formAPart2a1(FormAPart2a) {</td></tr><tr><th id="L294"><a href="#L294">294</a></th><td>        report = [reportCANADA2010EN]</td></tr><tr><th id="L295"><a href="#L295">295</a></th><td>        existingNationalProgrammes = true</td></tr><tr><th id="L296"><a href="#L296">296</a></th><td>    }</td></tr><tr><th id="L297"><a href="#L297">297</a></th><td>    formAPart2a2(FormAPart2a) {</td></tr><tr><th id="L298"><a href="#L298">298</a></th><td>        report = [reportAUSTRALIA2010EN]</td></tr><tr><th id="L299"><a href="#L299">299</a></th><td>        existingNationalProgrammes = true</td></tr><tr><th id="L300"><a href="#L300">300</a></th><td>    }</td></tr><tr><th id="L301"><a href="#L301">301</a></th><td></td></tr><tr><th id="L302"><a href="#L302">302</a></th><td>    formAPart2b1(FormAPart2b) {</td></tr><tr><th id="L303"><a href="#L303">303</a></th><td>        title = "formAPart2b"</td></tr><tr><th id="L304"><a href="#L304">304</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L305"><a href="#L305">305</a></th><td>        visibility = "Public"</td></tr><tr><th id="L306"><a href="#L306">306</a></th><td>        programName = "sample programme in Canada"</td></tr><tr><th id="L307"><a href="#L307">307</a></th><td>        objectives = "sample objectives"</td></tr><tr><th id="L308"><a href="#L308">308</a></th><td>        conductedUnderContract = true</td></tr><tr><th id="L309"><a href="#L309">309</a></th><td>        proportionContracted = "sample proportion"</td></tr><tr><th id="L310"><a href="#L310">310</a></th><td>        summaryObjectivesContractor = "sample summary of the objectives"</td></tr><tr><th id="L311"><a href="#L311">311</a></th><td>        declaration = "sample declaration"</td></tr><tr><th id="L312"><a href="#L312">312</a></th><td>        amount = 1200000</td></tr><tr><th id="L313"><a href="#L313">313</a></th><td>        source = "sample source"</td></tr><tr><th id="L314"><a href="#L314">314</a></th><td>        report = [reportCANADA2010EN]</td></tr><tr><th id="L315"><a href="#L315">315</a></th><td>    }</td></tr><tr><th id="L316"><a href="#L316">316</a></th><td></td></tr><tr><th id="L317"><a href="#L317">317</a></th><td>    formAPart2c1(FormAPart2c) {</td></tr><tr><th id="L318"><a href="#L318">318</a></th><td>        title = "formAPart2c"</td></tr><tr><th id="L319"><a href="#L319">319</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L320"><a href="#L320">320</a></th><td>        visibility = "Private"</td></tr><tr><th id="L321"><a href="#L321">321</a></th><td></td></tr><tr><th id="L322"><a href="#L322">322</a></th><td>        formAPart2b = formAPart2b1</td></tr><tr><th id="L323"><a href="#L323">323</a></th><td></td></tr><tr><th id="L324"><a href="#L324">324</a></th><td>        facilityName = "sample facility name"</td></tr><tr><th id="L325"><a href="#L325">325</a></th><td>        location = "sample location"</td></tr><tr><th id="L326"><a href="#L326">326</a></th><td>        postalAddress = "22, impasse de null part, Ville-Loin, 12543 XX"</td></tr><tr><th id="L327"><a href="#L327">327</a></th><td></td></tr><tr><th id="L328"><a href="#L328">328</a></th><td>        floorAreaBL2 = 14</td></tr><tr><th id="L329"><a href="#L329">329</a></th><td>        floorAreaBL3 = 36</td></tr><tr><th id="L330"><a href="#L330">330</a></th><td>        floorAreaBL4 = 8</td></tr><tr><th id="L331"><a href="#L331">331</a></th><td></td></tr><tr><th id="L332"><a href="#L332">332</a></th><td>        militaryPersonnel = 12</td></tr><tr><th id="L333"><a href="#L333">333</a></th><td>        civilianPersonnel = 73</td></tr><tr><th id="L334"><a href="#L334">334</a></th><td>        scientists = 12</td></tr><tr><th id="L335"><a href="#L335">335</a></th><td>        engineers = 5</td></tr><tr><th id="L336"><a href="#L336">336</a></th><td>        technicians = 3</td></tr><tr><th id="L337"><a href="#L337">337</a></th><td>        administrators = 9</td></tr><tr><th id="L338"><a href="#L338">338</a></th><td></td></tr><tr><th id="L339"><a href="#L339">339</a></th><td>        scientificDisciplines = "some disciplines"</td></tr><tr><th id="L340"><a href="#L340">340</a></th><td>        contractors = 1</td></tr><tr><th id="L341"><a href="#L341">341</a></th><td>        fundingSources = "some information about funding sources"</td></tr><tr><th id="L342"><a href="#L342">342</a></th><td>        fundResearch = 120000</td></tr><tr><th id="L343"><a href="#L343">343</a></th><td>        fundDevelopment = 30000</td></tr><tr><th id="L344"><a href="#L344">344</a></th><td>        fundTest = 56000</td></tr><tr><th id="L345"><a href="#L345">345</a></th><td></td></tr><tr><th id="L346"><a href="#L346">346</a></th><td>        publicationPolicy = "some policy"</td></tr><tr><th id="L347"><a href="#L347">347</a></th><td>        publicPapers = "some papers"</td></tr><tr><th id="L348"><a href="#L348">348</a></th><td>        bioDefenseWork = "some biological defense work"</td></tr><tr><th id="L349"><a href="#L349">349</a></th><td>    }</td></tr><tr><th id="L350"><a href="#L350">350</a></th><td></td></tr><tr><th id="L351"><a href="#L351">351</a></th><td>    formBCAN(FormB) {</td></tr><tr><th id="L352"><a href="#L352">352</a></th><td>        title = "formBCAN"</td></tr><tr><th id="L353"><a href="#L353">353</a></th><td>        formStatus = "Draft"</td></tr><tr><th id="L354"><a href="#L354">354</a></th><td>        visibility = "Private"</td></tr><tr><th id="L355"><a href="#L355">355</a></th><td>        report = [reportCANADA2010EN]</td></tr><tr><th id="L356"><a href="#L356">356</a></th><td>        eventName = "Foot and mouth disease"</td></tr><tr><th id="L357"><a href="#L357">357</a></th><td>        eventCategory = "Animal"</td></tr><tr><th id="L358"><a href="#L358">358</a></th><td>        eventDate = "08/01/2007"</td></tr><tr><th id="L359"><a href="#L359">359</a></th><td>        locationAffected = "Surrey county, England"</td></tr><tr><th id="L360"><a href="#L360">360</a></th><td>        typeOfDisease = "Foot and mouth disease"</td></tr><tr><th id="L361"><a href="#L361">361</a></th><td>        sourceOfDisease = "Laboratory escape"</td></tr><tr><th id="L362"><a href="#L362">362</a></th><td>        possibleCause = "Foot and mouth disease virus"</td></tr><tr><th id="L363"><a href="#L363">363</a></th><td>        /*detailedSymptoms = "Vesicular condition of the feet, bucal mucosa and, in females, the mammary glands"*/</td></tr><tr><th id="L364"><a href="#L364">364</a></th><td>/*        deviationFromNormalPattern = "FMDV  is Exotic to the UK"*/</td></tr><tr><th id="L365"><a href="#L365">365</a></th><td>        numOfTotalCases = "238 animals at 8 premises"</td></tr><tr><th id="L366"><a href="#L366">366</a></th><td>        numDeaths = "0"</td></tr><tr><th id="L367"><a href="#L367">367</a></th><td>        developmentOfOutbreak = "In late July there was laboratory escape of pathogen with subsequent local spread. Spread contained by measures taken below and last case was reported on 29 August 2007."</td></tr><tr><th id="L368"><a href="#L368">368</a></th><td>        measuresTaken = "Stamping out, quarantine, movement control inside the country, zoning, disinfection of infected premises/ establishment(s), no vaccination and no treatment of affected animals."</td></tr><tr><th id="L369"><a href="#L369">369</a></th><td>        additionalInfo = "Further information is available at: http://www.defra.gov.uk/animalh/diseases/fmd/investigations/index.html"</td></tr><tr><th id="L370"><a href="#L370">370</a></th><td>    }</td></tr><tr><th id="L371"><a href="#L371">371</a></th><td></td></tr><tr><th id="L372"><a href="#L372">372</a></th><td></td></tr><tr><th id="L373"><a href="#L373">373</a></th><td>}</td></tr></tbody></table>
-      </div>
-      <div id="help">
-        <strong>Note:</strong> See <a href="/CBM/wiki/TracBrowser">TracBrowser</a>
-        for help on using the browser.
-      </div>
-      <div id="anydiff">
-        <form action="/CBM/diff" method="get">
-          <div class="buttons">
-            <input type="hidden" name="new_path" value="/cbm/trunk/fixtures/sampleData.groovy" />
-            <input type="hidden" name="old_path" value="/cbm/trunk/fixtures/sampleData.groovy" />
-            <input type="hidden" name="new_rev" value="382" />
-            <input type="hidden" name="old_rev" value="382" />
-            <input type="submit" value="View changes..." title="Select paths and revs for Diff" />
-          </div>
-        </form>
-      </div>
-    </div>
-    <div id="altlinks">
-      <h3>Download in other formats:</h3>
-      <ul>
-        <li class="last first">
-          <a rel="nofollow" href="/CBM/export/515/cbm/trunk/fixtures/sampleData.groovy">Original Format</a>
-        </li>
-      </ul>
-    </div>
-    </div>
-    <div id="footer" lang="en" xml:lang="en"><hr />
-      <a id="tracpowered" href="http://trac.edgewall.org/"><img src="/CBM/chrome/common/trac_logo_mini.png" height="30" width="107" alt="Trac Powered" /></a>
-      <p class="left">
-        Powered by <a href="/CBM/about"><strong>Trac 0.11.3</strong></a><br />
-        By <a href="http://www.edgewall.org/">Edgewall Software</a>.
-      </p>
-      <p class="right">Visit the Trac open source project at<br /><a href="http://trac.edgewall.org/">http://trac.edgewall.org/</a></p>
-    </div>
-  </body>
-</html>
+    reportAUSTRALIA2010EN(Report) {
+        stateParty = [spAUS]
+//		country = "AUSTRALIA"
+        language = "ENGLISH"
+        year = "2010"
+        reportStatus = "Draft"
+        publicationStatus = "Not published"
+        officialVersion = true
+    }
+
+    reportCANADA2010EN(Report) {
+        stateParty = [spCAN]
+//		country = "CANADA"
+        language = "ENGLISH"
+        year = "2010"
+        reportStatus = "Draft"
+        publicationStatus = "Not published"
+        officialVersion = true
+    }
+
+    report3(Report) {
+        stateParty = [spMUS]
+//		country = "MAURITIUS"
+        language = "ENGLISH"
+        year = "2011"
+        reportStatus = "Submitted"
+        publicationStatus = "Published"
+        officialVersion = true
+    }
+
+    report4(Report) {
+        stateParty = [spSWI]
+//		country = "SWITZERLAND"
+        language = "ENGLISH"
+        year = "2011"
+        reportStatus = "Submitted"
+        publicationStatus = "Published"
+        officialVersion = true
+    }
+
+    facility1(FormAPart1a) {
+        title = "formAPart1a"
+        formStatus = "Completed"
+        visibility = "Private"
+        report = [reportCANADA2010EN]
+        facilityName = "Animal Health Laboratory (AHL)"
+        responsibleOrganisation = "Commonwealth Scientific and Industrial Research Organisation (CSIRO) (Federal Government) and the Department of Agriculture, Fisheries and Forestry (Federal Government). Note: Australia has a two-tiered system of Government, with the Federal Government and, to a lesser extent, the six respective State Governments and two Territories all involved in the formulation and implementation of Government policy."
+        location = "5 Port Arlington Road, Geelong, Victoria, CANADA"
+        postalAddress = "PO Bag 24, Geelong VIC 3220, CANADA"
+        financingSources = "The AAHL is funded by the Canadian Government, via CSIRO and the Department of Agriculture, Fisheries and Forestry. It is also funded by industry organisations and commercial companies."
+        scope = "<p>The AHL plays a <b>vital</b> role in maintaining Australia's capability to diagnose quickly exotic (foreign) and emerging animal diseases. This is achieved through ongoing research programs to develop the most sensitive, accurate and timely diagnostic tests, which are critical to the success of any eradication campaign in the event of a disease outbreak. AAHL also undertakes research on exotic, new and emerging diseases to better understand the disease process and drivers for emergence of new diseases, to develop new diagnostic tests, vaccines and treatments for endemic animal diseases of national importance. Major diseases of livestock, aquaculture animals, and wildlife, are studied. AAHL includes a high-biocontainment facility, to safely fulfil its major role of diagnosing emergency animal disease outbreaks.</p>"
+    }
+
+    containmentUnit1(FormAPart1ContainmentUnit) {
+        facility = [facility1]
+        bioSafetyLevel = "BSL4"
+        unitType = "laboratory"
+        unitSize = "250"
+        comment = "Forensic Laboratory"
+    }
+
+    containmentUnit2(FormAPart1ContainmentUnit) {
+        facility = [facility1]
+        bioSafetyLevel = "Enhanced BSL3"
+        unitType = "treatment module"
+        unitSize = "250"
+        comment = "Chemical diseases lab"
+    }
+
+    facility2(FormAPart1a) {
+        title = "formAPart1a"
+        formStatus = "Draft"
+        visibility = "Public"
+        report = [reportAUSTRALIA2010EN]
+        facilityName = "National High Security Quarantine Laboratory (NHSQL)"
+        responsibleOrganisation = "Department of Health and Ageing (Commonwealth Government), Victorian Department of Human Services (State Government)"
+        location = "Victorian Infectious Diseases, Reference Laboratory, 10 Wreckyn Street, North Melbourne VIC, AUSTRALIA"
+        postalAddress = "National High Security, Quarantine Laboratory, c/o VIDRL, Locked Bag 815, Carlton South VIC 3053, AUSTRALIA"
+        financingSources = "This facility receives no funding from the Australian Government Department of Defence. It receives funding from the Commonwealth and State Departments of Health"
+        scope = "<p>The diagnosis of possible imported cases of viral haemorrhagic fever or other quarantinable viral diseases that present a significant danger to the Australian community. Development of laboratory tests and protocols for exotic respiratory viral diseases, including influenza virus A/H5N1 (bird flu) and SARS. In addition, VIDRL has established and maintained the capability to perform diagnostic testing for the variola virus. See, also, background information"
+    }
+
+    facility3(FormAPart1a) {
+        title = "formAPart1a"
+        formStatus = "Draft"
+        visibility = "Public"
+        report = [reportCANADA2010EN]
+        facilityName = "Ottawa Health Forensic Scientific Services (OHFSS)"
+        responsibleOrganisation = "Queensland Department of Health (State Government)"
+        location = "39 Kessels Road, Coopers Plains, QLD, OTTAWA"
+        postalAddress = "PO Box 594, Archefield QLD 4108, OTTAWA"
+        financingSources = "This facility receives no funding from the Canadian Government Department of Defence. It receives funding from Ottawa Department of Health"
+        scope = "<p>The maximum containment facility at OHFSS, a state government public health virology laboratory, has both a diagnostic and a research function. The maximum containment facilities are used for the development and performance of diagnostic tests on patients with suspected exotic or endemic viral illness. This includes Henipah viruses or exotic haemorrhagic fever viruses. The only PC4 level pathogens that the laboratory has are Hendra virus and SARS coronavirus (AQIS QC4), which are used for diagnostic purposes. The laboratory intends to introduce reagents useful for the diagnosis of a number of exotic viral diseases including Ebola, Marburg, Lassa, Junin, Rift Valley fevers and Hantavirus among others. These reagents will consist of either inactivated diagnostic reagents, cloned viral subunits or live virus.</p>"
+    }
+
+    containmentUnit3(FormAPart1ContainmentUnit) {
+        facility = [facility3]
+        bioSafetyLevel = "BSL4"
+        unitType = "laboratory"
+        unitSize = "250"
+        comment = "Forensic Laboratory"
+    }
+
+    containmentUnit4(FormAPart1ContainmentUnit) {
+        facility = [facility3]
+        bioSafetyLevel = "Enhanced BSL3"
+        unitType = "treatment module"
+        unitSize = "250"
+        comment = "Chemical diseases lab"
+    }
+
+
+    formAPart1b1(FormAPart1b) {
+        title = "formAPart1b1"
+        formStatus = "Draft"
+        visibility = "Public"
+        report = [reportAUSTRALIA2010EN]
+        bioSafetyLevel3 = true
+        bioSafetyLevel2 = false
+        additionalInformation = "some sample text"
+    }
+
+    formAPart1b2(FormAPart1b) {
+        title = "formAPart1b2"
+        formStatus = "Draft"
+        visibility = "Public"
+        report = [reportCANADA2010EN]
+        bioSafetyLevel3 = true
+        bioSafetyLevel2 = false
+        additionalInformation = "formAPart1B for reportCANADA2010EN"
+    }
+
+    formAPart2a1(FormAPart2a) {
+        report = [reportCANADA2010EN]
+        existingNationalProgrammes = true
+    }
+    formAPart2a2(FormAPart2a) {
+        report = [reportAUSTRALIA2010EN]
+        existingNationalProgrammes = true
+    }
+
+    formAPart2b1(FormAPart2b) {
+        title = "formAPart2b"
+        formStatus = "Draft"
+        visibility = "Public"
+        programName = "sample programme in Canada"
+        objectives = "sample objectives"
+        conductedUnderContract = true
+        proportionContracted = "sample proportion"
+        summaryObjectivesContractor = "sample summary of the objectives"
+        declaration = "sample declaration"
+        amount = 1200000
+        source = "sample source"
+        report = [reportCANADA2010EN]
+    }
+
+    formAPart2c1(FormAPart2c) {
+        title = "formAPart2c"
+        formStatus = "Draft"
+        visibility = "Private"
+
+        formAPart2b = formAPart2b1
+
+        facilityName = "sample facility name"
+        location = "sample location"
+        postalAddress = "22, impasse de null part, Ville-Loin, 12543 XX"
+
+        floorAreaBL2 = 14
+        floorAreaBL3 = 36
+        floorAreaBL4 = 8
+
+        militaryPersonnel = 12
+        civilianPersonnel = 73
+        scientists = 12
+        engineers = 5
+        technicians = 3
+        administrators = 9
+
+        scientificDisciplines = "some disciplines"
+        contractors = 1
+        fundingSources = "some information about funding sources"
+        fundResearch = 120000
+        fundDevelopment = 30000
+        fundTest = 56000
+
+        publicationPolicy = "some policy"
+        publicPapers = "some papers"
+        bioDefenseWork = "some biological defense work"
+    }
+
+    formBCAN(FormB) {
+        title = "formBCAN"
+        formStatus = "Draft"
+        visibility = "Private"
+        report = [reportCANADA2010EN]
+        eventName = "Foot and mouth disease"
+        eventCategory = "Animal"
+        eventDate = "08/01/2007"
+        locationAffected = "Surrey county, England"
+        typeOfDisease = "Foot and mouth disease"
+        sourceOfDisease = "Laboratory escape"
+        possibleCause = "Foot and mouth disease virus"
+        /*detailedSymptoms = "Vesicular condition of the feet, bucal mucosa and, in females, the mammary glands"*/
+/*        deviationFromNormalPattern = "FMDV  is Exotic to the UK"*/
+        numOfTotalCases = "238 animals at 8 premises"
+        numDeaths = "0"
+        developmentOfOutbreak = "In late July there was laboratory escape of pathogen with subsequent local spread. Spread contained by measures taken below and last case was reported on 29 August 2007."
+        measuresTaken = "Stamping out, quarantine, movement control inside the country, zoning, disinfection of infected premises/ establishment(s), no vaccination and no treatment of affected animals."
+        additionalInfo = "Further information is available at: http://www.defra.gov.uk/animalh/diseases/fmd/investigations/index.html"
+    }
+
+
+}
