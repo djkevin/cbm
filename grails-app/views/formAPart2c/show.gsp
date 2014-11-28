@@ -104,7 +104,15 @@
 					(<g:message code="formAPart2c.sqm.label" default="m^2" />)
 					</span>					
 				</li>
-			
+
+                <g:if test="${formAPart2cInstance?.floorAreaComments}">
+                    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="orgStructureComments2-label">${formAPart2cInstance.floorAreaComments}</span>
+                    </li>
+                    <br/>
+                </g:if>
+
 				<br/>
 				<h4>
 					<g:message code="formAPart2c.orgStructure.label" default="org structure" />				
@@ -226,6 +234,14 @@
 						<g:fieldValue bean="${formAPart2cInstance}" field="contractors"/>
 					</span>					
 				</li>
+
+                <g:if test="${formAPart2cInstance?.contractWorkersComments}">
+                    <h4><g:message code="default.additional.comments.label" default="Additional Comments" /></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="orgStructureComments2-label">${formAPart2cInstance.contractWorkersComments}</span>
+                    </li>
+                    <br/>
+                </g:if>
 
 				<br/>
 				<h4>

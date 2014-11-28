@@ -133,6 +133,13 @@
 	</span>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'floorAreaComments', 'error')} ">
+    <label for="floorAreaComments">
+        <g:message code="default.additional.comments.label" default="Additional comments"/>
+    </label>
+    <g:textArea class="wysiwyg" name="floorAreaComments" cols="40" rows="5" maxlength="${formAPart2cInstance?.constraints?.floorAreaComments?.maxSize}" required=""
+                value="${formAPart2cInstance?.floorAreaComments}"/>
+</div>
 
 <%-- this field is calculated, should only show it in show.gsp, not in create.gsp and edit.gsp 
 	div class="fieldcontain">
@@ -272,6 +279,14 @@
 	<span class="property-value" >
 		<g:textField name="contractors" required="" value="${fieldValue(bean: formAPart2cInstance, field: 'contractors')}"/>
 	</span>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'contractWorkersComments', 'error')} ">
+    <label for="contractWorkersComments">
+        <g:message code="default.additional.comments.label" default="Additional comments"/>
+    </label>
+    <g:textArea class="wysiwyg" name="contractWorkersComments" cols="40" rows="5" maxlength="${formAPart2cInstance?.constraints?.contractWorkersComments?.maxSize}" required=""
+                value="${formAPart2cInstance?.contractWorkersComments}"/>
 </div>
 
 <div class="fieldcontain property-label ${hasErrors(bean: formAPart2cInstance, field: 'fundingSources', 'error')}">
