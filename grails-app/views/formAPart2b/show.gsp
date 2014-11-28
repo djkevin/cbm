@@ -112,13 +112,13 @@
               </div>
 
 
-    %{--            <g:if test="${formAPart2bInstance?.declaration}">
-                    <h4><g:message code="formAPart2b.declaration.label" default="Declaration" /></h4>
+                <g:if test="${formAPart2bInstance?.organigramDescription}">
+                    <h4><g:message code="formAPart2b.organigramDescription.label" default="Description" /></h4>
                     <li>
-                        <span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.declaration}</span>
+                        <span class="property-value" aria-labelledby="summaryObjectivesContractor-label">${formAPart2bInstance.organigramDescription}</span>
                     </li>
                     <br/>
-                </g:if>--}%
+                </g:if>
 
 
 

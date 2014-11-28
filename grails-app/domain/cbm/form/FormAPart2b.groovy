@@ -5,7 +5,7 @@ import cbm.report.Report
 
 class FormAPart2b extends BaseForm {
 
-    static belongsTo = [Report]
+    static belongsTo = [report:Report]
     static hasMany = [formAPart2c: FormAPart2c]
     static hasOne = [formAPart2bOrganigram: FormAPart2bOrganigram]
 
@@ -15,16 +15,11 @@ class FormAPart2b extends BaseForm {
     Boolean conductedUnderContract// or String?
     String proportionContracted
     String summaryObjectivesContractor
-    //byte[] organisationalStructureDiagram     //Uploaded files bind automatically to byte[] field
-//    String declaration
+    String organigramDescription
     BigDecimal amount
     String source
     Currency currency
 
-//    FormAPart2bOrganigram formAPart2bOrganigram
-
-
-    Report report
 
     String toString() {
         return "${programName}"
@@ -34,7 +29,7 @@ class FormAPart2b extends BaseForm {
         objectives type: 'text'
         proportionContracted type: 'text'
         summaryObjectivesContractor type: 'text'
-        declaration type: 'text'
+        organigramDescription type: 'text'
     }
 
 
@@ -52,12 +47,10 @@ class FormAPart2b extends BaseForm {
         }
         proportionContracted maxSize: 65000, nullable: true
         summaryObjectivesContractor maxSize: 65000, nullable: true
-       /* organisationalStructureDiagram nullable: true, size: 0..1024 * 1024 * 5 //5MB*/
-//        declaration blank: false, maxSize: 65000
         amount min: 0.01, max: 1000000000.00, scale: 2, blank: false
         source maxSize: 5000
-        //formAPart2c nullable: true
         formAPart2bOrganigram nullable: true
+        organigramDescription maxSize: 65000, nullable: true
 
     }
 }

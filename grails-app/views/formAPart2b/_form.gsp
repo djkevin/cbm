@@ -108,18 +108,23 @@
     %{--<g:else><g:message code="formAPart2b.orgStructureDiagram.no.file" default="No file uploaded yet" /></g:else>--}%
 </div>
 
-<br>
-<div>
-    <g:message code="formAPart2b.declaration.label" default="Declaration"/>
-</div>
-%{--<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'declaration', 'error')} required">
-    <label for="declaration">
 
-        <span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: formAPart2bInstance, field: 'organigramDescription', 'error')} ">
+    <label for="summaryObjectivesContractor">
+        <g:message code="formAPart2b.organigramDescription.label" default="Additional comments"/>
+        %{--<span class="required-indicator">*</span>--}%
     </label>
-    <g:textArea class="wysiwyg" name="declaration" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.declaration?.maxSize}" required=""
-                     value="${formAPart2bInstance?.declaration}"/>
-</div>--}%
+    <g:textArea class="wysiwyg" name="organigramDescription" cols="40" rows="5" maxlength="${formAPart2bInstance?.constraints?.organigramDescription?.maxSize}" required=""
+                value="${formAPart2bInstance?.organigramDescription}"/>
+</div>
+
+<br>
+
+<div>
+    <g:message code="formAPart2b.declaration.label" default="Description"/>
+</div>
+
+
 
 
 <g:set var="formInstance" value="${formAPart2bInstance}"></g:set>
