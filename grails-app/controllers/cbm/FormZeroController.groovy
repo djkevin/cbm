@@ -10,7 +10,7 @@ import org.aspectj.util.FileUtil
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormZeroController {
 
@@ -29,6 +29,7 @@ class FormZeroController {
     def show(FormZero formZeroInstance) {
         respond formZeroInstance
     }
+	
     /**
      * When we create the Declaration form,
      * We use a service to pre-fill the values
@@ -36,6 +37,7 @@ class FormZeroController {
      * @return a formZero instance
      * TODO: Move to FormService
      */
+	@Secured(['ROLE_EDITOR'])
     def create() {
         FormZero formZero = new FormZero(params)
         def reportId = params.long('report.id')
@@ -60,6 +62,7 @@ class FormZeroController {
         respond formZero
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormZero formZeroInstance) {
         if (formZeroInstance == null) {
@@ -84,10 +87,12 @@ class FormZeroController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormZero formZeroInstance) {
         respond formZeroInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormZero formZeroInstance) {
         if (formZeroInstance == null) {
@@ -111,6 +116,7 @@ class FormZeroController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormZero formZeroInstance) {
 
@@ -146,4 +152,5 @@ class FormZeroController {
         response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formZeroInstance: formZeroInstance]
     }
+	
 }

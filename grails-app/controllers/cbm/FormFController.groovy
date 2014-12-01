@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormFController {
 
@@ -26,6 +26,7 @@ class FormFController {
         respond formFInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
         FormF form = new FormF(params)
         form.formStatus = FormStatus.DRAFT
@@ -33,7 +34,8 @@ class FormFController {
 
         respond  form
     }
-
+	
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormF formFInstance) {
         if (formFInstance == null) {
@@ -57,10 +59,12 @@ class FormFController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormF formFInstance) {
         respond formFInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormF formFInstance) {
         if (formFInstance == null) {
@@ -84,6 +88,7 @@ class FormFController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormF formFInstance) {
 
@@ -118,4 +123,5 @@ class FormFController {
         response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formFInstance: formFInstance]
     }
+	
 }

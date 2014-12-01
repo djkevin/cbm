@@ -8,7 +8,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart2aController {
 
@@ -26,6 +26,7 @@ class FormAPart2aController {
         respond formAPart2aInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
 
         FormAPart2a form = new FormAPart2a(params)
@@ -36,6 +37,7 @@ class FormAPart2aController {
 
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart2a formAPart2aInstance) {
         if (formAPart2aInstance == null) {
@@ -59,10 +61,12 @@ class FormAPart2aController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart2a formAPart2aInstance) {
         respond formAPart2aInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart2a formAPart2aInstance) {
         if (formAPart2aInstance == null) {
@@ -86,6 +90,7 @@ class FormAPart2aController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart2a formAPart2aInstance) {
 
@@ -116,9 +121,9 @@ class FormAPart2aController {
     }
 
     def print(FormAPart2a formAPart2aInstance) {
-
         def fileName = formAPart2aInstance.report.getReportName() + "_"+ formAPart2aInstance.title
         response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart2aInstance: formAPart2aInstance]
     }
+	
 }

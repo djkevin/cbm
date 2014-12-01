@@ -10,7 +10,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart2cController {
 
@@ -28,6 +28,7 @@ class FormAPart2cController {
         respond formAPart2cInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
 
         def reportId = params.long('report.id')
@@ -53,6 +54,7 @@ class FormAPart2cController {
         respond formAPart2c , model: [formAPart2bs:formAPart2bs]
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart2c formAPart2cInstance) {
         if (formAPart2cInstance == null) {
@@ -83,6 +85,7 @@ class FormAPart2cController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart2c formAPart2cInstance) {
         def reportId = params.long('report.id')
         Set<FormAPart2b> formAPart2bs = Report.get(reportId).formAPart2b
@@ -90,6 +93,7 @@ class FormAPart2cController {
         respond formAPart2cInstance//, model: [formAPart2bs:formAPart2bs]
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart2c formAPart2cInstance) {
         if (formAPart2cInstance == null) {
@@ -113,6 +117,7 @@ class FormAPart2cController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart2c formAPart2cInstance) {
 
@@ -149,4 +154,5 @@ class FormAPart2cController {
         response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart2cInstance: formAPart2cInstance]
     }
+	
 }

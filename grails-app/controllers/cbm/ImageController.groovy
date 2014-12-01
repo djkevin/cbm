@@ -3,7 +3,7 @@ package cbm
 import grails.plugin.springsecurity.annotation.Secured
 
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 class ImageController {
 
     def defaultAction ='show'

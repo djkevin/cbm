@@ -7,7 +7,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart2bOrganigramController {
 
@@ -25,6 +25,7 @@ class FormAPart2bOrganigramController {
         respond formAPart2bOrganigramInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
         //TODO fetch formAPart2b automatically from params
         def formAPart2bId = params.long('formAPart2b.id')
@@ -37,6 +38,7 @@ class FormAPart2bOrganigramController {
        // respond new FormAPart2bOrganigram(params)
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart2bOrganigram formAPart2bOrganigramInstance) {
         if (formAPart2bOrganigramInstance == null) {
@@ -61,10 +63,12 @@ class FormAPart2bOrganigramController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart2bOrganigram formAPart2bOrganigramInstance) {
         respond formAPart2bOrganigramInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart2bOrganigram formAPart2bOrganigramInstance) {
 
@@ -91,6 +95,7 @@ class FormAPart2bOrganigramController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart2bOrganigram formAPart2bOrganigramInstance) {
 

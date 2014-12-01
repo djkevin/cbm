@@ -10,7 +10,7 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart1bController {
 
@@ -29,7 +29,7 @@ class FormAPart1bController {
     }
 
 
-
+	@Secured(['ROLE_EDITOR'])
     def create() {
 
         def report = Report.get(params.long('report.id'))
@@ -45,6 +45,7 @@ class FormAPart1bController {
 
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart1b formAPart1bInstance) {
         if (formAPart1bInstance == null) {
@@ -68,10 +69,12 @@ class FormAPart1bController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart1b formAPart1bInstance) {
         respond formAPart1bInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart1b formAPart1bInstance) {
         if (formAPart1bInstance == null) {
@@ -95,6 +98,7 @@ class FormAPart1bController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart1b formAPart1bInstance) {
 

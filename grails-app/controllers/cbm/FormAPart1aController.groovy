@@ -10,7 +10,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 import java.text.SimpleDateFormat
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart1aController {
 
@@ -29,6 +29,7 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
 
         FormAPart1a form = new FormAPart1a(params)
@@ -38,6 +39,7 @@ class FormAPart1aController {
         respond  form
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart1a formAPart1Instance) {
 
@@ -68,6 +70,7 @@ class FormAPart1aController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart1a formAPart1Instance) {
         respond formAPart1Instance
     }
@@ -117,6 +120,7 @@ class FormAPart1aController {
         return results
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart1a formAPart1Instance) {
         if (formAPart1Instance == null) {
@@ -146,6 +150,7 @@ class FormAPart1aController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart1a formAPart1Instance) {
 
@@ -182,6 +187,7 @@ class FormAPart1aController {
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart1aInstance: formAPart1aInstance]
     }
 
+	@Secured(['ROLE_EDITOR'])
     def addMoreRows() {
 
         def reportId = params.long('report.id')
@@ -195,6 +201,7 @@ class FormAPart1aController {
 
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def deleteContainmentUnit() {
         def formAP1CUId = params.long('id')

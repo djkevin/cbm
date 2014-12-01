@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart2bController {
 
@@ -35,6 +35,7 @@ class FormAPart2bController {
         respond formAPart2bInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
 
         FormAPart2b form = new FormAPart2b(params)
@@ -44,6 +45,7 @@ class FormAPart2bController {
         respond  form
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart2b formAPart2bInstance) {
 
@@ -110,10 +112,12 @@ class FormAPart2bController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart2b formAPart2bInstance) {
         respond formAPart2bInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart2b formAPart2bInstance) {
 
@@ -173,6 +177,7 @@ class FormAPart2bController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart2b formAPart2bInstance) {
 
@@ -222,4 +227,5 @@ class FormAPart2bController {
         render file: formAPart2bOrganigram.organisationalStructureDiagram , contentType: formAPart2bOrganigram.contentType
 
     }
+	
 }

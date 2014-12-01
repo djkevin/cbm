@@ -13,7 +13,7 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN', 'ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
+@Secured(['ROLE_ADMIN', 'ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class ReportController {
 
@@ -37,7 +37,7 @@ class ReportController {
 
     }
 
-    // @Secured(["@securityService.canView(#reportInstance)"])
+	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def show(Report reportInstance) {
         if (securityService.canView(reportInstance)) {
             respond reportInstance
@@ -48,7 +48,7 @@ class ReportController {
 
     }
 
-	@Secured(['ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_USER']) //TODO remove ROLE_USER here
+	@Secured(['ROLE_SUBMITTER'])
     def create() {
         Report report = new Report(params)
         report.reportStatus = ReportStatus.DRAFT
@@ -56,6 +56,7 @@ class ReportController {
         respond report
     }
 
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def save(Report reportInstance) {
         if (reportInstance == null) {
@@ -79,10 +80,12 @@ class ReportController {
         }
     }
 
+	@Secured(['ROLE_SUBMITTER'])
     def edit(Report reportInstance) {
         respond reportInstance
     }
 
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def update(Report reportInstance) {
         if (reportInstance == null) {
@@ -106,6 +109,7 @@ class ReportController {
         }
     }
 
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def delete(Report reportInstance) {
 
@@ -135,6 +139,7 @@ class ReportController {
         }
     }
 
+	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def print(Report reportInstance) {
 
         Set<FormAPart1a> formAPart1as = reportInstance.formAPart1
@@ -146,6 +151,7 @@ class ReportController {
         renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances: formAPart1as, nationalContacts: nationalContacts]
     }
 
+	@Secured(['ROLE_SUBMITTER'])
     def review(Report reportInstance) {
         println params
         def report = Report.get(params.long("id"))
@@ -238,8 +244,9 @@ class ReportController {
      * Does the validation
      * and sets the report Status to SUBMITTED and publicationStatus to PUBLISHED
      * TODO move to Service
-     * TODO remove submit button if already submitted (in gsp)
+     * TODO hide submit button if already submitted (in gsp)
      */
+	@Secured(['ROLE_SUBMITTER'])
     def submit(Report reportInstance) {
 
         def errors = [:]

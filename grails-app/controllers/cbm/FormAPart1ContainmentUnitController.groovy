@@ -7,7 +7,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class FormAPart1ContainmentUnitController {
 
@@ -25,16 +25,16 @@ class FormAPart1ContainmentUnitController {
         respond formAPart1ContainmentUnitInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
-
         def formAPart1a = FormAPart1a.findById(params.long('formAPart1.id'))
         def fAP1CU = new FormAPart1ContainmentUnit()
         fAP1CU.setFacility(formAPart1a)
 
-        respond fAP1CU
-		
+        respond fAP1CU		
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {
         if (formAPart1ContainmentUnitInstance == null) {
@@ -60,10 +60,12 @@ class FormAPart1ContainmentUnitController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {
         respond formAPart1ContainmentUnitInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {
         if (formAPart1ContainmentUnitInstance == null) {
@@ -89,6 +91,7 @@ class FormAPart1ContainmentUnitController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {
 
@@ -120,6 +123,7 @@ class FormAPart1ContainmentUnitController {
         }
     }
 	
+	@Secured(['ROLE_EDITOR'])
 	def cancelEdit(FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance) {
 		flash.message=message code: 'formAPart1.containmentUnit.edit.cancel'
 		redirect (controller: "formAPart1a", action:"show", id:formAPart1ContainmentUnitInstance.facility.id)

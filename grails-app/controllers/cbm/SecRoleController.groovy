@@ -5,6 +5,11 @@ import cbm.usermgt.SecRole
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+/**
+ * There's no security annotation for this controller because roles should NOT be managed (created/edited/deleted) through the app.
+ * When a role needs to be created/edited/deleted, the code needs to be adapted as well, thus makes no sense to do role management through the app itself. 
+ * Roles are to be created/edited/deleted manually at the DB level, with SQL. 
+ */
 @Transactional(readOnly = true)
 class SecRoleController {
 

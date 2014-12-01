@@ -7,7 +7,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER', 'ROLE_ADMIN'])
+@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
 @Transactional(readOnly = true)
 class NationalContactController {
 
@@ -25,6 +25,7 @@ class NationalContactController {
         respond nationalContactInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     def create() {
         Report r = Report.get(params.long('report.id'))
         NationalContact n = new NationalContact()
@@ -33,6 +34,7 @@ class NationalContactController {
         respond n
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(NationalContact nationalContactInstance) {
         if (nationalContactInstance == null) {
@@ -58,10 +60,12 @@ class NationalContactController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     def edit(NationalContact nationalContactInstance) {
         respond nationalContactInstance
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def update(NationalContact nationalContactInstance) {
         if (nationalContactInstance == null) {
@@ -86,6 +90,7 @@ class NationalContactController {
         }
     }
 
+	@Secured(['ROLE_EDITOR'])
     @Transactional
     def delete(NationalContact nationalContactInstance) {
 
@@ -127,4 +132,5 @@ class NationalContactController {
         response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [nationalContactInstance: nationalContactInstance]
     }
+	
 }
