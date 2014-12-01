@@ -10,18 +10,16 @@ class   IndexController {
     def index() {
 		if (Environment.getCurrent()==Environment.DEVELOPMENT) {
 			// simply render the index.gsp
-		} else {			
+		} else {	
+			// in TEST or PROD render the admin or report page, depending on granted roles. 
+			// This can be problematic if a user is granted both ADMIN role AND another role (any other role)! 
+			// In principle users with ADMIN role should have NO other roles assigned, otherwise there's conflict of interest!
+			// TODO: In the admin screens, make sure user can be granted only ADMIN role, or only other roles.
+		 		
 	        if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')) {
 	            println "redirecting to admin"
 	            redirect controller: "admin", action:"index"
-	        }
-	
-	        if (SpringSecurityUtils.ifAllGranted('ROLE_USER')) {
-	            println "redirecting to report page"
-	            redirect controller: "report", action:"index"
-	        }
-			
-			if (SpringSecurityUtils.ifAllGranted('ROLE_VIEWER')) {
+	        } else { // all roles except ADMIN have the report page as default page.
 				println "redirecting to report page"
 				redirect controller: "report", action:"index"
 			}
