@@ -1,3 +1,5 @@
+import org.springframework.security.access.vote.RoleVoter;
+
 import cbm.admin.Country
 import cbm.admin.StateParty
 import cbm.usermgt.AdminUser
@@ -25,8 +27,13 @@ fixture {
 		secRole = SecRole.findByAuthority('ROLE_ADMIN')
 	}
 	
-	// ------------- users for some state parties, each user with a specific role.
+	// ------------- role references (here we do not create these roles, only retrieve them for reference.
+	def roleViewer = SecRole.findByAuthority('ROLE_VIEWER')
+	def roleEditor = SecRole.findByAuthority('ROLE_EDITOR')
+	def roleSubmitter = SecRole.findByAuthority('ROLE_SUBMITTER')	
 	
+	// ------------- users for some state parties, each user with a specific role.
+
 	cheViewer(User) { 
 		username="cheViewer"
 		password="chepass"
@@ -45,18 +52,18 @@ fixture {
 
 	cheViewerRole(SecUserSecRole) {
 		secUser = cheViewer
-		secRole = SecRole.findByAuthority('ROLE_VIEWER')
+		secRole = roleViewer
 	}
 	cheEditorRole(SecUserSecRole) {
 		secUser = cheEditor
-		secRole = SecRole.findByAuthority('ROLE_EDITOR')
+		secRole = roleEditor
 	}
 	cheSubmitterRole(SecUserSecRole) {
 		secUser = cheSubmitter
-		secRole = SecRole.findByAuthority('ROLE_SUBMITTER')
+		secRole = roleSubmitter
 	}
 	
-	// -------------- users for some state parties 
+	// -------------- users for some state parties, each user with all roles except admin role.
 	
 	user15(User) {
 		username = "bel"
@@ -89,38 +96,88 @@ fixture {
 		stateParty = StateParty.findByCountry(Country.findByIso3("URY"))
 	} 	
 
-    roleUser(SecRole) {
-        authority = 'ROLE_USER'
-    }
-	
-    userRoleSWE(SecUserSecRole) {
+	/* SWE roles */
+    userRoleSWEviewer(SecUserSecRole) {
         secUser = user145
-        secRole = roleUser
+        secRole = roleViewer
     }
+	userRoleSWEeditor(SecUserSecRole) {
+		secUser = user145
+		secRole = roleEditor
+	}
+	userRoleSWEsubmitter(SecUserSecRole) {
+		secUser = user145
+		secRole = roleSubmitter
+	}
 	
-    userRoleUS(SecUserSecRole) {
+	/* US roles */
+    userRoleUSviewer(SecUserSecRole) {
         secUser = user161
-        secRole = roleUser
+        secRole = roleViewer
     }
-
-    userRoleUK(SecUserSecRole) {
+	userRoleUSeditor(SecUserSecRole) {
+		secUser = user161
+		secRole = roleEditor
+	}
+	userRoleUSsubmitter(SecUserSecRole) {
+		secUser = user161
+		secRole = roleSubmitter
+	}
+	
+	/* UK roles */
+    userRoleUKviewer(SecUserSecRole) {
         secUser = user160
-        secRole = roleUser
+        secRole = roleViewer
     }
+	userRoleUKeditor(SecUserSecRole) {
+		secUser = user160
+		secRole = roleEditor
+	}
+	userRoleUKsubmitter(SecUserSecRole) {
+		secUser = user160
+		secRole = roleSubmitter
+	}
 
-    userRole162(SecUserSecRole) {
+	/* 162 roles */
+    userRole162viewer(SecUserSecRole) {
         secUser = user162
-        secRole = roleUser
+        secRole = roleViewer
     }
+	userRole162editor(SecUserSecRole) {
+		secUser = user162
+		secRole = roleEditor
+	}
+	userRole162submitter(SecUserSecRole) {
+		secUser = user162
+		secRole = roleSubmitter
+	}
 	
-    userRoleBEL(SecUserSecRole) {
+	/* BEL roles */
+    userRoleBELviewer(SecUserSecRole) {
         secUser = user15
-        secRole = roleUser
+        secRole = roleViewer
     }
+	userRoleBELeditor(SecUserSecRole) {
+		secUser = user15
+		secRole = roleEditor
+	}
+	userRoleBELsubmitter(SecUserSecRole) {
+		secUser = user15
+		secRole = roleSubmitter
+	}
 	
-    userRoleCHE(SecUserSecRole) {
+	/* CHE roles*/
+    userRoleCHEviewer(SecUserSecRole) {
         secUser = user146
-        secRole = roleUser
+        secRole = roleViewer
     }
+	userRoleCHEeditor(SecUserSecRole) {
+		secUser = user146
+		secRole = roleEditor
+	}
+	userRoleCHEsubmitter(SecUserSecRole) {
+		secUser = user146
+		secRole = roleSubmitter
+	}
 
 }
