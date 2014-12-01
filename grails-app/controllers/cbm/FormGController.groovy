@@ -1,12 +1,13 @@
 package cbm
 
-import cbm.admin.NationalContact
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormG
 import cbm.report.Report
 import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -28,6 +29,9 @@ class FormGController {
 
     def create() {
         FormG formG = new FormG(params);
+
+        formG.formStatus  = FormStatus.DRAFT
+        formG.visibility = Visibility.PUBLIC
 
         Report r = Report.get(params.long('report.id'))
         formG.country = r.getStateParty().country

@@ -1,14 +1,17 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
+
 abstract class BaseForm {
 
     //static auditable = true
 
     String title
-    String formStatus
+    FormStatus formStatus  /** draft or completed */
 	
 	/** indicates whether this form can be viewed by the general public or not. If not, then it can be only viewed by State Parties. */
-    String visibility
+    Visibility visibility
     
 	Date dateCreated
     Date lastUpdated
@@ -16,8 +19,8 @@ abstract class BaseForm {
 
     static constraints = {
 
-        formStatus inList: ['Draft', 'Completed']
-        visibility inList: ['Public', 'Private']
+        formStatus blank:false
+        visibility blank:false
     }
 
 }

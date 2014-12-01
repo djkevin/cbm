@@ -1,8 +1,9 @@
 package cbm.constants
 
-public enum PublicationStatus {
-    NOTPUBLISHED, PUBLISHED
+
+public enum FormStatus {
+
+    DRAFT, COMPLETED
 
     @Delegate MessageSourceResolvableUtil messageSourceResolvableUtil= new MessageSourceResolvableUtil(this)
 }
-

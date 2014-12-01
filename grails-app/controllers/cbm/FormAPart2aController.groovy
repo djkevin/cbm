@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormAPart2a
 
 import static org.springframework.http.HttpStatus.*
@@ -25,7 +27,13 @@ class FormAPart2aController {
     }
 
     def create() {
-        respond new FormAPart2a(params);
+
+        FormAPart2a form = new FormAPart2a(params)
+        form.formStatus = FormStatus.DRAFT
+        form.visibility = Visibility.PUBLIC
+
+        respond  form
+
     }
 
     @Transactional

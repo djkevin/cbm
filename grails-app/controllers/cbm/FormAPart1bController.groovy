@@ -1,5 +1,8 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
+import cbm.form.FormAPart1a
 import cbm.form.FormAPart1b
 import cbm.report.Report
 import grails.plugin.springsecurity.annotation.Secured
@@ -28,10 +31,18 @@ class FormAPart1bController {
 
 
     def create() {
+
         def report = Report.get(params.long('report.id'))
-        FormAPart1b formAPart1b = new FormAPart1b(params)
-        if (report.hasBSL4()) formAPart1b.errors.reject("formAPart1.error.existing.BSL4")
-        respond formAPart1b
+        FormAPart1b form = new FormAPart1b(params)
+
+        if (report.hasBSL4()) form.errors.reject("formAPart1.error.existing.BSL4")
+
+        form.formStatus = FormStatus.DRAFT
+        form.visibility = Visibility.PUBLIC
+
+        respond  form
+
+
     }
 
     @Transactional

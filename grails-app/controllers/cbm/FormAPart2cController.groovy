@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormAPart1a;
 import cbm.form.FormAPart2b
 import cbm.form.FormAPart2c
@@ -33,6 +35,9 @@ class FormAPart2cController {
         Set<FormAPart2b> formAPart2bs = report.formAPart2b
 
         FormAPart2c formAPart2c = new FormAPart2c(params)
+        formAPart2c.formStatus = FormStatus.DRAFT
+        formAPart2c.visibility = Visibility.PUBLIC
+
 		//FormAPart2c.report = report
 		
         if (!formAPart2bs) {

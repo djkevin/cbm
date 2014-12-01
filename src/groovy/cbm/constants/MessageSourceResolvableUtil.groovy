@@ -1,11 +1,10 @@
 package cbm.constants
 
 /**
- * Created with IntelliJ IDEA.
  * User: jutliah
  * Date: 5/1/14
  * Time: 10:58 AM
- * To change this template use File | Settings | File Templates.
+ * Allows enum constants to be i18ned
  */
 class MessageSourceResolvableUtil implements org.springframework.context.MessageSourceResolvable {
 

@@ -1,5 +1,7 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormAPart2b
 import cbm.form.FormAPart2bOrganigram
 import cbm.report.Report
@@ -34,7 +36,12 @@ class FormAPart2bController {
     }
 
     def create() {
-        respond  new FormAPart2b(params)
+
+        FormAPart2b form = new FormAPart2b(params)
+        form.formStatus = FormStatus.DRAFT
+        form.visibility = Visibility.PUBLIC
+
+        respond  form
     }
 
     @Transactional

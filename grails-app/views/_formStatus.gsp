@@ -15,23 +15,22 @@
         <g:message code="form.formStatus.label" default="Form Status" />
 
     </label>
-    <!-- set default value of select box to the first element -->
-    %{--<g:select name="formStatus" from="${formInstance.constraints.formStatus.inList}" value="${formInstance?.formStatus?:formInstance.constraints.formStatus.inList[0]}" valueMessagePrefix="formC.formStatus" noSelection="['': '']"/>--}%
 
     <g:radioGroup name="formStatus"
+                  values="${cbm.constants.FormStatus.values()}"
+                  labels="${cbm.constants.FormStatus.values()*.name()}"
+                  value="${formInstance?.formStatus?.name() }">
+         ${it.radio} <g:message code="${it.label}" />&nbsp;
+    </g:radioGroup>
+
+%{--    <g:radioGroup name="formStatus"
                   values="${formInstance.constraints.formStatus.inList}"
                   labels="${formInstance.constraints.formStatus.inList}"
-                  value="${formInstance?.formStatus ?: formInstance.constraints.formStatus.inList[0]}">  %{--TODO i18n--}%
+                  value="${formInstance?.formStatus ?: formInstance.constraints.formStatus.inList[0]}">  --}%%{--TODO i18n--}%%{--
         ${it.radio} <g:message code="${it.label}" />&nbsp;
-    </g:radioGroup>
+    </g:radioGroup>--}%
 </div>
     <g:hiddenField name="visibility" value="${formInstance?.visibility ?:formInstance?.visibility?:formInstance.constraints.visibility.inList[0]}" />
-%{--<div class="inline fieldcontain ${hasErrors(bean: formInstance, field: 'visibility', 'error')} ">
-    <label for="visibility" class="property-inline">
-        <g:message code="form.visibility.label" default="Visibility" />
 
-    </label>
-    <g:select name="visibility" from="${formInstance.constraints.visibility.inList}" value="${formInstance?.visibility?:formInstance.constraints.visibility.inList[0]}" valueMessagePrefix="formC.visibility" noSelection="['': '']"/>
-</div>--}%
     <br class="clearBoth" /><!-- you may or may not need this -->
 </div>

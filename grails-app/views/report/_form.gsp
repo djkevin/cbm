@@ -50,8 +50,8 @@
 
     <g:radioGroup name="officialVersion" value="${reportInstance?.officialVersion ?: true}"
                   values="['true','false']"
-                  labels="['Official','Translated']" >     %{--TODO i18n--}%
-        <span>${it.radio} ${it.label}</span>
+                  labels="['OFFICIAL','TRANSLATED']" >
+        <span>${it.radio} <g:message code="${it.label}" /></span>
     </g:radioGroup>
 </div>
 

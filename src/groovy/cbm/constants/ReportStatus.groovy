@@ -1,11 +1,5 @@
 package cbm.constants
-/**
- * Created with IntelliJ IDEA.
- * User: jutliah
- * Date: 5/1/14
- * Time: 10:33 AM
- * To change this template use File | Settings | File Templates.
- */
+
 public enum ReportStatus {
     DRAFT, SUBMITTED
 

@@ -1,9 +1,12 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormZero
 import cbm.report.Report
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
+import org.aspectj.util.FileUtil
 
 import static org.springframework.http.HttpStatus.*
 
@@ -49,6 +52,9 @@ class FormZeroController {
         formZero.setFormE(new DeclarationForm(nothingToDeclare: r.formE, nothingNewToDeclare: r.formE))
         formZero.setFormF(new DeclarationForm(nothingToDeclare: r.formF, nothingNewToDeclare: r.formF))
         formZero.setFormG(new DeclarationForm(nothingToDeclare: r.formG, nothingNewToDeclare: r.formG))
+
+        formZero.formStatus = FormStatus.DRAFT
+        formZero.visibility = Visibility.PUBLIC
 
 
         respond formZero

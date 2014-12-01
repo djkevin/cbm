@@ -1,10 +1,12 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormE
+import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -26,6 +28,10 @@ class FormEController {
 
     def create() {
         FormE f = new FormE(params)
+
+        f.formStatus = FormStatus.DRAFT
+        f.visibility = Visibility.PUBLIC
+
         // Need to initialise embedded domain classes to allow access to domain constraints
         f.setDevelopmentAndMeansOfDelivery(new DeclarationOfMeasures())
         f.setExportsOfMicroOrganisms(new DeclarationOfMeasures())

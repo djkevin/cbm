@@ -1,10 +1,12 @@
 package cbm
 
+import cbm.constants.FormStatus
+import cbm.constants.Visibility
 import cbm.form.FormC
+import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_USER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -25,7 +27,11 @@ class FormCController {
     }
 
     def create() {
-        respond new FormC(params)
+        FormC form = new FormC(params)
+        form.formStatus = FormStatus.DRAFT
+        form.visibility = Visibility.PUBLIC
+
+        respond  form
     }
 
     @Transactional

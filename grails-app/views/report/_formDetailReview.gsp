@@ -34,9 +34,9 @@
                 </g:else>--}%
 
                 <g:radioGroup name="formStatus_${f.title}_${f.id}"
-                              values="${f.constraints.formStatus.inList}"
-                              labels="${f.constraints.formStatus.inList}"
-                              value="${f?.formStatus.capitalize()}">  %{--TODO i18n--}%
+                              values="${cbm.constants.FormStatus.values()}"
+                              labels="${cbm.constants.FormStatus.values()*.name()}"
+                              value="${f?.formStatus?.name()}">  %{--TODO i18n--}%
                     ${it.radio} <g:message code="${it.label}" />&nbsp;
                 </g:radioGroup>
             </td>
