@@ -48,7 +48,7 @@ class ReportController {
 
     }
 
-	@Secured(['ROLE_EDITOR', 'ROLE_SUBMITTER'])
+	@Secured(['ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_USER']) //TODO remove ROLE_USER here
     def create() {
         Report report = new Report(params)
         report.reportStatus = ReportStatus.DRAFT
