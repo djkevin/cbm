@@ -708,20 +708,20 @@ textarea.longTextMed {
 If compatibility with old browsers is needed, then don't bother with CSS and just do a <table> */
 
 div.table {
-    display: table margin : 0.6 em 1.25 em 0;
-    padding: 0.3em 1.8em 1.25em;
-
+    display: table ;
+    /*margin : 0.6 em 1.25 em 0;
+    padding: 0.3em 1.8em 1.25em;*/
+    width: 100%;
 }
 
 div.table div {
-    display: table-row
+    display: table-row;
 }
 
 div.table div div {
     padding: 5px;
     display: table-cell;
     vertical-align: middle;
-    /* 	     border:1px solid #DCDCDC; */
 }
 
 .center {
@@ -981,4 +981,13 @@ sub, sup {
     line-height: 0;
     position: relative;
     vertical-align: baseline;
+}
+
+div.logo {
+	width:50%;	
+}
+
+div.langs {
+	width:50%;	
+	text-align: right;
 }

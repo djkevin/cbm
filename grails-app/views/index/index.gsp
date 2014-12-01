@@ -77,6 +77,7 @@ p {
 		margin-top: 0;
 	}
 }
+
 </style>
 
 </head>
@@ -91,83 +92,17 @@ p {
 
 	<div id="page-body" role="main">
 		
-		<g:link controller="admin" action="index">Admin index page</g:link>
+		<ul>
+			<li>
+				<g:link controller="admin" action="index">Admin index page</g:link>
+				<br><br>
+			</li>
+			<li>
+				<g:link controller="report" action="index">User index page</g:link>
+				<br><br>
+			</li>
+		</ul>
 		
-		&nbsp;&nbsp;
-		
-	    <g:link controller="report" action="index">User index page</g:link>
-	    
-	    <br>
-	    
-	            
-		<div class="box table" style="margin: 0px auto; width: 42%;">
-			<div>
-				<ul>
-					<li>
-						<div class="box-icon">
-							<g:link controller="StateParty" action="index">State Party</g:link>
-						</div>
-					</li>
-				</ul>
-				<ul>
-					<li>
-						<div class="box-icon">
-							<g:link controller="Report" action="index">Report</g:link>
-						</div>
-					</li>
-				</ul>
-				<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="FormAPart1a" action="index"><g:message code="formAPart1a.label" default="Form A, part 1(i)"/> </g:link> 
-					</div>
-				</li>
-				</ul>
-
-			</div>
-
-		</div>
-		<div class="box table" style="margin: 0px auto; width: 42%;">
-			
-			<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="FormAPart1b" action="index"><g:message code="formAPart1b.label" default="Form A, part 1(ii)"/> </g:link> 
-					</div>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="FormAPart2a" action="index"><g:message code="formAPart2a.label" default="Form A, part 2(i)"/> </g:link>
-					</div>
-
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="FormAPart2b" action="index"><g:message code="formAPart2b.label" default="Form A, part 2(ii)"/> </g:link>
-					</div>
-				</li>
-			</ul>
-
-		</div>
-		<div class="box table" style="margin: 0px auto; width: 42%;">
-			<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="FormAPart2c" action="index"><g:message code="formAPart2c.label" default="Form A, part 2(iii)"/> </g:link>
-					</div>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<div class="box-icon">&nbsp;
-					</div>
-				</li>
-			</ul>
-		</div>
 	</div>
 	
 	<tmpl:devInfo />

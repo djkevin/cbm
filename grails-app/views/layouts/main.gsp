@@ -27,41 +27,55 @@
 		
 	</head>
 	<body>
-    <div id="topmenu">
-        <div id="topmenucontent">
-            <div id="languages">
-                <ul>
-                    <li><a class="home" href="${createLink(uri: '/?lang=en')}">EN</a></li>
-                    <li><a class="home" href="${createLink(uri: '/?lang=fr')}">FR</a></li>
-                </ul>
-
-            </div>
-            <div id="links">
-                <ul>
-                    <li>
-                    <sec:ifLoggedIn>
+	
+	    <%-- div id="topmenu">
+	        <div id="topmenucontent">
+	            <div id="languages">
+	                <ul>
+	                    <li><a class="home" href="${createLink(uri: '/?lang=en')}">EN</a></li>
+	                    <li><a class="home" href="${createLink(uri: '/?lang=fr')}">FR</a></li>
+	                </ul>
+	            </div>
+	            <div id="links">
+	                <ul>
+	                    <li>
+	                    <sec:ifLoggedIn>
+	                        <g:message code="user.login.as" default="You are logged in as: "/> <b><sec:loggedInUserInfo field="username"/></b>
+	                        <g:link controller='logout' action='index'><i class="fa fa-sign-out"></i><g:message code="user.logout" default="Logout"/></g:link>
+	                    </sec:ifLoggedIn>
+	                    </li>
+	                </ul>
+	            </div>           
+	        </div>
+	    </div --%>
+	    
+		<div class="banner table" role="banner">
+            <div>
+                <div class="logo">
+	                <div>
+	                    <img src="${resource(dir: 'images', file: 'unlogo.png')}" alt="home"/>
+	                </div>                    
+	                <div>                        
+	                    <h2><g:message code="global.label.organisation"/> %{--<g:message code="global.label.division"/>--}%</h2>
+	                    <%-- h3><g:message code="global.label.appname"/></h3 --%>
+	                </div>
+	                <%-- div>
+	                	<img src="${resource(dir: 'images', file: 'pn.jpg')}" />
+	                </div --%>
+                </div>
+                <div class="langs">
+					<sec:ifLoggedIn>
                         <g:message code="user.login.as" default="You are logged in as: "/> <b><sec:loggedInUserInfo field="username"/></b>
                         <g:link controller='logout' action='index'><i class="fa fa-sign-out"></i><g:message code="user.logout" default="Logout"/></g:link>
                     </sec:ifLoggedIn>
-                    </li>
-                </ul>
-            </div>
-            %{--           <div id="sessioninfo">
-                           <ul>
-
-                           </ul>
-                       </div>--}%
-        </div>
-    </div>
-		<div class="banner table" role="banner">
-            <div>
-                <div>
-                    <img src="${resource(dir: 'images', file: 'unlogo.png')}" alt="home"/>
-                </div>                    
-                <div>                        
-                    <h2><g:message code="global.label.organisation"/> %{--<g:message code="global.label.division"/>--}%</h2>
-                   %{-- <h3><g:message code="global.label.appname"/></h3>--}%
-                </div>                
+				
+					<br><br>
+					
+					<a class="home" href="${createLink(uri: '/?lang=en')}">English</a> 
+					&nbsp;&nbsp;
+	                <a class="home" href="${createLink(uri: '/?lang=fr')}">Français</a>
+	                </ul>
+				</div>              
             </div>
         </div>
                 

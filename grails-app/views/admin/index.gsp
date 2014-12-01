@@ -87,97 +87,20 @@ p {
 			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label" /></a></li>
 		</ul>
 	</div>
-
- 
-	</div>
-	<%--			<div id="controller-list" role="navigation">				--%>
-<%--                <ul>--%>
-<%--                	<li> <g:link controller="StateParty" action="index">State Party</g:link> </li>     --%>
-<%--                    <li> <g:link controller="Report" action="index">Report</g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart1a" action="index"><g:message code="formAPart1a.label" default="Form A, part 1(i)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart1b" action="index"><g:message code="formAPart1b.label" default="Form A, part 1(ii)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart2a" action="index"><g:message code="formAPart2a.label" default="Form A, part 2(i)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart2b" action="index"><g:message code="formAPart2b.label" default="Form A, part 2(ii)"/> </g:link> </li>                    --%>
-<%--                    <li> <g:link controller="FormAPart2c" action="index"><g:message code="formAPart2c.label" default="Form A, part 2(iii)"/> </g:link> </li>      --%>
-<%--                    <li><a class="home" href="${createLink(uri: '/?lang=en')}">English</a></li>              --%>
-<%--                    <li><a class="home" href="${createLink(uri: '/?lang=fr')}">French</a></li>   --%>
-<%--                    <li><a class="home" href="http://bwcsite.teqservices.com/cbmsite/cbm/">US CBM</a></li>   --%>
-<%--                    --%>
-<%--                               --%>
-<%--                    <li> ... </li>                    --%>
-<%--                </ul>                            --%>
-<%--			</div> --%>
+</div>
 
 	<div id="page-body" role="main">
+
+		<h1>ADMIN interface</h1>
+		<br>
 		
-		<div class="box table" style="margin: 0px auto; width: 42%;">
-			<div>
-				<ul>
-					<li>
-						<div class="box-icon">
-							<g:link controller="stateParty" action="index">State Party</g:link>
-						</div>
-					</li>
-				</ul>
-				<ul>
-					<li>
-						<div class="box-icon">
-							<g:link controller="report" action="index">Report</g:link>
-						</div>
-					</li>
-				</ul>
-%{--				<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="user" action="index"><g:message code="user.label" default="User"/> </g:link>
-					</div>
-				</li>
-				</ul>--}%
-
-			</div>
-
-		</div>
-		<div class="box table" style="margin: 0px auto; width: 42%;">
-			
-			<ul>
-				<li>
-					<div class="box-icon">
-                        <g:link controller="user" action="index"><g:message code="user.label" default="User"/> </g:link>
-					</div>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="secUserSecRole" action="index"><g:message code="secuser.secrole.label" default="User Role"/> </g:link>
-					</div>
-
-				</li>
-			</ul>
-		%{--	<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="FormAPart2b" action="index"><g:message code="formAPart2b.label" default="Form A, part 2(ii)"/> </g:link>
-					</div>
-				</li>
-			</ul>--}%
-
-		</div>
-		<div class="box table" style="margin: 0px auto; width: 42%;">
-			<ul>
-				<li>
-					<div class="box-icon">
-						<g:link controller="auditLog" action="index"><g:message code="auditLog.label" default="Audit Log"/> </g:link>
-					</div>
-				</li>
-			</ul>
-			<ul>
-				<li>
-					<div class="box-icon">&nbsp;
-					</div>
-				</li>
-			</ul>
-		</div>
+		<ul>
+			<li> <g:link controller="stateParty" action="index">State Parties</g:link> <br><br> </li>
+			<li> <g:link controller="user" action="index">Users</g:link> <br><br> </li>
+			<li> <g:link controller="secUserSecRole" action="index">User Roles</g:link> <br><br> </li>
+			<li> <g:link controller="auditLog" action="index">Audit Log</g:link> <br><br> </li>
+		</ul>
+					
 	</div>
 
 </body>
