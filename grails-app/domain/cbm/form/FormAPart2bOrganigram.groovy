@@ -16,6 +16,10 @@ class FormAPart2bOrganigram {
         organigramDescription maxSize: 65000, nullable: true
     }
 
+    static mapping = {
+        organigramDescription type: 'text'
+    }
+
     String toString(){
         "organisationalStructureDiagram linked to ${formAPart2b}"
     }
