@@ -159,6 +159,7 @@ class ReportController {
         respond reportInstance
     }
 
+    @Transactional
     def ajaxSaveFormStatus() {
         //params: name, type, id, value[Completed]
         String result
@@ -246,7 +247,9 @@ class ReportController {
      * TODO move to Service
      * TODO hide submit button if already submitted (in gsp)
      */
+
 	@Secured(['ROLE_SUBMITTER'])
+    @Transactional
     def submit(Report reportInstance) {
 
         def errors = [:]
