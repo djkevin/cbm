@@ -78,11 +78,11 @@ class FormAPart2c extends BaseForm {
         publicationPolicy maxSize: 5000, blank: true
         publicPapers maxSize: 65000, blank: true
         bioDefenseWork maxSize: 5000, blank: true
-        orgStructureComments1 maxSize: 5000, blank: true
-        orgStructureComments2 maxSize: 5000, blank: true
-        orgStructureComments3 maxSize: 5000, blank: true
-        contractWorkersComments maxSize: 5000, blank: true
-        floorAreaComments maxSize: 5000, blank: true
+        orgStructureComments1 maxSize: 5000, blank: true, nullable: true
+        orgStructureComments2 maxSize: 5000, blank: true, nullable: true
+        orgStructureComments3 maxSize: 5000, blank: true, nullable: true
+        contractWorkersComments maxSize: 5000, blank: true, nullable: true
+        floorAreaComments maxSize: 5000, blank: true, nullable: true
     }
 
     BigDecimal getTotalFloorArea() {
