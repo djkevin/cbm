@@ -1,6 +1,7 @@
 package cbm
 
 import cbm.admin.NationalContact
+import cbm.constants.FormStatus
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
 import cbm.form.*
@@ -37,7 +38,17 @@ class ReportController {
 
     }
 
+
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
+    def published(Integer max){
+        params.max = Math.min(max ?: 10, 100)
+
+        def submittedAndPublishedReports  = Report.findAllByReportStatusAndPublicationStatus(ReportStatus.SUBMITTED, PublicationStatus.PUBLISHED)
+        respond submittedAndPublishedReports, model: [reportInstanceCount: submittedAndPublishedReports.size()]
+
+    }
+
+    @Secured(["@securityService.canView(#reportInstance)"])
     def show(Report reportInstance) {
         if (securityService.canView(reportInstance)) {
             respond reportInstance
@@ -220,8 +231,9 @@ class ReportController {
                 result = "Error in saving"
         }
 
+        println params.value
         if (cbmForm) {
-            if (params.value == "Completed" || params.value == "Draft") {
+            if (params.value == "COMPLETED" || params.value == FormStatus.DRAFT) {
                 cbmForm.formStatus = params.value
             } else {
                 cbmForm.visibility = params.value
@@ -259,69 +271,70 @@ class ReportController {
 /*
         BaseForm.metaClass.validateStatus = {
             def errors = [:]
-            if (delegate.formStatus == "Draft") {
+            if (delegate.formStatus == FormStatus.DRAFT) {
                 println delegate.id
             }
             errors
         }
 */
 
+        println "a"
         def formAPart1s = reportInstance.formAPart1
         formAPart1s.each {
-            if (it.formStatus == "Draft") {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formAPart1.label')}, instance ${it.id}"
             }
 
         }
         def formAPart1b = reportInstance.formAPart1b
-        if (formAPart1b?.formStatus == "Draft") {
+        if (formAPart1b?.formStatus == FormStatus.DRAFT) {
             errors["status"] << "${message(code: 'formAPart1b.label')}, instance ${formAPart1b.id}"
         }
 
         def formAPart2a = reportInstance.formAPart2a
-        if (formAPart2a?.formStatus == "Draft") {
+        if (formAPart2a?.formStatus == FormStatus.DRAFT) {
             errors["status"] << "${message(code: 'formAPart2a.label')}, instance ${formAPart2a.id}"
         }
 
         def formAPart2bs = reportInstance.formAPart2b
-        formAPart2bs.each {
-            if (it.formStatus == "Draft") {
+        formAPart2bs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formAPart2b.label')}, instance ${it.id}"
             }
         }
         def formAPart2cs = reportInstance.formAPart2cs
-        formAPart2cs.each {
-            if (it.formStatus == "Draft") {
+        formAPart2cs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formAPart2c.label')}, instance ${it.id}"
             }
         }
         def formBs = reportInstance.formB
-        formBs.each {
-            if (it.formStatus == "Draft") {
+        formBs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formB.label')}, instance ${it.id}"
             }
         }
         def formCs = reportInstance.formC
-        formCs.each {
-            if (it.formStatus == "Draft") {
+        formCs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formC.label')}, instance ${it.id}"
             }
         }
         def formEs = reportInstance.formE
-        formEs.each {
-            if (it.formStatus == "Draft") {
+        formEs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formE.label')}, instance ${it.id}"
             }
         }
         def formFs = reportInstance.formF
-        formFs.each {
-            if (it.formStatus == "Draft") {
+        formFs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formF.label')}, instance ${it.id}"
             }
         }
         def formGs = reportInstance.formG
-        formGs.each {
-            if (it.formStatus == "Draft") {
+        formGs?.each {
+            if (it.formStatus == FormStatus.DRAFT) {
                 errors["status"] << "${message(code: 'formG.label')}, instance ${it.id}"
             }
         }
@@ -349,7 +362,7 @@ class ReportController {
         }
 
         // if existing national programmes declared, need to fill in formAPart2bs
-        if (formAPart2a.existingNationalProgrammes && !formAPart2bs){
+        if (formAPart2a?.existingNationalProgrammes && !formAPart2bs){
             errors["validation"] << message(code: 'report.submit.formA.existing.programmes.error', default: 'Existing programmes error')
         }
 
