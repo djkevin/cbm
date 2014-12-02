@@ -38,7 +38,6 @@ class ReportController {
 
     }
 
-
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def published(Integer max){
         params.max = Math.min(max ?: 10, 100)
@@ -48,7 +47,8 @@ class ReportController {
 
     }
 
-    @Secured(["@securityService.canView(#reportInstance)"])
+    // DOES THIS WORK? @Secured(["@securityService.canView(#reportInstance)"])
+	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def show(Report reportInstance) {
         if (securityService.canView(reportInstance)) {
             respond reportInstance
@@ -233,7 +233,7 @@ class ReportController {
 
         println params.value
         if (cbmForm) {
-            if (params.value == "COMPLETED" || params.value == FormStatus.DRAFT) {
+            if (params.value == FormStatus.COMPLETED || params.value == FormStatus.DRAFT) {
                 cbmForm.formStatus = params.value
             } else {
                 cbmForm.visibility = params.value
@@ -278,7 +278,7 @@ class ReportController {
         }
 */
 
-        println "a"
+        /*println "a"*/
         def formAPart1s = reportInstance.formAPart1
         formAPart1s.each {
             if (it.formStatus == FormStatus.DRAFT) {
