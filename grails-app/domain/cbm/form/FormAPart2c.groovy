@@ -86,17 +86,20 @@ class FormAPart2c extends BaseForm {
     }
 
     BigDecimal getTotalFloorArea() {
-        if (!floorAreaBL2 || !floorAreaBL3 || !floorAreaBL4)
-            return null
-        else
-            floorAreaBL2 + floorAreaBL3 + floorAreaBL4
+//        if (!floorAreaBL2 || !floorAreaBL3 || !floorAreaBL4)
+//            return null
+//        else
+//            floorAreaBL2 + floorAreaBL3 + floorAreaBL4
+
+        floorAreaBL2.plus(floorAreaBL3).plus(floorAreaBL4)
     }
 
     Long getTotalPersonnel() {
-        if (!militaryPersonnel || !civilianPersonnel)
+   /*     if (!militaryPersonnel || !civilianPersonnel)
             return null
         else
-            militaryPersonnel + civilianPersonnel
+            militaryPersonnel + civilianPersonnel*/
+        militaryPersonnel.plus(civilianPersonnel)
     }
 
     String toString() {

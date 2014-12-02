@@ -207,7 +207,25 @@ img {
     background-image: url(../images/skin/database_add.png);
 }
 
-/* CREATE/EDIT FORMS AND SHOW PAGES */
+.published {
+    position:relative;
+}
+.published:before {
+    content: "\f05d";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    /*--adjust as necessary--*/
+    color: #555;
+    font-size: 16px;
+    /*padding:0;*/
+    margin-left:0px;
+    padding-right: 3px;
+    /*position: absolute;*/
+    top: 3px;
+    left: 0;
+}
 
 fieldset,
 .property-list {
