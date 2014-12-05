@@ -54,7 +54,7 @@ class ReportController {
     }
 
     // DOES THIS WORK? @Secured(["@securityService.canView(#reportInstance)"])
-	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
+	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_ADMIN'])
     def show(Report reportInstance) {
         if (securityService.canView(reportInstance)) {
             respond reportInstance
