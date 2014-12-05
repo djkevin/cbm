@@ -26,6 +26,7 @@ class ReportController {
         return SecUser.get(springSecurityService.principal.id)
     }
 
+	// this method does not need to override the security of the class.
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
@@ -38,6 +39,11 @@ class ReportController {
 
     }
 
+	/**
+	 * View submitted reports with 'PUBLISHED' publication status.
+	 * @param max
+	 * @return
+	 */
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def published(Integer max){
         params.max = Math.min(max ?: 10, 100)

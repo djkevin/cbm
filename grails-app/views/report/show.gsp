@@ -14,7 +14,10 @@
 		<div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="create" action="create" params="['stateParty.id':reportInstance.stateParty.id]"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                
+                <sec:ifAnyGranted roles="ROLE_SUBMITTER">
+                	<li><g:link class="create" action="create" params="['stateParty.id':reportInstance.stateParty.id]"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+               	</sec:ifAnyGranted>
             </ul>
 		</div>
 		<div id="show-report" class="content scaffold-show" role="main">
@@ -162,15 +165,17 @@
 
             <g:form url="[resource:reportInstance, action:'delete']" method="DELETE">
                 <fieldset class="buttons">
-                    <g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm(getDeleteText());" />
-                    %{--<g:link class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return getDeleteText();" ><g:message code="default.button.delete.label" default="Delete" /></g:link>--}%
-                    <g:link class="submit" action="review" resource="${reportInstance}"><g:message code="default.button.review.label" default="Review and Submit" /></g:link>
+                	<sec:ifAnyGranted roles="ROLE_SUBMITTER">
+                    	<g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    	<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm(getDeleteText());" />
+                    	<g:link class="submit" action="review" resource="${reportInstance}"><g:message code="default.button.review.label" default="Review and Submit" /></g:link>                    
+                    </sec:ifAnyGranted>                    
                     <g:link class="print" action="print" resource="${reportInstance}" target="_blank"
                             title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
                     </g:link>
                 </fieldset>
             </g:form>
+            
 			<!-- *-*-*-*-*-*-*-*-*-*-*-* list of forms *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
             <br/>
             <h1 id="clean"><g:message code="default.forms.list"/> - ${reportInstance.reportName}</h1>
@@ -199,12 +204,14 @@
                             </g:if>
                         </td>
                         <td>
-                            <g:if test="${!reportInstance?.formZero}">
-                                <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]">
-                                    <i class="fa fa-plus-square-o"></i>
-                                    <g:message code="default.button.create.label"/>
-                                </g:link>
-                            </g:if>
+                        	<sec:ifAnyGranted roles="ROLE_SUBMITTER">
+	                            <g:if test="${!reportInstance?.formZero}">
+	                                <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]">
+	                                    <i class="fa fa-plus-square-o"></i>
+	                                    <g:message code="default.button.create.label"/>
+	                                </g:link>
+	                            </g:if>
+                            </sec:ifAnyGranted>
                         </td>
                     </tr>
                     <tr class="odd">
@@ -216,10 +223,12 @@
                             </g:each>
                         </td>
                         <td>
-                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id, 'report.id':reportInstance?.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+                        	<sec:ifAnyGranted roles="ROLE_SUBMITTER">
+	                            <g:link controller="nationalContact" action="create" params="['stateParty.id': reportInstance?.stateParty?.id, 'report.id':reportInstance?.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
                         </td>
                     </tr>
 					<tr class="even">
@@ -235,10 +244,12 @@
                             </g:if>
 						</td>
 						<td class="center">
-                            <g:link controller="formAPart1a" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+	                            <g:link controller="formAPart1a" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -257,10 +268,12 @@
 						%{--</td>--}%
 						<td>
                             <g:if test="${!reportInstance?.formAPart1b}">
-							<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+                            <sec:ifAnyGranted roles="ROLE_EDITOR">
+								<g:link controller="formAPart1b" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
                             </g:if>
 						</td>
 					</tr>
@@ -275,12 +288,14 @@
                             </g:if>
                         </td>
 						<td>
-                            <g:if test="${!reportInstance?.formAPart2a}">
-                                <g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]">
-                                    <i class="fa fa-plus-square-o"></i>
-                                    <g:message code="default.button.create.label"/>
-                                </g:link>
-                            </g:if>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+	                            <g:if test="${!reportInstance?.formAPart2a}">
+	                                <g:link controller="formAPart2a" action="create" params="['report.id': reportInstance.id]">
+	                                    <i class="fa fa-plus-square-o"></i>
+	                                    <g:message code="default.button.create.label"/>
+	                                </g:link>
+	                            </g:if>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
                     <tr class="odd">
@@ -296,10 +311,12 @@
                             </g:if>
                         </td>
                         <td>
-                            <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+                        	<sec:ifAnyGranted roles="ROLE_EDITOR">
+	                            <g:link controller="formAPart2b" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
                         </td>
                     </tr>
                     <tr class="even">
@@ -318,10 +335,12 @@
                             </g:elseif>
                         </td>
                         <td>
-                            <g:link controller="formAPart2c" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+                        	<sec:ifAnyGranted roles="ROLE_EDITOR">
+	                            <g:link controller="formAPart2c" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
                         </td>
                     </tr>
 					<tr class="odd">
@@ -340,10 +359,12 @@
                             </g:else>
 						</td>
 						<td>
-							<g:link controller="formB" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+								<g:link controller="formB" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
 					<tr class="even">
@@ -357,10 +378,12 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formC" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+								<g:link controller="formC" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+                            	</g:link>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -374,10 +397,12 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formE" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+								<g:link controller="formE" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
 					<tr class="even">
@@ -391,10 +416,12 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formF" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+								<g:link controller="formF" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
 					<tr class="odd">
@@ -408,10 +435,12 @@
                             </g:if>
 						</td>
 						<td>
-							<g:link controller="formG" action="create" params="['report.id': reportInstance.id]">
-                                <i class="fa fa-plus-square-o"></i>
-                                <g:message code="default.button.create.label"/>
-                            </g:link>
+							<sec:ifAnyGranted roles="ROLE_EDITOR">
+								<g:link controller="formG" action="create" params="['report.id': reportInstance.id]">
+	                                <i class="fa fa-plus-square-o"></i>
+	                                <g:message code="default.button.create.label"/>
+	                            </g:link>
+                            </sec:ifAnyGranted>
 						</td>
 					</tr>
 				</tbody>

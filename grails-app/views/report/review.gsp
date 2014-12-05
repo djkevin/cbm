@@ -21,7 +21,7 @@
     </ul>
 </div>
 <div id="show-report" class="content scaffold-show" role="main">
-<h1><g:message code="default.review.label" args="[entityName]" /> - ${reportInstance.reportName}</h1>
+<h1><g:message code="default.button.review.label" args="[entityName]" /> <g:message code="report.label" default="report"/> - ${reportInstance.reportName}</h1>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
@@ -89,9 +89,7 @@
 
 
 <br/>
-%{--
-<h1 id="clean"><g:message code="default.forms.list"/> - ${reportInstance.reportName}</h1>
-<br/>--}%
+
 <table id="cssTable">
 <thead>
 <tr>

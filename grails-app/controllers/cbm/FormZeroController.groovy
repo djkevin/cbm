@@ -37,7 +37,7 @@ class FormZeroController {
      * @return a formZero instance
      * TODO: Move to FormService
      */
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     def create() {
         FormZero formZero = new FormZero(params)
         def reportId = params.long('report.id')
@@ -62,7 +62,7 @@ class FormZeroController {
         respond formZero
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def save(FormZero formZeroInstance) {
         if (formZeroInstance == null) {
@@ -87,12 +87,12 @@ class FormZeroController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     def edit(FormZero formZeroInstance) {
         respond formZeroInstance
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def update(FormZero formZeroInstance) {
         if (formZeroInstance == null) {
@@ -116,7 +116,7 @@ class FormZeroController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def delete(FormZero formZeroInstance) {
 
