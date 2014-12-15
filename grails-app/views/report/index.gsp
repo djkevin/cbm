@@ -13,8 +13,14 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create" params="['stateParty.id': statePartyId]"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
-        <li><g:link class="published" action="published"><g:message code="report.view.published.label" default="View published" /> </g:link> </li>
+        
+        <sec:ifAnyGranted roles="ROLE_SUBMITTER">
+        	<li><g:link class="create" action="create" params="['stateParty.id': statePartyId]"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
+        </sec:ifAnyGranted>
+        
+        <sec:ifAnyGranted roles="ROLE_VIEWER, ROLE_EDITOR, ROLE_SUBMITTER, ROLE_ADMIN">	
+        	<li><g:link class="published" action="published"><g:message code="report.view.published.label" default="View published" /> </g:link> </li>
+        </sec:ifAnyGranted>
     </ul>
 </div>
 

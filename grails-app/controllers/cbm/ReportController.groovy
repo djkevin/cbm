@@ -26,6 +26,7 @@ class ReportController {
         return SecUser.get(springSecurityService.principal.id)
     }
 
+	// this method does not need to override the security of the class.
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
@@ -38,7 +39,11 @@ class ReportController {
 
     }
 
-
+	/**
+	 * View submitted reports with 'PUBLISHED' publication status.
+	 * @param max
+	 * @return
+	 */
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def published(Integer max){
         params.max = Math.min(max ?: 10, 100)
@@ -48,7 +53,9 @@ class ReportController {
 
     }
 
-    @Secured(["@securityService.canView(#reportInstance)"])
+
+    // DOES THIS WORK? @Secured(["@securityService.canView(#reportInstance)"])
+	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_ADMIN'])
     def show(Report reportInstance) {
         if (securityService.canView(reportInstance)) {
             respond reportInstance
@@ -84,7 +91,7 @@ class ReportController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'reportInstance.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect reportInstance
             }
             '*' { respond reportInstance, [status: CREATED] }
@@ -113,7 +120,7 @@ class ReportController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect reportInstance
             }
             '*' { respond reportInstance, [status: OK] }
@@ -133,7 +140,7 @@ class ReportController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NO_CONTENT }
@@ -143,7 +150,7 @@ class ReportController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'reportInstance.label', default: 'Report'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'report.label', default: 'Report'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }
@@ -174,7 +181,7 @@ class ReportController {
     def ajaxSaveFormStatus() {
         //params: name, type, id, value[Completed]
         String result
-        def saveOKMsg = message(code: 'report.submit.radio.save.ok', args: [params.name, params.type, params.value])
+        def saveOKMsg = message(code: 'report.submit.radio.save.ok', args: [params.name, params.type, params.value])    //TODO i18n confirm message
         def cbmForm
 
         switch (params.name) {
@@ -231,9 +238,10 @@ class ReportController {
                 result = "Error in saving"
         }
 
-        println params.value
+//        println "params value: "+ params.value
         if (cbmForm) {
-            if (params.value == "COMPLETED" || params.value == FormStatus.DRAFT) {
+
+            if (params.value == FormStatus.COMPLETED.toString() || params.value == FormStatus.DRAFT.toString()) {
                 cbmForm.formStatus = params.value
             } else {
                 cbmForm.visibility = params.value
@@ -278,7 +286,7 @@ class ReportController {
         }
 */
 
-        println "a"
+        /*println "a"*/
         def formAPart1s = reportInstance.formAPart1
         formAPart1s.each {
             if (it.formStatus == FormStatus.DRAFT) {
@@ -381,7 +389,7 @@ class ReportController {
 
         request.withFormat {
             '*' {
-                flash.message = message(code: 'default.submitted.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.submitted.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect(action: 'index')
 
             }

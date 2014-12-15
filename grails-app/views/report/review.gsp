@@ -6,6 +6,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'report.label', default: 'Report')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 <jqui:resources/>
@@ -21,7 +22,7 @@
     </ul>
 </div>
 <div id="show-report" class="content scaffold-show" role="main">
-<h1><g:message code="default.review.label" args="[entityName]" /> - ${reportInstance.reportName}</h1>
+<h1><g:message code="default.button.review.label" args="[entityName]" /> <g:message code="report.label" default="report"/> - ${reportInstance.reportName}</h1>
 <g:if test="${flash.message}">
     <div class="message" role="status">${flash.message}</div>
 </g:if>
@@ -87,11 +88,8 @@
 
 </script>
 
-
 <br/>
-%{--
-<h1 id="clean"><g:message code="default.forms.list"/> - ${reportInstance.reportName}</h1>
-<br/>--}%
+
 <table id="cssTable">
 <thead>
 <tr>

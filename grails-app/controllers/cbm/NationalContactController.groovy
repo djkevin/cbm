@@ -25,7 +25,7 @@ class NationalContactController {
         respond nationalContactInstance
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     def create() {
         Report r = Report.get(params.long('report.id'))
         NationalContact n = new NationalContact()
@@ -34,7 +34,7 @@ class NationalContactController {
         respond n
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def save(NationalContact nationalContactInstance) {
         if (nationalContactInstance == null) {
@@ -45,6 +45,11 @@ class NationalContactController {
         def reportId = params.long('report.id')
 
         if (nationalContactInstance.hasErrors()) {
+
+            for(def e:nationalContactInstance.errors){
+                println e
+            }
+
             respond nationalContactInstance.errors, view:'create'
             return
         }
@@ -60,12 +65,12 @@ class NationalContactController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     def edit(NationalContact nationalContactInstance) {
         respond nationalContactInstance
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def update(NationalContact nationalContactInstance) {
         if (nationalContactInstance == null) {
@@ -90,7 +95,7 @@ class NationalContactController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_SUBMITTER'])
     @Transactional
     def delete(NationalContact nationalContactInstance) {
 
