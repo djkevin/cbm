@@ -45,6 +45,11 @@ class NationalContactController {
         def reportId = params.long('report.id')
 
         if (nationalContactInstance.hasErrors()) {
+
+            for(def e:nationalContactInstance.errors){
+                println e
+            }
+
             respond nationalContactInstance.errors, view:'create'
             return
         }

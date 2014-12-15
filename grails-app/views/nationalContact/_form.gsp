@@ -5,25 +5,25 @@
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'title', 'error')} required">
 	<label for="title" class="property-label25">
 		<g:message code="nationalContact.title.label" default="Title" />
-		<span class="required-indicator">*</span>
+		%{--<span class="required-indicator">*</span>--}%
 	</label>
-	<g:select name="title" from="${nationalContactInstance.constraints.title.inList}" required="" value="${nationalContactInstance?.title}" valueMessagePrefix="nationalContact.title"/>
+	<g:select name="title" from="${cbm.constants.Title?.values()}" keys="${cbm.constants.Title.values()*.name()}" value="${nationalContactInstance?.title}" noSelection="['': '--']" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'firstName', 'error')} required">
 	<label for="firstName" class="property-label25">
 		<g:message code="nationalContact.firstName.label" default="First Name" />
-		<span class="required-indicator">*</span>
+		%{--<span class="required-indicator">*</span>--}%
 	</label>
-	<g:textField name="firstName" maxlength="${nationalContactInstance?.constraints?.firstName?.maxSize}" required="" value="${nationalContactInstance?.firstName}"/>
+	<g:textField name="firstName" maxlength="${nationalContactInstance?.constraints?.firstName?.maxSize}" value="${nationalContactInstance?.firstName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'lastName', 'error')} required">
 	<label for="lastName" class="property-label25">
 		<g:message code="nationalContact.lastName.label" default="Last Name" />
-		<span class="required-indicator">*</span>
+		%{--<span class="required-indicator">*</span>--}%
 	</label>
-	<g:textField name="lastName" maxlength="${nationalContactInstance?.constraints?.lastName?.maxSize}" required="" value="${nationalContactInstance?.lastName}"/>
+	<g:textField name="lastName" maxlength="${nationalContactInstance?.constraints?.lastName?.maxSize}"  value="${nationalContactInstance?.lastName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'position', 'error')} ">
@@ -34,7 +34,7 @@
 	<g:textField name="position" maxlength="${nationalContactInstance?.constraints?.position?.maxSize}" value="${nationalContactInstance?.position}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'organization', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'organization', 'error')} required">
 	<label for="organization" class="property-label25">
 		<g:message code="nationalContact.organization.label" default="Organization" />
 
@@ -133,19 +133,19 @@
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'stateParty', 'error')} required">
-	<label for="stateParty" class="property-label25">
-		<g:message code="nationalContact.stateParty.label" default="State Party" />
-		<span class="required-indicator">*</span>
-	</label>
+	%{--<label for="stateParty" class="property-label25">--}%
+		%{--<g:message code="nationalContact.stateParty.label" default="State Party" />--}%
+		%{--<span class="required-indicator">*</span>--}%
+	%{--</label>--}%
 
 	%{--<g:select id="stateParty" name="stateParty.id" from="${cbm.StateParty.list()}" optionKey="id" required="" value="${nationalContactInstance?.stateParty?.id}" class="many-to-one"/>--}%
     <g:if test="${nationalContactInstance?.stateParty}">
         <g:hiddenField id="stateParty" name="stateParty.id" value="${nationalContactInstance?.stateParty?.id}" />
-        <g:textField id="stateParty.country" name="stateParty.country" value="${nationalContactInstance?.stateParty?.country}" readonly=""/>
+        %{--<g:textField id="stateParty.country" name="stateParty.country" value="${nationalContactInstance?.stateParty?.country}" readonly=""/>--}%
     </g:if>
     <g:else>
         <g:hiddenField id="stateParty" name="stateParty.id" value="${params?.stateParty?.id}" />
-        <g:textField id="stateParty.country" name="stateParty.country" value="${cbm.admin.StateParty.get(params?.stateParty?.id)}" readonly=""/>
+        %{--<g:textField id="stateParty.country" name="stateParty.country" value="${cbm.admin.StateParty.get(params?.stateParty?.id)}" readonly=""/>--}%
     </g:else>
 </div>
 

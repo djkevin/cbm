@@ -218,8 +218,16 @@
                         <td><g:message code="nationalContact.label" default="National Contact" /></td>
                         <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
                         <td  class="noTable">
+
                             <g:each in="${reportInstance?.stateParty?.nationalContact}" var="f">
-                                <g:link controller="nationalContact" action="show" id="${f.id}" params="['report.id':reportInstance?.id]">${f ? f.encodeAsHTML():''}</g:link>,
+                                <g:link controller="nationalContact" action="show" id="${f.id}" params="['report.id':reportInstance?.id]">
+                                    <g:if test="${f.name}">
+                                        <g:fieldValue bean="${f}" field="title"/> <g:fieldValue bean="${f}" field="name"/>
+                                    </g:if>
+                                    <g:elseif test="${f.organization}">
+                                        <g:fieldValue bean="${f}" field="organization"/>
+                                    </g:elseif>
+                                </g:link>,
                             </g:each>
                         </td>
                         <td>
