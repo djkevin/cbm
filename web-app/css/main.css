@@ -1009,3 +1009,13 @@ div.langs {
 	width:50%;	
 	text-align: right;
 }
+
+
+/*Report submit icons*/
+
+.icon-thread input[type='radio'] {opacity: 0;position:absolute;width:100%;height:100%;cursor: pointer;}
+.icon-thread input[type='radio'] + label {margin:.6em;color: #B1B1B1; text-shadow: 1px 1px #fff;}
+.icon-thread input[type='radio']:checked + label{color:#000;}
+.icon-thread li{display: inline-block; margin:2% 0 1%}
+/*.icon-thread ul{border-bottom: 1px dashed #D1D8DD;background:#FAFAFA;text-align:center}*/
+.icon-thread ul{background:#FAFAFA;text-align:center}

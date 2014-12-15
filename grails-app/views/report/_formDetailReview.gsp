@@ -33,28 +33,55 @@
                     <g:message code="formStatus.completed" default="completed"/>
                 </g:else>--}%
 
-                <g:radioGroup name="formStatus_${f.title}_${f.id}"
+            %{--    <g:radioGroup name="formStatus_${f.title}_${f.id}"
                               values="${cbm.constants.FormStatus.values()}"
                               labels="${cbm.constants.FormStatus.values()*.name()}"
                               value="${f?.formStatus?.name()}">
                     ${it.radio}
 
                     <g:message code="${it.label}" />&nbsp;
-                </g:radioGroup>
+                </g:radioGroup>--}%
+
+                <span class="icon-thread">
+                    <ul>
+                        <li>
+                            <g:radio name="formStatus_${f.title}_${f.id}" value="${f?.formStatus?.name()}" checked="${f.formStatus == FormStatus.DRAFT}"/>
+                            <label class="radio" for="formStatus_${f.title}_${f.id}"><i class="fa fa-pencil"></i> <g:message code="cbm.constants.FormStatus.DRAFT" /> </label>
+                        </li>
+                        <li>
+                            <g:radio name="formStatus_${f.title}_${f.id}" value="${f?.formStatus?.name()}" checked="${f.formStatus == FormStatus.COMPLETED}"/>
+                            <label class="radio" for="formStatus_${f.title}_${f.id}"><i class="fa fa-check"></i> <g:message code="cbm.constants.FormStatus.COMPLETED" /></label>
+                        </li>
+                    </ul>
+                </span>
             </td>
             <td width="20%">
 
-                |&nbsp;&nbsp;&nbsp;
-                <g:radioGroup name="visibility_${f.title}_${f.id}"
+
+    %{--            <g:radioGroup name="visibility_${f.title}_${f.id}"
                               values="${cbm.constants.Visibility.values()}"
                               labels="${cbm.constants.Visibility.values()*.name()}"
-                              value="${f?.visibility?.name()}">  %{--TODO i18n--}%
+                              value="${f?.visibility?.name()}">  --}%%{--TODO i18n--}%%{--
                     ${it.radio}
-                    %{--<span class="published">--}%
+                    --}%%{--<span class="published">--}%%{--
                         <g:message code="${it.label}" />&nbsp;
-                    %{--</span>--}%
+                    --}%%{--</span>--}%%{--
 
-                </g:radioGroup>
+                </g:radioGroup>--}%
+
+
+                <span class="icon-thread">
+                    <ul>
+                        <li>
+                            <g:radio name="visibility_${f.title}_${f.id}" value="${f?.formStatus?.name()}" checked="${f.formStatus == Visibility.PUBLIC}"/>
+                            <label class="radio" for="formStatus_${f.title}_${f.id}"><i class="fa fa-pencil"></i> <g:message code="cbm.constants.Visibility.PUBLIC" /> </label>
+                        </li>
+                        <li>
+                            <g:radio name="visibility_${f.title}_${f.id}" value="${f?.formStatus?.name()}" checked="${f.formStatus == Visibility.PRIVATE}"/>
+                            <label class="radio" for="formStatus_${f.title}_${f.id}"><i class="fa fa-check"></i> <g:message code="cbm.constants.Visibility.PRIVATE" /></label>
+                        </li>
+                    </ul>
+                </span>
 
             </td>
         </tr>

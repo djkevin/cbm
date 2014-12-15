@@ -181,7 +181,7 @@ class ReportController {
     def ajaxSaveFormStatus() {
         //params: name, type, id, value[Completed]
         String result
-        def saveOKMsg = message(code: 'report.submit.radio.save.ok', args: [params.name, params.type, params.value])
+        def saveOKMsg = message(code: 'report.submit.radio.save.ok', args: [params.name, params.type, params.value])    //TODO i18n confirm message
         def cbmForm
 
         switch (params.name) {
@@ -238,9 +238,10 @@ class ReportController {
                 result = "Error in saving"
         }
 
-        println params.value
+//        println "params value: "+ params.value
         if (cbmForm) {
-            if (params.value == FormStatus.COMPLETED || params.value == FormStatus.DRAFT) {
+
+            if (params.value == FormStatus.COMPLETED.toString() || params.value == FormStatus.DRAFT.toString()) {
                 cbmForm.formStatus = params.value
             } else {
                 cbmForm.visibility = params.value

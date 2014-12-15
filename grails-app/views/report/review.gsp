@@ -6,6 +6,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'report.label', default: 'Report')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 </head>
 <body>
 <jqui:resources/>
@@ -86,7 +87,6 @@
     }
 
 </script>
-
 
 <br/>
 

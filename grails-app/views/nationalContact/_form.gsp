@@ -1,7 +1,7 @@
 <%@ page import="cbm.admin.StateParty; cbm.admin.StateParty; cbm.admin.NationalContact" %>
 
 
-
+ <span class="instructions"><g:message code="nationalContact.instructions.name.or.org" default="Fill in name or org"/> </span>
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'title', 'error')} required">
 	<label for="title" class="property-label25">
 		<g:message code="nationalContact.title.label" default="Title" />
@@ -67,39 +67,6 @@
 </div>
 
 
-%{--<fieldset class="embedded"><legend><g:message code="nationalContact.address.label" default="Address" /></legend>--}%
-%{--<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.country', 'error')} required">
-	<label for="address.country" class="property-label25">
-		<g:message code="nationalContact.address.country.label" default="Country" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select name="country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required="" value="${addressInstance?.country?.name()}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.postCode', 'error')} ">
-	<label for="address.postCode" class="property-label25">
-		<g:message code="nationalContact.address.postCode.label" default="Post Code" />
-		
-	</label>
-	<g:textField name="postCode" maxlength="${nationalContactInstance?.constraints?.postCode?.maxSize}" value="${addressInstance?.postCode}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.street', 'error')} ">
-	<label for="address.street" class="property-label25">
-		<g:message code="nationalContact.address.street.label" default="Street" />
-		
-	</label>
-	<g:textField name="street" maxlength="${nationalContactInstance?.constraints?.street?.maxSize}" value="${addressInstance?.street}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'address.town', 'error')} ">
-	<label for="address.town" class="property-label25">
-		<g:message code="nationalContact.address.town.label" default="Town" />
-		
-	</label>
-	<g:textField name="town" maxlength="${nationalContactInstance?.constraints?.town?.maxSize}" value="${addressInstance?.town}"/>
-</div>--}%
-%{--</fieldset>--}%
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
 	<label for="telephone" class="property-label25">
 		<g:message code="nationalContact.telephone.label" default="Telephone" />

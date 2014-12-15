@@ -17,6 +17,7 @@
         <!--font-awesome via CDN-->
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
+
 		<r:script disposition="head">
             var URL_ROOT = '${request.contextPath}';
         </r:script>
