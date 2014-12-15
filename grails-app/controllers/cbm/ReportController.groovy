@@ -91,7 +91,7 @@ class ReportController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'reportInstance.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect reportInstance
             }
             '*' { respond reportInstance, [status: CREATED] }
@@ -120,7 +120,7 @@ class ReportController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect reportInstance
             }
             '*' { respond reportInstance, [status: OK] }
@@ -140,7 +140,7 @@ class ReportController {
 
         request.withFormat {
             form {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NO_CONTENT }
@@ -150,7 +150,7 @@ class ReportController {
     protected void notFound() {
         request.withFormat {
             form {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'reportInstance.label', default: 'Report'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'report.label', default: 'Report'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }
@@ -388,7 +388,7 @@ class ReportController {
 
         request.withFormat {
             '*' {
-                flash.message = message(code: 'default.submitted.message', args: [message(code: 'Report.label', default: 'Report'), reportInstance.id])
+                flash.message = message(code: 'default.submitted.message', args: [message(code: 'report.label', default: 'Report'), reportInstance.reportName])
                 redirect(action: 'index')
 
             }
