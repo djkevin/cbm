@@ -54,6 +54,9 @@ class FormAPart1aController {
             return
         }
 
+        println "params: "+params
+        println formAPart1Instance.location
+
         if (params.containsKey('formAPart1ContainmentUnit')) {
             Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
             formAPart1Instance.formAContainmentUnitList = containmentUnits
