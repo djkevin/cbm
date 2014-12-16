@@ -94,6 +94,9 @@ class FormAPart2bController {
             if (!uploadedFile.empty){
                 formAPart2bInstance.errors.reject("formAPart2b.image.reupload")// Ask to resubmit image
             }
+            FormAPart2bOrganigram organigram = new FormAPart2bOrganigram(fileName:"")
+
+            formAPart2bInstance.formAPart2bOrganigram = organigram
 
             respond formAPart2bInstance.errors, view:'create'
             return
