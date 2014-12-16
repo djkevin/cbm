@@ -38,7 +38,7 @@ class FormAPart2cController {
         FormAPart2c formAPart2c = new FormAPart2c(params)
         formAPart2c.formStatus = FormStatus.DRAFT
         formAPart2c.visibility = Visibility.PUBLIC
-        formAPart2c.location = new Address(street1: 'test')
+        formAPart2c.location = new Address()
         formAPart2c.country = report.getStateParty().country
 
 
