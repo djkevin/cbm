@@ -34,7 +34,11 @@
 				<g:each in="${statePartyInstanceList}" status="i" var="statePartyInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${statePartyInstance.id}">${fieldValue(bean: statePartyInstance, field: "country")}</g:link></td>
+						<td><g:link action="show" id="${statePartyInstance.id}">
+                            <country:name country="${statePartyInstance?.country}"/>
+                            </g:link>
+                            %{--${fieldValue(bean: statePartyInstance, field: "country")}--}%
+                        </td>
 					
 						<td><g:formatDate format="dd-MMM-yyyy" date="${statePartyInstance.accessionRatification}" /></td>
 					
