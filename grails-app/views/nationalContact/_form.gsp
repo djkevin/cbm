@@ -15,7 +15,8 @@
 		<g:message code="nationalContact.firstName.label" default="First Name" />
 		%{--<span class="required-indicator">*</span>--}%
 	</label>
-	<g:textField name="firstName" maxlength="${nationalContactInstance?.constraints?.firstName?.maxSize}" value="${nationalContactInstance?.firstName}"/>
+	%{--<g:textField name="firstName" maxlength="${nationalContactInstance?.constraints?.firstName?.maxSize}" value="${nationalContactInstance?.firstName}"/>--}%
+	<g:textField name="firstName" maxlength="${constraints.maxLength([field:'firstName', obj:nationalContactInstance])}" value="${nationalContactInstance?.firstName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'lastName', 'error')} required">
@@ -65,7 +66,7 @@
               optionValue="${{it.getName()}}"
               class="many-to-one"/>
 </div>
-
+<country:select name="test" noSelection="['':'--']" value="${nationalContactInstance?.country?.id}"/>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
 	<label for="telephone" class="property-label25">
