@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.admin.NationalContact
 import cbm.constants.FormStatus
 import cbm.constants.Visibility
 import cbm.form.FormAPart1ContainmentUnit
@@ -35,6 +36,11 @@ class FormAPart1aController {
         FormAPart1a form = new FormAPart1a(params)
         form.formStatus = FormStatus.DRAFT
         form.visibility = Visibility.PUBLIC
+
+        Report r = Report.get(params.long('report.id'))
+
+        form.location = new Address()
+        form.country = r.getStateParty().country
 
         respond  form
     }

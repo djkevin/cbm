@@ -37,8 +37,9 @@
 <g:if test="${formAPart1aInstance?.location}">
     <h4><g:message code="formAPart1.location.label" default="Location"/></h4>
     <li>
-        <span class="property-value" aria-labelledby="location-label"><g:fieldValue
-                bean="${formAPart1aInstance}" field="location"/></span>
+        <span class="property-value" aria-labelledby="address-label">
+            <g:fieldValue bean="${formAPart1aInstance}" field="location"/>, <country:name country="${formAPart1aInstance?.country}"/>
+        </span>
     </li>
 </g:if>
 <br/>

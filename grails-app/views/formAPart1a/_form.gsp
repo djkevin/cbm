@@ -37,8 +37,7 @@
 </div>
 <div><g:textArea class="longTextSml" name="responsibleOrganisation" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.responsibleOrganisation?.maxSize}" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
 
-<div
-        class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'location', 'error')} required">
+%{--<div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'location', 'error')} required">
     <label for="location"> <g:message
             code="formAPart1.location.label" default="Location" /> <span
             class="required-indicator">*</span>
@@ -47,7 +46,21 @@
 <div>
     <g:textArea class="twoCol" name="location" cols="40" rows="5"
                 maxlength="${formAPart1aInstance?.constraints?.location?.maxSize}" required="" value="${formAPart1aInstance?.location}" />
+</div>--}%
+
+<br/>
+<g:set var="addressInstance" value="${formAPart1aInstance}"></g:set>
+<h4><g:message code="formAPart1.location.label" default="Location" /></h4>
+<g:render template="../address"/>
+<div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'country', 'error')} required">
+    <label for="country" class="property-label25">
+        <g:message code="country.label" default="Country"/>
+        <span class="required-indicator">*</span>
+    </label>
+
+    <country:select name="country" value="${formAPart1aInstance?.country?.id}"/>
 </div>
+
 %{--
 <div class="wrapper">
 	<div class="left1">
