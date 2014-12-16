@@ -27,7 +27,9 @@
 				<li class="fieldcontain">
 					<span id="country-label" class="property-label"><g:message code="stateParty.country.label" default="Country" /></span>
 					
-						<span class="property-value" aria-labelledby="country-label">${statePartyInstance.country?.getName()}</span>
+						<span class="property-value" aria-labelledby="country-label">
+                            <country:name country="${statePartyInstance?.country}"/>
+                        </span>
 					
 				</li>
 				</g:if>

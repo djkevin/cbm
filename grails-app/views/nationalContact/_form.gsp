@@ -49,24 +49,14 @@
 <g:render template="../address"/>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance.country, field: 'country', 'error')} required">
-    <label for="location.country" class="property-label25">
-        <g:message code="formG.location.country.label" default="Country"/>
+    <label for="country" class="property-label25">
+        <g:message code="country.label" default="Country"/>
         <span class="required-indicator">*</span>
     </label>
 
-    %{-- <g:select name="location.country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required=""
-               value="${addressInstance?.location?.country?.name()}"/>--}%
-
-    <g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
-    <g:select name="country"
-              value="${nationalContactInstance?.country?.id}"
-              noSelection="['':promptCountrySelect]"
-              from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
-              optionKey="id"
-              optionValue="${{it.getName()}}"
-              class="many-to-one"/>
+    <country:select name="country" value="${nationalContactInstance?.country?.id}"/>
 </div>
-<country:select name="test" noSelection="['':'--']" value="${nationalContactInstance?.country?.id}"/>
+
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
 	<label for="telephone" class="property-label25">

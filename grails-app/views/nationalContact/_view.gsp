@@ -57,7 +57,10 @@
     <li class="fieldcontain">
         <span id="address-label" class="property-label"><g:message code="nationalContact.address.label" default="Address" /></span>
 
-        <span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${nationalContactInstance}" field="location"/>, <g:fieldValue bean="${nationalContactInstance}" field="country"/></span>
+        <span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${nationalContactInstance}" field="location"/>,
+            <country:name country="${nationalContactInstance?.country}"/>
+            %{--<g:fieldValue bean="${nationalContactInstance}" field="country"/>--}%
+        </span>
 
     </li>
 </g:if>

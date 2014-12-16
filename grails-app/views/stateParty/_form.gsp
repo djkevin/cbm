@@ -11,17 +11,8 @@
 		<span class="required-indicator">*</span>
 	</label>
 
+    <country:select name="country" value="${statePartyInstance?.country?.id}"/>
 
-<g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
-<g:select name="country"
-          value="${statePartyInstance?.country?.id}"
-          noSelection="['':promptCountrySelect]"
-          from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
-          optionKey="id"
-          optionValue="${{it.getName()}}"
-          class="many-to-one"/>
-    %{--TODO replace with taglib--}%
-%{--<g:countrySelector name="country" field="${statePartyInstance?.country}" noSelection="['':promptCountrySelect]"/>--}%
 </div>
 <div>
 

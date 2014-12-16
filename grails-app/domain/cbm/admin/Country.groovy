@@ -23,6 +23,10 @@ class Country {
 
     static transients = ['name']
 
+    static mapping = {
+        cache true
+    }
+
 
     static constraints = {
         iso2 size: 2..2, blank: false, unique: true

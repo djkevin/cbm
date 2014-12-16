@@ -25,17 +25,7 @@
         <span class="required-indicator">*</span>
     </label>
 
-    %{-- <g:select name="location.country" from="${cbm.Country?.values()}" keys="${cbm.Country.values()*.name()}" required=""
-               value="${addressInstance?.location?.country?.name()}"/>--}%
-
-    <g:set var="promptCountrySelect" value="${message(code:'global.label.choose')}" />
-    <g:select name="country"
-              value="${formGInstance?.country?.id}"
-              noSelection="['':promptCountrySelect]"
-              from="${cbm.admin.Country.list().sort{a,b -> a.getName()<=>b.getName()}}"
-              optionKey="id"
-              optionValue="${{it.getName()}}"
-              class="many-to-one"/>
+    <country:select name="country" value="${formGInstance?.country?.id}"/>
 </div>
 
 
