@@ -151,6 +151,7 @@
 	<label>
 		<g:message code="formAPart2c.orgStructure.label" default="organisational structure" />
 	</label>
+    <span class="instructions"><g:message code="formAPArt2c.orgStructure.hint" /> </span>
 </div>
 
 <div class="fieldcontain property-label">
