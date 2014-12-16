@@ -3,7 +3,7 @@ package cbm
 class CountrySelectorTagLib {
     static defaultEncodeAs = 'none'
    // static encodeAsForTags = [tagName: 'raw']
-
+    static namespace  = "country"
 
 /*    <g:select name="country"
     value="${statePartyInstance?.country?.id}"
@@ -14,6 +14,10 @@ class CountrySelectorTagLib {
     class="many-to-one"/>*/
 //    def v =  message(code:'global.label.choose', locale: LocaleContextHolder.getLocale())
 
+    def select = { attrs, body ->
+      out  << g.select(name: attrs.name, from: cbm.admin.Country.list(), optionKey: 'id', optionValue: "name", noSelection: attrs.noSelection, value: attrs['value'])
+
+    }
 
     def countrySelector = { attrs, body ->
         out << body() << g.select(name: attrs.name, from: cbm.admin.Country.list(), optionKey: 'id', optionValue: "name", noSelection: attrs.noSelection)
