@@ -38,9 +38,10 @@ class FormAPart2cController {
         FormAPart2c formAPart2c = new FormAPart2c(params)
         formAPart2c.formStatus = FormStatus.DRAFT
         formAPart2c.visibility = Visibility.PUBLIC
+        formAPart2c.location = new Address(street1: 'test')
+        formAPart2c.country = report.getStateParty().country
 
-		//FormAPart2c.report = report
-		
+
         if (!formAPart2bs) {
 
             flash.message = message(code: "formAPart2c.no.program.message", default: "No program created")
@@ -57,6 +58,8 @@ class FormAPart2cController {
 	@Secured(['ROLE_EDITOR'])
     @Transactional
     def save(FormAPart2c formAPart2cInstance) {
+
+
         if (formAPart2cInstance == null) {
             notFound()
             return

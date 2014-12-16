@@ -32,7 +32,7 @@
 					
 						<g:sortableColumn property="location" title="${message(code: 'formAPart2c.location.label', default: 'Location')}" />
 					
-						<g:sortableColumn property="mailingAddress" title="${message(code: 'formAPart2c.postalAddress.label', default: 'Postal Address')}" />
+						<g:sortableColumn property="mailingAddress" title="${message(code: 'formAPart2c.geolocation.label', default: 'Postal Address')}" />
 					
 					</tr>
 				</thead>
@@ -48,7 +48,7 @@
 					
 						<td>${fieldValue(bean: formAPart2cInstance, field: "location")}</td>
 					
-						<td>${fieldValue(bean: formAPart2cInstance, field: "postalAddress")}</td>
+						<td>${fieldValue(bean: formAPart2cInstance, field: "geolocation")}</td>
 					
 					</tr>
 				</g:each>

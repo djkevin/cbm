@@ -64,35 +64,30 @@
 	</label>
 </div>
 
-<div class="wrapper">
-	
-	<div class="left1">
-		<div
-			class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'location', 'error')} required">
-			<label for="location"> 
-				<g:message code="formAPart2c.geoLocation.label" default="Location" /> 
-				<span class="required-indicator">*</span>
-			</label>
-		</div>
-		<div>
-			<g:textArea class="twoCol" name="location" cols="40" rows="5"
-				maxlength="${formAPart2cInstance?.constraints?.location?.maxSize}" required="" value="${formAPart2cInstance?.location}" />
-		</div>
-	</div>
-	<div class="left2">
-		<div
-			class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'postalAddress', 'error')} required">
-			<label for="postalAddress"> <g:message
-					code="formAPart2c.postalAddress.label" default="Postal Address" />
-				<span class="required-indicator">*</span>
-			</label>
-		</div>
-		<div>
-			<g:textArea class="twoCol" name="postalAddress" cols="40" rows="5"
-				maxlength="${formAPart2cInstance?.constraints?.postalAddress?.maxSize}" required=""
-				value="${formAPart2cInstance?.postalAddress}" />
-		</div>
-	</div>
+<br/>
+<g:set var="addressInstance" value="${formAPart2cInstance}"></g:set>
+<h4><g:message code="formAPart2c.postalAddress.label" default="Address" /></h4>
+<g:render template="../address"/>
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'country', 'error')} required">
+    <label for="country" class="property-label25">
+        <g:message code="country.label" default="Country"/>
+        <span class="required-indicator">*</span>
+    </label>
+
+    <country:select name="country" value="${formAPart2cInstance?.country?.id}"/>
+</div>
+
+
+<div class="fieldcontain ${hasErrors(bean: formAPart2cInstance, field: 'geolocation', 'error')} required">
+    <label for="geolocation">
+        <g:message code="formAPart2c.geoLocation.label" default="Geographical location" />
+        <span class="required-indicator">*</span>
+    </label>
+</div>
+<div>
+    <g:textArea class="twoCol" name="geolocation" cols="40" rows="5"
+                maxlength="${formAPart2cInstance?.constraints?.geolocation?.maxSize}" required="" value="${formAPart2cInstance?.geolocation}" />
 </div>
 
 <div class="fieldcontain property-label">

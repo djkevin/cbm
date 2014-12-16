@@ -48,25 +48,25 @@
 				</g:if>
 				
 				<br/>
-				<h4>
-					<g:message code="formAPart2c.facilityLocation.label" default="Facility Location" />				
-				</h4>
-				
-				<g:if test="${formAPart2cInstance?.location}">
-				<li class="fieldcontain">
-					<span id="location-label" class="property-label"><g:message code="formAPart2c.geoLocation.label" default="Location" /></span>					
-						<span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${formAPart2cInstance}" field="location"/></span>				
-				</li>
-				</g:if>
-			
-				<g:if test="${formAPart2cInstance?.postalAddress}">
-				<li class="fieldcontain">
-					<span id="postalAddress-label" class="property-label"><g:message code="formAPart2c.postalAddress.label" default="Address" /></span>					
-					<span class="property-value" aria-labelledby="postalAddress-label"><g:fieldValue bean="${formAPart2cInstance}" field="postalAddress"/></span>					
-				</li>
-				</g:if>
-				
+				<h4><g:message code="formAPart2c.facilityLocation.label" default="Facility Location" /></h4>
+                <br/>
+                <g:if test="${formAPart2cInstance?.location}">
+                    <h4><g:message code="formAPart2c.postalAddress.label" default="Location"/></h4>
+                    <li>
+                        <span class="property-value" aria-labelledby="address-label">
+                            <g:fieldValue bean="${formAPart2cInstance}" field="location"/>, <country:name country="${formAPart2cInstance?.country}"/>
+                        </span>
+                    </li>
+                </g:if>
+
 				<br/>
+                <g:if test="${formAPart2cInstance?.geolocation}">
+                    <li>
+                        <h4><g:message code="formAPart2c.geoLocation.label" default="Location" /></h4>
+                        <span class="property-value" aria-labelledby="location-label"><g:fieldValue bean="${formAPart2cInstance}" field="geolocation"/></span>
+                    </li>
+                </g:if>
+
 				<h4>
 					<g:message code="formAPart2c.floorAreas" default="floor area" />				
 				</h4>			

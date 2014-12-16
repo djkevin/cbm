@@ -1,18 +1,27 @@
 package cbm.form
 
+import cbm.Address
 import cbm.BaseForm
+import cbm.admin.Country
 import cbm.report.Report
 
+/**
+ * Detailed info on facilities. Each program (FormAPart2b) can have many facilities assigned/contributing to it
+ */
+
 class FormAPart2c extends BaseForm {
-    //Detailed info on facilities. Each program (FormAPart2b) can have many facilities assigned/contributing to it
+
     static belongsTo = [FormAPart2b]
+
+    static embedded = ['location']
 
     FormAPart2b formAPart2b
 
-    // fields that can be copied from FormAPart1A
     String facilityName
-    String location
-    String postalAddress
+    Address location
+    Country country
+
+    String geolocation
 
     // fields unique to this form
     BigDecimal floorAreaBL2
@@ -58,8 +67,8 @@ class FormAPart2c extends BaseForm {
 
     static constraints = {
         facilityName maxSize: 250, blank: false
-        location maxSize: 500, blank: false
-        postalAddress maxSize: 500, blank: false
+        //location maxSize: 500, blank: false
+        geolocation maxSize: 500, blank: false
         floorAreaBL2 nullable: false, min: 0.0
         floorAreaBL3 nullable: false, min: 0.0
         floorAreaBL4 nullable: false, min: 0.0
@@ -83,6 +92,8 @@ class FormAPart2c extends BaseForm {
         orgStructureComments3 maxSize: 5000, blank: true, nullable: true
         contractWorkersComments maxSize: 5000, blank: true, nullable: true
         floorAreaComments maxSize: 5000, blank: true, nullable: true
+        country nullable: false
+
     }
 
     BigDecimal getTotalFloorArea() {
