@@ -12,7 +12,7 @@ import spock.lang.Unroll
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(StateParty)
-class StatePartySpec extends AbstractConstraintsSpec {
+class StatePartySpec extends ConstraintUnitSpec {
 
     def setup() {
         mockForConstraintsTests(StateParty, [new StateParty(country: Country.AUSTRALIA)])
