@@ -68,7 +68,7 @@ grails.project.dependency.resolution = {
         compile ":scaffolding:2.0.1"
         compile ':cache:1.1.1'
 		compile ':fixtures:1.2'
-		//compile ":audit-logging:0.5.5.2"
+        compile ":audit-logging:1.0.1"
         compile ':spring-security-core:2.0-RC2'
         compile ":db-reverse-engineer:0.5"
         compile ":jquery:1.11.1"

@@ -140,6 +140,10 @@
                     </g:link>
 				</fieldset>
 			</g:form>
+
+            <ol class="property-list correspondent">
+                <g:render template="../auditLog/audit" model="['objInstance':nationalContactInstance]" />
+            </ol>
 		</div>
 	</body>
 </html>

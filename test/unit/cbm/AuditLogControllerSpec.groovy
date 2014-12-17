@@ -1,7 +1,6 @@
 package cbm
 
-
-
+import audit.AuditLog
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -9,7 +8,7 @@ import spock.lang.*
 @Mock(AuditLog)
 class AuditLogControllerSpec extends Specification {
 
-    def populateValidParams(params) {
+    /*def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
@@ -142,5 +141,5 @@ class AuditLogControllerSpec extends Specification {
         AuditLog.count() == 0
         response.redirectedUrl == '/auditLog/index'
         flash.message != null
-    }
+    }*/
 }

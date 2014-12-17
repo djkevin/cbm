@@ -1,5 +1,6 @@
 package cbm
 
+import audit.AuditLog
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

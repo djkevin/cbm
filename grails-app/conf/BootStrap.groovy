@@ -13,7 +13,7 @@ class BootStrap {
     def init = { servletContext ->
 
         /*  Adds a getErrorStrings method to all domain classes  - renders friendlier error messages
-            Usage: domainClass.errorStrings.fieldName
+            Usage: domainClass.errorStrings.fieldName   instead of domainClass.errors.toString
             See pg 76 - Programming Grails
          */
         for (dc in grailsApplication.domainClasses) {

@@ -21,6 +21,9 @@ class NationalContact {
     Country country
     String organization
 
+    Date dateCreated
+    Date lastUpdated
+
     static transients = ['name']
 
     static constraints = {

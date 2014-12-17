@@ -150,3 +150,32 @@ grails.plugin.reveng.includeTables = ['audit_log']
 grails.plugin.reveng.destDir = 'temp_reverse_engineer'
 
 
+// AuditLog Plugin config
+auditLog {
+    //verbose = true // verbosely log all changed values to db
+    //logIds = true  // log db-ids of associated objects.
+    // Note: if you change next 2 properties, you must update your database schema!
+    //tablename = 'my_audit' // table name for audit logs.
+    //largeValueColumnTypes = true // use large column db types for oldValue/newValue.
+    //TRUNCATE_LENGTH = 1000
+    //cacheDisabled = true
+    //replacementPatterns = ["local.example.xyz.":""] // replace with empty string.
+    actorClosure = { request, session ->
+        // SpringSecurity Core 1.1.2
+        if (request.applicationContext.springSecurityService.principal instanceof java.lang.String){
+            return request.applicationContext.springSecurityService.principal
+        }
+        def username = request.applicationContext.springSecurityService.principal?.username
+        /*
+        // The block below throws an exception and as a result this closure is disabled at runtime.
+        // Something is buggy in these lines and actually we do not use switched users, so no harm to disable this block of code.
+        if (SpringSecurityUtils.isSwitched()){
+           username = SpringSecurityUtils.switchedUserOriginalUsername+" AS "+username
+           println "audit log original user=" + username
+        }*/
+        /*println "audit log user=" + username*/
+        return username
+    }
+}
+
+
