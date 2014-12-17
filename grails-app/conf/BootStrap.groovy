@@ -1,17 +1,21 @@
+import cbm.admin.Country
 import cbm.admin.StateParty
 import cbm.usermgt.SecRole
-import cbm.usermgt.SecUser
-import cbm.usermgt.SecUserSecRole
 import cbm.usermgt.User
-import cbm.admin.Country
 import org.springframework.util.StringUtils
 
 class BootStrap {
 
 	def fixtureLoader
+    def grailsApplication
+    def messageSource
 	
     def init = { servletContext ->
 
+        /*  Adds a getErrorStrings method to all domain classes  - renders friendlier error messages
+            Usage: domainClass.errorStrings.fieldName
+            See pg 76 - Programming Grails
+         */
         for (dc in grailsApplication.domainClasses) {
             dc.metaClass.getErrorStrings = { Locale locale = Locale.default ->
                 def stringsByField = [:].withDefault { [] }
