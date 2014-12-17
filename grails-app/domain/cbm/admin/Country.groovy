@@ -1,7 +1,6 @@
 package cbm.admin
 
 class Country {
-   // def countryService
 
     String iso2
     String iso3
@@ -19,9 +18,7 @@ class Country {
     String formalNameRu
     String formalNameCh
     String formalNameAr
-/*    String name
 
-    static transients = ['name']*/
 
     static mapping = {
         cache true
@@ -51,11 +48,5 @@ class Country {
     String toString() {
         return "${shortNameEn}"
     }
-/*
-    *//**
-     * Returns the Country name for the current locale
-     *//*
-    String getName() {
-        countryService.getLocaleName(this)
-    }*/
+
 }
