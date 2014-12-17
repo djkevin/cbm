@@ -75,7 +75,7 @@ grails.project.dependency.resolution = {
         compile ":jquery-ui:1.10.3"
 
 //        compile "org.springframework:spring-test:3.2.6.RELEASE"
-
+        compile ":build-test-data:2.2.2"
         compile ":rendering:0.4.4"
 
         // plugins needed at runtime but not for compilation
