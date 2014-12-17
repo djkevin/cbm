@@ -2,6 +2,7 @@ package cbm
 
 class CountrySelectorTagLib {
     static defaultEncodeAs = 'none'
+
     // static encodeAsForTags = [tagName: 'raw']
     static namespace = "country"
 
