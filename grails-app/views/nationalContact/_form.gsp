@@ -56,7 +56,6 @@
 
     <country:select name="country" value="${nationalContactInstance?.country?.id}"/>
 </div>
-<country:select name="test" noSelection="['':'--']" value="${nationalContactInstance?.country?.id}"/>
 
 <div class="fieldcontain ${hasErrors(bean: nationalContactInstance, field: 'telephone', 'error')} ">
 	<label for="telephone" class="property-label25">
