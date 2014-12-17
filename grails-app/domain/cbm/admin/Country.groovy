@@ -2,6 +2,7 @@ package cbm.admin
 
 class Country {
 
+
     String iso2
     String iso3
 
