@@ -8,7 +8,7 @@ import spock.lang.Unroll
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
 @TestFor(FormAPart1ContainmentUnit)
-class FormAPart1ContainmentUnitSpec extends AbstractConstraintsSpec {
+class FormAPart1ContainmentUnitSpec extends ConstraintUnitSpec {
 
     def setup() {
         mockForConstraintsTests(FormAPart1ContainmentUnit, [new FormAPart1ContainmentUnit()])
