@@ -14,7 +14,7 @@
 		<g:message code="formG.facilityName.label" default="Facility Name" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:textField name="facilityName" maxlength="${formGInstance?.constraints?.facilityName?.maxSize}" value="${formGInstance?.facilityName}"/>
+	<g:textField name="facilityName" maxlength="${formGInstance?.constraints?.facilityName?.maxSize}" value="${formGInstance?.facilityName}" required=""/>
 </div>
 
 <g:set var="addressInstance" value="${formGInstance}"></g:set>
