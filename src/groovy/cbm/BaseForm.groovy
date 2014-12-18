@@ -5,7 +5,7 @@ import cbm.constants.Visibility
 
 abstract class BaseForm {
 
-    //static auditable = true
+    static auditable = true
 
     String title
     FormStatus formStatus  /** draft or completed */

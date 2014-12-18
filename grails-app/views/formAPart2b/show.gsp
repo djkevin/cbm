@@ -156,6 +156,11 @@
                     </g:link>
 				</fieldset>
 			</g:form>
+            <sec:ifAnyGranted roles="ROLE_SUBMITTER, ROLE_ADMIN">
+                <ol class="property-list correspondent">
+                    <g:render template="../auditLog/audit" model="['objInstance': formAPart2bInstance]"/>
+                </ol>
+            </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

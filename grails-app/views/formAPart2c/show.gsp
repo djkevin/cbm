@@ -309,6 +309,11 @@
                     <g:link class="print" action="print" resource="${formAPart2cInstance}" target="_blank" title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>  </g:link>
 				</fieldset>
 			</g:form>
+            <sec:ifAnyGranted roles="ROLE_SUBMITTER, ROLE_ADMIN">
+                <ol class="property-list correspondent">
+                    <g:render template="../auditLog/audit" model="['objInstance': formAPart2cInstance]"/>
+                </ol>
+            </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>
