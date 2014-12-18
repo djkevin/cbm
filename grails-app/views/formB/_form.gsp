@@ -22,7 +22,8 @@
 		<g:message code="formB.eventCategory.label" default="Event Category" />
         <span class="required-indicator">*</span>
 	</label>
-	<g:select name="eventCategory" from="${formBInstance.constraints.eventCategory.inList}" value="${formBInstance?.eventCategory}" valueMessagePrefix="formB.eventCategory" noSelection="['': '']"/>
+
+	<g:select name="eventCategory" from="${cbm.constants.EventCategory?.values()}" keys="${cbm.constants.EventCategory.values()*.name()}" value="${formBInstance?.eventCategory}" noSelection="['': '--']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: formBInstance, field: 'eventDate', 'error')} required">

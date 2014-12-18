@@ -1,6 +1,7 @@
 package cbm.form
 
 import cbm.BaseForm
+import cbm.constants.EventCategory
 import cbm.report.Report
 import org.joda.time.LocalDate
 
@@ -9,7 +10,7 @@ class FormB extends BaseForm {
     static belongsTo = [Report]
 
     String eventName
-    String eventCategory
+    EventCategory eventCategory
     Date eventDate
 
     String timeOfOutbreak
@@ -53,7 +54,7 @@ class FormB extends BaseForm {
 
     static constraints = {
         eventName blank: false, maxSize: 50
-        eventCategory inList: ["Human", "Plant", "Animal"]
+        eventCategory blank:false, nullable:false
         eventDate() // range:  new LocalDate().getYear()..1975 TODO add validator
         timeOfOutbreak maxSize: 500, nullable: true
         locationAffected maxSize: 500, nullable: true

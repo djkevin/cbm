@@ -19,7 +19,7 @@ class FormF extends BaseForm {
 
 
     static constraints = {
-        entryIntoForceOfConvention range: new LocalDate().getYear()..1975
+        entryIntoForceOfConvention() //range: new LocalDate().getYear()..1975
         offensiveActivity validator: pastOffensiveActivityValidator
         defensiveActivity validator: pastDefensiveActivityValidator
 

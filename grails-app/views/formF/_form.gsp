@@ -17,7 +17,8 @@
 
     <g:datePicker name="entryIntoForceOfConvention" precision="day" default="none"
                   value="${formFInstance?.entryIntoForceOfConvention}"
-                  years="${formFInstance.constraints?.entryIntoForceOfConvention?.range}" noSelection="['': '--']"/>
+                  relativeYears="[0..-40]"
+                  noSelection="['': '--']"/>
 </div>
 <!-- Offensive activities -->
 <h1><g:message code="formF.offensiveActivity.label" default="Offensive Activity" /></h1>
