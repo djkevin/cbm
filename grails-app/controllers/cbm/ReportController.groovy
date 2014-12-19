@@ -157,13 +157,11 @@ class ReportController {
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def print(Report reportInstance) {
 
-        Set<FormAPart1a> formAPart1as = reportInstance.formAPart1
-
         response.setHeader("Content-Disposition", "attachment; filename=" + reportInstance.getReportName() + ".pdf")
 
         Set<NationalContact> nationalContacts = reportInstance.stateParty.nationalContact
 
-        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, formAPart1aInstances: formAPart1as, nationalContacts: nationalContacts]
+        renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, nationalContacts: nationalContacts]
     }
 
 	@Secured(['ROLE_SUBMITTER'])
@@ -217,7 +215,6 @@ class ReportController {
 	@Secured(['ROLE_SUBMITTER'])
     def submit(Report reportInstance) {
 
-//        println params
         def errors = [:]
 
         errors.status = []
@@ -236,7 +233,7 @@ class ReportController {
             return
         }
 
-        //No errors, OK to submit
+        //No errors found, OK to submit
         reportService.submitReport(reportInstance)
 
         request.withFormat {

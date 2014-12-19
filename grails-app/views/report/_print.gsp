@@ -51,16 +51,6 @@
 </g:if>
 </div>
 
-%{------------------------------------------------------------------------- NATIONAL CONTACT  - commented since not in final report -------------------------------------------------------------------------}%
-%{--<div class="A4portrait">
-    <g:if test="${nationalContacts}">
-        <g:each in="${nationalContacts}" var="f">
-            <g:set var="nationalContactInstance" value="${f}" />
-            <g:render template="../nationalContact/view"/>
-
-        </g:each>
-    </g:if>
-</div>--}%
 
 %{------------------------------------------------------------------------- FORM A PART 1A -------------------------------------------------------------------------}%
 <div class="A4portrait">
@@ -158,7 +148,17 @@
 
     </g:each>
 </g:if>
+<br/><br/>
+%{------------------------------------------------------------------------- NATIONAL CONTACT  -------------------------------------------------------------------------}%
+<div class="A4portrait">
+    <g:if test="${nationalContacts}">
+        <g:each in="${nationalContacts}" var="f">
+            <g:set var="nationalContactInstance" value="${f}" />
+            <g:render template="../nationalContact/view"/>
 
+        </g:each>
+    </g:if>
+</div>
 
 </body>
 </html>
