@@ -189,11 +189,6 @@
             <g:set var="controller" value="formB"/>
             <g:render template="formDetailReview"/>
         </g:if>
-        <g:else>
-            <span class="instructions">
-                <g:message code="report.formB.no.outbreak" default="No outbreak that seemingly deviates from the normal pattern"/>
-            </span>
-        </g:else>
     </td>
 
 </tr>
