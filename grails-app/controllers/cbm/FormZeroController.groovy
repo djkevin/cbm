@@ -125,6 +125,11 @@ class FormZeroController {
             return
         }
 
+
+        Report report = Report.get(formZeroInstance.report.id)
+        report.formZero = null
+        report.save()
+
         formZeroInstance.delete flush: true
 
         request.withFormat {

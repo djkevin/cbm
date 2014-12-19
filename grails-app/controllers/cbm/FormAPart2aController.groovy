@@ -3,6 +3,7 @@ package cbm
 import cbm.constants.FormStatus
 import cbm.constants.Visibility
 import cbm.form.FormAPart2a
+import cbm.report.Report
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -90,7 +91,7 @@ class FormAPart2aController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
+	@Secured(['ROLE_EDITOR', 'ROLE_SUBMITTER'])
     @Transactional
     def delete(FormAPart2a formAPart2aInstance) {
 
@@ -98,6 +99,12 @@ class FormAPart2aController {
             notFound()
             return
         }
+
+        def reportId = formAPart2aInstance.report.id
+
+        Report report = Report.get(reportId)
+        report.formAPart2a = null
+        report.save()
 
         formAPart2aInstance.delete flush:true
 

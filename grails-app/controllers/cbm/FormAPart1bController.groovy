@@ -107,6 +107,10 @@ class FormAPart1bController {
             return
         }
 
+        Report report = Report.get(formAPart1bInstance.report.id)
+        report.formAPart1b = null
+        report.save()
+
         formAPart1bInstance.delete flush: true
 
         request.withFormat {
