@@ -3,6 +3,7 @@ package cbm
 import cbm.constants.FormStatus
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
+import cbm.constants.Visibility
 import cbm.form.*
 import cbm.report.Report
 import grails.transaction.Transactional
@@ -261,5 +262,15 @@ class ReportService {
             form.visibility = value
         }
         saveForm(form)
+    }
+
+    def getPublicForms(def forms) {
+        def publicForms = []
+        forms.each {
+            if (it.visibility == Visibility.PUBLIC) publicForms << it
+
+        }
+        println "size of public forms: "+publicForms.size()
+        publicForms
     }
 }

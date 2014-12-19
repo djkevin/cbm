@@ -23,7 +23,6 @@
 
             <h2><g:message code="global.label.division"/></h2>
 
-            %{--<h3><g:message code="global.label.unit"/></h3>--}%
         </div>
 
         <div>

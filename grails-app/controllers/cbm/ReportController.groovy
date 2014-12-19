@@ -4,6 +4,7 @@ import cbm.admin.NationalContact
 import cbm.constants.FormStatus
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
+import cbm.constants.Visibility
 import cbm.form.*
 import cbm.report.Report
 import cbm.usermgt.SecUser
@@ -157,9 +158,30 @@ class ReportController {
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def print(Report reportInstance) {
 
+        println params
+
+        boolean publicOnly = params.boolean('public')
+        println "public only: $publicOnly"
+
         response.setHeader("Content-Disposition", "attachment; filename=" + reportInstance.getReportName() + ".pdf")
 
         Set<NationalContact> nationalContacts = reportInstance.stateParty.nationalContact
+
+        if (publicOnly){
+            reportInstance.formAPart1 = reportService.getPublicForms(reportInstance.formAPart1)
+            reportInstance.formAPart1b = (reportInstance?.formAPart1b?.visibility == Visibility.PUBLIC)  ? reportInstance.formAPart1b : null
+            reportInstance.formAPart2a = (reportInstance?.formAPart2a?.visibility == Visibility.PUBLIC)  ? reportInstance.formAPart2a : null
+            reportInstance.formZero = (reportInstance?.formZero?.visibility == Visibility.PUBLIC)  ? reportInstance.formZero : null
+            reportInstance.formB = reportService.getPublicForms(reportInstance.formB)
+            reportInstance.formC = reportService.getPublicForms(reportInstance.formC)
+            reportInstance.formE = reportService.getPublicForms(reportInstance.formE)
+            reportInstance.formF = reportService.getPublicForms(reportInstance.formF)
+            reportInstance.formG = reportService.getPublicForms(reportInstance.formG)
+
+            //TODO reviewSubmit icons shoudl be disabled if report is already submitted
+        }
+
+
 
         renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, nationalContacts: nationalContacts]
     }
@@ -179,7 +201,7 @@ class ReportController {
      */
     @Secured(['ROLE_SUBMITTER'])
     def ajaxSaveFormStatus() {
-
+        //TODO disable if report is already submitted
         println params
         //params: name, type, id, value[Completed]
         String result

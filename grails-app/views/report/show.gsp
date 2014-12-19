@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.report.Report" %>
+<%@ page import="cbm.constants.ReportStatus; cbm.report.Report" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -166,9 +166,16 @@
             <g:form url="[resource:reportInstance, action:'delete']" method="DELETE">
                 <fieldset class="buttons">
                 	<sec:ifAnyGranted roles="ROLE_SUBMITTER">
-                    	<g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    	<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm(getDeleteText());" />
-                    	<g:link class="submit" action="review" resource="${reportInstance}"><g:message code="default.button.review.label" default="Review and Submit" /></g:link>                    
+                        <g:if test="${reportInstance.reportStatus == ReportStatus.DRAFT}">
+                            <g:link class="edit" action="edit" resource="${reportInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                            <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm(getDeleteText());" />
+                            <g:link class="submit" action="review" resource="${reportInstance}"><g:message code="default.button.review.label" default="Review and Submit" /></g:link>
+                        </g:if>
+
+                        <g:link class="print" action="print" resource="${reportInstance}" target="_blank" params="[public:'true']"
+                                title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
+                        </g:link>
+
                     </sec:ifAnyGranted>                    
                     <g:link class="print" action="print" resource="${reportInstance}" target="_blank"
                             title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
