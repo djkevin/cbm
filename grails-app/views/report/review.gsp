@@ -1,5 +1,5 @@
 
-<%@ page import="cbm.report.Report" %>
+<%@ page import="cbm.constants.ReportStatus; cbm.report.Report" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,28 +100,7 @@
 </tr>
 </thead>
 <tbody>
-%{--<tr class="even">
-    <td><g:message code="report.formZero.label" default="Form 0" /></td>
-    <td>${reportInstance?.formZero ? 1:0}</td>
-    --}%%{--    <td  class="noTable">
-            <g:link controller="formZero" action="show" id="${reportInstance?.formZero?.id}">${reportInstance?.formZero?.encodeAsHTML()}</g:link>
-        </td>--}%%{--
-    <td>
-        <g:if test="${reportInstance?.formZero}">
-            <g:set var="forms" value="${reportInstance?.formZero}"></g:set>
-            <g:set var="controller" value="formZero"/>
-            <g:render template="formDetailReview"/>
-        </g:if>
-    </td>
-    <td>
-        <g:if test="${!reportInstance?.formZero}">
-            <g:link controller="formZero" action="create" params="['report.id': reportInstance.id]">
-                <i class="fa fa-plus-square-o"></i>
-                <g:message code="default.button.create.label"/>
-            </g:link>
-        </g:if>
-    </td>
-</tr>
+%{--
 <tr class="odd">
     <td><g:message code="nationalContact.label" default="National Contact" /></td>
     <td>${reportInstance?.stateParty?.nationalContact.size()}</td>
@@ -198,11 +177,6 @@
             <g:set var="controller" value="formAPart2c"/>
             <g:render template="formDetailReview"/>
         </g:if>
-        <g:elseif test="${!reportInstance?.formAPart2b}">
-            <span class="instructions">
-                <g:message code="report.formAPart2c.create.message" default="Please create a Form A Part 2b"/>
-            </span>
-        </g:elseif>
     </td>
 
 </tr>
@@ -271,6 +245,18 @@
     </td>
 
 </tr>
+<tr class="even">
+    <td><g:message code="report.formZero.label" default="Form 0" /></td>
+    <td>${reportInstance?.formZero ? 1:0}</td>
+
+    <td>
+        <g:if test="${reportInstance?.formZero}">
+            <g:set var="forms" value="${reportInstance?.formZero}"></g:set>
+            <g:set var="controller" value="formZero"/>
+            <g:render template="formDetailReview"/>
+        </g:if>
+    </td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -283,9 +269,20 @@
 </div>
 <div class="message" id="ajax-message" style="display: none;"></div>
 
-<fieldset class="buttons">
-    <g:link class="submit" action="submit" resource="${reportInstance}" onclick="return confirm(getSubmitText())"><g:message code="default.button.submit.label" default="Submit"/></g:link>
-</fieldset>
+<sec:ifAnyGranted roles="ROLE_SUBMITTER">
+
+    <g:if test="${reportInstance.reportStatus == ReportStatus.DRAFT}">
+        <fieldset class="buttons">
+        <g:link class="submit" action="submit" resource="${reportInstance}" onclick="return confirm(getSubmitText())"><g:message code="default.button.submit.label" default="Submit"/></g:link>
+        </fieldset>
+    </g:if>
+    <g:else>
+        <div class="message">
+            <g:message code="report.status.message" args="[message(code: 'report.label', default: 'Report'), reportInstance.reportName, reportInstance.reportStatus]"/>
+        </div>
+    </g:else>
+
+</sec:ifAnyGranted>
 
 </body>
 </html>

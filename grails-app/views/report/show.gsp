@@ -70,7 +70,7 @@
 				</g:if>
 
 
-				<g:if test="${reportInstance?.dateCreated}">
+		%{--		<g:if test="${reportInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="dateCreated.label" default="Date Created" /></span>
 					<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.dateCreated}" /></span>
@@ -83,7 +83,7 @@
 					<span id="lastUpdated-label" class="property-label"><g:message code="lastUpdated.label" default="Last Updated" /></span>
 					<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate format="dd-MMM-yyyy" date="${reportInstance?.lastUpdated}" /></span>
 				</li>
-				</g:if>
+				</g:if>--}%
 
 			</ol>
       %{--  <div id="dialog-confirm" title="Empty the recycle bin?">
@@ -175,7 +175,11 @@
                     </g:link>
                 </fieldset>
             </g:form>
-            
+        <sec:ifAnyGranted roles="ROLE_SUBMITTER, ROLE_ADMIN">
+            <ol class="property-list correspondent">
+                <g:render template="../auditLog/audit" model="['objInstance': reportInstance]"/>
+            </ol>
+        </sec:ifAnyGranted>
 			<!-- *-*-*-*-*-*-*-*-*-*-*-* list of forms *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-* -->
             <br/>
             <h1 id="clean"><g:message code="default.forms.list"/> - ${reportInstance.reportName}</h1>
@@ -454,11 +458,13 @@
 				</tbody>
 			</table>
 		</div>
+
     <div id="legend">
         <g:message code="status.legend" default="Legend"/>:
         <span> <i class="fa fa-pencil fa-border"></i><g:message code="status.draft" default="Draft"/>  </span>
         <span> <i class="fa fa-check fa-border"></i> <g:message code="status.completed" default="Completed"/></span>
         <span> <i class="fa fa-lock fa-border"></i> <g:message code="status.private" default="Private"/></span>
     </div>
+
 	</body>
 </html>

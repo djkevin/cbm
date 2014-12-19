@@ -15,12 +15,12 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_ADMIN', 'ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class ReportController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def springSecurityService
     def securityService
+    def reportService
 
     SecUser getUser() {
         return SecUser.get(springSecurityService.principal.id)
@@ -57,7 +57,7 @@ class ReportController {
     // DOES THIS WORK? @Secured(["@securityService.canView(#reportInstance)"])
 	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_ADMIN'])
     def show(Report reportInstance) {
-        if (securityService.canView(reportInstance)) {
+        if (securityService.canView(reportInstance)) {  //TODO replace by Spring security ACL
             respond reportInstance
         } else {
             flash.message = message(code: 'report.url.access.error', default: 'You can only access records created by your country')
@@ -75,7 +75,6 @@ class ReportController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def save(Report reportInstance) {
         if (reportInstance == null) {
             notFound()
@@ -87,7 +86,7 @@ class ReportController {
             return
         }
 
-        reportInstance.save flush: true
+        reportService.save(reportInstance)
 
         request.withFormat {
             form {
@@ -104,7 +103,6 @@ class ReportController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def update(Report reportInstance) {
         if (reportInstance == null) {
             notFound()
@@ -116,7 +114,7 @@ class ReportController {
             return
         }
 
-        reportInstance.save flush: true
+        reportService.save(reportInstance)
 
         request.withFormat {
             form {
@@ -128,7 +126,6 @@ class ReportController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def delete(Report reportInstance) {
 
         if (reportInstance == null) {
@@ -136,7 +133,7 @@ class ReportController {
             return
         }
 
-        reportInstance.delete flush: true
+        reportService.delete(reportInstance)
 
         request.withFormat {
             form {
@@ -177,80 +174,30 @@ class ReportController {
         respond reportInstance
     }
 
-    @Transactional
+    /**
+     * Sets the form Status or Visibility
+     * @param name: the form class name, value (one of DRAFT,COMPLETED, PUBLIC or PRIVATE) , type: formStatus or visibility, id the form Id
+     * @return ok message if form was found and saved correctly, else error message
+     */
+    @Secured(['ROLE_SUBMITTER'])
     def ajaxSaveFormStatus() {
+
+        println params
         //params: name, type, id, value[Completed]
         String result
         def saveOKMsg = message(code: 'report.submit.radio.save.ok', args: [params.name, params.type, params.value])    //TODO i18n confirm message
-        def cbmForm
 
-        switch (params.name) {
-            case message(code: 'formAPart1.label'):
-                cbmForm = FormAPart1a.get(params.long('id'))
+        def cbmForm = reportService.getFormByNameAndId(params.name, params.long('id'))
 
-                break
+        if (!cbmForm){
+            result = ${message(code: "report.save.error", default: "Error in saving")}
 
-            case message(code: 'formAPart1b.label'):
-                cbmForm = FormAPart1b.get(params.long('id'))
-                break
-
-            case message(code: 'formAPart2a.label'):
-                cbmForm = FormAPart2a.get(params.long('id'))
-
-                break
-
-            case message(code: 'formAPart2b.label'):
-                cbmForm = FormAPart2b.get(params.long('id'))
-
-                break
-
-            case message(code: 'formAPart2c.label'):
-                cbmForm = FormAPart2c.get(params.long('id'))
-
-                break
-
-            case message(code: 'formB.label'):
-                cbmForm = FormB.get(params.long('id'))
-
-                break
-
-            case message(code: 'formC.label'):
-                cbmForm = FormC.get(params.long('id'))
-
-                break
-
-            case message(code: 'formE.label'):
-                cbmForm = FormE.get(params.long('id'))
-
-                break
-
-            case message(code: 'formF.label'):
-                cbmForm = FormF.get(params.long('id'))
-
-                break
-
-            case message(code: 'formG.label'):
-                cbmForm = FormG.get(params.long('id'))
-
-                break
-
-            default:
-                result = "Error in saving"
+            render([message: result] as JSON) //TODO test this
+            return
         }
 
-//        println "params value: "+ params.value
-        if (cbmForm) {
-
-            if (params.value == FormStatus.COMPLETED.toString() || params.value == FormStatus.DRAFT.toString()) {
-                cbmForm.formStatus = params.value
-            } else {
-                cbmForm.visibility = params.value
-            }
-            cbmForm.save()
-            result = saveOKMsg
-        } else {
-            result = "Error in saving"
-        }
+        reportService.updateFormStatusOrVisibility(cbmForm, params.value)
+        result = saveOKMsg
 
         request.withFormat {
             form {
@@ -258,7 +205,6 @@ class ReportController {
             }
             '*' { render status: OK }
         }
-
     }
 
     /**
@@ -269,111 +215,19 @@ class ReportController {
      */
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def submit(Report reportInstance) {
 
+//        println params
         def errors = [:]
 
         errors.status = []
         errors.validation = []
-/*
-        BaseForm.metaClass.validateStatus = {
-            def errors = [:]
-            if (delegate.formStatus == FormStatus.DRAFT) {
-                println delegate.id
-            }
-            errors
-        }
-*/
 
-        /*println "a"*/
-        def formAPart1s = reportInstance.formAPart1
-        formAPart1s.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formAPart1.label')}, instance ${it.id}"
-            }
+        errors["status"] = reportService.validateFormsCompletion(reportInstance)
 
-        }
-        def formAPart1b = reportInstance.formAPart1b
-        if (formAPart1b?.formStatus == FormStatus.DRAFT) {
-            errors["status"] << "${message(code: 'formAPart1b.label')}, instance ${formAPart1b.id}"
-        }
+        errors["validation"] = reportService.validateFormAPart1BSL4(reportInstance)
 
-        def formAPart2a = reportInstance.formAPart2a
-        if (formAPart2a?.formStatus == FormStatus.DRAFT) {
-            errors["status"] << "${message(code: 'formAPart2a.label')}, instance ${formAPart2a.id}"
-        }
-
-        def formAPart2bs = reportInstance.formAPart2b
-        formAPart2bs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formAPart2b.label')}, instance ${it.id}"
-            }
-        }
-        def formAPart2cs = reportInstance.formAPart2cs
-        formAPart2cs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formAPart2c.label')}, instance ${it.id}"
-            }
-        }
-        def formBs = reportInstance.formB
-        formBs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formB.label')}, instance ${it.id}"
-            }
-        }
-        def formCs = reportInstance.formC
-        formCs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formC.label')}, instance ${it.id}"
-            }
-        }
-        def formEs = reportInstance.formE
-        formEs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formE.label')}, instance ${it.id}"
-            }
-        }
-        def formFs = reportInstance.formF
-        formFs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formF.label')}, instance ${it.id}"
-            }
-        }
-        def formGs = reportInstance.formG
-        formGs?.each {
-            if (it.formStatus == FormStatus.DRAFT) {
-                errors["status"] << "${message(code: 'formG.label')}, instance ${it.id}"
-            }
-        }
-        println("errors: " + errors["status"] + "size: " + errors.size())
-
-
-        //If no formAPart1a exists, then there needs to be a formAPart1b filled
-        if (!formAPart1s && !formAPart1b) {
-            println "validation error!!!!"
-            errors["validation"] << message(code: 'report.submit.formA.validation.error', default: 'A Form A Part 1(ii) must be filled if there is no Form A Part 1(i)')
-        }
-
-        boolean hasBSL4 = false
-
-        formAPart1s.each{
-            if (it.hasBSL4()){
-                hasBSL4 = true
-            }
-
-        }
-
-        if (!hasBSL4 && !formAPart1b) {
-            errors["validation"] << message(code:'report.submit.formA.bsl4validation.error', default: 'No BSL4 error')
-
-        }
-
-        // if existing national programmes declared, need to fill in formAPart2bs
-        if (formAPart2a?.existingNationalProgrammes && !formAPart2bs){
-            errors["validation"] << message(code: 'report.submit.formA.existing.programmes.error', default: 'Existing programmes error')
-        }
-
+        errors["validation"] += reportService.validateNationalProgrammes(reportInstance)
 
 
         if (errors["status"] || errors["validation"]) {
@@ -383,9 +237,7 @@ class ReportController {
         }
 
         //No errors, OK to submit
-        reportInstance.publicationStatus = PublicationStatus.PUBLISHED
-        reportInstance.reportStatus = ReportStatus.SUBMITTED
-        reportInstance.save flush: true
+        reportService.submitReport(reportInstance)
 
         request.withFormat {
             '*' {
@@ -393,8 +245,6 @@ class ReportController {
                 redirect(action: 'index')
 
             }
-//            '*' { render view: "review", model: [reportInstance:reportInstance] }
-//            '*' { redirect(action: 'index') }
         }
 
     }

@@ -5,10 +5,10 @@ import cbm.report.Report
 
 class FormAPart2a extends BaseForm {
 
-    static auditable = true
-    Boolean existingNationalProgrammes
-    Report report
 
+    Boolean existingNationalProgrammes
+
+    static belongsTo = [report:Report]
     String toString() {
         "${existingNationalProgrammes}"
     }
