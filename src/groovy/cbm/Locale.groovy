@@ -1,12 +1,5 @@
 package cbm
 
-/**
- * Created with IntelliJ IDEA.
- * User: jutliah
- * Date: 5/27/14
- * Time: 3:00 PM
- * To change this template use File | Settings | File Templates.
- */
 public enum Locale {
     EN, FR
 

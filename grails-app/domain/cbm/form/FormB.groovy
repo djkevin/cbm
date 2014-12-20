@@ -91,7 +91,5 @@ class FormB extends BaseForm {
 
     }
 
-    String toString() {
-        eventName
-    }
+    String toString() { eventName }
 }

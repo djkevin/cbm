@@ -10,7 +10,8 @@ import org.joda.time.LocalDate
 class Report {
 
     static hasMany = [formAPart1: FormAPart1a, formAPart2b: FormAPart2b, formB: FormB, formC: FormC, formE: FormE, formF: FormF, formG: FormG]
-    static hasOne = [formAPart1b: FormAPart1b, formAPart2a: FormAPart2a, formZero: FormZero]// for hasOne a Report object has to be specified on the other side
+    static hasOne = [formAPart1b: FormAPart1b, formAPart2a: FormAPart2a, formZero: FormZero]
+// for hasOne a Report object has to be specified on the other side
     static belongsTo = [stateParty: StateParty]
     static auditable = true
 
@@ -20,10 +21,10 @@ class Report {
     Language language
     Integer year
     ReportStatus reportStatus
-	
-	/** indicates whether report is published or not, meaning can be viewed by other State Parties and/or general public. */
-    PublicationStatus publicationStatus 
-    
+
+    /** indicates whether report is published or not, meaning can be viewed by other State Parties and/or general public. */
+    PublicationStatus publicationStatus
+
     Boolean officialVersion
     static int currentYear = new LocalDate().getYear()
 
@@ -47,9 +48,7 @@ class Report {
         formZero nullable: true
     }
 
-    String toString() {
-        return "${stateParty?.country}_${year}_${language?.abbreviation}"
-    }
+    String toString() { "${stateParty?.country}_${year}_${language?.abbreviation}" }
 
     def capitalize(s) { //TODO remove and replace by name
         return s
@@ -61,16 +60,15 @@ class Report {
         for (def faP2b : formAPart2b) {
             formAPart2c.addAll(faP2b.formAPart2c)
         }
-        return formAPart2c
-
+        formAPart2c
     }
 
-    public boolean hasBSL4(){
+    public boolean hasBSL4() {
         if (!formAPart1) return false;
 
-        for (FormAPart1a formAPart1a: formAPart1){
-            if (formAPart1a.hasBSL4()){
-                return  true
+        for (FormAPart1a formAPart1a : formAPart1) {
+            if (formAPart1a.hasBSL4()) {
+                return true
             }
         }
         return false;

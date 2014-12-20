@@ -13,9 +13,7 @@ class FormAPart1ContainmentUnit{
     Date created = new Date() // For ordering list
 
 
-    String toString() {
-        return "${id} ${bioSafetyLevel} ${unitType} ${unitSize} ${comment}"
-    }
+    String toString() { "${id} ${bioSafetyLevel} ${unitType} ${unitSize} ${comment}"  }
 
     static constraints = {
         bioSafetyLevel blank: false, inList: ["BSL4", "Enhanced BSL3"]    //TODO i18n

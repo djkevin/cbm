@@ -3,7 +3,6 @@ package cbm.form
 import cbm.BaseForm
 import cbm.PastBiologicalRnDActivity
 import cbm.report.Report
-import org.joda.time.LocalDate
 
 class FormF extends BaseForm {
 
@@ -26,27 +25,28 @@ class FormF extends BaseForm {
     }
 
     static pastOffensiveActivityValidator = { val ->
+        def error = true
         if (val?.pastBiologicalActivity == null) {
-            return 'formF.offensiveActivity.activity.notchecked.error'
+            error =  'formF.offensiveActivity.activity.notchecked.error'
         } else if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
-            return 'formF.offensiveActivity.activity.empty.fields.error'
-        }  else if  (val.summaryOfRnDActivities?.length() > 10000) {
-            return ['cbm.form.FormF.offensiveActivity.summaryOfRnDActivities.maxSize.error', 10000]
+            error =  'formF.offensiveActivity.activity.empty.fields.error'
+        } else if (val.summaryOfRnDActivities?.length() > 10000) {
+            error =  ['cbm.form.FormF.offensiveActivity.summaryOfRnDActivities.maxSize.error', 10000]
         }
+        error
     }
     static pastDefensiveActivityValidator = { val ->
+        def error = true
         if (val?.pastBiologicalActivity == null) {
-            return 'formF.defensiveActivity.activity.notchecked.error'
+            error =  'formF.defensiveActivity.activity.notchecked.error'
         } else if (val.pastBiologicalActivity && (!val.periodOfActivity || !val.summaryOfRnDActivities)) {
-            return 'formF.defensiveActivity.activity.empty.fields.error'
+            error =  'formF.defensiveActivity.activity.empty.fields.error'
         } else if (val.summaryOfRnDActivities?.length() > 10000) {
             //TODO fetch from constraints e.g like offensiveActivity?.constraints?.summaryOfRnDActivities?.maxSize
-            return ['cbm.form.FormF.defensiveActivity.summaryOfRnDActivities.maxSize.error', 10000]
+            error =  ['cbm.form.FormF.defensiveActivity.summaryOfRnDActivities.maxSize.error', 10000]
         }
-
+        error
     }
 
-    String toString() {
-        return id
-    }
+    String toString() { id }
 }

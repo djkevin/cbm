@@ -20,13 +20,13 @@ class Address {
 		/*
         "${street1}, ${street2 ?: ""}, ${town ?: ""}, ${state ?:""}, ${postCode?:""}"
         */
-		def ret=street1
+		def address=street1
 		
-		if (street2) ret += ", ${street2}"
-		if (town) ret+= ", ${town}"
-		if (state) ret+= ", ${state}"
-		if (postCode) ret += ", ${postCode}"
+		if (street2) address += ", ${street2}"
+		if (town) address+= ", ${town}"
+		if (state) address+= ", ${state}"
+		if (postCode) address += ", ${postCode}"
 		
-		return ret
+		address
     }
 }

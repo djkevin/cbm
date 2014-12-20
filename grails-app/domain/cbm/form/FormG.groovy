@@ -21,12 +21,10 @@ class FormG extends BaseForm {
     static constraints = {
         facilityName maxSize: 250, blank: false
         location()
-        typesOfDiseaseCovered maxSize: 10000, blank:false
+        typesOfDiseaseCovered maxSize: 10000, blank: false
         country nullable: false
 
     }
 
-    String toString(){
-        facilityName
-    }
+    String toString() { facilityName }
 }

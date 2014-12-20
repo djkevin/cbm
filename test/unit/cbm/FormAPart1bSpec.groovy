@@ -30,4 +30,21 @@ class FormAPart1bSpec extends ConstraintUnitSpec {
         getLongString(5000)     || 'valid'
         getLongString(5001)     || 'maxSize'
     }
+
+    @Unroll("bsl3 '#bioSafetyLevel3' and bsl2 '#bioSafetyLevel2' should result in '#error'")
+    def "test either bsl2 or bsl3 can be selected"() {
+        when:
+        domain.bioSafetyLevel3 = bioSafetyLevel3
+        domain.bioSafetyLevel2 = bioSafetyLevel2
+
+        then:
+        validateConstraints(domain, 'bioSafetyLevel3', error)
+
+        where:
+        bioSafetyLevel3 || bioSafetyLevel2 || error
+        Boolean.TRUE    || Boolean.FALSE   || 'valid'
+        Boolean.FALSE   || Boolean.TRUE    || 'valid'
+        Boolean.TRUE    || Boolean.TRUE    || 'formAPart1b.BSL.both.error'
+        Boolean.FALSE   || Boolean.FALSE   || 'formAPart1b.BSL.min.error'
+    }
 }

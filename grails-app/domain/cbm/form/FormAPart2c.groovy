@@ -53,7 +53,7 @@ class FormAPart2c extends BaseForm {
     String publicationPolicy
     String publicPapers
     String bioDefenseWork
-   // Report report
+    // Report report
     static mapping = {
         publicPapers type: 'text'
         orgStructureComments1 type: 'text'
@@ -63,7 +63,7 @@ class FormAPart2c extends BaseForm {
         floorAreaComments type: 'text'
     }
 
-    static transients = ['totalFloorArea', 'totalPersonnel','report']
+    static transients = ['totalFloorArea', 'totalPersonnel', 'report']
 
     static constraints = {
         facilityName maxSize: 250, blank: false
@@ -97,29 +97,16 @@ class FormAPart2c extends BaseForm {
     }
 
     BigDecimal getTotalFloorArea() {
-//        if (!floorAreaBL2 || !floorAreaBL3 || !floorAreaBL4)
-//            return null
-//        else
-//            floorAreaBL2 + floorAreaBL3 + floorAreaBL4
-
         floorAreaBL2.plus(floorAreaBL3).plus(floorAreaBL4)
     }
 
     Long getTotalPersonnel() {
-   /*     if (!militaryPersonnel || !civilianPersonnel)
-            return null
-        else
-            militaryPersonnel + civilianPersonnel*/
         militaryPersonnel.plus(civilianPersonnel)
     }
 
-    String toString() {
-        return "${facilityName}"
-    }
+    String toString() { "${facilityName}" }
 
     // To make this form have a similar behavior to other forms. Used in SecurityFilters
-    Report getReport(){
-        return formAPart2b.report
-    }
+    Report getReport() { formAPart2b.report }
 
 }

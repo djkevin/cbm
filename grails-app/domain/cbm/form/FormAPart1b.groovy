@@ -22,13 +22,14 @@ class FormAPart1b extends BaseForm {
     }
 
     static bsl3Validator = { val, object ->
+        def error = true
         if (object.bioSafetyLevel3 && object.bioSafetyLevel2) {
-            return 'formAPart1b.BSL.both.error'
+            error = 'formAPart1b.BSL.both.error'
         }
 
         if (!object.bioSafetyLevel3 && !object.bioSafetyLevel2) {
-            return 'formAPart1b.BSL.min.error'
+            error = 'formAPart1b.BSL.min.error'
         }
-
+        error
     }
 }
