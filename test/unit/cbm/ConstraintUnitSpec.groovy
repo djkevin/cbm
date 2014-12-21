@@ -24,6 +24,7 @@ abstract class ConstraintUnitSpec extends Specification {
     }
 
     void validateConstraints(obj, field, error) {
+
         def validated = obj.validate()
         if (error && error != 'valid') {
             assert !validated
