@@ -145,7 +145,7 @@ class FormZeroController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formZero.label', default: 'FormZero'), params.id])
-                redirect action: "index", method: "GET"
+                redirect controller: "report", action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }
         }

@@ -112,7 +112,7 @@ class FormCController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formC.label', default: 'FormC'), params.id])
-                redirect action: "index", method: "GET"
+                redirect controller: "report", action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }

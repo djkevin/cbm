@@ -121,7 +121,7 @@ class FormAPart2aController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart2a.label', default: 'FormAPart2a'), params.id])
-                redirect action: "index", method: "GET"
+                redirect controller: "report", action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }
