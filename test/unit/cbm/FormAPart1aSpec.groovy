@@ -1,6 +1,7 @@
 package cbm
 
 import cbm.form.FormAPart1a
+import grails.buildtestdata.mixin.Build
 import grails.test.mixin.TestFor
 import spock.lang.Unroll
 
@@ -48,7 +49,7 @@ class FormAPart1aSpec extends ConstraintUnitSpec {
         ''                      || 'blank'
         ' '                     || 'blank'
         getLongString(500)      || 'valid'
-        getLongString(501)      || 'maxSize'
+        getLongString(501)      || 'cbm.Address.street1.maxSize'
     }
 /*
     @Unroll("location '#location' should result in '#error'")
@@ -111,10 +112,44 @@ class FormAPart1aSpec extends ConstraintUnitSpec {
         validateConstraints(domain, 'scope', error)
 
         where:
-        scope               || error
-        null                || 'nullable'
+        scope                || error
+        null                 || 'nullable'
         getLongString(10000) || 'valid'
         getLongString(10001) || 'maxSize'
+    }
+
+    /*  @Unroll("address '#address' should result in '#error'")
+      def "test formAPart1a address constraints"() {
+          when:
+          domain.location = address
+
+          then:
+          validateConstraints(domain, 'location', error)
+
+          where:
+          address                                  || error
+  //        null                                     || 'nullable'
+          new Address(street1: getLongString(100)) || 'valid'
+          new Address(street1: getLongString(101)) || 'maxSize'
+      }*/
+
+    @Unroll("address '#street1' should result in '#error'")
+    def "test formAPart1a address constraints"() {
+        when:
+//        FormAPart1a test = FormAPart1a.build()
+        Address address = new Address()
+        address.street1 = street1
+        domain.location = address
+
+
+        then:
+        validateConstraints(domain, 'location.street1', error)
+
+        where:
+        street1 || error
+//        null                                     || 'nullable'
+        getLongString(100) || 'valid'
+        getLongString(101) || 'maxSize'
     }
 
 }
