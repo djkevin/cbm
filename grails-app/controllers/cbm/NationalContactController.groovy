@@ -8,8 +8,10 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class NationalContactController {
+
+    def nationalContactService
+    def reportService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -27,34 +29,28 @@ class NationalContactController {
 
 	@Secured(['ROLE_SUBMITTER'])
     def create() {
-        Report r = Report.get(params.long('report.id'))
+        Report r = reportService.getById(params.long('report.id'))
         NationalContact n = new NationalContact()
         n.location = new Address()
-        n.country = r.getStateParty().country
+        n.country = r.getStateParty()?.country
         respond n
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def save(NationalContact nationalContactInstance) {
         if (nationalContactInstance == null) {
             notFound()
             return
         }
-        nationalContactInstance.stateParty.id = params.long('stateParty.id')
+        nationalContactInstance.stateParty?.id = params.long('stateParty.id')
         def reportId = params.long('report.id')
 
         if (nationalContactInstance.hasErrors()) {
-
-            for(def e:nationalContactInstance.errors){
-                println e
-            }
-
             respond nationalContactInstance.errors, view:'create'
             return
         }
 
-        nationalContactInstance.save flush:true
+        nationalContactService.save(nationalContactInstance)
 
         request.withFormat {
             form {
@@ -71,7 +67,6 @@ class NationalContactController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def update(NationalContact nationalContactInstance) {
         if (nationalContactInstance == null) {
             notFound()
@@ -84,7 +79,7 @@ class NationalContactController {
 
         def reportId = params.long('report.id')
 
-        nationalContactInstance.save flush:true
+        nationalContactService.save(nationalContactInstance)
 
         request.withFormat {
             form {
@@ -96,14 +91,14 @@ class NationalContactController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def delete(NationalContact nationalContactInstance) {
 
         if (nationalContactInstance == null) {
             notFound()
             return
         }
-        nationalContactInstance.delete flush:true
+
+        nationalContactService.delete(nationalContactInstance)
 
         request.withFormat {
             form {
@@ -125,7 +120,7 @@ class NationalContactController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'nationalContact.label', default: 'NationalContact'), params.id])
-                redirect action: "index", method: "GET"
+                redirect controller: "report", action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }
         }

@@ -1,6 +1,8 @@
 package cbm
 
 import cbm.admin.NationalContact
+import cbm.admin.NationalContactService
+import cbm.report.Report
 import grails.test.mixin.*
 import spock.lang.*
 
@@ -8,20 +10,44 @@ import spock.lang.*
 @Mock(NationalContact)
 class NationalContactControllerSpec extends Specification {
 
-    def populateValidParams(params) {
-        assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+    def nationalContactService = [
+            save: { NationalContact nationalContact -> nationalContact.setId(1)},
+            delete: { NationalContact nationalContact -> nationalContact = null}
+
+    ] as NationalContactService
+
+    def reportService = [
+            getById: {Long id -> new Report(id: id)}
+    ] as ReportService
+
+    def setup(){
+        controller.nationalContactService = nationalContactService
+        controller.reportService = reportService
+
+        request.format = 'form'
     }
 
-    void "Test the index action returns the correct model"() {
+    def populateValidParams(params) {
+        assert params != null
+        params['firstName'] = "Mr"
+        params['firstName'] = "a"
+        params['lastName'] = "a"
+        params['position'] = "a"
+        params['location.street1'] = "a"
+        params['stateParty.id'] = "1"
+        params['report.id']="1"
+        params['country.id']="1"
+
+    }
+
+
+    void "Test the index action returns a 404 error"() {
 
         when:"The index action is executed"
             controller.index()
 
-        then:"The model is correct"
-            !model.nationalContactInstanceList
-            model.nationalContactInstanceCount == 0
+        then:"A 404 error is returned"
+        response.status == 404
     }
 
     void "Test the create action returns the correct model"() {
@@ -31,6 +57,7 @@ class NationalContactControllerSpec extends Specification {
         then:"The model is correctly created"
             model.nationalContactInstance!= null
     }
+
 
     void "Test the save action correctly persists an instance"() {
 
@@ -47,13 +74,15 @@ class NationalContactControllerSpec extends Specification {
             response.reset()
             populateValidParams(params)
             nationalContact = new NationalContact(params)
-
+            nationalContact.country = new cbm.admin.Country()
+            request.format = 'form'
             controller.save(nationalContact)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/nationalContact/show/1'
+            nationalContact.id == 1
             controller.flash.message != null
-            NationalContact.count() == 1
+            response.redirectedUrl == '/nationalContact/show/1?report.id=1'
+
     }
 
     void "Test that the show action returns the correct model"() {
@@ -93,7 +122,7 @@ class NationalContactControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/nationalContact/index'
+            response.redirectedUrl == '/report/index'
             flash.message != null
 
 
@@ -110,11 +139,12 @@ class NationalContactControllerSpec extends Specification {
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            nationalContact = new NationalContact(params).save(flush: true)
+            nationalContact = new NationalContact(params)//.save(flush: true)
+            request.format = 'form'
             controller.update(nationalContact)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/nationalContact/show/$nationalContact.id"
+            response.redirectedUrl == "/nationalContact/show/$nationalContact.id?report.id=${params.report.id}"
             flash.message != null
     }
 
@@ -123,23 +153,26 @@ class NationalContactControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/nationalContact/index'
+            response.redirectedUrl == '/report/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def nationalContact = new NationalContact(params).save(flush: true)
+            def nationalContact = new NationalContact(params)//.save(flush: true)
+            nationalContactService.save(nationalContact)
 
         then:"It exists"
-            NationalContact.count() == 1
+            nationalContact.id == 1
 
         when:"The domain instance is passed to the delete action"
+            request.format = 'form'
             controller.delete(nationalContact)
 
         then:"The instance is deleted"
-            NationalContact.count() == 0
-            response.redirectedUrl == '/nationalContact/index'
+            println "nationalcontact: "+response.redirectedUrl
+           // nationalContact == null   //TODO check for null? nationalContact== incomplete
+            response.redirectedUrl == "/report/show/${params.report.id}"
             flash.message != null
     }
 }
