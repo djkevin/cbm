@@ -49,8 +49,6 @@ class Report {
 
     String toString() { "${stateParty?.country}_${year}_${language?.abbreviation}" }
 
-
-
     public Set<FormAPart2c> getFormAPart2cs() {
         Set<FormAPart2c> formAPart2c = new HashSet<FormAPart2c>()
         for (def faP2b : formAPart2b) {
