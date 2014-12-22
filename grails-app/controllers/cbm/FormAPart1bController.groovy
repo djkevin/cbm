@@ -2,25 +2,20 @@ package cbm
 
 import cbm.constants.FormStatus
 import cbm.constants.Visibility
-import cbm.form.FormAPart1a
 import cbm.form.FormAPart1b
 import cbm.report.Report
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormAPart1bController {
+
+    def formAPart1bService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-		/*
-        params.max = Math.min(max ?: 10, 100)
-        respond FormAPart1b.list(params), model: [formAPart1bInstanceCount: FormAPart1b.count()]
-        */
 		response.sendError(404)
     }
 
@@ -41,12 +36,9 @@ class FormAPart1bController {
         form.visibility = Visibility.PUBLIC
 
         respond  form
-
-
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def save(FormAPart1b formAPart1bInstance) {
         if (formAPart1bInstance == null) {
             notFound()
@@ -58,7 +50,7 @@ class FormAPart1bController {
             return
         }
 
-        formAPart1bInstance.save flush: true
+        formAPart1bService.save(formAPart1bInstance)
 
         request.withFormat {
             form {
@@ -75,7 +67,6 @@ class FormAPart1bController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def update(FormAPart1b formAPart1bInstance) {
         if (formAPart1bInstance == null) {
             notFound()
@@ -87,7 +78,7 @@ class FormAPart1bController {
             return
         }
 
-        formAPart1bInstance.save flush: true
+        formAPart1bService.save(formAPart1bInstance)
 
         request.withFormat {
             form {
@@ -99,7 +90,6 @@ class FormAPart1bController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def delete(FormAPart1b formAPart1bInstance) {
 
         if (formAPart1bInstance == null) {
@@ -107,16 +97,13 @@ class FormAPart1bController {
             return
         }
 
-        Report report = Report.get(formAPart1bInstance.report.id)
-        report.formAPart1b = null
-        report.save()
-
-        formAPart1bInstance.delete flush: true
+        def reportId = formAPart1bInstance.report.id
+        formAPart1bService.deleteFromReport(reportId,formAPart1bInstance.id)
 
         request.withFormat {
             form {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'formAPart1b.label', default: 'FormAPart1b'), formAPart1bInstance.id])
-                redirect action: "show", controller: "report", id: formAPart1bInstance.report.id, method: "GET"
+                redirect action: "show", controller: "report", id: reportId, method: "GET"
             }
             '*' { render status: NO_CONTENT }
         }
@@ -126,7 +113,7 @@ class FormAPart1bController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart1b.label', default: 'FormAPart1b'), params.id])
-                redirect action: "index", method: "GET"
+                redirect controller: "report", action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }
         }
