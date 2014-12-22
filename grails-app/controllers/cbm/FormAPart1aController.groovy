@@ -1,6 +1,5 @@
 package cbm
 
-import cbm.admin.NationalContact
 import cbm.constants.FormStatus
 import cbm.constants.Visibility
 import cbm.form.FormAPart1ContainmentUnit
@@ -9,6 +8,7 @@ import cbm.report.Report
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
+
 import java.text.SimpleDateFormat
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
@@ -18,11 +18,7 @@ class FormAPart1aController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-		/*
-        params.max = Math.min(max ?: 10, 100)
-        def reportId = params.long('reportId')Report r = Report.findById(reportId)
-        respond FormAPart1a.findAllByReport(r, [sort: "facilityName"]), model: [formAPart1InstanceCount: FormAPart1a.count(), reportId: r.id]
-		*/
+
 		response.sendError(404)
     }
 
@@ -53,9 +49,6 @@ class FormAPart1aController {
             notFound()
             return
         }
-
-        println "params: "+params
-        println formAPart1Instance.location
 
         if (params.containsKey('formAPart1ContainmentUnit')) {
             Set<FormAPart1ContainmentUnit> containmentUnits = getContainmentUnitsFromParams(params, formAPart1Instance)
@@ -120,7 +113,8 @@ class FormAPart1aController {
             formAPart1ContainmentUnit.comment = containmentUnitComments[i]
             formAPart1ContainmentUnit.facility = formAPart1Instance
 
-            formAPart1ContainmentUnit.created = new SimpleDateFormat(FormService.TIMESTAMP_FORMAT).parse(containmentUnitCreateDates[i]);
+            String timeStampFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+            formAPart1ContainmentUnit.created = new SimpleDateFormat(timeStampFormat).parse(containmentUnitCreateDates[i]);
 
             if (unitSize.isInteger()){  //TODO change to generic error checking at row level
                 results.add(formAPart1ContainmentUnit)

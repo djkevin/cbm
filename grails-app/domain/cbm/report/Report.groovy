@@ -29,7 +29,7 @@ class Report {
     static int currentYear = new LocalDate().getYear()
 
     String getReportName() {
-        "${stateParty.country.toString()}_${year}".replaceAll(/\w+/)+ "_${language.abbreviation}"
+        "${stateParty.country.toString()}_${year}_${language.abbreviation}"
     }
 
 

@@ -24,6 +24,38 @@ class ReportService {
     }
 
     /**
+     * Submits the report
+     * @param report
+     */
+    def submitReport(Report report) {
+        report.publicationStatus = PublicationStatus.PUBLISHED
+        report.reportStatus = ReportStatus.SUBMITTED
+        report.save()
+    }
+
+    /**
+     * saves to the db. used for both create and update
+     * @param report
+     */
+    void save(Report report) {
+        report.save() // No need to set flush:true - the transaction does it
+    }
+
+
+    void delete(Report report) {
+        report.delete()
+    }
+
+    void delete(long reportId) {
+        def report = Report.load(reportId)// only gets a proxy wrapping the id. Use over get(id)
+        report.delete()
+    }
+
+    void saveForm(def form) {
+        form.save()
+    }
+
+    /**
      * Checks if all the forms in a report are in status FormStatus.COMPLETED
      * If any form found in FormStatus.DRAFT, wrap it in an errors object
      * @param report
@@ -153,40 +185,6 @@ class ReportService {
             errors << messageSource.getMessage('report.submit.formA.existing.programmes.error', null, "error", locale)
         }
         errors
-    }
-
-    /**
-     * Submits the report
-     * @param nerd
-     */
-    def submitReport(Report report) {
-        report.publicationStatus = PublicationStatus.PUBLISHED
-        report.reportStatus = ReportStatus.SUBMITTED
-        report.save()
-    }
-
-    /**
-     * saves to the db. used for both create and update
-     * @param nerd
-     */
-    void save(Report report) {
-        report.save() // No need to set flush:true - the transaction does it
-    }
-
-
-    void delete(Report report) {
-        report.delete()
-    }
-
-    void delete(long reportId) {
-        def report = Report.load(reportId)// only gets a proxy wrapping the id. Use over get(id)
-        report.delete()
-    }
-
-    void saveForm(def form) {
-
-        println "reportService.saveForm!!"
-        form.save()
     }
 
     /**

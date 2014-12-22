@@ -18,9 +18,9 @@
         	<li><g:link class="create" action="create" params="['stateParty.id': statePartyId]"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
         </sec:ifAnyGranted>
         
-%{--        <sec:ifAnyGranted roles="ROLE_VIEWER, ROLE_EDITOR, ROLE_SUBMITTER, ROLE_ADMIN">
+        <sec:ifAnyGranted roles="ROLE_VIEWER, ROLE_EDITOR, ROLE_SUBMITTER, ROLE_ADMIN">
         	<li><g:link class="published" action="listPublished"><g:message code="report.view.published.label" default="View published" /> </g:link> </li>
-        </sec:ifAnyGranted>--}%
+        </sec:ifAnyGranted>
     </ul>
 </div>
 

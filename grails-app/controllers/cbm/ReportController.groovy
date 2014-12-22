@@ -40,12 +40,7 @@ class ReportController {
 
         def reportsInProgress = allReports.minus(submittedReports)
 
-        println "allReports: " + allReports + ", num submitted:" + submittedReports.size() + " in progress: " + reportsInProgress.size()
-
-
         respond reportsInProgress, model: [submittedReports: submittedReports, statePartyId: user?.stateParty?.id, country: user?.stateParty?.country]
-
-
     }
 
     /**

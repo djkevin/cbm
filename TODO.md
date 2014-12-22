@@ -52,6 +52,8 @@ OK - use domainClass.load(id) vs domainClass.get(id), no need for flush:true (le
 
 TODO - cbm
 
+READonly -  When a report is submitted, we should not be able to edit the individual forms/data
+
 Country:
 -----------------------
 ##### Step 1:
