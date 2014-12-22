@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>That's a Fail... | CBM</title>
+    <title>CBM  |  Page not found</title>
 </head>
 
 <body>
@@ -10,13 +10,14 @@
 <div class="content">
     <br><br>
 
-    <h2>Well, that's a fail...</h2>
-    <br>
+    <h2>Page not found - 404...</h2>
+    <br><br>
 
     <p>
-        This page doesn't seem to exist anymore, or perhaps it never did. It's tough to say for sure.
-        What I do know, however, is that you can find plenty of other great content right over
-        <g:link controller="report" action="index">here</g:link>.
+
+        The page you were looking for appears to have been moved, deleted or does not exist.
+        You could go back to where you were or head straight to the
+        <g:link controller="report" action="index">home page</g:link>
 
     </p>
 </div>
