@@ -29,10 +29,9 @@ class Report {
     static int currentYear = new LocalDate().getYear()
 
     String getReportName() {
-        "${stateParty.country.toString()}_${year}".replaceAll(/\w+/) { w -> capitalize(w) } + "_${language.abbreviation}"
+        "${stateParty.country.toString()}_${year}".replaceAll(/\w+/)+ "_${language.abbreviation}"
     }
 
-    StateParty stateParty
 
     static transients = ['reportName', 'currentYear']
 
@@ -50,10 +49,7 @@ class Report {
 
     String toString() { "${stateParty?.country}_${year}_${language?.abbreviation}" }
 
-    def capitalize(s) { //TODO remove and replace by name
-        return s
-        //s[0].toUpperCase() + s[1..-1].toLowerCase()
-    }
+
 
     public Set<FormAPart2c> getFormAPart2cs() {
         Set<FormAPart2c> formAPart2c = new HashSet<FormAPart2c>()

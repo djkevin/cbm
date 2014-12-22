@@ -1,17 +1,14 @@
 package cbm
 
 import cbm.admin.NationalContact
-import cbm.constants.FormStatus
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
 import cbm.constants.Visibility
-import cbm.form.*
 import cbm.report.Report
 import cbm.usermgt.SecUser
 import grails.converters.JSON
 import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
@@ -27,36 +24,46 @@ class ReportController {
         return SecUser.get(springSecurityService.principal.id)
     }
 
-	// this method does not need to override the security of the class.
+    // this method does not need to override the security of the class.
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
+        //Admin can view all reports
         if (SpringSecurityUtils.ifAllGranted('ROLE_ADMIN')) {
             respond Report.findAll()
-        } else {
-            def user = getUser()
-            respond Report.findAllByStateParty(user.stateParty), model: [reportInstanceCount: Report.count(), statePartyId: user.stateParty.id]
+            return
         }
+
+        //Fetch the reports for the logged in user's State Party
+        def allReports = reportService.findAllReportsByStateParty(user?.stateParty)
+        def submittedReports = allReports.findAll { it.reportStatus == ReportStatus.SUBMITTED }
+
+        def reportsInProgress = allReports.minus(submittedReports)
+
+        println "allReports: " + allReports + ", num submitted:" + submittedReports.size() + " in progress: " + reportsInProgress.size()
+
+
+        respond reportsInProgress, model: [submittedReports: submittedReports, statePartyId: user?.stateParty?.id, country: user?.stateParty?.country]
+
 
     }
 
-	/**
-	 * View submitted reports with 'PUBLISHED' publication status.
-	 * @param max
-	 * @return
-	 */
-	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-    def published(Integer max){
+    /**
+     * View submitted reports with 'PUBLISHED' publication status.
+     * @param max
+     * @return
+     */
+    @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
+    def listPublished(Integer max) {
         params.max = Math.min(max ?: 10, 100)
 
-        def submittedAndPublishedReports  = Report.findAllByReportStatusAndPublicationStatus(ReportStatus.SUBMITTED, PublicationStatus.PUBLISHED)
+        def submittedAndPublishedReports = Report.findAllByReportStatusAndPublicationStatus(ReportStatus.SUBMITTED, PublicationStatus.PUBLISHED)
         respond submittedAndPublishedReports, model: [reportInstanceCount: submittedAndPublishedReports.size()]
 
     }
 
-
     // DOES THIS WORK? @Secured(["@securityService.canView(#reportInstance)"])
-	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_ADMIN'])
+    @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER', 'ROLE_ADMIN'])
     def show(Report reportInstance) {
         if (securityService.canView(reportInstance)) {  //TODO replace by Spring security ACL
             respond reportInstance
@@ -67,7 +74,7 @@ class ReportController {
 
     }
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def create() {
         Report report = new Report(params)
         report.reportStatus = ReportStatus.DRAFT
@@ -75,7 +82,7 @@ class ReportController {
         respond report
     }
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def save(Report reportInstance) {
         if (reportInstance == null) {
             notFound()
@@ -98,12 +105,12 @@ class ReportController {
         }
     }
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def edit(Report reportInstance) {
         respond reportInstance
     }
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def update(Report reportInstance) {
         if (reportInstance == null) {
             notFound()
@@ -126,7 +133,7 @@ class ReportController {
         }
     }
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def delete(Report reportInstance) {
 
         if (reportInstance == null) {
@@ -155,7 +162,7 @@ class ReportController {
         }
     }
 
-	@Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
+    @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def print(Report reportInstance) {
 
         println params
@@ -167,11 +174,11 @@ class ReportController {
 
         Set<NationalContact> nationalContacts = reportInstance.stateParty.nationalContact
 
-        if (publicOnly){
+        if (publicOnly) {
             reportInstance.formAPart1 = reportService.getPublicForms(reportInstance.formAPart1)
-            reportInstance.formAPart1b = (reportInstance?.formAPart1b?.visibility == Visibility.PUBLIC)  ? reportInstance.formAPart1b : null
-            reportInstance.formAPart2a = (reportInstance?.formAPart2a?.visibility == Visibility.PUBLIC)  ? reportInstance.formAPart2a : null
-            reportInstance.formZero = (reportInstance?.formZero?.visibility == Visibility.PUBLIC)  ? reportInstance.formZero : null
+            reportInstance.formAPart1b = (reportInstance?.formAPart1b?.visibility == Visibility.PUBLIC) ? reportInstance.formAPart1b : null
+            reportInstance.formAPart2a = (reportInstance?.formAPart2a?.visibility == Visibility.PUBLIC) ? reportInstance.formAPart2a : null
+            reportInstance.formZero = (reportInstance?.formZero?.visibility == Visibility.PUBLIC) ? reportInstance.formZero : null
             reportInstance.formB = reportService.getPublicForms(reportInstance.formB)
             reportInstance.formC = reportService.getPublicForms(reportInstance.formC)
             reportInstance.formE = reportService.getPublicForms(reportInstance.formE)
@@ -185,7 +192,7 @@ class ReportController {
         renderPdf template: 'print', contentType: 'application/pdf', model: [reportInstance: reportInstance, nationalContacts: nationalContacts]
     }
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def review(Report reportInstance) {
         println params
         def report = Report.get(params.long("id"))
@@ -195,7 +202,7 @@ class ReportController {
 
     /**
      * Sets the form Status or Visibility
-     * @param name: the form class name, value (one of DRAFT,COMPLETED, PUBLIC or PRIVATE) , type: formStatus or visibility, id the form Id
+     * @param name : the form class name, value (one of DRAFT,COMPLETED, PUBLIC or PRIVATE) , type: formStatus or visibility, id the form Id
      * @return ok message if form was found and saved correctly, else error message
      */
     @Secured(['ROLE_SUBMITTER'])
@@ -208,8 +215,8 @@ class ReportController {
 
         def cbmForm = reportService.getFormByNameAndId(params.name, params.long('id'))
 
-        if (!cbmForm){
-            result = ${message(code: "report.save.error", default: "Error in saving")}
+        if (!cbmForm) {
+            result = $ { message(code: "report.save.error", default: "Error in saving") }
 
             render([message: result] as JSON) //TODO test this
             return
@@ -233,7 +240,7 @@ class ReportController {
      * TODO hide submit button if already submitted (in gsp)
      */
 
-	@Secured(['ROLE_SUBMITTER'])
+    @Secured(['ROLE_SUBMITTER'])
     def submit(Report reportInstance) {
 
         def errors = [:]

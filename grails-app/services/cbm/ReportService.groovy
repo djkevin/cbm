@@ -1,5 +1,6 @@
 package cbm
 
+import cbm.admin.StateParty
 import cbm.constants.FormStatus
 import cbm.constants.PublicationStatus
 import cbm.constants.ReportStatus
@@ -13,6 +14,14 @@ import org.springframework.context.i18n.LocaleContextHolder
 class ReportService {
 
     def messageSource
+
+    List<Report> findAllReportsByStateParty(StateParty stateParty){
+        Report.findAllByStateParty(stateParty)
+    }
+
+    List<Report> findAllSubmittedReportsByStateParty(StateParty stateParty){
+        Report.findAllByStatePartyAndReportStatus(stateParty, ReportStatus.SUBMITTED)
+    }
 
     /**
      * Checks if all the forms in a report are in status FormStatus.COMPLETED

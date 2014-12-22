@@ -45,8 +45,8 @@ Plugins:
  - See lec 10 notes on dir structure
 
 Misc:
- - Use the errors readability tip by Burt in Bootstrap.groovy
- - use domainClass.load(id) vs domainClass.get(id), no need for flush:true (leave it to the trans)
+OK - Use the errors readability tip by Burt in Bootstrap.groovy
+OK - use domainClass.load(id) vs domainClass.get(id), no need for flush:true (leave it to the trans)
 
 
 
@@ -55,14 +55,14 @@ TODO - cbm
 Country:
 -----------------------
 ##### Step 1:
-Move country drop down to a taglib
+OK - Move country drop down to a taglib
 
-CountryService.getLocale name should be used instead of Domainclass.getName
+OK - CountryService.getLocale name should be used instead of Domainclass.getName
 
-Domain class should not contain injected service
+OK - Domain class should not contain injected service
 
 ##### Step 2
-First level and second level caching should be enabled for country domain
+OK - First level and second level caching should be enabled for country domain
 
 ##### Step 3: 
 
