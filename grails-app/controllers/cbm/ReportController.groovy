@@ -178,7 +178,6 @@ class ReportController {
             reportInstance.formF = reportService.getPublicForms(reportInstance.formF)
             reportInstance.formG = reportService.getPublicForms(reportInstance.formG)
 
-            //TODO reviewSubmit icons shoudl be disabled if report is already submitted
         }
 
 

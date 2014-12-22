@@ -93,7 +93,6 @@ class ReportService {
             errors << [messageSource.getMessage('formZero.label', null, "error", locale), "instance ${formZero.id}"]
         }
 
-        println "validateFormsCompletion:, errors: $errors"
         errors
 
     }
@@ -125,7 +124,6 @@ class ReportService {
             errors << messageSource.getMessage('report.submit.formA.bsl4validation.error', null, "error", locale)
         }
 
-        println "validateFormAPart1BSL4:, errors: $errors"
         errors
     }
 
@@ -270,7 +268,6 @@ class ReportService {
             if (it.visibility == Visibility.PUBLIC) publicForms << it
 
         }
-        println "size of public forms: "+publicForms.size()
         publicForms
     }
 }

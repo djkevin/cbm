@@ -172,13 +172,13 @@
                             <g:link class="submit" action="review" resource="${reportInstance}"><g:message code="default.button.review.label" default="Review and Submit" /></g:link>
                         </g:if>
 
-                        <g:link class="print" action="print" resource="${reportInstance}" target="_blank" params="[public:'true']"
-                                title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
+                        <g:link class="print" action="print" resource="${reportInstance}" target="_blank"
+                                title="${message(code: 'global.print.help')}"><g:message code="global.print.full.label"/>
                         </g:link>
 
                     </sec:ifAnyGranted>                    
-                    <g:link class="print" action="print" resource="${reportInstance}" target="_blank"
-                            title="${message(code: 'global.print.help')}"><g:message code="global.print.label"/>
+                    <g:link class="print" action="print" resource="${reportInstance}" target="_blank" params="[public:'true']"
+                            title="${message(code: 'global.print.help')}"><g:message code="global.print.public.label"/>
                     </g:link>
                 </fieldset>
             </g:form>
