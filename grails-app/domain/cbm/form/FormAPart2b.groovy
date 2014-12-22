@@ -22,9 +22,7 @@ class FormAPart2b extends BaseForm {
     String fundingSourceRemarks
 
 
-    String toString() {
-        return "${programName}"
-    }
+    String toString() { programName }
 
     static mapping = {
         objectives type: 'text'

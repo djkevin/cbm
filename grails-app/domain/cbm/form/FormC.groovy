@@ -18,13 +18,13 @@ class FormC extends BaseForm {
 
     String toString() {
         if (comments != null){
-            return getSummary(stripHTML(comments)) + "..."
+            getSummary(stripHTML(comments)) + "..."
         }
     }
 
     String getSummary(String s){
 		if (!s) return null
-        def summary = s.length() > 20 ? s.substring(0, 20) : s
+        s.length() > 20 ? s.substring(0, 20) : s
     }
 
     String stripHTML(String htmlContent) {

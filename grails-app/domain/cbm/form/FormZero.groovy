@@ -35,23 +35,22 @@ class FormZero extends BaseForm {
     }
 
     static declarationValidator = { val ->
-
+        def error = true
         if (val.nothingToDeclare && val.nothingNewToDeclare) {
-            return 'formZero.bothFieldsChecked.error'
+            error =  'formZero.bothFieldsChecked.error'
         }
-     /*   if (!val.nothingToDeclare && !val.nothingNewToDeclare) {
-            return 'formZero.no.checkbox.selected'
-        }*/
+        /*   if (!val.nothingToDeclare && !val.nothingNewToDeclare) {
+               return 'formZero.no.checkbox.selected'
+           }*/
         if (val.nothingNewToDeclare && !val.yearOfLastDeclaration) {
-            return 'formZero.noYearSelected.error'
+            error =  'formZero.noYearSelected.error'
         }
         if (!val.nothingNewToDeclare && val.yearOfLastDeclaration) {
-            return 'formZero.error.year.without.nothing.new'
+            error =  'formZero.error.year.without.nothing.new'
         }
+        error
 
     }
 
-    String toString() {
-        return "${title}_${id}"
-    }
+    String toString() { "${title}_${id}" }
 }

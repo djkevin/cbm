@@ -34,13 +34,11 @@ class FormE extends BaseForm {
             if (object.biosafetyAndBioSecurity?.hasDeclaration() && (!val || val?.isEmpty())) {
                 err = 'formE.additionalComments.biosafety.blank.error'
             }
-            return err
+            err
         }
 
     }
 
-    String toString() {
-        return id
-    }
+    String toString() { id }
 
 }

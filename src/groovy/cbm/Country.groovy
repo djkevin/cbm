@@ -1,5 +1,5 @@
 package cbm
-
+/*TODO  - delete since now i18ned in DB*/
 enum Country implements org.springframework.context.MessageSourceResolvable {
     AFGHANISTAN,
     ALBANIA,
