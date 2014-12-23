@@ -48,7 +48,7 @@ class FormAPart1aSpec extends ConstraintUnitSpec {
         ''                      || 'blank'
         ' '                     || 'blank'
         getLongString(500)      || 'valid'
-        getLongString(501)      || 'cbm.Address.street1.maxSize'
+        getLongString(501)      || 'maxSize'
     }
 /*
     @Unroll("location '#location' should result in '#error'")
