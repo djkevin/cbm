@@ -13,7 +13,6 @@ class NationalContactService {
         nationalContact.save() // No need to set flush:true - the transaction does it
     }
 
-
     void delete(NationalContact nationalContact) {
         nationalContact.delete()
     }
