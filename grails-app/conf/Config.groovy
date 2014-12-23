@@ -125,6 +125,31 @@ log4j = {
            'net.sf.ehcache.hibernate'
 }
 
+//Based on http://snipplr.com/view/63391/grails-log4j-for-different-environments--an-example/
+environments {
+    test {
+        log4j = {
+            appenders {
+                file name: 'grailsfile', file: 'target/grails.log'
+                file name: 'rootlog', file: 'target/root.log'
+                file name: 'testfile', file: 'target/test.log',
+                        layout: pattern(conversionPattern: "[%d{HH:mm:ss:SSS}] %-5p %c{2}: %m%n")
+            }
+            root { error 'stdout', 'rootlog' }
+            info additivity: false, grailsfile: 'org.codehaus.groovy.grails.commons'
+            all additivity: false, testfile: [
+                    'grails.app.controllers.cbm',
+                    'grails.app.domain.cbm',
+                    'grails.app.services.cbm',
+                    'grails.app.taglib.cbm',
+                    'grails.app.conf.cbm',
+                    'grails.app.filters.cbm'
+            ]
+
+        }
+    }
+}
+
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'cbm.usermgt.SecUser'
