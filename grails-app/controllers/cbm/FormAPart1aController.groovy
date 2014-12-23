@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat
 class FormAPart1aController {
 
     def formAPart1aService
+
     def reportService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -77,6 +78,7 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
+
     /**
      * Extracts containmentUnits (FormAPart1aContainmentUnits) from params
      * Containment units are dynamically added on the UI
@@ -94,12 +96,14 @@ class FormAPart1aController {
         def createDates = params.list('formAPart1ContainmentUnit.created')
         Set<FormAPart1ContainmentUnit> containmentUnits = new HashSet<FormAPart1ContainmentUnit>()
 
+
         for (int i = 0; i < unitIds.size(); i++) {
             FormAPart1ContainmentUnit formAPart1ContainmentUnit
 
             if (unitIds[i] == '') {  //new containment unit
                 formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
             } else {
+
                 formAPart1ContainmentUnit = FormAPart1ContainmentUnit.load(unitIds[i])
 
             }
@@ -120,6 +124,7 @@ class FormAPart1aController {
 
             String timeStampFormat = "yyyy-MM-dd HH:mm:ss.SSS"
             formAPart1ContainmentUnit.created = new SimpleDateFormat(timeStampFormat).parse(createDates[i]);
+
 
             //TODO change to generic error checking at row level
             //TODO use formAPart1ContainmentUnit.validate() method instead of custom integer checks
@@ -198,7 +203,7 @@ class FormAPart1aController {
     @Secured(['ROLE_EDITOR'])
     def addMoreRows() {
 
-        Report r = reportService.getById(params.long('report.id'))
+        Report r = Report.load(params.long('report.id'))
 
         FormAPart1a formAPart1a = new FormAPart1a(report: r);
         FormAPart1ContainmentUnit formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
