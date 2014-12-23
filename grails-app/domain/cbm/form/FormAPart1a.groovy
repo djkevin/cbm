@@ -7,7 +7,7 @@ import cbm.report.Report
 
 class FormAPart1a extends BaseForm {
 
-    static belongsTo = [Report]
+    static belongsTo = [report:Report]
     static hasMany = [formAContainmentUnitList: FormAPart1ContainmentUnit]
 
     static embedded = ['location']
@@ -16,7 +16,6 @@ class FormAPart1a extends BaseForm {
     String responsibleOrganisation
     String financingSources
     String scope
-    Report report
     Boolean declaredInAccordanceWithFormAPart2c
     Address location
     Country country

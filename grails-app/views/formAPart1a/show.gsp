@@ -86,7 +86,7 @@
                 <g:if test="${formAPart1aInstance?.formAContainmentUnitList}">
 
                     <g:set var="formAPart1ContainmentUnitInstanceList" value="${formAPart1aInstance?.formAContainmentUnitList}"></g:set>
-                    <g:render template="listContainmentUnits" contextPath="../formAPart1ContainmentUnit" ></g:render>
+                    <tmpl:listContainmentUnits/>
 
                 </g:if>
                 <g:else>

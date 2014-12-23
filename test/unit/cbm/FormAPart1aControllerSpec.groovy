@@ -1,27 +1,58 @@
 package cbm
 
+import cbm.form.FormAPart1ContainmentUnit
 import cbm.form.FormAPart1a
+import cbm.report.Report
 import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(FormAPart1aController)
-@Mock(FormAPart1a)
+@Mock([FormAPart1a, FormAPart1ContainmentUnit])
 class FormAPart1aControllerSpec extends Specification {
+    
+    def formAPart1aService = [
+            save: { FormAPart1a formAPart1a -> formAPart1a.setId(1)},
+            delete: { FormAPart1a formAPart1a -> formAPart1a = null}
+    ]
+
+    def reportService = [
+            getById: {Long id -> new Report(id: id)}
+    ] as ReportService
+
+
+    def setup(){
+        controller.formAPart1aService = formAPart1aService
+        controller.reportService = reportService
+
+        request.format = 'form'
+    }
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params['facilityName'] = 'facilityName'
+        params['responsibleOrganisation'] = 'responsibleOrganisation'
+        params['financingSources'] = 'financingSources'
+        params['scope'] = 'scope'
+        params['declaredInAccordanceWithFormAPart2c'] = 'true'
+        params['location.street1'] = "street1"
+        params['report.id']="1"
+        params['country.id']="1"
+
     }
 
-    void "Test the index action returns the correct model"() {
+    def populateInvalidContainmentUnits(params){
+       params['formAPart1ContainmentUnit.bioSafetyLevel'] = "BSL3"
+       params['formAPart1ContainmentUnit.unitType'] = "BSL3"
+       params['formAPart1ContainmentUnit.unitSize'] = "notANumber"
+    }
+
+    void "Test the index action returns a 404 error"() {
 
         when:"The index action is executed"
             controller.index()
 
-        then:"The model is correct"
-            !model.formAPart1InstanceList
-            model.formAPart1InstanceCount == 0
+        then:"A 404 error is returned"
+            response.status == 404
     }
 
     void "Test the create action returns the correct model"() {
@@ -29,10 +60,11 @@ class FormAPart1aControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.formAPart1Instance!= null
+            model.formAPart1aInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
+        //TODO check whether containment units are reattached correctly
 
         when:"The save action is executed with an invalid instance"
             def formAPart1 = new FormAPart1a()
@@ -40,7 +72,18 @@ class FormAPart1aControllerSpec extends Specification {
             controller.save(formAPart1)
 
         then:"The create view is rendered again with the correct model"
-            model.formAPart1Instance!= null
+            model.formAPart1aInstance!= null
+            view == 'create'
+
+        when:"The save action is issued with incorrect containment units"
+            response.reset()
+            populateValidParams(params)
+            populateInvalidContainmentUnits(params)
+            formAPart1 = new FormAPart1a(params)
+
+            controller.save(formAPart1)
+        then:"The create view is rendered again with the correct model"
+            model.formAPart1aInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
@@ -51,9 +94,9 @@ class FormAPart1aControllerSpec extends Specification {
             controller.save(formAPart1)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/formAPart1/show/1'
+            response.redirectedUrl == '/formAPart1a/show/1'
             controller.flash.message != null
-            FormAPart1a.count() == 1
+           // FormAPart1a.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -69,7 +112,7 @@ class FormAPart1aControllerSpec extends Specification {
             controller.show(formAPart1)
 
         then:"A model is populated containing the domain instance"
-            model.formAPart1Instance == formAPart1
+            model.formAPart1aInstance == formAPart1
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -85,7 +128,7 @@ class FormAPart1aControllerSpec extends Specification {
             controller.edit(formAPart1)
 
         then:"A model is populated containing the domain instance"
-            model.formAPart1Instance == formAPart1
+            model.formAPart1aInstance == formAPart1
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -93,7 +136,7 @@ class FormAPart1aControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/formAPart1/index'
+            response.redirectedUrl == '/report/index'
             flash.message != null
 
 
@@ -105,16 +148,16 @@ class FormAPart1aControllerSpec extends Specification {
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.formAPart1Instance == formAPart1
+            model.formAPart1aInstance == formAPart1
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            formAPart1 = new FormAPart1a(params).save(flush: true)
+            formAPart1 = new FormAPart1a(params)//.save//(flush: true)
             controller.update(formAPart1)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/formAPart1/show/$formAPart1.id"
+            response.redirectedUrl == "/formAPart1a/show/$formAPart1.id"
             flash.message != null
     }
 
@@ -123,23 +166,40 @@ class FormAPart1aControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/formAPart1/index'
+            response.redirectedUrl == '/report/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def formAPart1 = new FormAPart1a(params).save(flush: true)
+
+            def formAPart1a = new FormAPart1a(params)
+            formAPart1aService.save(formAPart1a)
 
         then:"It exists"
-            FormAPart1a.count() == 1
+            formAPart1a.id == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(formAPart1)
+            controller.delete(formAPart1a)
 
         then:"The instance is deleted"
-            FormAPart1a.count() == 0
-            response.redirectedUrl == '/formAPart1/index'
+            response.redirectedUrl == '/report/show'
             flash.message != null
+    }
+
+
+    void "Test that the addMoreRows actions renders correctly"(){
+
+        given:
+            views['/formAPart1a/_rowContainmentUnit.gsp'] = 'mock template'
+            params['report.id'] = 1
+
+        when:
+            controller.addMoreRows()
+        println "views: "+views
+
+        then:
+            response.text.trim() == 'mock template'
+
     }
 }

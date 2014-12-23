@@ -47,7 +47,7 @@ class NationalContactControllerSpec extends Specification {
             controller.index()
 
         then:"A 404 error is returned"
-        response.status == 404
+            response.status == 404
     }
 
     void "Test the create action returns the correct model"() {

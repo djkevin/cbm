@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat
 class FormAPart1aController {
 
     def formAPart1aService
+    def reportService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -33,10 +34,10 @@ class FormAPart1aController {
         form.formStatus = FormStatus.DRAFT
         form.visibility = Visibility.PUBLIC
 
-        Report r = Report.get(params.long('report.id'))
+        Report r = reportService.getById(params.long('report.id'))
 
         form.location = new Address()
-        form.country = r.getStateParty().country
+        form.country = r.getStateParty()?.country
 
         respond form
     }
@@ -76,7 +77,13 @@ class FormAPart1aController {
         respond formAPart1Instance
     }
 
-
+    /**
+     * Extracts containmentUnits (FormAPart1aContainmentUnits) from params
+     * Containment units are dynamically added on the UI
+     * @param request params
+     * @param formAPart1Instance the parent object
+     * @return Set of valid Containment Units
+     */
     private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, FormAPart1a formAPart1Instance) {
 
         def unitIds = params.list('formAPart1ContainmentUnitId')
@@ -87,14 +94,13 @@ class FormAPart1aController {
         def createDates = params.list('formAPart1ContainmentUnit.created')
         Set<FormAPart1ContainmentUnit> containmentUnits = new HashSet<FormAPart1ContainmentUnit>()
 
-
         for (int i = 0; i < unitIds.size(); i++) {
             FormAPart1ContainmentUnit formAPart1ContainmentUnit
 
             if (unitIds[i] == '') {  //new containment unit
                 formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
             } else {
-                formAPart1ContainmentUnit = FormAPart1ContainmentUnit.findById(unitIds[i])
+                formAPart1ContainmentUnit = FormAPart1ContainmentUnit.load(unitIds[i])
 
             }
             formAPart1ContainmentUnit.bioSafetyLevel = bioSafetyLevels[i]
@@ -115,7 +121,9 @@ class FormAPart1aController {
             String timeStampFormat = "yyyy-MM-dd HH:mm:ss.SSS"
             formAPart1ContainmentUnit.created = new SimpleDateFormat(timeStampFormat).parse(createDates[i]);
 
-            if (unitSize.isInteger()) {  //TODO change to generic error checking at row level
+            //TODO change to generic error checking at row level
+            //TODO use formAPart1ContainmentUnit.validate() method instead of custom integer checks
+            if (unitSize.isInteger()) {
                 containmentUnits.add(formAPart1ContainmentUnit)
             }
         }
@@ -190,13 +198,13 @@ class FormAPart1aController {
     @Secured(['ROLE_EDITOR'])
     def addMoreRows() {
 
-        Report r = Report.load(params.long('report.id'))
+        Report r = reportService.getById(params.long('report.id'))
 
         FormAPart1a formAPart1a = new FormAPart1a(report: r);
         FormAPart1ContainmentUnit formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
         formAPart1a.addToFormAContainmentUnitList(formAPart1ContainmentUnit)
 
-        render template: "../formAPart1ContainmentUnit/rowContainmentUnit", model: [formAPart1ContainmentUnitInstanceList: formAPart1a?.formAContainmentUnitList]
+        render template: "rowContainmentUnit", model: [formAPart1ContainmentUnitInstanceList: formAPart1a?.formAContainmentUnitList]
 
     }
 

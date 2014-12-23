@@ -18,7 +18,7 @@
 </div>
 <div><g:textField class="longText" name="facilityName" maxlength="${formAPart1aInstance?.constraints?.facilityName?.maxSize}" required="" value="${formAPart1aInstance?.facilityName}"/></div>
 
-<div class="test">
+<div>
     <label for="declaredInAccordanceWithFormAPart2c">
         <g:message code="formAPart1.declaredInAccordanceWithFormAPart2c.label"
                    default="Declared in accordance with FormAPart2c"/>
@@ -28,7 +28,6 @@
 
 </div>
 
-
 <div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'responsibleOrganisation', 'error')} required">
 	<label for="responsibleOrganisation">
 		<g:message code="formAPart1.responsibleOrganisation.label" default="Responsible Organisation" />
@@ -36,17 +35,6 @@
 	</label>
 </div>
 <div><g:textArea class="longTextSml" name="responsibleOrganisation" cols="40" rows="5" maxlength="${formAPart1aInstance?.constraints?.responsibleOrganisation?.maxSize}" required="" value="${formAPart1aInstance?.responsibleOrganisation}"/></div>
-
-%{--<div class="fieldcontain ${hasErrors(bean: formAPart1aInstance, field: 'location', 'error')} required">
-    <label for="location"> <g:message
-            code="formAPart1.location.label" default="Location" /> <span
-            class="required-indicator">*</span>
-    </label>
-</div>
-<div>
-    <g:textArea class="twoCol" name="location" cols="40" rows="5"
-                maxlength="${formAPart1aInstance?.constraints?.location?.maxSize}" required="" value="${formAPart1aInstance?.location}" />
-</div>--}%
 
 <br/>
 <g:set var="addressInstance" value="${formAPart1aInstance}"></g:set>
@@ -157,7 +145,7 @@
         </thead>
         <tbody >
             <g:set var="formAPart1ContainmentUnitInstanceList" value="${formAPart1aInstance?.formAContainmentUnitList}"></g:set>
-            <g:render template="../formAPart1ContainmentUnit/rowContainmentUnit" />
+            <tmpl:rowContainmentUnit/>
         </tbody>
     </table>
     <div  class="message" id="ajax-message" style="display: none"></div>
