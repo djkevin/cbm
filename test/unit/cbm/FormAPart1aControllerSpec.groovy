@@ -12,7 +12,8 @@ class FormAPart1aControllerSpec extends Specification {
     
     def formAPart1aService = [
             save: { FormAPart1a formAPart1a -> formAPart1a.setId(1)},
-            delete: { FormAPart1a formAPart1a -> formAPart1a = null}
+            delete: { FormAPart1a formAPart1a -> formAPart1a = null},
+            deleteContainmentUnit: { long id-> }
     ]
 
     def reportService = [
@@ -96,7 +97,6 @@ class FormAPart1aControllerSpec extends Specification {
         then:"A redirect is issued to the show action"
             response.redirectedUrl == '/formAPart1a/show/1'
             controller.flash.message != null
-           // FormAPart1a.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -187,19 +187,27 @@ class FormAPart1aControllerSpec extends Specification {
             flash.message != null
     }
 
+    void "Test that the addMoreRows actions renders the correct template"(){
 
-    void "Test that the addMoreRows actions renders correctly"(){
-
-        given:
+        given:"The addMoreRows action is called for a given report"
             views['/formAPart1a/_rowContainmentUnit.gsp'] = 'mock template'
             params['report.id'] = 1
 
-        when:
+        when:"The action is called"
             controller.addMoreRows()
-        println "views: "+views
+
+        then:"The response displays the correct template"
+            response.text.trim() == 'mock template'
+    }
+
+    void "Test that the deleteContainmentUnit action"(){
+        given:"The deleteContainmentUnit action is called for a valid containment unit id"
+            params['id']=1
+
+        when:"The delete containment unit action is called"
+             controller.deleteContainmentUnit()
 
         then:
-            response.text.trim() == 'mock template'
-
+            response.text == '{"message":"default.deleted.message"}'
     }
 }
