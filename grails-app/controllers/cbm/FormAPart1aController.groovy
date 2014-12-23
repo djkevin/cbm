@@ -7,26 +7,26 @@ import cbm.form.FormAPart1a
 import cbm.report.Report
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
-import grails.transaction.Transactional
 
 import java.text.SimpleDateFormat
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormAPart1aController {
+
+    def formAPart1aService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
 
-		response.sendError(404)
+        response.sendError(404)
     }
 
     def show(FormAPart1a formAPart1Instance) {
         respond formAPart1Instance
     }
 
-	@Secured(['ROLE_EDITOR'])
+    @Secured(['ROLE_EDITOR'])
     def create() {
 
         FormAPart1a form = new FormAPart1a(params)
@@ -38,11 +38,10 @@ class FormAPart1aController {
         form.location = new Address()
         form.country = r.getStateParty().country
 
-        respond  form
+        respond form
     }
 
-	@Secured(['ROLE_EDITOR'])
-    @Transactional
+    @Secured(['ROLE_EDITOR'])
     def save(FormAPart1a formAPart1Instance) {
 
         if (formAPart1Instance == null) {
@@ -61,7 +60,7 @@ class FormAPart1aController {
         }
 
 
-        formAPart1Instance.save flush: true
+        formAPart1aService.save(formAPart1Instance)
 
         request.withFormat {
             form {
@@ -72,59 +71,58 @@ class FormAPart1aController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
+    @Secured(['ROLE_EDITOR'])
     def edit(FormAPart1a formAPart1Instance) {
         respond formAPart1Instance
     }
 
-	
+
     private Set<FormAPart1ContainmentUnit> getContainmentUnitsFromParams(def params, FormAPart1a formAPart1Instance) {
 
-        def containmentUnitIds = params.list('formAPart1ContainmentUnitId')
-        def containmentUnitBioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
-        def containmentUnitUnitTypes = params.list('formAPart1ContainmentUnit.unitType')
-        def containmentUnitUnitSize = params.list('formAPart1ContainmentUnit.unitSize')
-        def containmentUnitComments = params.list('formAPart1ContainmentUnit.comment')
-        def containmentUnitCreateDates = params.list('formAPart1ContainmentUnit.created')
-        Set<FormAPart1ContainmentUnit> results = new HashSet<FormAPart1ContainmentUnit>()
+        def unitIds = params.list('formAPart1ContainmentUnitId')
+        def bioSafetyLevels = params.list('formAPart1ContainmentUnit.bioSafetyLevel')
+        def unitTypes = params.list('formAPart1ContainmentUnit.unitType')
+        def unitSizes = params.list('formAPart1ContainmentUnit.unitSize')
+        def unitComments = params.list('formAPart1ContainmentUnit.comment')
+        def createDates = params.list('formAPart1ContainmentUnit.created')
+        Set<FormAPart1ContainmentUnit> containmentUnits = new HashSet<FormAPart1ContainmentUnit>()
 
 
-        for (int i = 0; i < containmentUnitIds.size(); i++) {
+        for (int i = 0; i < unitIds.size(); i++) {
             FormAPart1ContainmentUnit formAPart1ContainmentUnit
 
-            if (containmentUnitIds[i] == '') {  //new containment unit
+            if (unitIds[i] == '') {  //new containment unit
                 formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
             } else {
-                formAPart1ContainmentUnit = FormAPart1ContainmentUnit.findById(containmentUnitIds[i])
+                formAPart1ContainmentUnit = FormAPart1ContainmentUnit.findById(unitIds[i])
 
             }
-            formAPart1ContainmentUnit.bioSafetyLevel = containmentUnitBioSafetyLevels[i]
-            formAPart1ContainmentUnit.unitType = containmentUnitUnitTypes[i]
+            formAPart1ContainmentUnit.bioSafetyLevel = bioSafetyLevels[i]
+            formAPart1ContainmentUnit.unitType = unitTypes[i]
 
-            String unitSize = containmentUnitUnitSize[i].toString().trim()
+            String unitSize = unitSizes[i].toString().trim()
             if (unitSize.isInteger()) {
                 formAPart1ContainmentUnit.unitSize = unitSize.toInteger()
             } else {
-                def a= new Object[1]
+                def a = new Object[1]
                 a[0] = unitSize
-                formAPart1Instance.errors.reject("formAPart1a.containment.unit.size.error",a, "Unit size error")
+                formAPart1Instance.errors.reject("formAPart1a.containment.unit.size.error", a, "Unit size error")
             }
 
-            formAPart1ContainmentUnit.comment = containmentUnitComments[i]
+            formAPart1ContainmentUnit.comment = unitComments[i]
             formAPart1ContainmentUnit.facility = formAPart1Instance
 
             String timeStampFormat = "yyyy-MM-dd HH:mm:ss.SSS"
-            formAPart1ContainmentUnit.created = new SimpleDateFormat(timeStampFormat).parse(containmentUnitCreateDates[i]);
+            formAPart1ContainmentUnit.created = new SimpleDateFormat(timeStampFormat).parse(createDates[i]);
 
-            if (unitSize.isInteger()){  //TODO change to generic error checking at row level
-                results.add(formAPart1ContainmentUnit)
+            if (unitSize.isInteger()) {  //TODO change to generic error checking at row level
+                containmentUnits.add(formAPart1ContainmentUnit)
             }
         }
-        return results
+        containmentUnits
     }
 
-	@Secured(['ROLE_EDITOR'])
-    @Transactional
+    @Secured(['ROLE_EDITOR'])
     def update(FormAPart1a formAPart1Instance) {
         if (formAPart1Instance == null) {
             notFound()
@@ -142,7 +140,7 @@ class FormAPart1aController {
             return
         }
 
-        formAPart1Instance.save flush: true
+        formAPart1aService.save(formAPart1Instance)
 
         request.withFormat {
             form {
@@ -153,8 +151,7 @@ class FormAPart1aController {
         }
     }
 
-	@Secured(['ROLE_EDITOR'])
-    @Transactional
+    @Secured(['ROLE_EDITOR'])
     def delete(FormAPart1a formAPart1Instance) {
 
         if (formAPart1Instance == null) {
@@ -162,7 +159,7 @@ class FormAPart1aController {
             return
         }
 
-        formAPart1Instance.delete flush: true
+        formAPart1aService.delete(formAPart1Instance)
 
         request.withFormat {
             form {
@@ -177,7 +174,7 @@ class FormAPart1aController {
         request.withFormat {
             form {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'formAPart1.label', default: 'FormAPart1'), params.id])
-                redirect action: "index", method: "GET"
+                redirect controller: "report", action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }
         }
@@ -185,16 +182,15 @@ class FormAPart1aController {
 
     def print(FormAPart1a formAPart1aInstance) {
         // to force browser to download PDF, add parameter  filename: '<name>.pdf'
-        def fileName = formAPart1aInstance.report.getReportName() + "_"+ formAPart1aInstance.title
-        response.setHeader("Content-Disposition", "attachment; filename="+fileName+".pdf")
+        def fileName = formAPart1aInstance.report.getReportName() + "_" + formAPart1aInstance.title
+        response.setHeader("Content-Disposition", "attachment; filename=" + fileName + ".pdf")
         renderPdf template: 'print', contentType: 'application/pdf', model: [formAPart1aInstance: formAPart1aInstance]
     }
 
-	@Secured(['ROLE_EDITOR'])
+    @Secured(['ROLE_EDITOR'])
     def addMoreRows() {
 
-        def reportId = params.long('report.id')
-        Report r = Report.findById(reportId)
+        Report r = Report.load(params.long('report.id'))
 
         FormAPart1a formAPart1a = new FormAPart1a(report: r);
         FormAPart1ContainmentUnit formAPart1ContainmentUnit = new FormAPart1ContainmentUnit()
@@ -204,17 +200,16 @@ class FormAPart1aController {
 
     }
 
-	@Secured(['ROLE_EDITOR'])
-    @Transactional
+    @Secured(['ROLE_EDITOR'])
     def deleteContainmentUnit() {
-        def formAP1CUId = params.long('id')
-        FormAPart1ContainmentUnit formAPart1ContainmentUnitInstance = FormAPart1ContainmentUnit.findById(formAP1CUId)
+        def containmentUnitId = params.long('id')
 
-        formAPart1ContainmentUnitInstance.delete flush: true
+        formAPart1aService.deleteContainmentUnit(containmentUnitId)
+
         request.withFormat {
             form {
                 //Ajax Call - flash message cannot be used since rendered every RESPONSE
-                def msg = message(code: 'default.deleted.message', args: [message(code: 'formAPart1.containmentUnit', default: 'FormAPart1ContainmentUnit'), formAPart1ContainmentUnitInstance.id])
+                def msg = message(code: 'default.deleted.message', args: [message(code: 'formAPart1.containmentUnit', default: 'FormAPart1ContainmentUnit'), containmentUnitId])
                 render([message: msg] as JSON)
             }
             '*' { render status: OK }
