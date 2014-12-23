@@ -3,7 +3,7 @@ hibernate {
     cache.use_query_cache = true
     cache.region.factory_class = 'net.sf.ehcache.hibernate.EhCacheRegionFactory' // Hibernate 3
 //    cache.region.factory_class = 'org.hibernate.cache.ehcache.EhCacheRegionFactory' // Hibernate 4
-/*    show_sql = true
+  /*  show_sql = true
     format_sql=true
     use_sql_comments=true*/
 }
@@ -23,6 +23,18 @@ environments {
         }
     }
     test {
+        dataSource {
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:mem:testDb"
+            pooled = true
+            jmxExport = true
+            driverClassName = "org.h2.Driver"
+            username = "sa"
+            password = ""
+        }
+    }
+
+    test_work {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://icts-sdu-jdev2:3306/testCBM"
