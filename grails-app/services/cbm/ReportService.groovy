@@ -15,6 +15,7 @@ class ReportService {
 
     def messageSource
 
+
     List<Report> findAllReportsByStateParty(StateParty stateParty){
         Report.findAllByStateParty(stateParty)
     }
@@ -156,37 +157,30 @@ class ReportService {
 
         boolean hasBSL4 = false
 
-        def locale = LocaleContextHolder.locale
-
         formAPart1s.each {
-            if (it.hasBSL4()) {
-                hasBSL4 = true
-            }
-
+            if (it.hasBSL4()) { hasBSL4 = true}
         }
 
         if (!hasBSL4 && !formAPart1b) {
-            errors << messageSource.getMessage('report.submit.formA.bsl4validation.error', null, "error", locale)
+            errors << messageSource.getMessage('report.submit.formA.bsl4validation.error', null, "error", LocaleContextHolder.locale)
         }
 
         errors
     }
 
     /**
-     * If Form A Part 2 a is filled in, the user needs to fill in the Existing national Programmes (Form  A Part 2b)
+     * If Form A Part 2a is filled in, the user needs to fill in the Existing national Programmes (Form  A Part 2b)
      * @param report
      * @return error array if no national programmes are declared
      */
     def validateNationalProgrammes(Report report) {
 
         def errors = []
-        def locale = LocaleContextHolder.locale
-
         def formAPart2a = report.formAPart2a
         def formAPart2bs = report.formAPart2b
 
         if (formAPart2a?.existingNationalProgrammes && !formAPart2bs) {
-            errors << messageSource.getMessage('report.submit.formA.existing.programmes.error', null, "error", locale)
+            errors << messageSource.getMessage('report.submit.formA.existing.programmes.error', null, "error", LocaleContextHolder.locale)
         }
         errors
     }
