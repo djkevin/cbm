@@ -33,6 +33,10 @@ grails.project.dependency.resolution = {
     checksums true // Whether to verify checksums on resolve
     legacyResolve false // whether to do a secondary resolve on plugin installation, not advised and here for backwards compatibility
 
+    def gebVersion = "0.9.2"
+    def phantomJSVersion = "1.0.4"
+    def webdriverVersion = "2.40.0"
+
     repositories {
         inherits true // Whether to inherit repository definitions from plugins
 
@@ -43,6 +47,9 @@ grails.project.dependency.resolution = {
         mavenCentral()
 		mavenRepo 'http://repo.spring.io/milestone' // fix issue with spring security core plugin download, applies to ggts 3.4.0 and Linux (at least).
 
+        // For Geb snapshot
+//        mavenRepo "http://oss.sonatype.org/content/repositories/snapshots"
+
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
@@ -51,6 +58,19 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
+        test "org.gebish:geb-junit3:${gebVersion}"
+        test "org.gebish:geb-junit4:${gebVersion}"
+        test "org.gebish:geb-spock:${gebVersion}"
+
+        test "org.seleniumhq.selenium:selenium-support:${webdriverVersion}"
+        test "org.seleniumhq.selenium:selenium-chrome-driver:${webdriverVersion}"
+        test "org.seleniumhq.selenium:selenium-firefox-driver:${webdriverVersion}"
+        test "org.seleniumhq.selenium:selenium-ie-driver:${webdriverVersion}"
+
+        test("com.github.detro.ghostdriver:phantomjsdriver:${phantomJSVersion}") {
+            transitive = false
+        }
+
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
         runtime 'mysql:mysql-connector-java:5.1.24'
 
@@ -85,6 +105,12 @@ grails.project.dependency.resolution = {
 
         runtime ":resources:1.2.7"
         runtime ":joda-time:1.4"
+
+
+        test ":remote-control:1.4"
+        test ":geb:${gebVersion}"
+
+        //test ":geb:$gebVersion"  Does not work - conflicts with unit tests
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
