@@ -2,6 +2,7 @@ package cbm
 
 import cbm.form.FormAPart2b
 import grails.test.mixin.TestFor
+import spock.lang.IgnoreRest
 import spock.lang.Unroll
 
 /**
@@ -48,8 +49,8 @@ class FormAPart2bSpec extends ConstraintUnitSpec {
         null                || 'nullable'
         ''                  || 'blank'
         ' '                 || 'blank'
-        getLongString(50000) || 'valid'
-        getLongString(50001) || 'maxSize'
+        getLongString(65000) || 'valid'
+        getLongString(65001) || 'maxSize'
     }
 
     @Unroll("proportionContracted '#proportionContracted' should result in '#error'")
@@ -62,11 +63,11 @@ class FormAPart2bSpec extends ConstraintUnitSpec {
 
         where:
         proportionContracted || error
-        null                 || 'nullable'
-        ''                   || 'blank'
-        ' '                  || 'blank'
-        getLongString(50000)  || 'valid'
-        getLongString(50001)  || 'maxSize'
+        null                 || 'valid'
+        ''                   || 'valid'
+        ' '                  || 'valid'
+        getLongString(65000)  || 'valid'
+        getLongString(65001)  || 'maxSize'
     }
 
     @Unroll("summaryObjectivesContractor '#summaryObjectivesContractor' should result in '#error'")
@@ -79,29 +80,13 @@ class FormAPart2bSpec extends ConstraintUnitSpec {
 
         where:
         summaryObjectivesContractor || error
-        null                        || 'nullable'
-        ''                          || 'blank'
-        ' '                         || 'blank'
-        getLongString(50000)         || 'valid'
-        getLongString(50001)         || 'maxSize'
+        null                        || 'valid'
+        ''                          || 'valid'
+        ' '                         || 'valid'
+        getLongString(65000)         || 'valid'
+        getLongString(65001)         || 'maxSize'
     }
 
-    @Unroll("declaration '#declaration' should result in '#error'")
-    def "test formAPart2b declaration constraints"() {
-        when:
-        domain.declaration = declaration
-
-        then:
-        validateConstraints(domain, 'declaration', error)
-
-        where:
-        declaration         || error
-        null                || 'nullable'
-        ''                  || 'blank'
-        ' '                 || 'blank'
-        getLongString(50000) || 'valid'
-        getLongString(50001) || 'maxSize'
-    }
 
     @Unroll("value '#amount' should result in '#error'")
     def "test formAPart2b amount constraints"() {
@@ -112,32 +97,16 @@ class FormAPart2bSpec extends ConstraintUnitSpec {
         validateConstraints(domain, 'amount', error)
 
         where:
-        amount        | error
-        null          | 'nullable'
-        0             | 'min' // less than min amount
-        23.85         | 'valid'
-        1234.56       | 'valid'
-        1000000000.00 | 'valid' // max amount
-        999999999.99  | 'valid' // a little less than max amount
-        1000000000.01 | 'max' // more than max amount
+        amount        || error
+        null          || 'nullable'
+        0             || 'min' // less than min amount
+        23.85         || 'valid'
+        1234.56       || 'valid'
+        1000000000.00 || 'valid' // max amount
+        999999999.99  || 'valid' // a little less than max amount
+        1000000000.01 || 'max' // more than max amount
     }
 
-//    @Unroll("value '#organisationalStructureDiagram' should result in '#error'")
-//    def "test formAPart2b organisationalStructureDiagram constraints"() {
-//        when:
-//        domain.organisationalStructureDiagram = organisationalStructureDiagram
-//
-//        then:
-//        validateConstraints(domain, 'organisationalStructureDiagram', error)
-//
-//        where:
-//        organisationalStructureDiagram | error
-//        null                           | 'valid'
-//        new byte[1024]                 | 'valid'
-////        new byte[5242880]                     | 'valid' //1024 * 1024 * 5 Commented because takes infinitely long
-////        new byte[5242881]              | 'max'//1024 * 1024 * 5+1
-//
-//    }
 
     @Unroll("source '#source' should result in '#error'")
     def "test formAPart2b source constraints"() {

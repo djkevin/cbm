@@ -1,6 +1,9 @@
 package cbm
 
 import cbm.admin.StateParty
+import cbm.constants.Language
+import cbm.constants.PublicationStatus
+import cbm.constants.ReportStatus
 import cbm.report.Report
 import grails.test.mixin.TestFor
 import spock.lang.Specification
@@ -18,26 +21,6 @@ class ReportSpec extends Specification {
     }
 
 
-  /*  void  "test find report by stateParty"(){
-        setup:
-        mockDomain(Report)
-        mockDomain(StateParty)
-        def stateParty =  new StateParty(country: country).save()
-
-        when:
-        new Report(language:language, year:2000, stateParty: stateParty,
-                                reportStatus: "Draft", publicationStatus: "Not published", officialVersion:true
-                                ).save(true)
-
-        then:
-        Report.findAll().size()>0
-        //Report.findAllByLanguage(language).size() == 1
-
-        where:
-        language = Language.ENGLISH
-        country = Country.MAURITIUS
-    }*/
-
     def "test create 2 reports for the same year language and country"(){
         setup:
         mockDomain Report
@@ -46,22 +29,22 @@ class ReportSpec extends Specification {
 
         def stateParty =  new StateParty(country: Country.MAURITIUS)
         def reportA = new Report(language:language, year:2000,stateParty: stateParty,
-                reportStatus: "Draft", publicationStatus: "Not published", officialVersion:true
+                reportStatus: ReportStatus.DRAFT, publicationStatus: PublicationStatus.NOTPUBLISHED, officialVersion:true
         )
         mockForConstraintsTests(Report, [reportA])
 
         when:
-        def reportB = new Report(language:language, year:2000,stateParty: stateParty,
-                reportStatus: "Draft", publicationStatus: "Not published", officialVersion:true
-        )
+            def reportB = new Report(language:language, year:2000,stateParty: stateParty,
+                    reportStatus: ReportStatus.DRAFT, publicationStatus: PublicationStatus.NOTPUBLISHED, officialVersion:true
+            )
 
         then:
-        assertFalse reportB.validate()
-        assertEquals "unique", reportB.errors["language"]
+            reportB.validate() == false
+            reportB.errors["language"] == "unique"
 
         where:
-        language = Language.ENGLISH
-        country = Country.MAURITIUS
+            language = Language.ENGLISH
+            country = Country.MAURITIUS
 
     }
 }

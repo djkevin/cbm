@@ -29,9 +29,9 @@ class FormESpec extends ConstraintUnitSpec {
         validateConstraints(domain, 'additionalComments', error)
 
         where:
-        additionalComments  || error                                              || developmentAndMeansOfDelivery
-        ''                  || 'formE.additionalComments.development.blank.error' || developmentAndMeansOfDeliveryWithDeclaration()
-        ''|| 'valid'||developmentAndMeansOfDeliveryWithoutDeclaration()
+        additionalComments || error                                              || developmentAndMeansOfDelivery
+        ''                 || 'formE.additionalComments.development.blank.error' || developmentAndMeansOfDeliveryWithDeclaration()
+        ''                 || 'valid'                                            || developmentAndMeansOfDeliveryWithoutDeclaration()
     }
 
     DeclarationOfMeasures developmentAndMeansOfDeliveryWithDeclaration() {

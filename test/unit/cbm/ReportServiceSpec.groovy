@@ -7,9 +7,7 @@ import grails.buildtestdata.mixin.Build
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
+
 @TestFor(ReportService)
 @Build([FormAPart1a, FormAPart1b, Report, FormAPart1ContainmentUnit, cbm.admin.Country,FormAPart2b])
 class ReportServiceSpec extends Specification {

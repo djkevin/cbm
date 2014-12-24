@@ -50,40 +50,6 @@ class FormAPart1aSpec extends ConstraintUnitSpec {
         getLongString(500)      || 'valid'
         getLongString(501)      || 'maxSize'
     }
-/*
-    @Unroll("location '#location' should result in '#error'")
-    def "test formAPart1a location constraints"() {
-        when:
-        domain.location = location
-
-        then:
-        validateConstraints(domain, 'location', error)
-
-        where:
-        location           || error
-        null               || 'nullable'
-        ''                 || 'blank'
-        ' '                || 'blank'
-        getLongString(500) || 'valid'
-        getLongString(501) || 'maxSize'
-    }
-*/
-/*    @Unroll("postalAddress '#postalAddress' should result in '#error'")
-    def "test formAPart1a postalAddress constraints"() {
-        when:
-        domain.postalAddress = postalAddress
-
-        then:
-        validateConstraints(domain, 'postalAddress', error)
-
-        where:
-        postalAddress      || error
-        null               || 'nullable'
-        ''                 || 'blank'
-        ' '                || 'blank'
-        getLongString(500) || 'valid'
-        getLongString(501) || 'maxSize'
-    }*/
 
     @Unroll("financingSources '#financingSources' should result in '#error'")
     def "test formAPart1a financingSources constraints"() {

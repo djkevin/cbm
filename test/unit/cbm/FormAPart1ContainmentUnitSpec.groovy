@@ -2,6 +2,7 @@ package cbm
 
 import cbm.form.FormAPart1ContainmentUnit
 import grails.test.mixin.TestFor
+import spock.lang.IgnoreRest
 import spock.lang.Unroll
 
 /**
@@ -29,7 +30,7 @@ class FormAPart1ContainmentUnitSpec extends ConstraintUnitSpec {
         bioSafetyLevel  || error
         'Unknown'       || 'inList'
         null            || 'nullable'
-        ''              || 'valid'  //blanks work for inList
+        ''              || 'blank'
         'BSL4'          || 'valid'
         'Enhanced BSL3' || 'valid'
     }
@@ -46,7 +47,7 @@ class FormAPart1ContainmentUnitSpec extends ConstraintUnitSpec {
         unitType           || error
         'Unknown'          || 'inList'
         null               || 'nullable'
-        ''                 || 'valid'  //blanks work for inList
+        ''                 || 'blank'
         'treatment module' || 'valid'
         'laboratory'       || 'valid'
     }
