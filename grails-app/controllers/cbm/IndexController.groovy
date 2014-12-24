@@ -8,9 +8,9 @@ import grails.util.Environment
 class   IndexController {
 
     def index() {
-		if (Environment.getCurrent()==Environment.DEVELOPMENT) {
+        //	if (Environment.getCurrent()==Environment.DEVELOPMENT) {
 			// simply render the index.gsp
-		} else {	
+        //	} else {
 			// in TEST or PROD render the admin or report page, depending on granted roles. 
 			// This can be problematic if a user is granted both ADMIN role AND another role (any other role)! 
 			// In principle users with ADMIN role should have NO other roles assigned, otherwise there's conflict of interest!
@@ -23,7 +23,7 @@ class   IndexController {
 				println "redirecting to report page"
 				redirect controller: "report", action:"index"
 			}
-		}
+        //}
 
     }
 }
