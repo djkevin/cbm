@@ -17,7 +17,8 @@ class FormAPart1aControllerSpec extends Specification {
     ]
 
     def reportService = [
-            getById: {Long id -> new Report(id: id)}
+            getById: { Long id -> new Report(id: id) },
+            load   : { Long id -> new Report(id: id) }
     ] as ReportService
 
 

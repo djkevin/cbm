@@ -38,6 +38,10 @@ class ReportService {
         Report.get(id)
     }
 
+    Report load(long id){
+        Report.load(id)
+    }
+
     /**
      * saves to the db. used for both create and update
      * @param report
