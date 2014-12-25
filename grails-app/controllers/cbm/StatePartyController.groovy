@@ -7,8 +7,9 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_ADMIN'])
-@Transactional(readOnly = true)
 class StatePartyController {
+
+    def statePartyService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,7 +26,6 @@ class StatePartyController {
         respond new StateParty(params)
     }
 
-    @Transactional
     def save(StateParty statePartyInstance) {
         if (statePartyInstance == null) {
             notFound()
@@ -37,7 +37,7 @@ class StatePartyController {
             return
         }
 
-        statePartyInstance.save flush:true
+        statePartyService.save(statePartyInstance)
 
         request.withFormat {
             form {
@@ -52,7 +52,6 @@ class StatePartyController {
         respond statePartyInstance
     }
 
-    @Transactional
     def update(StateParty statePartyInstance) {
         if (statePartyInstance == null) {
             notFound()
@@ -64,7 +63,7 @@ class StatePartyController {
             return
         }
 
-        statePartyInstance.save flush:true
+        statePartyService.save(statePartyInstance)
 
         request.withFormat {
             form {
@@ -75,7 +74,6 @@ class StatePartyController {
         }
     }
 
-    @Transactional
     def delete(StateParty statePartyInstance) {
 
         if (statePartyInstance == null) {
@@ -83,7 +81,7 @@ class StatePartyController {
             return
         }
 
-        statePartyInstance.delete flush:true
+        statePartyService.delete(statePartyInstance)
 
         request.withFormat {
             form {

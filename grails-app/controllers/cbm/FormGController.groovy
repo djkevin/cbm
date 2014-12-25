@@ -10,16 +10,13 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormGController {
+
+    def formGService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-		/*
-        params.max = Math.min(max ?: 10, 100)
-        respond FormG.list(params), model:[formGInstanceCount: FormG.count()]
-		*/		
 		response.sendError(404)
     }
 
@@ -43,7 +40,6 @@ class FormGController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def save(FormG formGInstance) {
 
         if (formGInstance == null) {
@@ -56,7 +52,7 @@ class FormGController {
             return
         }
 
-        formGInstance.save flush:true
+        formGService.save(formGInstance)
 
         request.withFormat {
             form {
@@ -73,7 +69,6 @@ class FormGController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def update(FormG formGInstance) {
         if (formGInstance == null) {
             notFound()
@@ -85,7 +80,7 @@ class FormGController {
             return
         }
 
-        formGInstance.save flush:true
+        formGService.save(formGInstance)
 
         request.withFormat {
             form {
@@ -97,7 +92,6 @@ class FormGController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def delete(FormG formGInstance) {
 
         if (formGInstance == null) {
@@ -105,7 +99,7 @@ class FormGController {
             return
         }
 
-        formGInstance.delete flush:true
+        formGService.delete(formGInstance)
 
         request.withFormat {
             form {

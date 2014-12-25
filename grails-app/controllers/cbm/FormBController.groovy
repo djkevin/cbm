@@ -9,16 +9,12 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormBController {
+    def formBService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-		/*
-        params.max = Math.min(max ?: 10, 100)
-        respond FormB.list(params), model:[formBInstanceCount: FormB.count()]
-		*/		
 		response.sendError(404)
     }
 
@@ -36,7 +32,6 @@ class FormBController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def save(FormB formBInstance) {
         if (formBInstance == null) {
             notFound()
@@ -48,7 +43,7 @@ class FormBController {
             return
         }
 
-        formBInstance.save flush:true
+        formBService.save(formBInstance)
 
         request.withFormat {
             form {
@@ -66,7 +61,6 @@ class FormBController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def update(FormB formBInstance) {
         if (formBInstance == null) {
             notFound()
@@ -78,7 +72,7 @@ class FormBController {
             return
         }
 
-        formBInstance.save flush:true
+        formBService.save(formBInstance)
 
         request.withFormat {
             form {
@@ -90,7 +84,6 @@ class FormBController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def delete(FormB formBInstance) {
 
         if (formBInstance == null) {
@@ -98,7 +91,7 @@ class FormBController {
             return
         }
 
-        formBInstance.delete flush:true
+        formBService.delete(formBInstance)
 
         request.withFormat {
             form {

@@ -9,8 +9,9 @@ import grails.transaction.Transactional
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormCController {
+
+    def formCService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -36,7 +37,6 @@ class FormCController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def save(FormC formCInstance) {
         if (formCInstance == null) {
             notFound()
@@ -48,7 +48,7 @@ class FormCController {
             return
         }
 
-        formCInstance.save flush:true
+        formCService.save(formCInstance)
 
         request.withFormat {
             form {
@@ -65,7 +65,6 @@ class FormCController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def update(FormC formCInstance) {
         if (formCInstance == null) {
             notFound()
@@ -77,7 +76,7 @@ class FormCController {
             return
         }
 
-        formCInstance.save flush:true
+        formCService.save(formCInstance)
 
         request.withFormat {
             form {
@@ -89,7 +88,6 @@ class FormCController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def delete(FormC formCInstance) {
 
         if (formCInstance == null) {
@@ -97,7 +95,7 @@ class FormCController {
             return
         }
 
-        formCInstance.delete flush:true
+        formCService.delete(formCInstance)
 
         request.withFormat {
             form {
