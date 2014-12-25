@@ -202,7 +202,7 @@ class FormAPart1aController {
 
     @Secured(['ROLE_EDITOR'])
     def addMoreRows() {
-
+    
         Report r = reportService.load(params.long('report.id'))
 
         FormAPart1a formAPart1a = new FormAPart1a(report: r);

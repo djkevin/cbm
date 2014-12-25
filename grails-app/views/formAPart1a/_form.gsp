@@ -150,7 +150,7 @@
     </table>
     <div  class="message" id="ajax-message" style="display: none"></div>
 
-    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="appendRows(data)">
+    <g:remoteLink id="addRowsLink" action="addMoreRows" update=""  onSuccess="appendRows(data)" params="['report.id':formAPart1aInstance?.report?.id]">
         <i class="fa fa-plus-square-o"></i>
         ${message(code: 'default.add.label', args: [message(code: 'formAPart1.containmentUnit', default: 'Containment Unit')])}
     </g:remoteLink>
