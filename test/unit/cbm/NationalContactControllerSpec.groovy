@@ -170,8 +170,6 @@ class NationalContactControllerSpec extends Specification {
             controller.delete(nationalContact)
 
         then:"The instance is deleted"
-            println "nationalcontact: "+response.redirectedUrl
-           // nationalContact == null   //TODO check for null? nationalContact== incomplete
             response.redirectedUrl == "/report/show/${params.report.id}"
             flash.message != null
     }

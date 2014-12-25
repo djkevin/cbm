@@ -34,11 +34,11 @@ class LoginAuthSpec extends GebReportingSpec {
         loginButton.click()
 
         then: "I am being redirected to the index page"
-        at IndexPage
+        at ReportListPage
         $().text().contains("You are logged in as")
     }
 
-    def "display report list"() {
+/*    def "display report list"() {
         given : "I am at the index page"
         to IndexPage
 
@@ -48,17 +48,17 @@ class LoginAuthSpec extends GebReportingSpec {
         then: "I am being redirected to the report list page"
         at ReportListPage
         $().text().contains("Reports in progress")
-    }
+    }*/
 
     def "change language to French"() {
         given : "I am at the index page"
-        to IndexPage
+        to ReportListPage
 
         when: "I change language to french"
         frenchLangButton.click()
 
         then: "I am being redirected to the report list page"
-        at IndexPage
+        at ReportListPage
         $().text().contains("Vous êtes connecté en tant que")
     }
 
