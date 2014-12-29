@@ -41,10 +41,8 @@ class LoginAuthSpec extends GebReportingSpec {
 /*    def "display report list"() {
         given : "I am at the index page"
         to IndexPage
-
         when: "I access the report list"
         reportListButton.click()
-
         then: "I am being redirected to the report list page"
         at ReportListPage
         $().text().contains("Reports in progress")
@@ -53,10 +51,8 @@ class LoginAuthSpec extends GebReportingSpec {
 /*    def "change language to French"() { //fails because page title becomes FR
         given : "I am at the index page"
         to ReportListPage
-
         when: "I change language to french"
         frenchLangButton.click()
-
         then: "I am being redirected to the report list page"
       //  at ReportListPage
         $().text().contains("Vous êtes connecté en tant que")
@@ -65,7 +61,6 @@ class LoginAuthSpec extends GebReportingSpec {
 /*    def "test index page title"() {
         when : "I am at the index page"
         to IndexPage
-
         then: "I am being redirected to the report list page"
         js."document.title" == "CBM index"
     }*/
