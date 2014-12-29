@@ -108,22 +108,31 @@ class ReportServiceSpec extends Specification {
         then: "No error is thrown"
         error == []
     }
+
+
     void "Test that a Report is valid when the forms are in status COMPLETED"() { //TODO test for other forms
         when:
-        Report r = report
-        r.formAPart1.clear()
-        def formAPart1a = FormAPart1a.build(report: report, country: country, location: new Address(street1: 'a'), formStatus: FormStatus.DRAFT)
-        r.formAPart1 << formAPart1a
+            Report r = report
+            r.formAPart1.clear()
+            def formAPart1a = FormAPart1a.build(report: report, country: country, location: new Address(street1: 'a'),formStatus: FormStatus.DRAFT)
+            r.formAPart1 << formAPart1a
+
         and:
-        def error = service.validateFormsCompletion(r)
+            def error = service.validateFormsCompletion(r)
+
         then: "An error is thrown"
-        error != null
-        error[0].toString().contains('error')
+            error != null
+            error[0].toString().contains('error')
+
         when:
-        formAPart1a.formStatus = FormStatus.COMPLETED
+            formAPart1a.formStatus = FormStatus.COMPLETED
+
         and:
-        error = service.validateFormsCompletion(r)
+             error= service.validateFormsCompletion(r)
+
         then: "No error is thrown"
-        error == []
+            error == []
     }
+
+
 }
