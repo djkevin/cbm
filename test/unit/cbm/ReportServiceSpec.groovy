@@ -108,7 +108,6 @@ class ReportServiceSpec extends Specification {
         then: "No error is thrown"
         error == []
     }
-
     void "Test that a Report is valid when the forms are in status COMPLETED"() { //TODO test for other forms
         when:
         Report r = report
@@ -128,6 +127,3 @@ class ReportServiceSpec extends Specification {
         error == []
     }
 }
-
-
-
