@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta name="layout" content="main" />
-<title>CBM</title>
+<title>CBM index</title>
 <style type="text/css" media="screen">
 #status {
 	background-color: #eee;
