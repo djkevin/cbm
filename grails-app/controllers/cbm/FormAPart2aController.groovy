@@ -10,16 +10,13 @@ import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormAPart2aController {
+
+    def formAPart2aService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        /*
-        params.max = Math.min(max ?: 10, 100)
-        respond FormAPart2a.list(params), model:[formAPart2aInstanceCount: FormAPart2a.count()]
-        */		
 		response.sendError(404)
     }
 
@@ -39,7 +36,6 @@ class FormAPart2aController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def save(FormAPart2a formAPart2aInstance) {
         if (formAPart2aInstance == null) {
             notFound()
@@ -51,7 +47,7 @@ class FormAPart2aController {
             return
         }
 
-        formAPart2aInstance.save flush:true
+        formAPart2aService.save(formAPart2aInstance)
 
         request.withFormat {
             form {
@@ -68,7 +64,6 @@ class FormAPart2aController {
     }
 
 	@Secured(['ROLE_EDITOR'])
-    @Transactional
     def update(FormAPart2a formAPart2aInstance) {
         if (formAPart2aInstance == null) {
             notFound()
@@ -80,7 +75,7 @@ class FormAPart2aController {
             return
         }
 
-        formAPart2aInstance.save flush:true
+        formAPart2aService.save(formAPart2aInstance)
 
         request.withFormat {
             form {
@@ -92,7 +87,6 @@ class FormAPart2aController {
     }
 
 	@Secured(['ROLE_EDITOR', 'ROLE_SUBMITTER'])
-    @Transactional
     def delete(FormAPart2a formAPart2aInstance) {
 
         if (formAPart2aInstance == null) {
@@ -106,7 +100,7 @@ class FormAPart2aController {
         report.formAPart2a = null
         report.save()
 
-        formAPart2aInstance.delete flush:true
+        formAPart2aService.delete(formAPart2aInstance)
 
         request.withFormat {
             form {
