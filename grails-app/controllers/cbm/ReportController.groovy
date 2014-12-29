@@ -160,10 +160,8 @@ class ReportController {
     @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
     def print(Report reportInstance) {
 
-        println params
 
         boolean publicOnly = params.boolean('public')
-        println "public only: $publicOnly"
 
         response.setHeader("Content-Disposition", "attachment; filename=" + reportInstance.getReportName() + ".pdf")
 
@@ -189,7 +187,6 @@ class ReportController {
 
     @Secured(['ROLE_SUBMITTER'])
     def review(Report reportInstance) {
-        println params
         def report = Report.get(params.long("id"))
 
         respond reportInstance
@@ -203,7 +200,6 @@ class ReportController {
     @Secured(['ROLE_SUBMITTER'])
     def ajaxSaveFormStatus() {
         //TODO disable if report is already submitted
-        println params
         //params: name, type, id, value[Completed]
         String result
         def saveOKMsg = message(code: 'report.submit.radio.save.ok', args: [params.name, params.type, params.value])    //TODO i18n confirm message
@@ -251,7 +247,6 @@ class ReportController {
 
 
         if (errors["status"] || errors["validation"]) {
-            println "printing errors to gsp...."
             render view: "review", model: [reportInstance: reportInstance, errors: errors]
             return
         }
