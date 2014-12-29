@@ -11,30 +11,10 @@ hibernate {
 // environment specific settings
 environments {
     development {
-        dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:~/data/devCBM"
-			//url = "jdbc:h2:../cbm.data/devCBM"
-			pooled = true
-			jmxExport = true
-			driverClassName = "org.h2.Driver"
-			username = "sa"
-			password = ""
-        }
-    }
-    test {
-        dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:testDb"
-            pooled = true
-            jmxExport = true
-            driverClassName = "org.h2.Driver"
-            username = "sa"
-            password = ""
-        }
+        // See cbm-config.groovy
     }
 
-    test_work {
+    test {
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://icts-sdu-jdev2:3306/testCBM"
@@ -60,14 +40,14 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update" // ???
+            dbCreate = "nothing"
 			url = "jdbc:mysql://icts-hisql1.unog.un.org/icts_cbm_prod"
 			pooled = true
 			//logSql = true
 			driverClassName = "com.mysql.jdbc.Driver"
 			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
 			username = "icts-cbm-app"
-			password = "3B8ZHz#r2Ew$W6*Rc"
+			password = "somepasswordthatisoverwritten"
             properties {
                 maxActive = -1
                 minEvictableIdleTimeMillis=1800000
