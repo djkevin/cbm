@@ -109,6 +109,7 @@ grails.project.dependency.resolution = {
 
         test ":remote-control:1.4"
         test ":geb:${gebVersion}"
+        test ":code-coverage:2.0.3-3"
 
         //test ":geb:$gebVersion"  Does not work - conflicts with unit tests
 
