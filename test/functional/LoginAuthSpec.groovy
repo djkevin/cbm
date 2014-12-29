@@ -51,10 +51,13 @@ class LoginAuthSpec extends GebReportingSpec {
 /*    def "change language to French"() { //fails because page title becomes FR
         given : "I am at the index page"
         to ReportListPage
+
         when: "I change language to french"
         frenchLangButton.click()
         then: "I am being redirected to the report list page"
-      //  at ReportListPage
+
+        at ReportListPage
+
         $().text().contains("Vous êtes connecté en tant que")
     }*/
 
