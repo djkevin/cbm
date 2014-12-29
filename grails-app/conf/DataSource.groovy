@@ -16,6 +16,18 @@ environments {
 
     test {
         dataSource {
+            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:mem:testDb"
+            pooled = true
+            jmxExport = true
+            driverClassName = "org.h2.Driver"
+            username = "sa"
+            password = ""
+        }
+    }
+
+    test_work {
+        dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://icts-sdu-jdev2:3306/testCBM"
 			pooled = true
