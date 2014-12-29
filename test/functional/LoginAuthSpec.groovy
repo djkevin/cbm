@@ -56,8 +56,7 @@ class LoginAuthSpec extends GebReportingSpec {
         frenchLangButton.click()
         then: "I am being redirected to the report list page"
 
-        at ReportListPage
-
+      //  at ReportListPage
         $().text().contains("Vous êtes connecté en tant que")
     }*/
 
