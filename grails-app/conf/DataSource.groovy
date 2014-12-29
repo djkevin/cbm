@@ -16,15 +16,15 @@ environments {
     }
 
     test {
-        dataSource {
+ /*       dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://icts-sdu-jdev2:3306/testCBM"
-			pooled = true
-			//logSql = true
-			driverClassName = "com.mysql.jdbc.Driver"
-			dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-			username = "cbm"
-			password = "cbm2014"
+            pooled = true
+            //logSql = true
+            driverClassName = "com.mysql.jdbc.Driver"
+            dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+            username = "cbm"
+            password = "cbm2014"
             properties {
                 maxActive = -1
                 minEvictableIdleTimeMillis=1800000
@@ -37,7 +37,7 @@ environments {
                 jdbcInterceptors="ConnectionState"
             }
 
-        }
+        }*/
     }
     production {
         dataSource {
