@@ -11,10 +11,10 @@ import org.aspectj.util.FileUtil
 import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_VIEWER', 'ROLE_EDITOR', 'ROLE_SUBMITTER'])
-@Transactional(readOnly = true)
 class FormZeroController {
 
     def formService
+    def formZeroService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -63,7 +63,6 @@ class FormZeroController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def save(FormZero formZeroInstance) {
         if (formZeroInstance == null) {
             notFound()
@@ -75,7 +74,7 @@ class FormZeroController {
             return
         }
 
-        formZeroInstance.save flush: true
+        formZeroService.save(formZeroInstance)
 
         request.withFormat {
             form {
@@ -93,7 +92,6 @@ class FormZeroController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def update(FormZero formZeroInstance) {
         if (formZeroInstance == null) {
             notFound()
@@ -105,7 +103,7 @@ class FormZeroController {
             return
         }
 
-        formZeroInstance.save flush: true
+        formZeroService.save(formZeroInstance)
 
         request.withFormat {
             form {
@@ -117,7 +115,6 @@ class FormZeroController {
     }
 
 	@Secured(['ROLE_SUBMITTER'])
-    @Transactional
     def delete(FormZero formZeroInstance) {
 
         if (formZeroInstance == null) {
@@ -130,7 +127,7 @@ class FormZeroController {
         report.formZero = null
         report.save()
 
-        formZeroInstance.delete flush: true
+        formZeroService.delete(formZeroInstance)
 
         request.withFormat {
             form {
