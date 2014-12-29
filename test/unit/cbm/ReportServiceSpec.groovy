@@ -7,6 +7,10 @@ import grails.buildtestdata.mixin.Build
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> Fixed tests, removed unused ones
 @TestFor(ReportService)
 @Build([FormAPart1a, FormAPart1b, Report, FormAPart1ContainmentUnit, cbm.admin.Country, FormAPart2b])
 class ReportServiceSpec extends Specification {
