@@ -25,6 +25,7 @@ class ReportServiceSpec extends Specification {
 
     def cleanup() {
         report == null
+
     }
 
 
